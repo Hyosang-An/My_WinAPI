@@ -3,7 +3,6 @@
 
 #include "pch.h"
 #include "framework.h"
-#include "My_WinAPI.h"
 
 #define MAX_LOADSTRING 100
 
