@@ -13,6 +13,7 @@
 .vs/
 *.opendb
 *.VC.db
+*.aps
 
 # Build results
 Debug/
