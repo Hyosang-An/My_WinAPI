@@ -11,4 +11,20 @@
 #include "framework.h"
 #include "Resource.h"
 
+// STL 
+#include <vector>
+#include <list>
+#include <map>
+#include <string>
+
+using std::vector;
+using std::list;
+using std::map;
+using std::string;
+using std::wstring;
+using std::make_pair;
+
+#include "define.h"
+#include "Singleton.h"
+
 #endif //PCH_H
