@@ -25,5 +25,6 @@ using std::wstring;
 using std::make_pair;
 
 #include "define.h"
+#include "Singleton.h"
 
 #endif //PCH_H
