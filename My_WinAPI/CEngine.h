@@ -3,6 +3,8 @@
 class CEngine :
     public Singleton<CEngine>
 {
+    friend class Singleton<CEngine>;
+
 private:
     HWND    m_hMainWnd;     // 메인 윈도우 핸들
     POINT   m_Resolution;   // 메인 윈도우 해상도

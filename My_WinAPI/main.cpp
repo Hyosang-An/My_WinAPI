@@ -4,6 +4,8 @@
 #include "pch.h"
 #include <crtdbg.h>
 
+#include "CEngine.h"
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -71,7 +73,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         else
         {
             // 메세지큐에 메세지가 없는 경우 게임 엔진 루프 실행
-
+            CEngine::GetInstance().progress();
         }
 
     }
@@ -132,6 +134,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    // nCmdShow에 따라 윈도우를 화면에 보여줄지 말지 설정
    ShowWindow(g_hWnd, nCmdShow);
    UpdateWindow(g_hWnd);
+
+   // Engine 초기화
+   if (FAILED(CEngine::GetInstance().init(g_hWnd, POINT{ 1280, 768 })))
+   {
+       // Engine 초기화 실패 ==> 프로그램 종료
+       MessageBox(nullptr, L"엔진 초기화 실패", L"에러 발생", MB_OK);
+       return 0;
+   }
 
    return TRUE;
 }
