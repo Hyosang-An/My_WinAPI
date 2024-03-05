@@ -23,6 +23,21 @@
     <Filter Include="03. Game\Module">
       <UniqueIdentifier>{2cbab01e-b72e-4e36-826d-8ed995fb7d38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager">
+      <UniqueIdentifier>{3568bd54-b56f-4016-82db-26c275d795a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\04. Level">
+      <UniqueIdentifier>{1f967250-172a-424a-bbbb-036100537607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\05. Object">
+      <UniqueIdentifier>{2273ef25-bf68-4622-bb95-8aef950a0359}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\04. Level\Stage01">
+      <UniqueIdentifier>{14748a8c-d6bd-4ddf-94c7-7858fac8e09b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\03. Manager\LevelMgr">
+      <UniqueIdentifier>{184f3844-c97e-4938-984f-c77697c20274}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -58,6 +73,16 @@
     <ClInclude Include="struct.h">
       <Filter>03. Game\01. Header</Filter>
     </ClInclude>
+    <ClInclude Include="CObj.h">
+      <Filter>03. Game\05. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevel.h">
+      <Filter>03. Game\04. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevel_Stage01.h">
+      <Filter>03. Game\04. Level\Stage01</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevelMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,6 +100,16 @@
     <ClCompile Include="CSelectObj.cpp">
       <Filter>03. Game\Module</Filter>
     </ClCompile>
+    <ClCompile Include="CObj.cpp">
+      <Filter>03. Game\05. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevel.cpp">
+      <Filter>03. Game\04. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevel_Stage01.cpp">
+      <Filter>03. Game\04. Level\Stage01</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevelMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

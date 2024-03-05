@@ -137,6 +137,10 @@
   <ItemGroup>
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CLevel.h" />
+    <ClInclude Include="CLevelMgr.h" />
+    <ClInclude Include="CLevel_Stage01.h" />
+    <ClInclude Include="CObj.h" />
     <ClInclude Include="CSelectObj.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="enum.h" />
@@ -150,6 +154,10 @@
   <ItemGroup>
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
+    <ClCompile Include="CLevel.cpp" />
+    <ClCompile Include="CLevelMgr.cpp" />
+    <ClCompile Include="CLevel_Stage01.cpp" />
+    <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CSelectObj.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
