@@ -11,23 +11,49 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="02. Main\헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="03. Game\01. Header">
+      <UniqueIdentifier>{15698c17-0497-497c-ac70-2aca5e489185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Main\Header">
+      <UniqueIdentifier>{4165deb8-70c2-4e21-a212-f063ad37b1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\02. Engine">
+      <UniqueIdentifier>{013d9a03-95c1-4bd1-83a6-f39d4561a581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\Module">
+      <UniqueIdentifier>{2cbab01e-b72e-4e36-826d-8ed995fb7d38}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="define.h">
+      <Filter>03. Game\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>03. Game\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CEngine.h">
+      <Filter>03. Game\02. Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntity.h">
+      <Filter>03. Game</Filter>
+    </ClInclude>
     <ClInclude Include="framework.h">
-      <Filter>02. Main\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>02. Main\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>02. Main\헤더 파일</Filter>
+      <Filter>02. Main\Header</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>02. Main\헤더 파일</Filter>
+      <Filter>02. Main\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>02. Main\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>02. Main\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>02. Main\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CSelectObj.h">
+      <Filter>03. Game\Module</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +62,15 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>02. Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CEngine.cpp">
+      <Filter>03. Game\02. Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CEntity.cpp">
+      <Filter>03. Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CSelectObj.cpp">
+      <Filter>03. Game\Module</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
