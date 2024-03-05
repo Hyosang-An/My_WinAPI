@@ -16,6 +16,7 @@
 #include <list>
 #include <map>
 #include <string>
+#include <assert.h>
 
 using std::vector;
 using std::list;
@@ -27,6 +28,7 @@ using std::make_pair;
 #include "define.h"
 #include "Singleton.h"
 #include "enum.h"
+#include "struct.h"
 
 #include "CSelectObj.h"
 
