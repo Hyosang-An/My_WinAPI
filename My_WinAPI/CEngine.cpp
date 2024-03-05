@@ -37,6 +37,21 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 	// 윈도우 해상도 변경
 	SetWindowPos(m_hMainWnd, nullptr, 0, 0, m_Resolution.x, m_Resolution.y, 0);
 
+	CreateDefaultGDIObj();
+
+	return S_OK;
+}
+
+void CEngine::progress()
+{
+	USE_PEN(m_hDC, PEN_TYPE::BLUE);
+
+	Rectangle(m_hDC, 50, 50, 150, 150);
+
+}
+
+void CEngine::CreateDefaultGDIObj()
+{
 	// DC생성
 	// DC 란? 렌더링과 관련, 비트맵에 렌더링하기 위해 필요한 필수 정보 집합체
 	m_hDC = GetDC(m_hMainWnd);
@@ -53,15 +68,4 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 	m_arrBrush[(UINT)BRUSH_TYPE::GRAY] = CreateSolidBrush(RGB(100, 100, 100));
 	m_arrBrush[(UINT)BRUSH_TYPE::HOLLOW] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
 	m_arrBrush[(UINT)BRUSH_TYPE::BLACK] = (HBRUSH)GetStockObject(BLACK_BRUSH);
-
-	return S_OK;
 }
-
-void CEngine::progress()
-{
-	USE_PEN(m_hDC, PEN_TYPE::BLUE);
-
-	Rectangle(m_hDC, 50, 50, 150, 150);
-
-}
-
