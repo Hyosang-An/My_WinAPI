@@ -8,3 +8,16 @@ enum class PEN_TYPE
 
 	END
 };
+
+enum class BRUSH_TYPE
+{
+	RED,
+	GREEN,
+	BLUE,
+	GRAY,
+
+	HOLLOW,
+	BLACK,
+
+	END
+};

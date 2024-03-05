@@ -26,5 +26,8 @@ using std::make_pair;
 
 #include "define.h"
 #include "Singleton.h"
+#include "enum.h"
+
+#include "CSelectObj.h"
 
 #endif //PCH_H
