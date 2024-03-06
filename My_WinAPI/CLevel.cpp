@@ -47,6 +47,5 @@ void CLevel::progress()
 {
 	tick();
 	finaltick();
-	render();
 }
 

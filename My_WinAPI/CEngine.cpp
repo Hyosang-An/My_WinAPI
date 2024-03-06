@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CEngine.h"
 #include "CLevelMgr.h"
+#include "CTimeMgr.h"
 
 CEngine::CEngine()
 	: m_hMainWnd(nullptr)
@@ -43,14 +44,21 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 
 	// Manager 초기화
 	CLevelMgr::GetInstance().init();
+	CTimeMgr::GetInstance().init();
+
 
 	return S_OK;
 }
 
 void CEngine::progress()
 {
-	CLevelMgr::GetInstance().progress();
+	CTimeMgr::GetInstance().tick();
+	CLevelMgr::GetInstance().progress(); // 레벨에 있는 모든 오브젝트의 tick, finaltick 실행
 
+	// 화면 Clear
+	//Rectangle(m_hDC, -1, -1, m_Resolution.x + 1, m_Resolution.y + 1);
+
+	CLevelMgr::GetInstance().render();
 }
 
 void CEngine::CreateDefaultGDIObj()

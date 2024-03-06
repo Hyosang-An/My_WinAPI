@@ -38,4 +38,9 @@ void CLevelMgr::progress()
 	m_pCurrentLevel->progress();
 }
 
+void CLevelMgr::render()
+{
+	m_pCurrentLevel->render();
+}
+
 
