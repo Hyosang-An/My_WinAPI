@@ -20,6 +20,10 @@ public:
     void init();
     void tick();
 
+    double  GetDeltaTime() { return m_DeltaTime; }
+    double  GetTime() { return m_Time; }
+    UINT    GetFPS() { return m_FPS; }
+
 private:
     CTimeMgr();
     ~CTimeMgr();
