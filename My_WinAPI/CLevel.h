@@ -15,6 +15,8 @@ public:
     virtual void finaltick();
     virtual void render();
 
+    virtual void progress();
+
 public:
     void AddObject(CObj* _pObj) { m_vecObj.push_back(_pObj); }
 

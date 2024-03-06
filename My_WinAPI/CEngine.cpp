@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CEngine.h"
+#include "CLevelMgr.h"
 
 CEngine::CEngine()
 	: m_hMainWnd(nullptr)
@@ -37,16 +38,18 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 	// 윈도우 해상도 변경
 	SetWindowPos(m_hMainWnd, nullptr, 0, 0, m_Resolution.x, m_Resolution.y, 0);
 
+	// DC 및 펜, 브러쉬 생성
 	CreateDefaultGDIObj();
+
+	// Manager 초기화
+	CLevelMgr::GetInstance().init();
 
 	return S_OK;
 }
 
 void CEngine::progress()
 {
-	USE_PEN(m_hDC, PEN_TYPE::BLUE);
-
-	Rectangle(m_hDC, 50, 50, 150, 150);
+	CLevelMgr::GetInstance().progress();
 
 }
 

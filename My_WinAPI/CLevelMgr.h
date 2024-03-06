@@ -6,6 +6,8 @@ class CLevel;
 class CLevelMgr :
     public Singleton<CLevelMgr>
 {
+    friend Singleton<CLevelMgr>;
+
 private:
     CLevel* m_arrLevel[(UINT)LEVEL_TYPE::END];
     CLevel* m_pCurrentLevel;

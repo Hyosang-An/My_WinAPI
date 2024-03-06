@@ -38,6 +38,9 @@
     <Filter Include="03. Game\03. Manager\LevelMgr">
       <UniqueIdentifier>{184f3844-c97e-4938-984f-c77697c20274}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\TimeMgr">
+      <UniqueIdentifier>{d59d1354-491a-4550-92c0-23adf77da016}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -85,6 +88,9 @@
     <ClInclude Include="CLevelMgr.h">
       <Filter>03. Game\03. Manager\LevelMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>03. Game\03. Manager\TimeMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -113,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="CLevelMgr.cpp">
       <Filter>03. Game\03. Manager\LevelMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>03. Game\03. Manager\TimeMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

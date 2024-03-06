@@ -21,6 +21,7 @@ public:
     HBRUSH  GetBrush(BRUSH_TYPE _type) { return m_arrBrush[(UINT)_type]; }
 
     HDC     GetMainDC() { return m_hDC; }
+    HWND    GetMainWnd() { return m_hMainWnd; }
 
 private:
     void CreateDefaultGDIObj();

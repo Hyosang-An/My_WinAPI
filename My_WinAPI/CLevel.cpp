@@ -43,3 +43,10 @@ void CLevel::render()
 	}
 }
 
+void CLevel::progress()
+{
+	tick();
+	finaltick();
+	render();
+}
+

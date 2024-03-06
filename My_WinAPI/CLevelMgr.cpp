@@ -27,11 +27,15 @@ void CLevelMgr::init()
 	pObj->SetPos(640.f, 384.f);
 	pObj->SetScale(100, 100);
 
-	m_pCurrentLevel->add
+	m_pCurrentLevel->AddObject(pObj);
 }
 
 void CLevelMgr::progress()
 {
+	if (m_pCurrentLevel == nullptr)
+		return;
+
+	m_pCurrentLevel->progress();
 }
 
 

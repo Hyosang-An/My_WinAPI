@@ -142,6 +142,7 @@
     <ClInclude Include="CLevel_Stage01.h" />
     <ClInclude Include="CObj.h" />
     <ClInclude Include="CSelectObj.h" />
+    <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="framework.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="CLevel_Stage01.cpp" />
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CSelectObj.cpp" />
+    <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
