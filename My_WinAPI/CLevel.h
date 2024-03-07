@@ -17,6 +17,8 @@ public:
 
     virtual void progress();
 
+    virtual CLevel* Clone() = 0;
+
 public:
     void AddObject(CObj* _pObj) { m_vecObj.push_back(_pObj); }
 

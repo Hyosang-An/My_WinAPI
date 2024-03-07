@@ -3,6 +3,7 @@
 
 #include "CLevel_Stage01.h"
 #include "CObj.h"
+#include "CPlayer.h"
 
 CLevelMgr::CLevelMgr()
 	: m_arrLevel{}
@@ -23,10 +24,9 @@ void CLevelMgr::init()
 	m_pCurrentLevel = m_arrLevel[(UINT)LEVEL_TYPE::STAGE_01];
 
 	// 레벨에 물체 추가하기
-	CObj* pObj = new CObj;
+	CObj* pObj = new CPlayer;
 	pObj->SetPos(640.f, 384.f);
 	pObj->SetScale(100, 100);
-
 	m_pCurrentLevel->AddObject(pObj);
 }
 

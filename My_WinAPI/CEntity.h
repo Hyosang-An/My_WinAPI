@@ -15,7 +15,7 @@ public:
 
 public:
 	// CEntity는 추상클래스이다.
-	// virtual CEntity* Clone() = 0;
+	virtual CEntity* Clone() = 0;
 
 public:
 	CEntity();

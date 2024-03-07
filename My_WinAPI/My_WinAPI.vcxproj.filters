@@ -41,6 +41,9 @@
     <Filter Include="03. Game\03. Manager\TimeMgr">
       <UniqueIdentifier>{d59d1354-491a-4550-92c0-23adf77da016}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Player">
+      <UniqueIdentifier>{95396ce1-c9bc-4c02-9947-5737432ddb91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -91,6 +94,7 @@
     <ClInclude Include="CTimeMgr.h">
       <Filter>03. Game\03. Manager\TimeMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,6 +127,7 @@
     <ClCompile Include="CTimeMgr.cpp">
       <Filter>03. Game\03. Manager\TimeMgr</Filter>
     </ClCompile>
+    <ClCompile Include="CPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

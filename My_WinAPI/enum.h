@@ -16,6 +16,9 @@ enum class BRUSH_TYPE
 	BLUE,
 	GRAY,
 
+	DELETE_END,
+
+	// HOLLOW와 BLACK은 삭제하면 안됨
 	HOLLOW,
 	BLACK,
 

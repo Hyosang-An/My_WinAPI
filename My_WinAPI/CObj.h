@@ -22,6 +22,8 @@ public:
 	virtual void finaltick();
 	virtual void render();
 
+	virtual CObj* Clone() = 0;
+
 public:
 	CObj();
 	~CObj();
