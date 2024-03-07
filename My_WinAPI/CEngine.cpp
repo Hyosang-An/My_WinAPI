@@ -54,8 +54,8 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 
 void CEngine::progress()
 {
-	CTimeMgr::GetInstance().tick();
-	CLevelMgr::GetInstance().progress(); // 레벨에 있는 모든 오브젝트의 tick, finaltick 실행
+	CTimeMgr::GetInstance().tick();			// 매 프레임간 DT, FPS 계산 및 출력
+	CLevelMgr::GetInstance().progress();	// 레벨에 있는 모든 오브젝트의 tick, finaltick 실행
 
 	// 화면 Clear
 	{
@@ -64,7 +64,7 @@ void CEngine::progress()
 	}
 
 	CLevelMgr::GetInstance().render();
-	
+
 	// SubDC -> MainDC
 	BitBlt(m_hMainDC, 0, 0, m_Resolution.x, m_Resolution.y, m_hSubDC, 0, 0, SRCCOPY);
 }

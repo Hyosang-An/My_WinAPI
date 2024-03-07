@@ -32,7 +32,7 @@ void CTimeMgr::tick()
 	QueryPerformanceCounter(&m_llCurCount);
 
 	// 이전 카운트와 현재 카운트의 차이를 통해 1프레임 간의 시간 차이를 계산
-	m_DeltaTime = (double(m_llCurCount.QuadPart - m_llPrevCount.QuadPart) / (double)m_llFrequency.QuadPart);
+	m_DeltaTime = (float(m_llCurCount.QuadPart - m_llPrevCount.QuadPart) / (float)m_llFrequency.QuadPart);
 
 	// 누적시간을 통해서 프로그램이 실행된 이후로 지나간 시간을 기록
 	m_Time += m_DeltaTime;
@@ -44,14 +44,14 @@ void CTimeMgr::tick()
 	m_FPS++;
 
 	// 1초에 한번씩 TextOUT 출력
-	static double AccTime = 0.f;
+	static float AccTime = 0.f;
 	AccTime += m_DeltaTime;
 
 	if (1 < AccTime)
 	{
 		wchar_t szBuff[255]{};
 		swprintf_s(szBuff, L"DeltaTime : %f, FPS : %d ", m_DeltaTime, m_FPS);
-		TextOut(CEngine::GetInstance().GetMainDC(), 10, 10, szBuff, wcslen(szBuff));
+		//TextOut(CEngine::GetInstance().GetMainDC(), 10, 10, szBuff, (int)wcslen(szBuff));
 		SetWindowText(CEngine::GetInstance().GetMainWnd(), szBuff);
 		AccTime = 0;
 		m_FPS = 0;

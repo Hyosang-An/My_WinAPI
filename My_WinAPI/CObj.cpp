@@ -27,12 +27,10 @@ void CObj::finaltick()
 
 void CObj::render()
 {
-	HDC SubDC = CEngine::GetInstance().GetSubDC();
-
-	Rectangle(SubDC, m_Pos.x - m_Scale.x * 0.5f
-		, m_Pos.y - m_Scale.y * 0.5f
-		, m_Pos.x + m_Scale.x * 0.5f
-		, m_Pos.y + m_Scale.y * 0.5f);
+	Rectangle(SUBDC, (int)(m_Pos.x - m_Scale.x * 0.5f)
+		, (int)(m_Pos.y - m_Scale.y * 0.5f)
+		, (int)(m_Pos.x + m_Scale.x * 0.5f)
+		, (int)(m_Pos.y + m_Scale.y * 0.5f));
 }
 
 

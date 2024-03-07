@@ -13,15 +13,15 @@ private:
 
     UINT            m_FPS;
 
-    double      m_DeltaTime;    // 프레임 시간 간격
-    double      m_Time;         // 프로그램이 켜진 이후로 진행된 시간
+    float      m_DeltaTime;    // 프레임 시간 간격
+    float      m_Time;         // 프로그램이 켜진 이후로 진행된 시간
 
 public:
     void init();
     void tick();
 
-    double  GetDeltaTime() { return m_DeltaTime; }
-    double  GetTime() { return m_Time; }
+    float  GetDeltaTime() { return m_DeltaTime; }
+    float  GetTime() { return m_Time; }
     UINT    GetFPS() { return m_FPS; }
 
 private:

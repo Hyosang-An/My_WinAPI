@@ -17,6 +17,8 @@ public:
     void progress();
     void render();
 
+    CLevel* GetCurrentLevel() { return m_pCurrentLevel; }
+
 private:
     CLevelMgr();
     ~CLevelMgr();

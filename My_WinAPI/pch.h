@@ -29,6 +29,7 @@ using std::make_pair;
 #include "Singleton.h"
 #include "enum.h"
 #include "struct.h"
+#include "func.h"
 
 #include "CSelectObj.h"
 

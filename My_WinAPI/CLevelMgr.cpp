@@ -9,10 +9,12 @@ CLevelMgr::CLevelMgr()
 	: m_arrLevel{}
 	, m_pCurrentLevel(nullptr)
 {
+	
 }
 
 CLevelMgr::~CLevelMgr()
 {
+	Safe_Del_Arr(m_arrLevel);
 }
 
 void CLevelMgr::init()

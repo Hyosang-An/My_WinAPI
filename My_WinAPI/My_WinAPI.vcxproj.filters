@@ -44,6 +44,15 @@
     <Filter Include="03. Game\05. Object\Player">
       <UniqueIdentifier>{95396ce1-c9bc-4c02-9947-5737432ddb91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Missile">
+      <UniqueIdentifier>{b9804d65-54d5-4c0d-8b4d-4c011c82c248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\00. Global Functions">
+      <UniqueIdentifier>{8d38410f-e408-4a9f-acd0-1dc28264e378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\Module\SelectObj">
+      <UniqueIdentifier>{d5d871ba-f2a3-4cb5-a710-11a4078e54ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -73,9 +82,6 @@
     <ClInclude Include="targetver.h">
       <Filter>02. Main\Header</Filter>
     </ClInclude>
-    <ClInclude Include="CSelectObj.h">
-      <Filter>03. Game\Module</Filter>
-    </ClInclude>
     <ClInclude Include="struct.h">
       <Filter>03. Game\01. Header</Filter>
     </ClInclude>
@@ -94,7 +100,18 @@
     <ClInclude Include="CTimeMgr.h">
       <Filter>03. Game\03. Manager\TimeMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CMissile.h">
+      <Filter>03. Game\05. Object\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>03. Game\05. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CSelectObj.h">
+      <Filter>03. Game\Module\SelectObj</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>03. Game\00. Global Functions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -108,9 +125,6 @@
     </ClCompile>
     <ClCompile Include="CEntity.cpp">
       <Filter>03. Game</Filter>
-    </ClCompile>
-    <ClCompile Include="CSelectObj.cpp">
-      <Filter>03. Game\Module</Filter>
     </ClCompile>
     <ClCompile Include="CObj.cpp">
       <Filter>03. Game\05. Object</Filter>
@@ -127,7 +141,18 @@
     <ClCompile Include="CTimeMgr.cpp">
       <Filter>03. Game\03. Manager\TimeMgr</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CMissile.cpp">
+      <Filter>03. Game\05. Object\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>03. Game\05. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CSelectObj.cpp">
+      <Filter>03. Game\Module\SelectObj</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>03. Game\00. Global Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
