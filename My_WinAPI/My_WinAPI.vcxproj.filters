@@ -115,7 +115,9 @@
     <ClInclude Include="func.h">
       <Filter>03. Game\00. Global Functions</Filter>
     </ClInclude>
-    <ClInclude Include="CKeyMgr.h" />
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>03. Game\03. Manager\KeyMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -157,7 +159,9 @@
     <ClCompile Include="func.cpp">
       <Filter>03. Game\00. Global Functions</Filter>
     </ClCompile>
-    <ClCompile Include="CKeyMgr.cpp" />
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>03. Game\03. Manager\KeyMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
