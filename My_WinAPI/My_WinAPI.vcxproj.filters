@@ -56,6 +56,15 @@
     <Filter Include="03. Game\03. Manager\KeyMgr">
       <UniqueIdentifier>{fc552c28-c149-4b35-8211-c328a9e2a635}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\06. Component">
+      <UniqueIdentifier>{1bed2385-4c90-4c02-ae30-472adbab66c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\06. Component\Collider">
+      <UniqueIdentifier>{2b3ede82-20bb-43f1-a9c6-2213c8fed452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\05. Object\Monster">
+      <UniqueIdentifier>{80f86f13-d77a-44bc-b160-0a20bfdc11b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -118,6 +127,15 @@
     <ClInclude Include="CKeyMgr.h">
       <Filter>03. Game\03. Manager\KeyMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>03. Game\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>03. Game\05. Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>03. Game\06. Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -161,6 +179,15 @@
     </ClCompile>
     <ClCompile Include="CKeyMgr.cpp">
       <Filter>03. Game\03. Manager\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>03. Game\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>03. Game\05. Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>03. Game\06. Component\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

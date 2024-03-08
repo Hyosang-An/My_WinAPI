@@ -1,11 +1,19 @@
 #pragma once
 #include "CEntity.h"
+
+class CCollider;
+class CComponent;
+
 class CObj :
 	public CEntity
 {
 private:
 	Vec2    m_Pos;
 	Vec2    m_Scale;
+
+	vector<CComponent*> m_vecComponent;
+
+	
 
 public:
 	void SetPos(Vec2 _Pos) { m_Pos = _Pos; }
@@ -15,6 +23,12 @@ public:
 
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetScale() { return m_Scale; }
+
+	CComponent* AddComponent(CComponent* _component);
+
+	// 유튜브 강의 코드
+	void CreateCollider();
+	CCollider* m_pCollider;
 
 public:
 	virtual void begin();

@@ -9,6 +9,8 @@
 CPlayer::CPlayer()
 	: m_fSpeed(500.f)
 {
+
+	CreateCollider();
 }
 
 CPlayer::~CPlayer()
