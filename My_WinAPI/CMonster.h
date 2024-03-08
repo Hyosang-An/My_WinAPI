@@ -6,6 +6,10 @@ class CMonster :
 private:
 
 public:
+    virtual void tick() override;
+    virtual CMonster* Clone() override { return new CMonster(*this); }
+
+public:
     CMonster();
     ~CMonster();
 };

@@ -8,3 +8,7 @@ CMonster::CMonster()
 CMonster::~CMonster()
 {
 }
+
+void CMonster::tick()
+{
+}

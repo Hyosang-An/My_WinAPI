@@ -6,7 +6,7 @@ class CCollider :
 public:
     void finaltick() override;
 
-    CCollider* Clone() { return this; }
+    CCollider* Clone() { return new CCollider(*this); }
 
 public:
     CCollider();
