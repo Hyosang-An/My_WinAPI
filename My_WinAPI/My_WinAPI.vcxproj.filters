@@ -53,6 +53,9 @@
     <Filter Include="03. Game\Module\SelectObj">
       <UniqueIdentifier>{d5d871ba-f2a3-4cb5-a710-11a4078e54ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\KeyMgr">
+      <UniqueIdentifier>{fc552c28-c149-4b35-8211-c328a9e2a635}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -112,6 +115,7 @@
     <ClInclude Include="func.h">
       <Filter>03. Game\00. Global Functions</Filter>
     </ClInclude>
+    <ClInclude Include="CKeyMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -153,6 +157,7 @@
     <ClCompile Include="func.cpp">
       <Filter>03. Game\00. Global Functions</Filter>
     </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

@@ -4,6 +4,7 @@
 #include "CMissile.h"
 #include "CLevelMgr.h"
 #include "CLevel.h"
+#include "CKeyMgr.h"
 
 CPlayer::CPlayer()
 	: m_fSpeed(500.f)
@@ -27,27 +28,27 @@ void CPlayer::tick()
 	auto vPos = GetPos();
 
 	// 왼쪽키가 눌린적이 있으면(눌려있으면) 왼쪽으로 1픽셀 이동
-	if (0x8001 & GetAsyncKeyState(VK_LEFT))
+	if (KEY_PRESSED(KEY::LEFT))
 	{
 		vPos.x -= m_fSpeed * DT;
 	}
 
-	if (0x8001 & GetAsyncKeyState(VK_RIGHT))
+	if (KEY_PRESSED(KEY::RIGHT))
 	{
 		vPos.x += m_fSpeed * DT;
 	}
 
-	if (0x8001 & GetAsyncKeyState(VK_UP))
+	if (KEY_PRESSED(KEY::UP))
 	{
 		vPos.y -= m_fSpeed * DT;
 	}
 
-	if (0x8001 & GetAsyncKeyState(VK_DOWN))
+	if (KEY_PRESSED(KEY::DOWN))
 	{
 		vPos.y += m_fSpeed * DT;
 	}
 
-	if (0x8001 & GetAsyncKeyState(VK_SPACE))
+	if (KEY_JUST_PRESSED(KEY::SPACE))
 	{
 		CMissile* pMissile = new CMissile;
 

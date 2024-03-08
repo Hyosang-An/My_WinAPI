@@ -28,4 +28,3 @@ private:
     CTimeMgr();
     ~CTimeMgr();
 };
-

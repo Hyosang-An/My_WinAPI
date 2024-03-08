@@ -2,6 +2,7 @@
 #include "CEngine.h"
 #include "CLevelMgr.h"
 #include "CTimeMgr.h"
+#include "CKeyMgr.h"
 
 CEngine::CEngine()
 	: m_hMainWnd(nullptr)
@@ -47,6 +48,7 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 	// Manager 초기화
 	CLevelMgr::GetInstance().init();
 	CTimeMgr::GetInstance().init();
+	CKeyMgr::GetInstance().init();
 
 
 	return S_OK;
@@ -54,19 +56,28 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 
 void CEngine::progress()
 {
+	// ||Manager Tick||
+	// =========================================
 	CTimeMgr::GetInstance().tick();			// 매 프레임간 DT, FPS 계산 및 출력
-	CLevelMgr::GetInstance().progress();	// 레벨에 있는 모든 오브젝트의 tick, finaltick 실행
+	CKeyMgr::GetInstance().tick();			// 키 입력 확인 및 키 상태 변경
+	// =========================================
 
+	// ||Level Progress||
+	// =========================================
+	CLevelMgr::GetInstance().progress();	// 레벨에 있는 모든 오브젝트의 tick, finaltick 실행
+	// =========================================
+
+	// ||Rendering||
+	// =========================================
 	// 화면 Clear
 	{
 		USE_BRUSH(m_hSubDC, BRUSH_TYPE::GRAY);
 		Rectangle(m_hSubDC, -1, -1, m_Resolution.x + 1, m_Resolution.y + 1);
 	}
-
-	CLevelMgr::GetInstance().render();
-
+	CLevelMgr::GetInstance().render();		// 레벨에 있는 모든 오브젝트 렌더링
 	// SubDC -> MainDC
 	BitBlt(m_hMainDC, 0, 0, m_Resolution.x, m_Resolution.y, m_hSubDC, 0, 0, SRCCOPY);
+	// =========================================
 }
 
 void CEngine::CreateDefaultGDIObj()
@@ -95,3 +106,4 @@ void CEngine::CreateDefaultGDIObj()
 	m_arrBrush[(UINT)BRUSH_TYPE::HOLLOW] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
 	m_arrBrush[(UINT)BRUSH_TYPE::BLACK] = (HBRUSH)GetStockObject(BLACK_BRUSH);
 }
+
