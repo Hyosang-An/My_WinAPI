@@ -8,6 +8,7 @@
 
 CObj::CObj()
 	: m_pCollider(nullptr)
+	, m_Type(LAYER_TYPE::NONE)
 {
 }
 

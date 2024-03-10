@@ -7,7 +7,7 @@ class CLevel :
     public CEntity
 {
 private:
-    vector<CObj*>   m_vecObj;
+    vector<CObj*>   m_arrObjvec[(UINT)LAYER_TYPE::END];
 
 public:
     virtual void begin();
@@ -20,7 +20,7 @@ public:
     virtual CLevel* Clone() = 0;
 
 public:
-    void AddObject(CObj* _pObj) { m_vecObj.push_back(_pObj); }
+    void AddObject(LAYER_TYPE _type, CObj* _pObj);
 
 public:
     CLevel();

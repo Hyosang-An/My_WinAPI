@@ -30,12 +30,12 @@ void CLevelMgr::init()
 	CObj* pObj = new CPlayer;
 	pObj->SetPos(640.f, 384.f);
 	pObj->SetScale(100, 100);
-	m_pCurrentLevel->AddObject(pObj);
+	m_pCurrentLevel->AddObject(LAYER_TYPE::PLAYER, pObj);
 
 	pObj = new CMonster;
 	pObj->SetPos(800.f, 200.f);
 	pObj->SetScale(100.f, 100.f);
-	m_pCurrentLevel->AddObject(pObj);
+	m_pCurrentLevel->AddObject(LAYER_TYPE::MONSTER ,pObj);
 }
 
 void CLevelMgr::progress()

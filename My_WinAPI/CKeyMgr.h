@@ -30,6 +30,7 @@ struct tKeyInfo
 	KEY_STATE   eKeyState;  // 키의 현재 상태
 	bool        bPressed;   // 키가 지금 눌려있는 상태인지
 };
+
 class CKeyMgr :
 	public Singleton<CKeyMgr>
 {

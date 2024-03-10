@@ -7,9 +7,13 @@ class CComponent;
 class CObj :
 	public CEntity
 {
+	friend class CLevel;
+
 private:
 	Vec2    m_Pos;
 	Vec2    m_Scale;
+
+	LAYER_TYPE m_Type;
 
 	vector<CComponent*> m_vecComponent;
 
