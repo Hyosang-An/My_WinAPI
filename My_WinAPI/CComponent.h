@@ -8,7 +8,7 @@ class CComponent :
 {
     friend class CObj;
 
-private:
+protected:
     CObj* m_pOwner;
 
 public:

@@ -13,7 +13,8 @@ private:
 
 	vector<CComponent*> m_vecComponent;
 
-	
+	// 유튜브 강의 코드
+	CCollider* m_pCollider;
 
 public:
 	void SetPos(Vec2 _Pos) { m_Pos = _Pos; }
@@ -26,17 +27,21 @@ public:
 
 	CComponent* AddComponent(CComponent* _component);
 
-	// 유튜브 강의 코드
-	void CreateCollider();
-	CCollider* m_pCollider;
+	
 
 public:
 	virtual void begin();
-	virtual void tick();
-	virtual void finaltick();
+	virtual void tick();			// 오브젝트가 매 프레임마다 해야할 작업을 구현
+	virtual void finaltick() final;	// 오브젝트가 소유한 컴포넌트가 매 프레임마다 해야할 작업을 구현
 	virtual void render();
 
 	virtual CObj* Clone() = 0;
+
+public:
+	// 유튜브 강의 코드
+	void CreateCollider();
+	void ComponentRender();
+	CCollider* GetCollider() { return m_pCollider; }
 
 public:
 	CObj();

@@ -34,9 +34,9 @@ void CLevel::tick()
 
 void CLevel::finaltick()
 {
-	for (auto pObj : m_vecObj)
+	for (size_t i = 0; i < m_vecObj.size(); ++i)
 	{
-		pObj->finaltick();
+		m_vecObj[i]->finaltick();
 	}
 }
 

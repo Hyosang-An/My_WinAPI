@@ -5,12 +5,18 @@
 #include "CLevelMgr.h"
 #include "CLevel.h"
 #include "CKeyMgr.h"
+#include "CCollider.h"
+
+
+#include "CEngine.h"
 
 CPlayer::CPlayer()
 	: m_fSpeed(500.f)
+	, m_pCollider(nullptr)
 {
-
 	CreateCollider();
+	GetCollider()->SetScale(Vec2(150, 150));
+
 }
 
 CPlayer::~CPlayer()
@@ -63,13 +69,17 @@ void CPlayer::tick()
 	SetPos(vPos);
 }
 
-void CPlayer::finaltick()
-{
-}
-
 void CPlayer::render()
 {
-	CObj::render();
+	auto Pos = GetPos();
+	auto Scale = GetScale();
+
+	Rectangle(SUBDC, (int)(Pos.x - Scale.x * 0.5f)
+		, (int)(Pos.y - Scale.y * 0.5f)
+		, (int)(Pos.x + Scale.x * 0.5f)
+		, (int)(Pos.y + Scale.y * 0.5f));
+
+	ComponentRender();
 }
 
 

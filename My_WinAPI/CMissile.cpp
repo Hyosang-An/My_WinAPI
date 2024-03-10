@@ -4,7 +4,9 @@
 
 CMissile::CMissile()
 	: m_fSpeed(1000)
+	, m_pCollider(nullptr)
 {
+	CreateCollider();
 }
 
 CMissile::~CMissile()

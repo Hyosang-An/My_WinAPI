@@ -4,7 +4,7 @@ class CMonster :
     public CObj
 {
 private:
-
+    CCollider* m_pCollider;
 public:
     virtual void tick() override;
     virtual CMonster* Clone() override { return new CMonster(*this); }

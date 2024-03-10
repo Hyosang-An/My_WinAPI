@@ -6,6 +6,8 @@ class CMissile :
 private:
     float   m_fSpeed;
 
+    CCollider* m_pCollider;
+
 private:
     virtual void tick() override;
 
