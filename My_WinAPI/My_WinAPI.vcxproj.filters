@@ -68,6 +68,9 @@
     <Filter Include="03. Game\03. Manager\DbgRenderer">
       <UniqueIdentifier>{e4a3c75e-065b-4537-b76a-3422bdc7681c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\CollisionMgr">
+      <UniqueIdentifier>{08e57740-77b3-4a80-b913-2b280f1b893a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -142,6 +145,7 @@
     <ClInclude Include="CDbgRenderer.h">
       <Filter>03. Game\03. Manager\DbgRenderer</Filter>
     </ClInclude>
+    <ClInclude Include="CCollisionMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -198,6 +202,7 @@
     <ClCompile Include="CDbgRenderer.cpp">
       <Filter>03. Game\03. Manager\DbgRenderer</Filter>
     </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

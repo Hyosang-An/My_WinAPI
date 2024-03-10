@@ -10,6 +10,7 @@ private:
 
 private:
     virtual void tick() override;
+    virtual void render() override;
 
 public:
     virtual CMissile* Clone() { return new CMissile(*this); }

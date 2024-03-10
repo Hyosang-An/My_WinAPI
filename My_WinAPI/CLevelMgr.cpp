@@ -5,6 +5,7 @@
 #include "CObj.h"
 #include "CPlayer.h"
 #include "CMonster.h"
+#include "CCollisionMgr.h"
 
 CLevelMgr::CLevelMgr()
 	: m_arrLevel{}
@@ -36,6 +37,11 @@ void CLevelMgr::init()
 	pObj->SetPos(800.f, 200.f);
 	pObj->SetScale(100.f, 100.f);
 	m_pCurrentLevel->AddObject(LAYER_TYPE::MONSTER ,pObj);
+
+	// 충돌 지정
+	// Player와 Monster 레이어 간 충돌 체크
+	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::MONSTER);
+
 }
 
 void CLevelMgr::progress()

@@ -4,6 +4,7 @@
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 #include "CDbgRenderer.h"
+#include "CCollisionMgr.h"
 
 CEngine::CEngine()
 	: m_hMainWnd(nullptr)
@@ -47,9 +48,11 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 	CreateDefaultGDIObj();
 
 	// Manager 초기화
-	CLevelMgr::GetInstance().init();
 	CTimeMgr::GetInstance().init();
 	CKeyMgr::GetInstance().init();
+	CLevelMgr::GetInstance().init();
+	CCollisionMgr::GetInstance().init();
+	
 
 
 	return S_OK;
@@ -67,6 +70,11 @@ void CEngine::progress()
 	//		||Level Progress||
 	// ==================================================================================
 	CLevelMgr::GetInstance().progress();	// 레벨에 있는 모든 오브젝트의 tick, finaltick 실행
+	// ==================================================================================
+
+	//		||Collision Check||
+	// ==================================================================================
+	CCollisionMgr::GetInstance().tick();
 	// ==================================================================================
 
 	//		||Rendering||

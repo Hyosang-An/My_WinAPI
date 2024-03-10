@@ -2,12 +2,14 @@
 #include "CEntity.h"
 
 class CObj;
+class CCollider;
 
 class CLevel :
     public CEntity
 {
 private:
     vector<CObj*>   m_arrObjvec[(UINT)LAYER_TYPE::END];
+    vector<CCollider*>  m_arrCollider[(UINT)LAYER_TYPE::END];
 
 public:
     virtual void begin();
@@ -21,6 +23,7 @@ public:
 
 public:
     void AddObject(LAYER_TYPE _type, CObj* _pObj);
+    const vector<CObj*> &GetObjvec(LAYER_TYPE _type);
 
 public:
     CLevel();

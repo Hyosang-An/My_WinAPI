@@ -77,4 +77,10 @@ void CLevel::AddObject(LAYER_TYPE _type, CObj* _pObj)
 	_pObj->m_Type = _type;
 }
 
+const vector<CObj*>& CLevel::GetObjvec(LAYER_TYPE _type)
+{
+	return m_arrObjvec[(UINT)_type];
+}
+
+
 
