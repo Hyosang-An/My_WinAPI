@@ -65,6 +65,9 @@
     <Filter Include="03. Game\05. Object\Monster">
       <UniqueIdentifier>{80f86f13-d77a-44bc-b160-0a20bfdc11b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\DbgRenderer">
+      <UniqueIdentifier>{e4a3c75e-065b-4537-b76a-3422bdc7681c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -136,6 +139,9 @@
     <ClInclude Include="CCollider.h">
       <Filter>03. Game\06. Component\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="CDbgRenderer.h">
+      <Filter>03. Game\03. Manager\DbgRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -188,6 +194,9 @@
     </ClCompile>
     <ClCompile Include="CCollider.cpp">
       <Filter>03. Game\06. Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CDbgRenderer.cpp">
+      <Filter>03. Game\03. Manager\DbgRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

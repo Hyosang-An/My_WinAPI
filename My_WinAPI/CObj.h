@@ -40,7 +40,7 @@ public:
 public:
 	// 유튜브 강의 코드
 	void CreateCollider();
-	void ComponentRender();
+	/*void ComponentRender();*/
 	CCollider* GetCollider() { return m_pCollider; }
 
 public:

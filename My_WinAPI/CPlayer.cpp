@@ -6,6 +6,7 @@
 #include "CLevel.h"
 #include "CKeyMgr.h"
 #include "CCollider.h"
+#include "CDbgRenderer.h"
 
 
 #include "CEngine.h"
@@ -15,7 +16,8 @@ CPlayer::CPlayer()
 	, m_pCollider(nullptr)
 {
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(150, 150));
+	GetCollider()->SetScale(Vec2(120, 120));
+	//GetCollider()->SetOffsetPos(Vec2(100, 100));
 
 }
 
@@ -79,7 +81,7 @@ void CPlayer::render()
 		, (int)(Pos.x + Scale.x * 0.5f)
 		, (int)(Pos.y + Scale.y * 0.5f));
 
-	ComponentRender();
+	//ComponentRender();
 }
 
 

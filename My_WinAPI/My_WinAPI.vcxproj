@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="CComponent.h" />
+    <ClInclude Include="CDbgRenderer.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
     <ClInclude Include="CKeyMgr.h" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CComponent.cpp" />
+    <ClCompile Include="CDbgRenderer.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />

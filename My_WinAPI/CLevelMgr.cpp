@@ -4,6 +4,7 @@
 #include "CLevel_Stage01.h"
 #include "CObj.h"
 #include "CPlayer.h"
+#include "CMonster.h"
 
 CLevelMgr::CLevelMgr()
 	: m_arrLevel{}
@@ -29,6 +30,11 @@ void CLevelMgr::init()
 	CObj* pObj = new CPlayer;
 	pObj->SetPos(640.f, 384.f);
 	pObj->SetScale(100, 100);
+	m_pCurrentLevel->AddObject(pObj);
+
+	pObj = new CMonster;
+	pObj->SetPos(800.f, 200.f);
+	pObj->SetScale(100.f, 100.f);
 	m_pCurrentLevel->AddObject(pObj);
 }
 
