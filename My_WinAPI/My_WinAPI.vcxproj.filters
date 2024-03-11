@@ -145,7 +145,9 @@
     <ClInclude Include="CDbgRenderer.h">
       <Filter>03. Game\03. Manager\DbgRenderer</Filter>
     </ClInclude>
-    <ClInclude Include="CCollisionMgr.h" />
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>03. Game\03. Manager\CollisionMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -202,7 +204,9 @@
     <ClCompile Include="CDbgRenderer.cpp">
       <Filter>03. Game\03. Manager\DbgRenderer</Filter>
     </ClCompile>
-    <ClCompile Include="CCollisionMgr.cpp" />
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>03. Game\03. Manager\CollisionMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

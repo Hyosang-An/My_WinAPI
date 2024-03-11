@@ -21,12 +21,19 @@ void CCollider::finaltick()
 	DrawDebugRect(PEN_TYPE::GREEN, m_vFinalPos, m_vScale, 0.f);
 }
 
-void CCollider::render()
+void CCollider::OnCollisionEnter(CCollider* _pOtherCollider)
 {
-	USE_PEN(SUBDC, PEN_TYPE::GREEN);
-	USE_BRUSH(SUBDC, BRUSH_TYPE::HOLLOW);
-	Rectangle(SUBDC, int(m_vFinalPos.x - m_vScale.x * 0.5f),
-					 int(m_vFinalPos.y - m_vScale.y * 0.5f),
-					 int(m_vFinalPos.x + m_vScale.x * 0.5f),
-					 int(m_vFinalPos.y + m_vScale.y * 0.5f));
+	int a;
+}
+
+void CCollider::OnCollisionStay(CCollider* _pOtherCollider)
+{
+	int a;
+
+}
+
+void CCollider::OnCollisionExit(CCollider* _pOtherCollider)
+{
+	int a;
+
 }

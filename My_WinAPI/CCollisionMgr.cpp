@@ -37,35 +37,85 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 {
 	// 더 작은 값이 left Layer
 	auto pCurLevel = CLevelMgr::GetInstance().GetCurrentLevel();
-	const auto &leftVec = pCurLevel->GetObjvec(_leftLayer);
-	const auto &rightVec = pCurLevel->GetObjvec(_rightLayer);
+	const auto& leftObjVec = pCurLevel->GetObjvec(_leftLayer);
+	const auto& rightObjVec = pCurLevel->GetObjvec(_rightLayer);
 
-	for (size_t i = 0; i < leftVec.size(); i++)
+	auto iter = m_mapCollisionInfo.begin();
+
+	for (size_t i = 0; i < leftObjVec.size(); i++)
 	{
-		if (leftVec[i]->GetCollider() == nullptr)
+		if (leftObjVec[i]->GetCollider() == nullptr)
 			continue;
-			
-		for (size_t j = 0; j < rightVec.size(); j++)
+
+		for (size_t j = 0; j < rightObjVec.size(); j++)
 		{
-			if (rightVec[j]->GetCollider() == nullptr || leftVec == rightVec)
+			if (rightObjVec[j]->GetCollider() == nullptr || leftObjVec == rightObjVec)
 				continue;
 
-			if (IsObjCollision(leftVec[i]->GetCollider(), rightVec[i]->GetCollider()))
-			{
+			// 두 오브젝트 조합 ID 생성
+			COLLIDER_ID ID{};
+			ID.LeftID = leftObjVec[i]->GetID();
+			ID.RightID = rightObjVec[j]->GetID();
 
+			iter = m_mapCollisionInfo.find(ID.ID);
+
+			if (iter == m_mapCollisionInfo.end())
+			{
+				auto result = m_mapCollisionInfo.insert(make_pair(ID.ID, false));
+				iter = result.first;
+			}
+
+			auto pLeftCollider = leftObjVec[i]->GetCollider();
+			auto pRightCollider = rightObjVec[j]->GetCollider();
+
+			if (IsCollision(pLeftCollider, pRightCollider))
+			{
+				// 현재 충돌 중이다.
+
+				if (iter->second)
+				{
+					// 이전에도 충돌중이다.
+					pLeftCollider->OnCollisionStay(pRightCollider);
+					pRightCollider->OnCollisionStay(pLeftCollider);
+				}
+				else
+				{
+					// 이전에는 충돌 중이 아니었다.
+					pLeftCollider->OnCollisionEnter(pRightCollider);
+					pRightCollider->OnCollisionEnter(pLeftCollider);
+
+					iter->second = true;
+				}
 			}
 			else
 			{
+				// 현재 충돌 중이 아니다.
 
+				if (iter->second)
+				{
+					// 이전에는 충돌 중이다.
+					pLeftCollider->OnCollisionExit(pRightCollider);
+					pRightCollider->OnCollisionExit(pLeftCollider);
+
+					iter->second = false;
+				}
 			}
 		}
 	}
 }
 
-bool CCollisionMgr::IsObjCollision(CCollider* _pLeftCollider, CCollider* _pRightCollider)
+bool CCollisionMgr::IsCollision(CCollider* _pLeftCollider, CCollider* _pRightCollider)
 {
+	Vec2 vLeftPos = _pLeftCollider->GetFinalPos();
+	Vec2 vLeftScale = _pLeftCollider->GetScale();
+	Vec2 vRightPos = _pRightCollider->GetFinalPos();
+	Vec2 vRightScale = _pRightCollider->GetScale();
 
-
+	if (abs(vRightPos.x - vLeftPos.x) <= (abs(vLeftScale.x + vRightScale.x) * 0.5f) &&
+		abs(vRightPos.y - vLeftPos.y) <= (abs(vLeftScale.y + vRightScale.y) * 0.5f))
+	{
+		return true;
+	}
 	return false;
 }
 

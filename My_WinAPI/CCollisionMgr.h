@@ -19,6 +19,7 @@ class CCollisionMgr :
 
 private:
     UINT    m_arrCheck[(UINT)LAYER_TYPE::END];  // 레이어 간의 충동 체크 매트릭스
+    map<ULONGLONG, bool>    m_mapCollisionInfo;
 
 
 public:
@@ -31,7 +32,7 @@ public:
 
 private:
     void CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer);
-    bool IsObjCollision(CCollider* _pLeftCollider, CCollider* _pRightCollider);
+    bool IsCollision(CCollider* _pLeftCollider, CCollider* _pRightCollider);
 
 private:
     CCollisionMgr();

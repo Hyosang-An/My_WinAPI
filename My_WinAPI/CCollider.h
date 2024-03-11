@@ -14,9 +14,13 @@ public:
     void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
     
     Vec2 GetOffsetPos() { return m_vOffsetPos; }
-    Vec2 GetScale() { return m_vOffsetPos; }
+    Vec2 GetScale() { return m_vScale; }
+    Vec2 GetFinalPos() { return m_vFinalPos; }
 
-    void render();
+    void OnCollisionEnter(CCollider* _pOtherCollider);
+    void OnCollisionStay(CCollider* _pOtherCollider);
+    void OnCollisionExit(CCollider* _pOtherCollider);
+
 
 public:
     virtual void finaltick() override;
