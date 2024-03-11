@@ -59,19 +59,11 @@ void CObj::render()
 //	}
 //}
 
-CComponent* CObj::AddComponent(CComponent* _component)
-{
-	_component->m_pOwner = this;
-	m_vecComponent.push_back(_component);
-
-	return _component;
-}
-
-void CObj::CreateCollider()
-{
-	m_pCollider = new CCollider;
-	m_pCollider->m_pOwner = this;
-
-	m_vecComponent.push_back(m_pCollider);
-}
+//void CObj::CreateCollider()
+//{
+//	m_pCollider = new CCollider;
+//	m_pCollider->m_pOwner = this;
+//
+//	m_vecComponent.push_back(m_pCollider);
+//}
 

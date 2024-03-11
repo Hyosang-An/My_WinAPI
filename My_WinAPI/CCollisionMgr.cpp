@@ -44,60 +44,72 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 
 	for (size_t i = 0; i < leftObjVec.size(); i++)
 	{
-		if (leftObjVec[i]->GetCollider() == nullptr)
-			continue;
+		/*if (leftObjVec[i]->GetCollider() == nullptr)
+			continue;*/
 
 		for (size_t j = 0; j < rightObjVec.size(); j++)
 		{
-			if (rightObjVec[j]->GetCollider() == nullptr || leftObjVec == rightObjVec)
-				continue;
+			/*if (rightObjVec[j]->GetCollider() == nullptr || leftObjVec == rightObjVec)
+				continue;*/
 
-			// 두 오브젝트 조합 ID 생성
-			COLLIDER_ID ID{};
-			ID.LeftID = leftObjVec[i]->GetID();
-			ID.RightID = rightObjVec[j]->GetID();
+			auto &leftColliderVec = leftObjVec[i]->GetVecCollider();
+			auto &rightColliderVec = rightObjVec[j]->GetVecCollider();
 
-			iter = m_mapCollisionInfo.find(ID.ID);
-
-			if (iter == m_mapCollisionInfo.end())
+			for (auto leftCollider : leftColliderVec)
 			{
-				auto result = m_mapCollisionInfo.insert(make_pair(ID.ID, false));
-				iter = result.first;
-			}
+				if (leftCollider == nullptr)
+					continue;
 
-			auto pLeftCollider = leftObjVec[i]->GetCollider();
-			auto pRightCollider = rightObjVec[j]->GetCollider();
-
-			if (IsCollision(pLeftCollider, pRightCollider))
-			{
-				// 현재 충돌 중이다.
-
-				if (iter->second)
+				for (auto rightCollider : rightColliderVec)
 				{
-					// 이전에도 충돌중이다.
-					pLeftCollider->OnCollisionStay(pRightCollider);
-					pRightCollider->OnCollisionStay(pLeftCollider);
-				}
-				else
-				{
-					// 이전에는 충돌 중이 아니었다.
-					pLeftCollider->OnCollisionEnter(pRightCollider);
-					pRightCollider->OnCollisionEnter(pLeftCollider);
+					if (rightCollider == nullptr || leftColliderVec == rightColliderVec)
+						continue;
 
-					iter->second = true;
-				}
-			}
-			else
-			{
-				// 현재 충돌 중이 아니다.
+					// 두 오브젝트 조합 ID 생성
+					COLLIDER_ID ID{};
+					ID.LeftID = leftObjVec[i]->GetID();
+					ID.RightID = rightObjVec[j]->GetID();
 
-				if (iter->second)
-				{
-					// 이전에는 충돌 중이다.
-					pLeftCollider->OnCollisionExit(pRightCollider);
-					pRightCollider->OnCollisionExit(pLeftCollider);
+					iter = m_mapCollisionInfo.find(ID.ID);
 
-					iter->second = false;
+					if (iter == m_mapCollisionInfo.end())
+					{
+						auto result = m_mapCollisionInfo.insert(make_pair(ID.ID, false));
+						iter = result.first;
+					}
+
+					if (IsCollision(leftCollider, rightCollider))
+					{
+						// 현재 충돌 중이다.
+
+						if (iter->second)
+						{
+							// 이전에도 충돌중이다.
+							leftCollider->OnCollisionStay(rightCollider);
+							rightCollider->OnCollisionStay(leftCollider);
+						}
+						else
+						{
+							// 이전에는 충돌 중이 아니었다.
+							leftCollider->OnCollisionEnter(rightCollider);
+							rightCollider->OnCollisionEnter(leftCollider);
+
+							iter->second = true;
+						}
+					}
+					else
+					{
+						// 현재 충돌 중이 아니다.
+
+						if (iter->second)
+						{
+							// 이전에는 충돌 중이다.
+							leftCollider->OnCollisionExit(rightCollider);
+							rightCollider->OnCollisionExit(leftCollider);
+
+							iter->second = false;
+						}
+					}
 				}
 			}
 		}

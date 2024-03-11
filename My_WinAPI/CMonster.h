@@ -5,6 +5,7 @@ class CMonster :
 {
 private:
     CCollider* m_pCollider;
+
 public:
     virtual void tick() override;
     virtual void render() override;

@@ -6,12 +6,15 @@ class CCollider :
 private:
     Vec2    m_vOffsetPos;
     Vec2    m_vFinalPos;    // finaltick에서 계산
-
     Vec2    m_vScale;       // 충돌체의 크기
+
+    UINT    m_CollisionCount;
+    bool    m_bActive;
 
 public:
     void SetOffsetPos(Vec2 _vPos) { m_vOffsetPos = _vPos; }
     void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
+    void SetActive(bool _b) { m_bActive = _b; }
     
     Vec2 GetOffsetPos() { return m_vOffsetPos; }
     Vec2 GetScale() { return m_vScale; }

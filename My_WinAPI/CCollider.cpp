@@ -5,6 +5,8 @@
 #include "CDbgRenderer.h"
 
 CCollider::CCollider()
+	: m_CollisionCount(0)
+	, m_bActive(true)
 {
 }
 
@@ -23,17 +25,17 @@ void CCollider::finaltick()
 
 void CCollider::OnCollisionEnter(CCollider* _pOtherCollider)
 {
-	int a;
+	m_CollisionCount++;
+	m_pOwner->OnCollisionEnter(this, _pOtherCollider);
 }
 
 void CCollider::OnCollisionStay(CCollider* _pOtherCollider)
 {
-	int a;
-
+	m_pOwner->OnCollisionStay(this, _pOtherCollider);
 }
 
 void CCollider::OnCollisionExit(CCollider* _pOtherCollider)
 {
-	int a;
-
+	m_CollisionCount--;
+	m_pOwner->OnCollisionExit(this, _pOtherCollider);
 }

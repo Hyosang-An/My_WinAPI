@@ -6,11 +6,14 @@
 CMonster::CMonster()
 	: m_pCollider(nullptr)
 {
-	CreateCollider();
-	GetCollider()->SetScale(Vec2(120, 120));
+	//CreateCollider();
+	//GetCollider()->SetScale(Vec2(120, 120));
 	
 	// 추후 수정 
 	// m_pCollider->SetScale(Vec2(120, 120));
+
+	m_pCollider = AddComponent(new CCollider);
+	m_pCollider->SetScale(Vec2(120, 120));
 }
 
 CMonster::~CMonster()

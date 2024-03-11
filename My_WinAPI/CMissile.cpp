@@ -2,12 +2,14 @@
 #include "CMissile.h"
 #include "CTimeMgr.h"
 #include "CEngine.h"
+#include "CCollider.h"
 
 CMissile::CMissile()
 	: m_fSpeed(200)
 	, m_pCollider(nullptr)
 {
-	CreateCollider();
+	m_pCollider = AddComponent(new CCollider);
+	m_pCollider->SetScale(Vec2(20, 20));
 }
 
 CMissile::~CMissile()

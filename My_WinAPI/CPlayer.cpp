@@ -13,12 +13,20 @@
 
 CPlayer::CPlayer()
 	: m_fSpeed(500.f)
-	, m_pCollider(nullptr)
 {
-	CreateCollider();
-	GetCollider()->SetScale(Vec2(120, 120));
+	/*CreateCollider();
+	GetCollider()->SetScale(Vec2(120, 120));*/
 	//GetCollider()->SetOffsetPos(Vec2(100, 100));
 
+	m_HeadCol = AddComponent(new CCollider);
+	m_HeadCol->SetName(L"Head Collider");
+	m_HeadCol->SetOffsetPos(Vec2(0, -80));
+	m_HeadCol->SetScale(Vec2(30, 30));
+
+	m_BodyCol = AddComponent(new CCollider);
+	m_BodyCol->SetName(L"Body Collider");
+	m_BodyCol->SetOffsetPos(Vec2(0.f, 0.f));
+	m_BodyCol->SetScale(Vec2(60.f, 60.f));
 }
 
 CPlayer::~CPlayer()
