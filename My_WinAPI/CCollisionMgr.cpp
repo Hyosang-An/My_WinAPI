@@ -52,23 +52,26 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 			/*if (rightObjVec[j]->GetCollider() == nullptr || leftObjVec == rightObjVec)
 				continue;*/
 
-			auto &leftColliderVec = leftObjVec[i]->GetVecCollider();
-			auto &rightColliderVec = rightObjVec[j]->GetVecCollider();
+			if (leftObjVec[i] == rightObjVec[j])
+				continue;
 
-			for (auto leftCollider : leftColliderVec)
+			auto& leftColliderVec = leftObjVec[i]->GetVecCollider();
+			auto& rightColliderVec = rightObjVec[j]->GetVecCollider();
+
+			for (auto& leftCollider : leftColliderVec)
 			{
 				if (leftCollider == nullptr)
 					continue;
 
-				for (auto rightCollider : rightColliderVec)
+				for (auto& rightCollider : rightColliderVec)
 				{
-					if (rightCollider == nullptr || leftColliderVec == rightColliderVec)
+					if (rightCollider == nullptr)
 						continue;
 
-					// 두 오브젝트 조합 ID 생성
+					// 두 충돌체 조합 ID 생성
 					COLLIDER_ID ID{};
-					ID.LeftID = leftObjVec[i]->GetID();
-					ID.RightID = rightObjVec[j]->GetID();
+					ID.LeftID = leftCollider->GetID();
+					ID.RightID = rightCollider->GetID();
 
 					iter = m_mapCollisionInfo.find(ID.ID);
 
@@ -82,19 +85,34 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 					{
 						// 현재 충돌 중이다.
 
-						if (iter->second)
+						// 두 충돌체 모두 Active한 경우
+						if (leftCollider->IsActive() && rightCollider->IsActive())
 						{
-							// 이전에도 충돌중이다.
-							leftCollider->OnCollisionStay(rightCollider);
-							rightCollider->OnCollisionStay(leftCollider);
-						}
-						else
-						{
-							// 이전에는 충돌 중이 아니었다.
-							leftCollider->OnCollisionEnter(rightCollider);
-							rightCollider->OnCollisionEnter(leftCollider);
+							if (iter->second)
+							{
+								// 이전에도 충돌중이다.-> 충돌 유지
+								leftCollider->OnCollisionStay(rightCollider);
+								rightCollider->OnCollisionStay(leftCollider);
+							}
+							else
+							{
+								// 이전에는 충돌 중이 아니었다. -> 충돌 시작
+								leftCollider->OnCollisionEnter(rightCollider);
+								rightCollider->OnCollisionEnter(leftCollider);
 
-							iter->second = true;
+								iter->second = true;
+							}
+						}
+
+						// 두 충돌체 중 한개가 Active하지 않게 되었는데, 이전에 충돌 중인 경우
+						else if (iter->second)
+						{
+							// 충돌 종료
+							leftCollider->OnCollisionExit(rightCollider);
+							rightCollider->OnCollisionExit(leftCollider);
+
+							iter->second = false;
+							continue;
 						}
 					}
 					else
@@ -103,7 +121,7 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 
 						if (iter->second)
 						{
-							// 이전에는 충돌 중이다.
+							// 이전에는 충돌 중이다. -> 충돌 종료
 							leftCollider->OnCollisionExit(rightCollider);
 							rightCollider->OnCollisionExit(leftCollider);
 
@@ -141,8 +159,8 @@ void CCollisionMgr::EnableLayerCollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE 
 
 	if (iCol < iRow)
 	{
-		UINT iCol = (UINT)_leftLayer;
-		UINT iRow = (UINT)_rightLayer;
+		iCol = (UINT)_leftLayer;
+		iRow = (UINT)_rightLayer;
 	}
 
 

@@ -16,6 +16,7 @@ public:
     void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
     void SetActive(bool _b) { m_bActive = _b; }
     
+    bool IsActive() { return m_bActive; }
     Vec2 GetOffsetPos() { return m_vOffsetPos; }
     Vec2 GetScale() { return m_vScale; }
     Vec2 GetFinalPos() { return m_vFinalPos; }

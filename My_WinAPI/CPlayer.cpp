@@ -14,9 +14,7 @@
 CPlayer::CPlayer()
 	: m_fSpeed(500.f)
 {
-	/*CreateCollider();
-	GetCollider()->SetScale(Vec2(120, 120));*/
-	//GetCollider()->SetOffsetPos(Vec2(100, 100));
+	m_eType = LAYER_TYPE::PLAYER;
 
 	m_HeadCol = AddComponent(new CCollider);
 	m_HeadCol->SetName(L"Head Collider");

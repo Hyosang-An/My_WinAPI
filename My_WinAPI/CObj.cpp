@@ -7,8 +7,7 @@
 #include "CCollider.h"
 
 CObj::CObj()
-	: m_pCollider(nullptr)
-	, m_Type(LAYER_TYPE::NONE)
+	: m_eType(LAYER_TYPE::NONE)
 {
 }
 

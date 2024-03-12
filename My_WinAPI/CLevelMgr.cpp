@@ -41,6 +41,7 @@ void CLevelMgr::init()
 	// 충돌 지정
 	// Player와 Monster 레이어 간 충돌 체크
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::MONSTER);
+	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER_MISSILE, LAYER_TYPE::MONSTER);
 
 }
 

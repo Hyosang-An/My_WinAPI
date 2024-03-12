@@ -74,7 +74,7 @@ void CLevel::progress()
 void CLevel::AddObject(LAYER_TYPE _type, CObj* _pObj)
 {
 	m_arrObjvec[(UINT)_type].push_back(_pObj);
-	_pObj->m_Type = _type;
+	_pObj->m_eType = _type;
 }
 
 const vector<CObj*>& CLevel::GetObjvec(LAYER_TYPE _type)

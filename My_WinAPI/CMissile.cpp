@@ -5,7 +5,7 @@
 #include "CCollider.h"
 
 CMissile::CMissile()
-	: m_fSpeed(200)
+	: m_fSpeed(150)
 	, m_pCollider(nullptr)
 {
 	m_pCollider = AddComponent(new CCollider);

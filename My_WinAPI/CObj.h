@@ -13,13 +13,11 @@ private:
 	Vec2    m_Pos;
 	Vec2    m_Scale;
 
-	LAYER_TYPE m_Type;
-
 	vector<CComponent*> m_vecComponent;
 	vector<CCollider*> m_vecCollider;
 
-	// 유튜브 강의 코드
-	CCollider* m_pCollider;
+protected:
+	LAYER_TYPE m_eType;
 
 public:
 	void SetPos(Vec2 _Pos) { m_Pos = _Pos; }
@@ -29,7 +27,7 @@ public:
 
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetScale() { return m_Scale; }
-	LAYER_TYPE GetLayerType() { return m_Type; }
+	LAYER_TYPE GetLayerType() { return m_eType; }
 	const vector<CCollider*>& GetVecCollider() { return m_vecCollider; }
 
 	template<typename T>
@@ -68,17 +66,11 @@ public:
 	virtual void finaltick() final;	// 오브젝트가 소유한 컴포넌트가 매 프레임마다 해야할 작업을 구현
 	virtual void render();
 
-	virtual void OnCollisionEnter(CCollider* _OwnCollider, CCollider* _pOtherCollider) {}
-	virtual void OnCollisionStay(CCollider* _OwnCollider, CCollider* _pOtherCollider) {}
-	virtual void OnCollisionExit(CCollider* _OwnCollider, CCollider* _pOtherCollider) {}
+	virtual void OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCollider) {}
+	virtual void OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherCollider) {}
+	virtual void OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider) {}
 
 	virtual CObj* Clone() = 0;
-
-public:
-	// 유튜브 강의 코드
-	void CreateCollider();
-	/*void ComponentRender();*/
-	CCollider* GetCollider() { return m_pCollider; }
 
 public:
 	CObj();

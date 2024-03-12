@@ -71,6 +71,9 @@
     <Filter Include="03. Game\03. Manager\CollisionMgr">
       <UniqueIdentifier>{08e57740-77b3-4a80-b913-2b280f1b893a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\TaskMgr">
+      <UniqueIdentifier>{141c6cf8-d98d-4b6c-b297-e2e4cd234dab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -148,6 +151,9 @@
     <ClInclude Include="CCollisionMgr.h">
       <Filter>03. Game\03. Manager\CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CTaskMgr.h">
+      <Filter>03. Game\03. Manager\TaskMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -206,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="CCollisionMgr.cpp">
       <Filter>03. Game\03. Manager\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CTaskMgr.cpp">
+      <Filter>03. Game\03. Manager\TaskMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

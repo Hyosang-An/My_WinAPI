@@ -20,7 +20,12 @@ void CCollider::finaltick()
 	auto pos = m_pOwner->GetPos();
 	m_vFinalPos = pos + m_vOffsetPos;
 
-	DrawDebugRect(PEN_TYPE::GREEN, m_vFinalPos, m_vScale, 0.f);
+	if (m_CollisionCount != 0)
+	{
+		DrawDebugRect(PEN_TYPE::RED, m_vFinalPos, m_vScale, 0.f);
+	}
+	else
+		DrawDebugRect(PEN_TYPE::GREEN, m_vFinalPos, m_vScale, 0.f);
 }
 
 void CCollider::OnCollisionEnter(CCollider* _pOtherCollider)
