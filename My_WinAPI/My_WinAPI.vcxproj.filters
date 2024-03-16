@@ -74,6 +74,18 @@
     <Filter Include="03. Game\03. Manager\TaskMgr">
       <UniqueIdentifier>{141c6cf8-d98d-4b6c-b297-e2e4cd234dab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\07. Asset">
+      <UniqueIdentifier>{98b3e5c5-c095-43e3-be27-26dcfa83d1df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\07. Asset\Sound">
+      <UniqueIdentifier>{7284f261-df50-448c-a096-b7bd25d2212e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\07. Asset\Texture">
+      <UniqueIdentifier>{3a38d38c-c72f-4849-9c1f-d91a15702615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\03. Manager\AssetMgr">
+      <UniqueIdentifier>{37061ddf-e80e-4e80-a37e-105c84da9b1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -154,6 +166,14 @@
     <ClInclude Include="CTaskMgr.h">
       <Filter>03. Game\03. Manager\TaskMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CAsset.h">
+      <Filter>03. Game\07. Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>03. Game\07. Asset\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h" />
+    <ClInclude Include="CAssetMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -216,6 +236,14 @@
     <ClCompile Include="CTaskMgr.cpp">
       <Filter>03. Game\03. Manager\TaskMgr</Filter>
     </ClCompile>
+    <ClCompile Include="CAsset.cpp">
+      <Filter>03. Game\07. Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>03. Game\07. Asset\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp" />
+    <ClCompile Include="CAssetMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
