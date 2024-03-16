@@ -4,7 +4,8 @@ class CMonster :
 	public CObj
 {
 private:
-	CCollider* m_pCollider;
+	int			m_iHP;
+	CCollider*	m_pCollider;
 
 public:
 	virtual void tick() override;

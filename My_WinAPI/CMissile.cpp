@@ -34,4 +34,20 @@ void CMissile::render()
 		, (int)(vPos.y + vScale.y * 0.5f));
 }
 
+void CMissile::OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
+{
+	CObj* pOtherObj = _pOtherCollider->GetOwner();
+
+	if (pOtherObj->GetLayerType() == LAYER_TYPE::MONSTER)
+		Destroy();
+}
+
+void CMissile::OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
+{
+}
+
+void CMissile::OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
+{
+}
+
 

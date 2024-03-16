@@ -57,9 +57,18 @@ void CLevel::render()
 {
 	for (size_t i = 0; i < (size_t)LAYER_TYPE::END; i++)
 	{
-		for (size_t j = 0; j < m_arrObjvec[i].size(); j++)
+		auto iter = m_arrObjvec[i].begin();
+		for (; iter != m_arrObjvec[i].end();)
 		{
-			m_arrObjvec[i][j]->render();
+			if ((*iter)->IsDead())
+			{
+				iter = m_arrObjvec[i].erase(iter);
+			}
+			else
+			{
+				(*iter)->render();
+				++iter;
+			}
 		}
 	}
 }

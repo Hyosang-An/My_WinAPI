@@ -34,6 +34,13 @@ void CTimeMgr::tick()
 	// 이전 카운트와 현재 카운트의 차이를 통해 1프레임 간의 시간 차이를 계산
 	m_DeltaTime = (float(m_llCurCount.QuadPart - m_llPrevCount.QuadPart) / (float)m_llFrequency.QuadPart);
 
+	// 디버깅 할 때 DT최솟값 보정
+#ifdef _DEBUG
+	if (m_DeltaTime > (1.f / 60.f))
+		m_DeltaTime = (1.f / 60.f);
+#endif // _DEBUG
+
+
 	// 누적시간을 통해서 프로그램이 실행된 이후로 지나간 시간을 기록
 	m_Time += m_DeltaTime;
 

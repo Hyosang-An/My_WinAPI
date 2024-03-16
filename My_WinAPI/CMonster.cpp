@@ -4,7 +4,8 @@
 #include "CEngine.h"
 
 CMonster::CMonster()
-	: m_pCollider(nullptr)
+	: m_iHP(3)
+	, m_pCollider(nullptr)
 {
 	m_eType = LAYER_TYPE::MONSTER;
 
@@ -33,9 +34,16 @@ void CMonster::render()
 void CMonster::OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
 {
 	CObj* pOtherObj = _pOtherCollider->GetOwner();
-	if (pOtherObj->GetLayerType() == LAYER_TYPE::PLAYER_MISSILE)
-	{
 
+	switch (pOtherObj->GetLayerType())
+	{
+		case LAYER_TYPE::PLAYER_MISSILE:
+		{
+			m_iHP--;
+			if (m_iHP <= 0)
+				Destroy();
+			break;
+		}
 	}
 
 }
@@ -46,5 +54,5 @@ void CMonster::OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherColli
 
 void CMonster::OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
 {
-	
+
 }

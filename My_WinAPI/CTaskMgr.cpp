@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "CTaskMgr.h"
 
+#include "CLevel.h"
+#include "CLevelMgr.h"
+#include "CObj.h"
+#include "CCollider.h"
+
 CTaskMgr::CTaskMgr()
 {
 }
@@ -27,11 +32,40 @@ void CTaskMgr::ExcuteTask()
 		{
 		case TASK_TYPE::SPAWN_OBJECT:
 		{
+			// 1 : Level adress, 2 : LAYER_TYPE, 3 : Object Adress
+
+			CLevel* pSpawnLevel = reinterpret_cast<CLevel*>(m_vecTask[i].param1);
+			LAYER_TYPE	layer_type = static_cast<LAYER_TYPE>(m_vecTask[i].param2);
+			CObj* pObj = reinterpret_cast<CObj*>(m_vecTask[i].param3);
+
+			if (CLevelMgr::GetInstance().GetCurrentLevel() != pSpawnLevel)
+			{
+				delete pObj;
+			}
+			else
+			{
+				pSpawnLevel->AddObject(layer_type, pObj);
+				pObj->begin();
+			}
 
 			break;
 		}
 		case TASK_TYPE::DELETE_OBJECT:
 		{
+			// 1 : Object Adress
+			// 삭제 예정 Obj들을 Dead상태로 변경하고 GarbageCollector에 모아둔다.
+			CObj* pDeadObj = reinterpret_cast<CObj*>(m_vecTask[i].param1);
+			if (pDeadObj->IsDead())
+				break;
+
+			pDeadObj->SetDead();
+			m_vecGarbageCollector.push_back(pDeadObj);
+
+			// 충돌체 꺼주기
+			for (auto& collider : pDeadObj->GetVecCollider())
+			{
+				collider->SetActive(false);
+			}
 
 			break;
 		}
@@ -42,8 +76,12 @@ void CTaskMgr::ExcuteTask()
 		}
 		}
 	}
+
+	m_vecTask.clear();
 }
 
 void CTaskMgr::ClearGarbageCollector()
 {
+	Safe_Del_Vec(m_vecGarbageCollector);
+	m_vecGarbageCollector.clear();
 }

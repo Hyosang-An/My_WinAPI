@@ -1,12 +1,10 @@
 #pragma once
 #include "Singleton.h"
 
-class CObj;
-
 enum class TASK_TYPE
 {
-    SPAWN_OBJECT,
-    DELETE_OBJECT,
+    SPAWN_OBJECT,   // 1 : Level, 2 : LAYER_TYPE, 3 : Object Adress
+    DELETE_OBJECT,  // 1 : Object Adress
     CHANGE_LEVEL,
 
     END
@@ -14,10 +12,10 @@ enum class TASK_TYPE
 
 struct tTask
 {
-    TASK_TYPE   eType;
-    DWORD       param1;
-    DWORD       param2;
-    DWORD       param3;
+    TASK_TYPE       eType;
+    DWORD_PTR       param1;
+    DWORD_PTR       param2;
+    DWORD_PTR       param3;
 };
 
 class CTaskMgr :

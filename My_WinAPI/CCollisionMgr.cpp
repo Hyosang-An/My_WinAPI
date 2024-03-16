@@ -112,7 +112,6 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 							rightCollider->OnCollisionExit(leftCollider);
 
 							iter->second = false;
-							continue;
 						}
 					}
 					else

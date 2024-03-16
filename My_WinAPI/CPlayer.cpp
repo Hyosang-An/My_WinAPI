@@ -71,7 +71,7 @@ void CPlayer::tick()
 		pMissile->SetPos(Vec2(GetPos() + Vec2(0, - GetScale().y * 0.5f)));
 		pMissile->SetScale(20, 20);
 
-		CLevelMgr::GetInstance().GetCurrentLevel()->AddObject(LAYER_TYPE::PLAYER_MISSILE ,pMissile);
+		SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
 	}
 
 	SetPos(vPos);
