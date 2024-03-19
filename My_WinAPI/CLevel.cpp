@@ -37,7 +37,8 @@ void CLevel::tick()
 	{
 		for (size_t j = 0; j < m_arrObjvec[i].size(); j++)
 		{
-			m_arrObjvec[i][j]->tick();
+			if (!m_arrObjvec[i][j]->IsDead())
+				m_arrObjvec[i][j]->tick();
 		}
 	}
 }

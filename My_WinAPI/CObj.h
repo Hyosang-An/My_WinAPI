@@ -2,7 +2,7 @@
 #include "CEntity.h"
 
 #include "CAssetMgr.h"
-
+#include "CTimeMgr.h"
 
 class CCollider;
 class CComponent;

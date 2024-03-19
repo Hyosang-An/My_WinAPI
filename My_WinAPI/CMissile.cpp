@@ -4,9 +4,10 @@
 #include "CEngine.h"
 #include "CCollider.h"
 
-CMissile::CMissile()
-	: m_fSpeed(150)
-	, m_pCollider(nullptr)
+CMissile::CMissile() :
+	m_fAngle(-3.14f*0.5f),
+	m_fSpeed(100),
+	m_pCollider(nullptr)
 {
 	m_pCollider = AddComponent(new CCollider);
 	m_pCollider->SetScale(Vec2(20, 20));
@@ -19,7 +20,9 @@ CMissile::~CMissile()
 void CMissile::tick()
 {
 	Vec2 vPos = GetPos();
-	vPos.y -= DT * m_fSpeed;
+	Vec2 vDir = Vec2(cosf(m_fAngle), sinf(m_fAngle));
+	vDir.Normalize();
+	vPos += DT * m_fSpeed * vDir;
 	SetPos(vPos);
 }
 

@@ -20,6 +20,9 @@
 #include <assert.h>
 #include <filesystem>
 
+// TransparentBlt가 구현되어있는 라이브러리 링크
+#pragma comment(lib, "msimg32.lib")
+
 using std::vector;
 using std::list;
 using std::map;

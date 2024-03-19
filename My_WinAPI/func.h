@@ -37,12 +37,15 @@ inline void Safe_Del_Map(map<T1, T2>& _map)
 	_map.clear();
 }
 
-// =============
-// Task 관련 함수
+#include "CObj.h"
+#include "CTaskMgr.h"
 
 class CLevel;
-class CObj;
 
+bool IsValid(CObj* _pObj);
+
+// =============
+// Task 관련 함수
 void SpawnObject(CLevel* _Level, LAYER_TYPE _type, CObj* _pSpawned);
 void ChangeLevel(LEVEL_TYPE _NextLevelType);
 // =============

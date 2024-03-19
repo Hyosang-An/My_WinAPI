@@ -29,11 +29,13 @@ void CLevelMgr::init()
 
 	// 레벨에 물체 추가하기
 	CObj* pObj = new CPlayer;
+	pObj->SetName(L"Player");
 	pObj->SetPos(640.f, 384.f);
 	pObj->SetScale(100, 100);
 	m_pCurrentLevel->AddObject(LAYER_TYPE::PLAYER, pObj);
 
 	pObj = new CMonster;
+	pObj->SetName(L"Monster");
 	pObj->SetPos(800.f, 200.f);
 	pObj->SetScale(100.f, 100.f);
 	m_pCurrentLevel->AddObject(LAYER_TYPE::MONSTER ,pObj);

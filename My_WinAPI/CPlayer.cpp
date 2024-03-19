@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CPlayer.h"
+
 #include "CTimeMgr.h"
 #include "CMissile.h"
 #include "CLevelMgr.h"
@@ -7,9 +8,8 @@
 #include "CKeyMgr.h"
 #include "CCollider.h"
 #include "CDbgRenderer.h"
-
-
 #include "CEngine.h"
+#include "CGuidedMissile.h"
 
 CPlayer::CPlayer() :
 	m_fSpeed(500.f),
@@ -69,10 +69,12 @@ void CPlayer::tick()
 
 	if (KEY_JUST_PRESSED(KEY::SPACE))
 	{
-		CMissile* pMissile = new CMissile;
+		CMissile* pMissile = new CGuidedMissile;
 
 		pMissile->SetPos(Vec2(GetPos() + Vec2(0, - GetScale().y * 0.5f)));
 		pMissile->SetScale(20, 20);
+		//pMissile->SetAngle(-3.141592f * 0.5);
+		pMissile->SetName(L"Player Guided Missile");
 
 		SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
 	}
@@ -88,11 +90,12 @@ void CPlayer::render()
 	auto texHeight = (m_Texture->GetHeight());
 
 
-	BitBlt(SUBDC, int(vPos.x - texWidth / 2.f)
+	TransparentBlt(SUBDC, int(vPos.x - texWidth / 2.f)
 		, int(vPos.y - texHeight / 2.f)
 		, texWidth, texHeight
 		, m_Texture->GetDC()
-		, 0, 0, SRCCOPY);
+		, 0, 0, texWidth, texHeight,
+		RGB(255, 0, 255));
 }
 
 

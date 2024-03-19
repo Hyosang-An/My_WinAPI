@@ -1,7 +1,18 @@
 #include "pch.h"
 #include "func.h"
 
-#include "CTaskMgr.h"
+bool IsValid(CObj* _pObj)
+{
+	if (_pObj == nullptr)
+		return false;
+	else if (_pObj->IsDead())
+	{
+		_pObj = nullptr;
+		return false;
+	}
+
+	return true;
+}
 
 void SpawnObject(CLevel* _Level, LAYER_TYPE _type, CObj* _pSpawned)
 {

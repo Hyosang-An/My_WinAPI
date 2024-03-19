@@ -55,7 +55,9 @@ void CTaskMgr::ExcuteTask()
 			// 1 : Object Adress
 			// 삭제 예정 Obj들을 Dead상태로 변경하고 GarbageCollector에 모아둔다.
 			CObj* pDeadObj = reinterpret_cast<CObj*>(m_vecTask[i].param1);
-			if (pDeadObj->IsDead())
+
+			// 동일한 오브젝트에 대한 삭제 요청이 동시에 여러번 들어올 경우 한 번만 처리하도록 함.
+ 			if (pDeadObj->IsDead())
 				break;
 
 			pDeadObj->SetDead();

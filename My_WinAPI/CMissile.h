@@ -3,12 +3,20 @@
 class CMissile :
 	public CObj
 {
-private:
+protected:
 	float   m_fSpeed;
+	float	m_fAngle;
 
 	CCollider* m_pCollider;
 
-private:
+public:
+	void SetSpeed(float _speed) { m_fSpeed = _speed; }
+	void SetAngle(float _angle) { m_fAngle = _angle; }
+
+	float GetSpeed() const { return m_fSpeed; }
+	float GetAngle() const { return m_fAngle; }
+
+public:
 	virtual void tick() override;
 	virtual void render() override;
 

@@ -20,15 +20,18 @@ void CCollider::finaltick()
 	auto pos = m_pOwner->GetPos();
 	m_vFinalPos = pos + m_vOffsetPos;
 
-
 	// Collider 디버그 렌더링
+
 #ifdef _DEBUG
-	if (m_CollisionCount != 0)
+	if (m_bActive)
 	{
-		DrawDebugRect(PEN_TYPE::RED, m_vFinalPos, m_vScale, 0.f);
+		if (m_CollisionCount != 0)
+		{
+			DrawDebugRect(PEN_TYPE::RED, m_vFinalPos, m_vScale, 0.f);
+		}
+		else
+			DrawDebugRect(PEN_TYPE::GREEN, m_vFinalPos, m_vScale, 0.f);
 	}
-	else
-		DrawDebugRect(PEN_TYPE::GREEN, m_vFinalPos, m_vScale, 0.f);
 #endif
 }
 

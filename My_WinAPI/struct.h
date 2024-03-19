@@ -12,7 +12,7 @@ public:
 		return x == 0.f && y == 0.f;
 	}
 
-	float GetDistance(Vec2 _other)
+	float GetDistanceWith(Vec2 _other)
 	{
 		// vector 라이브러리에 sqrtf 포함
 		return sqrtf((x - _other.x) * (x - _other.x) + (y - _other.y) * (y - _other.y));
