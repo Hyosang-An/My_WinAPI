@@ -136,7 +136,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(g_hWnd);
 
    // Engine 초기화
-   if (FAILED(CEngine::GetInstance().init(g_hWnd, POINT{ 1280, 768 })))
+   if (FAILED(CEngine::GetInstance().init(hInst, g_hWnd, POINT{ 1280, 768 })))
    {
        // Engine 초기화 실패 ==> 프로그램 종료
        MessageBox(nullptr, L"엔진 초기화 실패", L"에러 발생", MB_OK);

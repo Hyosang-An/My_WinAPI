@@ -11,8 +11,9 @@
 
 #include "CEngine.h"
 
-CPlayer::CPlayer()
-	: m_fSpeed(500.f)
+CPlayer::CPlayer() :
+	m_fSpeed(500.f),
+	m_Texture{}
 {
 	m_eType = LAYER_TYPE::PLAYER;
 
@@ -25,6 +26,8 @@ CPlayer::CPlayer()
 	m_BodyCol->SetName(L"Body Collider");
 	m_BodyCol->SetOffsetPos(Vec2(0.f, 0.f));
 	m_BodyCol->SetScale(Vec2(60.f, 60.f));
+
+	m_Texture = CAssetMgr::GetInstance().LoadTexture(L"PlayerTex", L"texture\\Fighter.bmp");
 }
 
 CPlayer::~CPlayer()
@@ -79,15 +82,17 @@ void CPlayer::tick()
 
 void CPlayer::render()
 {
-	auto Pos = GetPos();
-	auto Scale = GetScale();
+	auto vPos = GetPos();
+	
+	auto texWidth = (m_Texture->GetWith());
+	auto texHeight = (m_Texture->GetHeight());
 
-	Rectangle(SUBDC, (int)(Pos.x - Scale.x * 0.5f)
-		, (int)(Pos.y - Scale.y * 0.5f)
-		, (int)(Pos.x + Scale.x * 0.5f)
-		, (int)(Pos.y + Scale.y * 0.5f));
 
-	//ComponentRender();
+	BitBlt(SUBDC, int(vPos.x - texWidth / 2.f)
+		, int(vPos.y - texHeight / 2.f)
+		, texWidth, texHeight
+		, m_Texture->GetDC()
+		, 0, 0, SRCCOPY);
 }
 
 

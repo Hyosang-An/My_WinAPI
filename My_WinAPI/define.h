@@ -5,3 +5,6 @@
 
 #define DT CTimeMgr::GetInstance().GetDeltaTime()
 #define SUBDC CEngine::GetInstance().GetSubDC()
+
+#define CLONE(type)	virtual type* Clone() override { return new type(*this); };
+#define CLONE_DISABLE(type) virtual type* Clone() override { return nullptr; };

@@ -1,6 +1,9 @@
 #pragma once
 #include "CEntity.h"
 
+#include "CAssetMgr.h"
+
+
 class CCollider;
 class CComponent;
 

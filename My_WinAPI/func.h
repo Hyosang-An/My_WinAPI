@@ -25,6 +25,18 @@ inline void Safe_Del_Arr(T* (&arr)[arr_size])
 	}
 }
 
+template<typename T1, typename T2>
+inline void Safe_Del_Map(map<T1, T2>& _map)
+{
+	for (const auto& _pair : _map)
+	{
+		if (_pair.second != nullptr)
+			delete _pair.second;
+	}
+
+	_map.clear();
+}
+
 // =============
 // Task 관련 함수
 

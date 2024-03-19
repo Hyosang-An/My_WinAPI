@@ -6,6 +6,8 @@ class CPlayer :
 private:
     float m_fSpeed;
 
+    CTexture* m_Texture;
+
     CCollider* m_HeadCol;
     CCollider* m_BodyCol;
 

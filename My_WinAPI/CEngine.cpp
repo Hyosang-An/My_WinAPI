@@ -6,9 +6,12 @@
 #include "CDbgRenderer.h"
 #include "CCollisionMgr.h"
 #include "CTaskMgr.h"
+#include "CPathMgr.h"
+#include "CAssetMgr.h"
 
 CEngine::CEngine()
-	: m_hMainWnd(nullptr)
+	: m_hInstance{}
+	, m_hMainWnd(nullptr)
 	, m_Resolution{}
 	, m_hMainDC(nullptr)
 	, m_hSubDC(nullptr)
@@ -37,8 +40,9 @@ CEngine::~CEngine()
 	}
 }
 
-int CEngine::init(HWND _hWnd, POINT _Resolution)
+int CEngine::init(HINSTANCE _hInst, HWND _hWnd, POINT _Resolution)
 {
+	m_hInstance = _hInst;
 	m_hMainWnd = _hWnd;
 	m_Resolution = _Resolution;
 
@@ -49,12 +53,12 @@ int CEngine::init(HWND _hWnd, POINT _Resolution)
 	CreateDefaultGDIObj();
 
 	// Manager 초기화
+	CPathMgr::GetInstance().init();
 	CTimeMgr::GetInstance().init();
 	CKeyMgr::GetInstance().init();
-	CLevelMgr::GetInstance().init();
-	CCollisionMgr::GetInstance().init();
+	CAssetMgr::GetInstance().init();
 	
-
+	CLevelMgr::GetInstance().init();
 
 	return S_OK;
 }
@@ -88,10 +92,15 @@ void CEngine::progress()
 		USE_BRUSH(m_hSubDC, BRUSH_TYPE::GRAY);
 		Rectangle(m_hSubDC, -1, -1, m_Resolution.x + 1, m_Resolution.y + 1);
 	}
-	CLevelMgr::GetInstance().render();		// 레벨에 있는 모든 오브젝트 렌더링
+
+	// 레벨에 있는 모든 오브젝트 렌더링
+	CLevelMgr::GetInstance().render();		
 
 	// 디버그 렌더링
 	CDbgRenderer::GetInstance().render();
+
+	// Path 렌더링
+	CPathMgr::GetInstance().render();
 
 	// SubDC -> MainDC
 	BitBlt(m_hMainDC, 0, 0, m_Resolution.x, m_Resolution.y, m_hSubDC, 0, 0, SRCCOPY);

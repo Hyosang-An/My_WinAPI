@@ -86,6 +86,9 @@
     <Filter Include="03. Game\03. Manager\AssetMgr">
       <UniqueIdentifier>{37061ddf-e80e-4e80-a37e-105c84da9b1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\PathMgr">
+      <UniqueIdentifier>{3cef4673-136d-4d96-81ff-1b209a3f0aca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -172,8 +175,15 @@
     <ClInclude Include="CSound.h">
       <Filter>03. Game\07. Asset\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="CTexture.h" />
-    <ClInclude Include="CAssetMgr.h" />
+    <ClInclude Include="CTexture.h">
+      <Filter>03. Game\07. Asset\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="CAssetMgr.h">
+      <Filter>03. Game\03. Manager\AssetMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>03. Game\03. Manager\PathMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -242,8 +252,15 @@
     <ClCompile Include="CSound.cpp">
       <Filter>03. Game\07. Asset\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="CTexture.cpp" />
-    <ClCompile Include="CAssetMgr.cpp" />
+    <ClCompile Include="CTexture.cpp">
+      <Filter>03. Game\07. Asset\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="CAssetMgr.cpp">
+      <Filter>03. Game\03. Manager\AssetMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>03. Game\03. Manager\PathMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
