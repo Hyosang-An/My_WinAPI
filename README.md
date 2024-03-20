@@ -205,3 +205,63 @@ case WM_COMMAND:
 	break;
 }
 ```
+<br>
+
+* 게임에서 순간적으로 잠깐 멈추는 효과를 주기 위해서는 `CTimeMgr`의 동작 방식을 조금 조정해야 합니다. 일반적으로 게임은 매 프레임마다 시간 간격(`DeltaTime`)을 계산하여 이를 바탕으로 게임 내 오브젝트들의 이동이나 애니메이션 등의 업데이트를 진행합니다. 여기서 멈칫하는 효과를 주기 위해선, 일정 시간 동안 `DeltaTime`을 0 또는 매우 작은 값으로 고정하여, 그 기간 동안 게임의 상태가 업데이트 되지 않게 만들면 됩니다.
+
+ 	이를 위한 가장 간단한 방법은 `CTimeMgr` 클래스에 멈춤 효과를 위한 멤버 변수와 함수를 추가하는 것입니다. 예를 들어, 멈춤 효과의 지속 시간을 관리할 변수와, 멈춤 효과를 시작하는 함수, 그리고 멈춤 효과의 상태를 확인하는 함수를 추가할 수 있습니다.
+
+	다음은 이러한 기능을 `CTimeMgr` 클래스에 추가하는 방법을 보여줍니다.
+
+ 1. 멈춤 효과 관련 멤버 변수 추가:
+
+```cpp
+private:
+    float m_FreezeDuration;   // 멈춤 효과의 지속 시간
+    float m_FreezeTimer;      // 현재 멈춤 효과의 타이머, 0보다 클 때 멈춤 효과가 활성화된 것으로 간주
+```
+
+ 2. 멈춤 효과를 시작하는 함수 추가:
+
+```cpp
+public:
+    // 멈춤 효과 시작 함수, 지속 시간을 매개변수로 받음
+    void StartFreezeEffect(float duration) {
+        m_FreezeDuration = duration;
+        m_FreezeTimer = duration;
+    }
+```
+
+ 3. `tick` 함수 내에서 멈춤 효과 로직 추가:
+
+```cpp
+void CTimeMgr::tick()
+{
+    // 현재 카운트 계산
+    QueryPerformanceCounter(&m_llCurCount);
+
+    if (m_FreezeTimer > 0) {
+        // 멈춤 효과가 활성화된 경우, DeltaTime을 0으로 설정하고 타이머 감소
+        m_DeltaTime = 0;
+        m_FreezeTimer -= (float(m_llCurCount.QuadPart - m_llPrevCount.QuadPart) / (float)m_llFrequency.QuadPart);
+    } else {
+        // 멈춤 효과가 비활성화된 경우, 정상적인 DeltaTime 계산
+        m_DeltaTime = (float(m_llCurCount.QuadPart - m_llPrevCount.QuadPart) / (float)m_llFrequency.QuadPart);
+
+        // 디버깅 할 때 DT최솟값 보정
+        #ifdef _DEBUG
+        if (m_DeltaTime > (1.f / 60.f))
+            m_DeltaTime = (1.f / 60.f);
+        #endif // _DEBUG
+
+        // 누적시간을 통해서 프로그램이 실행된 이후로 지나간 시간을 기록
+        m_Time += m_DeltaTime;
+    }
+
+    // 현재 카운트 값을 저장
+    m_llPrevCount = m_llCurCount;
+    // 이하 코드는 기존과 동일...
+}
+```
+
+이 방식을 사용하면, `StartFreezeEffect` 함수를 호출하여 지정된 시간 동안 게임의 시간 흐름을 멈추게 할 수 있습니다. 이 기간 동안 `DeltaTime`이 0으로 설정되므로, 게임 로직이 업데이트되지 않아 멈칫하는 효과를 경험할 수 있습니다.
