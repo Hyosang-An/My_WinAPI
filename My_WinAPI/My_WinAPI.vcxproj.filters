@@ -89,6 +89,9 @@
     <Filter Include="03. Game\03. Manager\PathMgr">
       <UniqueIdentifier>{3cef4673-136d-4d96-81ff-1b209a3f0aca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Missile\GuidedMissile">
+      <UniqueIdentifier>{b9948355-bbbe-46ed-9b09-f43af5188de9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -184,6 +187,9 @@
     <ClInclude Include="CPathMgr.h">
       <Filter>03. Game\03. Manager\PathMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CGuidedMissile.h">
+      <Filter>03. Game\05. Object\Missile\GuidedMissile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -260,6 +266,9 @@
     </ClCompile>
     <ClCompile Include="CPathMgr.cpp">
       <Filter>03. Game\03. Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CGuidedMissile.cpp">
+      <Filter>03. Game\05. Object\Missile\GuidedMissile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -62,12 +62,15 @@ enum class LAYER_TYPE
 	PLAYER_MISSILE,
 	MONSTER_MISSILE,
 
-
-
-
-
 	UI = 15,
 	END = 16,
 
 	NONE = -1,
+};
+
+enum class LOG_TYPE
+{
+	DBG_LOG,
+	DBG_WARNING,
+	DBG_ERROR
 };

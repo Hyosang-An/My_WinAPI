@@ -77,6 +77,13 @@ void CPlayer::tick()
 		pMissile->SetName(L"Player Guided Missile");
 
 		SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
+
+		/*tDbgLog log{};
+		log.Type = LOG_TYPE::DBG_LOG;
+		log.strLog = L"!! 미사일 발사 !!";
+		CDbgRenderer::GetInstance().AddDbgLog(log);*/
+
+		LOG(LOG_TYPE::DBG_WARNING, L"@@ 미사일 발사 @@");
 	}
 
 	SetPos(vPos);

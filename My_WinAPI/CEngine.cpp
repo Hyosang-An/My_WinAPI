@@ -100,7 +100,7 @@ void CEngine::progress()
 	CDbgRenderer::GetInstance().render();
 
 	// Path ·»´õ¸µ
-	CPathMgr::GetInstance().render();
+	//CPathMgr::GetInstance().render();
 
 	// SubDC -> MainDC
 	BitBlt(m_hMainDC, 0, 0, m_Resolution.x, m_Resolution.y, m_hSubDC, 0, 0, SRCCOPY);

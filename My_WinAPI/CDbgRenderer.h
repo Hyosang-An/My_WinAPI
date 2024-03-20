@@ -15,8 +15,15 @@ struct tDbgRenderInfo
 	Vec2		Scale;
 	PEN_TYPE	Color;
 
-	float		Duration;
-	float		Age;
+	float		fDuration;
+	float		fElapsedTime;
+};
+
+struct tDbgLog
+{
+	LOG_TYPE	Type;
+	wstring		strLog;
+	float		fElapsedTime;
 };
 
 class CDbgRenderer :
@@ -26,13 +33,16 @@ class CDbgRenderer :
 
 private:
 	list<tDbgRenderInfo>	m_RenderList;
+	list<tDbgLog>			m_LogList;
 	bool					m_bRender;
 
+	float					m_LogDuration;	// 로그 지속시간
+	int						m_LogSpace;		// 로그 줄간격
+	Vec2					m_LogPos;		// 로그 위치
+
 public:
-	void AddDbgRenderInfo(const tDbgRenderInfo& _info)
-	{
-		m_RenderList.push_back(_info);
-	}
+	void AddDbgRenderInfo(const tDbgRenderInfo& _info) { m_RenderList.push_back(_info); }
+	void AddDbgLog(const tDbgLog _tDbgLog) { m_LogList.push_back(_tDbgLog); }
 
 	void tick();
 	void render();
@@ -50,8 +60,8 @@ inline void DrawDebugRect(PEN_TYPE _Type, Vec2 _Pos, Vec2 _Scale, float _Time)
 	info.Color = _Type;
 	info.Position = _Pos;
 	info.Scale = _Scale;
-	info.Duration = _Time;
-	info.Age = 0.f;
+	info.fDuration = _Time;
+	info.fElapsedTime = 0.f;
 
 	CDbgRenderer::GetInstance().AddDbgRenderInfo(info);
 #endif
@@ -65,8 +75,8 @@ inline void DrawDebugCircle(PEN_TYPE _Type, Vec2 _Pos, Vec2 _Scale, float _Time)
 	info.Color = _Type;
 	info.Position = _Pos;
 	info.Scale = _Scale;
-	info.Duration = _Time;
-	info.Age = 0.f;
+	info.fDuration = _Time;
+	info.fElapsedTime = 0.f;
 
 	CDbgRenderer::GetInstance().AddDbgRenderInfo(info);
 #endif
