@@ -37,5 +37,6 @@ using std::make_pair;
 #include "func.h"
 
 #include "CSelectObj.h"
+#include "CDbgRenderer.h"
 
 #endif //PCH_H

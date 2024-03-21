@@ -92,6 +92,12 @@
     <Filter Include="03. Game\05. Object\Missile\GuidedMissile">
       <UniqueIdentifier>{b9948355-bbbe-46ed-9b09-f43af5188de9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\06. Component\Animator">
+      <UniqueIdentifier>{e59dfdf4-74c6-4d0c-8ddb-58777eb24f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\Module\Animation">
+      <UniqueIdentifier>{9d203ef0-3026-4582-91a8-c8b4ec0173d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -190,6 +196,12 @@
     <ClInclude Include="CGuidedMissile.h">
       <Filter>03. Game\05. Object\Missile\GuidedMissile</Filter>
     </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>03. Game\06. Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>03. Game\Module\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -269,6 +281,12 @@
     </ClCompile>
     <ClCompile Include="CGuidedMissile.cpp">
       <Filter>03. Game\05. Object\Missile\GuidedMissile</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>03. Game\06. Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>03. Game\Module\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

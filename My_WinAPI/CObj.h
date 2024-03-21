@@ -6,6 +6,7 @@
 
 class CCollider;
 class CComponent;
+class CAnimator;
 
 class CObj :
 	public CEntity
@@ -23,6 +24,7 @@ private:
 
 protected:
 	LAYER_TYPE	m_eType;
+	CAnimator* m_Animator;
 
 private:
 	void SetDead() { m_bAlive = false; }

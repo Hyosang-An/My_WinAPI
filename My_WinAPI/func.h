@@ -44,8 +44,11 @@ class CLevel;
 
 bool IsValid(CObj* _pObj);
 
-// =============
+
 // Task 관련 함수
 void SpawnObject(CLevel* _Level, LAYER_TYPE _type, CObj* _pSpawned);
 void ChangeLevel(LEVEL_TYPE _NextLevelType);
-// =============
+
+// Save, Load 관련 함수
+int SaveWStringToFile(_In_ const wstring& _str, _Inout_ FILE* _pFile);
+int LoadWStringFromFile(_Out_ wstring& _str, _Inout_ FILE* _pFile);
