@@ -7,6 +7,9 @@
 #pragma comment(lib, "GdiPlus.lib")
 using namespace Gdiplus;
 
+#include <filesystem>
+namespace fs = std::filesystem;
+
 CTexture::CTexture() :
 	m_hDC{},
 	m_hBitmap{},
@@ -22,11 +25,15 @@ CTexture::~CTexture()
 
 int CTexture::Load(const wstring& _strFilePath)
 {
-    wchar_t szExt[50] = {};
-    _wsplitpath_s(_strFilePath.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExt, 50);
+    // 이전 버젼 코드
+    //wchar_t szExt[50] = {};
+    //_wsplitpath_s(_strFilePath.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExt, 50);
+
+    fs::path filePath = _strFilePath;
+    wstring ext = filePath.extension().wstring();
 
 
-    if (!wcscmp(szExt, L".bmp") || !wcscmp(szExt, L".BMP"))
+    if (ext == L".bmp")
     {
         m_hBitmap = (HBITMAP)LoadImage(nullptr, _strFilePath.c_str()
             , IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
@@ -35,12 +42,10 @@ int CTexture::Load(const wstring& _strFilePath)
         {
             MessageBox(nullptr, L"비트맵 로딩 실패", L"Asset 로딩 실패", MB_OK);
             return E_FAIL;
-        }
-
-
+        }        
     }
 
-    else if (!wcscmp(szExt, L".png") || !wcscmp(szExt, L".PNG"))
+    else if (ext == L".png")
     {
         ULONG_PTR gdiplusToken = 0;
         GdiplusStartupInput gdiplusinput = {};
@@ -56,7 +61,6 @@ int CTexture::Load(const wstring& _strFilePath)
     {
         assert(nullptr);
     }
-
 
     // 로드된 비트맵의 정보를 확인한다.
     GetObject(m_hBitmap, sizeof(BITMAP), &m_Info);
