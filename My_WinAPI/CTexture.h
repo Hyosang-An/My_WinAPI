@@ -4,6 +4,7 @@ class CTexture :
     public CAsset
 {
     friend class CAssetMgr;
+    friend class CAnimator;
 
 private:
     HDC     m_hDC;

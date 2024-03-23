@@ -202,6 +202,9 @@
     <ClInclude Include="CAnimation.h">
       <Filter>03. Game\Module\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="libs\json.hpp">
+      <Filter>02. Main\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

@@ -6,7 +6,7 @@ class CTexture;
 
 struct tAnimationFrame
 {
-    Vec2    StartPos;
+    Vec2    PosInAtlas;
     Vec2    SliceSize;
     Vec2    Offset;
     float   fDuration;
@@ -37,6 +37,7 @@ public:
 	void finaltick();
 	void render();
 	void Create(CTexture* _AtlasTex, Vec2 _StartPos, Vec2 _SliceSize, int _FrameCount, int _FPS);
+	void CreateAnimationFrame(Vec2 _PosInAtlas, Vec2 _SliceSize, float _fDuration);
 
 	void Save(wstring _strRelativePath);
 	int	Load(const wstring& _strRelativePath);

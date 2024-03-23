@@ -33,26 +33,26 @@ CPlayer::CPlayer() :
 	// 디버깅
 	m_Texture = pAtlas;
 
-	//m_Animator->CreateAnimation(L"IDLE_DOWN", pAtlas, Vec2(0.f, 0.f), Vec2(120.f, 130.f), 3, 10)->Save(L"animation\\player\\");
-	//m_Animator->CreateAnimation(L"IDLE_LEFT", pAtlas, Vec2(0.f, 130.f), Vec2(120.f, 130.f), 3, 10)->Save(L"animation\\player\\");
-	//m_Animator->CreateAnimation(L"IDLE_UP", pAtlas, Vec2(0.f, 260.f), Vec2(120.f, 130.f), 1, 1)->Save(L"animation\\player\\");
-	//m_Animator->CreateAnimation(L"IDLE_RIGHT", pAtlas, Vec2(0.f, 390.f), Vec2(120.f, 130.f), 3, 1)->Save(L"animation\\player\\");
-	//
-	//m_Animator->CreateAnimation(L"WALK_DOWN", pAtlas, Vec2(0.f, 520.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
-	//m_Animator->CreateAnimation(L"WALK_LEFT", pAtlas, Vec2(0.f, 650.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
-	//m_Animator->CreateAnimation(L"WALK_UP", pAtlas, Vec2(0.f, 780.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
-	//m_Animator->CreateAnimation(L"WALK_RIGHT", pAtlas, Vec2(0.f, 910.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
+	m_Animator->CreateAnimation(L"IDLE_DOWN", pAtlas, Vec2(0.f, 0.f), Vec2(120.f, 130.f), 3, 10)->Save2(L"animation\\player\\");
+	m_Animator->CreateAnimation(L"IDLE_LEFT", pAtlas, Vec2(0.f, 130.f), Vec2(120.f, 130.f), 3, 10)->Save2(L"animation\\player\\");
+	m_Animator->CreateAnimation(L"IDLE_UP", pAtlas, Vec2(0.f, 260.f), Vec2(120.f, 130.f), 1, 1)->Save2(L"animation\\player\\");
+	m_Animator->CreateAnimation(L"IDLE_RIGHT", pAtlas, Vec2(0.f, 390.f), Vec2(120.f, 130.f), 3, 1)->Save2(L"animation\\player\\");
+	
+	m_Animator->CreateAnimation(L"WALK_DOWN", pAtlas, Vec2(0.f, 520.f), Vec2(120.f, 130.f), 10, 18)->Save2(L"animation\\player\\");
+	m_Animator->CreateAnimation(L"WALK_LEFT", pAtlas, Vec2(0.f, 650.f), Vec2(120.f, 130.f), 10, 18)->Save2(L"animation\\player\\");
+	m_Animator->CreateAnimation(L"WALK_UP", pAtlas, Vec2(0.f, 780.f), Vec2(120.f, 130.f), 10, 18)->Save2(L"animation\\player\\");
+	m_Animator->CreateAnimation(L"WALK_RIGHT", pAtlas, Vec2(0.f, 910.f), Vec2(120.f, 130.f), 10, 18)->Save2(L"animation\\player\\");
 
-	m_Animator->LoadAnimation(L"animation\\player\\WALK_DOWN.anim");
-	m_Animator->LoadAnimation(L"animation\\player\\WALK_RIGHT.anim");
-	m_Animator->LoadAnimation(L"animation\\player\\WALK_LEFT.anim");
-	m_Animator->LoadAnimation(L"animation\\player\\WALK_UP.anim");
-	m_Animator->LoadAnimation(L"animation\\player\\IDLE_DOWN.anim");
-	m_Animator->LoadAnimation(L"animation\\player\\IDLE_LEFT.anim");
-	m_Animator->LoadAnimation(L"animation\\player\\IDLE_UP.anim");
-	m_Animator->LoadAnimation(L"animation\\player\\IDLE_RIGHT.anim");
-
-	m_Animator->Play(L"WALK_DOWN", true);
+	m_Animator->LoadAnimation2(L"animation\\player\\WALK_DOWN.anim");
+	m_Animator->LoadAnimation2(L"animation\\player\\WALK_RIGHT.anim");
+	m_Animator->LoadAnimation2(L"animation\\player\\WALK_LEFT.anim");
+	m_Animator->LoadAnimation2(L"animation\\player\\WALK_UP.anim");
+	m_Animator->LoadAnimation2(L"animation\\player\\IDLE_DOWN.anim");
+	m_Animator->LoadAnimation2(L"animation\\player\\IDLE_LEFT.anim");
+	m_Animator->LoadAnimation2(L"animation\\player\\IDLE_UP.anim");
+	m_Animator->LoadAnimation2(L"animation\\player\\IDLE_RIGHT.anim");
+							 
+	m_Animator->Play(L"WALK_RIGHT", true);
 }
 
 CPlayer::~CPlayer()
@@ -192,7 +192,7 @@ void CPlayer::tick()
 				break;
 			default:
 				// 기본 IDLE 애니메이션 처리
-				m_Animator->Play(L"WALK_DOWN", true);
+				//m_Animator->Play(L"WALK_DOWN", true);
 				break;
 		}
 
