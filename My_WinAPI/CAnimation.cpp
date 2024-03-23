@@ -110,177 +110,6 @@ void CAnimation::CreateAnimationFrame(Vec2 _PosInAtlas, Vec2 _SliceSize, float _
 }
 
 
-
-void CAnimation::Save(wstring _strRelativePath)
-{
-	// _strRelativeFilePath의 맨 앞에 "\"가 없으면 추가
-	if (!_strRelativePath.empty() && _strRelativePath[0] != L'\\')
-	{
-		_strRelativePath = L"\\" + _strRelativePath;
-	}
-
-	wstring strFilePath = CPathMgr::GetInstance().GetContentsPath();
-	strFilePath += _strRelativePath;
-	strFilePath += GetName();
-	strFilePath += L".anim";
-
-	FILE* pFile = nullptr;
-	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
-
-	if (pFile == nullptr)
-	{
-		LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 저장 실패");
-		return;
-	}
-
-	// 애니메이션 이름 저장
-	wstring strAnimName = GetName();
-	SaveWStringToFile(strAnimName, pFile);
-
-	// 프레임 벡터 저장
-	size_t FrmCount = m_vecAnimFrame.size();
-	fwrite(&FrmCount, sizeof(size_t), 1, pFile);
-
-	for (size_t i = 0; i < FrmCount; i++)
-	{
-		fwrite(&m_vecAnimFrame[i], sizeof(tAnimationFrame), 1, pFile);
-	}
-
-	//아틀라스 텍스쳐 정보를 저장
-	bool bAtlasTex = false;
-	if (m_Atlas != nullptr)
-		bAtlasTex = true;
-
-	fwrite(&bAtlasTex, sizeof(bool), 1, pFile);
-
-	if (bAtlasTex)
-	{
-		SaveWStringToFile(m_Atlas->GetKey(), pFile);
-		SaveWStringToFile(m_Atlas->GetRelativePath(), pFile);
-	}
-
-	fclose(pFile);
-}
-
-int CAnimation::Load(const wstring& _strRelativeFilePath)
-{
-	//wstring strFilePath = CPathMgr::GetInstance().GetContentsPath();
-	//strFilePath += _strRelativeFilePath;
-
-	//FILE* pFile = nullptr;
-	//_wfopen_s(&pFile, strFilePath.c_str(), L"rb");
-
-	//if (nullptr == pFile)
-	//	return E_FAIL;
-
-	//// 애니메이션의 이름 읽기
-	//wstring strAnimName;
-	//if (LoadWStringFromFile(strAnimName, pFile) == E_FAIL)
-	//	return E_FAIL;
-
-	//SetName(strAnimName);
-
-	//// 프레임 정보 읽기
-	//size_t FrameCount = 0;
-	//fread(&FrameCount, sizeof(size_t), 1, pFile);
-	//
-	//for (size_t i = 0; i < FrameCount; i++)
-	//{
-	//	tAnimationFrame frm{};
-	//	fread(&frm, sizeof(tAnimationFrame), 1, pFile);
-	//	m_vecAnimFrame.push_back(frm);
-	//}
-
-	//bool bAtlasTex = false;
-	//fread(&bAtlasTex, sizeof(bool), 1, pFile);
-
-	//// 아틀라스 텍스쳐를 사용하는 경우 아틀라스 텍스쳐 정보 읽기
-	//if (bAtlasTex)
-	//{
-	//	wstring strKey;
-	//	if (LoadWStringFromFile(strKey, pFile) == E_FAIL)
-	//		return E_FAIL;
-
-	//	wstring strRelativePath;
-	//	if (LoadWStringFromFile(strRelativePath, pFile) == E_FAIL)
-	//		return E_FAIL;
-
-	//	m_Atlas = CAssetMgr::GetInstance().LoadTexture(strKey, strRelativePath);
-	//}
-
-	//fclose(pFile);
-
-	//return S_OK;
-
-	//======================================================================================================
-
-	wstring strFilePath = CPathMgr::GetInstance().GetContentsPath();
-	strFilePath += _strRelativeFilePath;
-
-	FILE* pFile = nullptr;
-	if (_wfopen_s(&pFile, strFilePath.c_str(), L"rb") != 0 || pFile == nullptr) {
-		// 파일 열기 실패
-		return E_FAIL;
-	}
-
-	// RAII를 사용해 자원 관리를 개선할 수 있는 대안이 있지만, 여기서는 C 스타일 파일 입출력을 유지
-	// pFile이 nullptr이 아니면 파일 닫기
-	auto fileCloser = [&pFile]() { if (pFile) fclose(pFile); };
-
-	// 애니메이션의 이름 읽기
-	wstring strAnimName;
-	if (LoadWStringFromFile(strAnimName, pFile) == E_FAIL) {
-		fileCloser();
-		LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 불러오기 실패");
-		return E_FAIL;
-	}
-	SetName(strAnimName);
-
-	// 프레임 정보 읽기
-	size_t FrameCount = 0;
-	if (fread(&FrameCount, sizeof(size_t), 1, pFile) != 1) {
-		fileCloser();
-		LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 불러오기 실패");
-		return E_FAIL; // 에러 처리
-	}
-
-	for (size_t i = 0; i < FrameCount; ++i) {
-		tAnimationFrame frm{};
-		if (fread(&frm, sizeof(tAnimationFrame), 1, pFile) != 1) {
-			fileCloser();
-			LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 불러오기 실패");
-			return E_FAIL; // 에러 처리
-		}
-		m_vecAnimFrame.push_back(frm);
-	}
-
-	// 아틀라스 텍스쳐 사용 여부 읽기
-	bool bAtlasTex = false;
-	if (fread(&bAtlasTex, sizeof(bool), 1, pFile) != 1) {
-		fileCloser();
-		LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 불러오기 실패");
-		return E_FAIL; // 에러 처리
-	}
-
-	// 아틀라스 텍스쳐 정보 읽기
-	if (bAtlasTex) {
-		wstring strKey, strRelativePath;
-		if (LoadWStringFromFile(strKey, pFile) == E_FAIL ||
-			LoadWStringFromFile(strRelativePath, pFile) == E_FAIL) {
-			fileCloser();
-			LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 불러오기 실패");
-			return E_FAIL;
-		}
-
-		m_Atlas = CAssetMgr::GetInstance().LoadTexture(strKey, strRelativePath);
-	}
-
-	fileCloser(); // 파일 닫기
-	return S_OK;
-}
-
-
-
 // ============================================================================================================
 
 
@@ -290,7 +119,7 @@ int CAnimation::Load(const wstring& _strRelativeFilePath)
 
 namespace fs = std::filesystem;
 
-void CAnimation::Save2(const std::wstring& _strRelativeFolderPath)
+void CAnimation::Save(const std::wstring& _strRelativeFolderPath)
 {
 	fs::path filePath = CPathMgr::GetInstance().GetContentsPath();
 	filePath /= _strRelativeFolderPath;
@@ -335,7 +164,7 @@ void CAnimation::Save2(const std::wstring& _strRelativeFolderPath)
 
 
 
-int CAnimation::Load2(const std::wstring& _strRelativeFilePath)
+int CAnimation::Load(const std::wstring& _strRelativeFilePath)
 {
 	fs::path filePath = CPathMgr::GetInstance().GetContentsPath();
 	filePath /= _strRelativeFilePath;

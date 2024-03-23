@@ -19,13 +19,11 @@ public:
     void render();
 
     CAnimation* CreateAnimation(const wstring& _AnimName, CTexture* _Atlas, Vec2 _StartPos, Vec2 _SliceSize, int _FrameCount, int _FPS);
-    //CAnimation* CreateAnimation(const wstring& _AnimName, wstring _strRelativeFolderPath, int _FPS);
 
-    void CreateAnimationFromJSON(const std::wstring& relativeFolderPath, int _FPS);
+    void CreateAnimationFromJSON(std::wstring relativeFolderPath, int _FPS);
 
     CAnimation* FindAnimation(const wstring& _AnimName);
     void LoadAnimation(wstring _strRelativeFilePath);
-    void LoadAnimation2(wstring _strRelativeFilePath);
 
     void Play(const wstring& _AnimName, bool _Repeat);
 
