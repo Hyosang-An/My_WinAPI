@@ -43,6 +43,8 @@ public:
 	Vec2 operator * (Vec2 _Other) { return Vec2(x * _Other.x, y * _Other.y); }
 	Vec2 operator / (Vec2 _Other) { assert(!(0.f == _Other.x || 0.f == _Other.y)); return Vec2(x / _Other.x, y / _Other.y); }
 
+	bool operator ==(Vec2 _Other) { return x == _Other.x && y == _Other.y; }
+
 	void operator +=(float _f)
 	{
 		x += _f;

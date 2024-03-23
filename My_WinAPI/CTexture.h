@@ -15,7 +15,7 @@ private:
 
 public:
     HDC GetDC() { return m_hDC; }
-    LONG GetWith() { return m_Info.bmWidth; }
+    LONG GetWidth() { return m_Info.bmWidth; }
     LONG GetHeight() { return m_Info.bmHeight; }
 
 public:

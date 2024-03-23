@@ -38,10 +38,13 @@ public:
 	void render();
 	void Create(CTexture* _AtlasTex, Vec2 _StartPos, Vec2 _SliceSize, int _FrameCount, int _FPS);
 
-	void Save(const wstring& _strRelativePath);
+	void Save(wstring _strRelativePath);
 	int	Load(const wstring& _strRelativePath);
 
-	CLONE(CAnimation);
+	void Save2(const wstring& _strRelativeFolderPath);
+	int	Load2(const wstring& _strRelativeFilePath);
+
+	CLONE(CAnimation)
 
 public:
 	CAnimation();

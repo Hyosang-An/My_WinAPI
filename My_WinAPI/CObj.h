@@ -3,10 +3,10 @@
 
 #include "CAssetMgr.h"
 #include "CTimeMgr.h"
-
-class CCollider;
-class CComponent;
-class CAnimator;
+#include "CComponent.h"
+#include "CCollider.h"
+#include "CAnimator.h"
+#include "CAnimation.h"
 
 class CObj :
 	public CEntity
@@ -51,6 +51,11 @@ public:
 		if (CCollider* pCollider = dynamic_cast<CCollider*>(_component))
 		{
 			m_vecCollider.push_back(pCollider);
+		}
+
+		else if (CAnimator* pAnimator = dynamic_cast<CAnimator*>(_component))
+		{
+			m_Animator = pAnimator;
 		}
 
 		return _component;

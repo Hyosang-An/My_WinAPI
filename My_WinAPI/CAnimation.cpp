@@ -44,7 +44,7 @@ void CAnimation::finaltick()
 		m_frameElapsedTime -= frm.fDuration;
 
 		// 프레임이 마지막에 도달한 경우
-		if (m_vecAnimFrame.size() <= m_CurFrameIdx)
+		if (m_vecAnimFrame.size() - 1 <= m_CurFrameIdx)
 		{
 			m_bFinished = true;
 		}
@@ -70,6 +70,8 @@ void CAnimation::render()
 	// 현재 프레임 이미지를 오브젝트 위치에 렌더링
 	TransparentBlt(SUBDC, (int)(vPos.x - frm.SliceSize.x / 2.f + frm.Offset.x), (int)(vPos.y - frm.SliceSize.y / 2.f + frm.Offset.y), (int)frm.SliceSize.x, (int)frm.SliceSize.y,
 		m_Atlas->GetDC(), (int)frm.StartPos.x, (int)frm.StartPos.y, (int)frm.SliceSize.x, (int)frm.SliceSize.y, RGB(255, 0, 255));
+
+
 }
 
 void CAnimation::Create(CTexture* _AtlasTex, Vec2 _StartPos, Vec2 _SliceSize, int _FrameCount, int _FPS)
@@ -82,12 +84,19 @@ void CAnimation::Create(CTexture* _AtlasTex, Vec2 _StartPos, Vec2 _SliceSize, in
 		tAnimationFrame frm{};
 		frm.fDuration = 1.f / float(_FPS);
 		frm.StartPos = _StartPos + Vec2(_SliceSize.x * i, 0);   // 아틀라스 텍스쳐에서 각 애니메이션 텍스쳐가 오른쪽으로 진행되는 경우에 대해서.
+		frm.SliceSize = _SliceSize;
 		m_vecAnimFrame.push_back(frm);
 	}
 }
 
-void CAnimation::Save(const wstring& _strRelativePath)
+void CAnimation::Save(wstring _strRelativePath)
 {
+	// _strRelativeFilePath의 맨 앞에 "\"가 없으면 추가
+	if (!_strRelativePath.empty() && _strRelativePath[0] != L'\\')
+	{
+		_strRelativePath = L"\\" + _strRelativePath;
+	}
+
 	wstring strFilePath = CPathMgr::GetInstance().GetContentsPath();
 	strFilePath += _strRelativePath;
 	strFilePath += GetName();
@@ -125,7 +134,7 @@ void CAnimation::Save(const wstring& _strRelativePath)
 	if (bAtlasTex)
 	{
 		SaveWStringToFile(m_Atlas->GetKey(), pFile);
-		SaveWStringToFile(m_Atlas->GetRelativePath());
+		SaveWStringToFile(m_Atlas->GetRelativePath(), pFile);
 	}
 
 	fclose(pFile);
@@ -247,4 +256,133 @@ int CAnimation::Load(const wstring& _strRelativeFilePath)
 	fileCloser(); // 파일 닫기
 	return S_OK;
 }
+
+
+
+// ============================================================================================================
+
+
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+
+namespace fs = std::filesystem;
+
+void CAnimation::Save2(const std::wstring& _strRelativeFolderPath)
+{
+	fs::path filePath = CPathMgr::GetInstance().GetContentsPath();
+	filePath /= _strRelativeFolderPath;
+	filePath /= GetName();
+	filePath += L".anim";
+
+	std::wofstream outFile(filePath);
+	if (!outFile.is_open())
+	{
+		LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 저장 실패");
+		return;
+	}
+
+	// 애니메이션 이름 저장
+	outFile << L"[ANIMATION_NAME]\n" << GetName() << L"\n\n";
+
+	// 아틀라스 텍스처 정보 저장
+	outFile << L"[ALTAS_TEXTURE]\n";
+	if (nullptr == m_Atlas)
+	{
+		outFile << L"[ALTAS_KEY]\tNone\n";
+		outFile << L"[ALTAS_PATH]\tNone\n";
+	}
+	else
+	{
+		outFile << L"[ALTAS_KEY]\t" << m_Atlas->GetKey() << L"\n";
+		outFile << L"[ALTAS_PATH]\t" << m_Atlas->GetRelativePath() << L"\n";
+	}
+	outFile << L"\n";
+
+	// 프레임 정보 저장
+	outFile << L"[FRAME_COUNT]\n" << m_vecAnimFrame.size() << L"\n\n";
+	for (size_t i = 0; i < m_vecAnimFrame.size(); ++i)
+	{
+		outFile << L"[FRAME_INDEX]\t" << i << L"\n";
+		outFile << L"[START_POS]\t" << m_vecAnimFrame[i].StartPos.x << L" " << m_vecAnimFrame[i].StartPos.y << L"\n";
+		outFile << L"[SLICE_SIZE]\t" << m_vecAnimFrame[i].SliceSize.x << L" " << m_vecAnimFrame[i].SliceSize.y << L"\n";
+		outFile << L"[OFFSET]\t" << m_vecAnimFrame[i].Offset.x << L" " << m_vecAnimFrame[i].Offset.y << L"\n";
+		outFile << L"[DURATION]\t" << m_vecAnimFrame[i].fDuration << L"\n\n";
+	}
+}
+
+
+
+int CAnimation::Load2(const std::wstring& _strRelativeFilePath)
+{
+	fs::path filePath = CPathMgr::GetInstance().GetContentsPath();
+	filePath /= _strRelativeFilePath;
+
+	std::wifstream inFile(filePath);
+	if (!inFile.is_open())
+	{
+		return E_FAIL;
+	}
+
+	std::wstring line, key, value;
+	while (std::getline(inFile, line))
+	{
+		if (line == L"[ANIMATION_NAME]")
+		{
+			std::getline(inFile, line); // 실제 이름을 읽어옴
+			SetName(line);
+		}
+		else if (line == L"[ALTAS_TEXTURE]")
+		{
+			std::getline(inFile, line); // ALTAS_KEY 라인 스킵
+			std::getline(inFile, line); // 실제 ALTAS_KEY 값을 읽어옴
+			std::wistringstream issKey(line);
+			issKey >> key >> value; // 키와 값 분리
+			wstring atlasKey = value;
+
+			std::getline(inFile, line); // ALTAS_PATH 라인 스킵
+			std::getline(inFile, line); // 실제 ALTAS_PATH 값을 읽어옴
+			std::wistringstream issPath(line);
+			issPath >> key >> value; // 키와 값 분리
+			wstring atlasPath = value;
+
+			if (atlasKey != L"None" && atlasPath != L"None")
+			{
+				m_Atlas = CAssetMgr::GetInstance().LoadTexture(atlasKey, atlasPath);
+			}
+		}
+		else if (line == L"[FRAME_COUNT]")
+		{
+			std::getline(inFile, line); // 프레임 개수를 읽어옴
+			size_t frmCount = std::stoi(line);
+			m_vecAnimFrame.resize(frmCount);
+
+			for (size_t i = 0; i < frmCount; ++i)
+			{
+				tAnimationFrame frm = {};
+				std::getline(inFile, line); // FRAME_INDEX 라인 스킵
+				std::getline(inFile, line); // START_POS 값을 읽어옴
+				std::wistringstream issSP(line);
+				issSP >> key >> frm.StartPos.x >> frm.StartPos.y;
+
+				std::getline(inFile, line); // SLICE_SIZE 값을 읽어옴
+				std::wistringstream issSS(line);
+				issSS >> key >> frm.SliceSize.x >> frm.SliceSize.y;
+
+				std::getline(inFile, line); // OFFSET 값을 읽어옴
+				std::wistringstream issO(line);
+				issO >> key >> frm.Offset.x >> frm.Offset.y;
+
+				std::getline(inFile, line); // DURATION 값을 읽어옴
+				std::wistringstream issD(line);
+				issD >> key >> frm.fDuration;
+
+				m_vecAnimFrame[i] = frm;
+			}
+		}
+	}
+
+	return S_OK;
+}
+
 
