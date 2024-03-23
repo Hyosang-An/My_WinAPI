@@ -2,6 +2,7 @@
 #include "CAnimator.h"
 
 #include "CAnimation.h"
+#include "CPathMgr.h"
 
 CAnimator::CAnimator() :
     m_CurAnimation(nullptr),
@@ -222,7 +223,8 @@ using json = nlohmann::json;
 void CAnimator::CreateAnimationFromJSON(const std::wstring& relativeFolderPath, int _FPS)
 {
     // 파일 경로 구성
-    fs::path folderPath = fs::current_path() / relativeFolderPath;
+    fs::path contents_path = CPathMgr::GetInstance().GetContentsPath();
+    fs::path folderPath = contents_path / relativeFolderPath;
     fs::path folderName = folderPath.filename();
     fs::path jsonFilePath = folderPath / (folderName.wstring() + L".json");
 
@@ -240,12 +242,13 @@ void CAnimator::CreateAnimationFromJSON(const std::wstring& relativeFolderPath, 
 
     // 아틀라스 텍스쳐 로드
     // JSON 파일에서 텍스쳐 파일 이름을 읽어옵니다.
-    //auto str = j["meta"]["image"].get<std::string>();
-    //std::wstring atlasTextureName(str.begin(), str.end());
-    std::wstring atlasTextureName = j["meta"]["image"].get<std::wstring>();
+    auto tmpAtlasTextureName = j["meta"]["image"].get<std::string>();
+    std::wstring atlasTextureName(tmpAtlasTextureName.begin(), tmpAtlasTextureName.end());
 
     // 아틀라스 텍스쳐를 불러오는 새로운 방식을 사용합니다.
-    CTexture* pAtlas = CAssetMgr::GetInstance().LoadTexture(folderName.wstring(), atlasTextureName);
+    wstring strAtlasTextureName = folderName.wstring() + L"_Atlas";    
+    wstring strRelativePngPath = relativeFolderPath + L"\\" + folderName.wstring() + L".png";
+    CTexture* pAtlas = CAssetMgr::GetInstance().LoadTexture(strAtlasTextureName, strRelativePngPath);
 
     if (pAtlas == nullptr)
     {

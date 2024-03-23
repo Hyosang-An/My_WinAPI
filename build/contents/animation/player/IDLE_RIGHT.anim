@@ -3,7 +3,7 @@ IDLE_RIGHT
 
 [ALTAS_TEXTURE]
 [ALTAS_KEY]	PlayerAtlasTexture
-[ALTAS_PATH]	texture\link_32.bmp
+[ALTAS_PATH]	texture\link.png
 
 [FRAME_COUNT]
 3

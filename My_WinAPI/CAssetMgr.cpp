@@ -56,3 +56,21 @@ CTexture* CAssetMgr::FindTexture(const wstring& _strKey)
 	return iter->second;
 }
 
+CTexture* CAssetMgr::CreateTexture(const wstring& _strKey, UINT _width, UINT _height)
+{
+	assert(FindTexture(_strKey) == nullptr);
+
+	CTexture* pTex = new CTexture;
+	if (FAILED(pTex->Create(_width, _height)))
+	{
+		MessageBox(nullptr, _strKey.c_str(), L"텍스쳐 생성 실패", MB_OK);
+		delete pTex;
+		return nullptr;
+	}
+
+	m_mapTexture.insert(make_pair(_strKey, pTex));
+	pTex->m_strKey = _strKey;
+
+	return pTex;
+}
+

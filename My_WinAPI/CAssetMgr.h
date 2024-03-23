@@ -18,6 +18,7 @@ public:
 
 	CTexture* LoadTexture(const wstring& _strKey, const wstring& _strRelativePath);
 	CTexture* FindTexture(const wstring& _strKey);
+	CTexture* CreateTexture(const wstring& _strKey, UINT _width, UINT _height);
 
 private:
 	CAssetMgr();

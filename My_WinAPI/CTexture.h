@@ -14,6 +14,8 @@ private:
 private:
     virtual int Load(const wstring& _strFilePath) override;
 
+    int Create(UINT _width, UINT _height);
+
 public:
     HDC GetDC() { return m_hDC; }
     LONG GetWidth() { return m_Info.bmWidth; }

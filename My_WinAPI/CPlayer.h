@@ -15,6 +15,8 @@ public:
     virtual void begin();
     virtual void tick();
 
+    //virtual void render();
+
     virtual CPlayer* Clone() override { return new CPlayer(*this); }
 
 public:
