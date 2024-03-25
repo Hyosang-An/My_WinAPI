@@ -11,33 +11,45 @@
 class CObj :
 	public CEntity
 {
+public:
 	friend class CLevel;
 	friend class CTaskMgr;
 
 private:
-	Vec2    m_Pos;
-	Vec2    m_Scale;
-	bool	m_bAlive;
-
 	vector<CComponent*> m_vecComponent;
 	vector<CCollider*> m_vecCollider;
 
 protected:
+	Vec2    m_Pos;
+	Vec2    m_Scale;
+	Vec2	m_Dir;
+
+	bool	m_bAlive;
+
 	LAYER_TYPE	m_eType;
 	CAnimator* m_Animator;
+
+
 
 private:
 	void SetDead() { m_bAlive = false; }
 
 public:
 	void SetPos(Vec2 _Pos) { m_Pos = _Pos; }
-	void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
 	void SetPos(float x, float y) { m_Pos = Vec2(x, y); }
+
+	void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
 	void SetScale(float x, float y) { m_Scale = Vec2(x, y); }
+
+	void SetDir(Vec2 _dir) { m_Dir = _dir; m_Dir.Normalize(); }
+	void SetDir(float x, float y) { m_Dir = Vec2(x, y); m_Dir.Normalize(); }
+
+
 	void Destroy();
 
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetScale() { return m_Scale; }
+
 	bool IsDead() { return !m_bAlive; }
 	LAYER_TYPE GetLayerType() { return m_eType; }
 	const vector<CCollider*>& GetVecCollider() { return m_vecCollider; }

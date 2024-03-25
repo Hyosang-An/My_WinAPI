@@ -98,6 +98,18 @@
     <Filter Include="03. Game\Module\Animation">
       <UniqueIdentifier>{9d203ef0-3026-4582-91a8-c8b4ec0173d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\Module\AI">
+      <UniqueIdentifier>{49c73828-6dbb-4b87-a75a-fcb8bc0ae329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\06. Component\FSM">
+      <UniqueIdentifier>{971d6708-bbe4-4ecc-9e3a-253893c6ffec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\Module\State">
+      <UniqueIdentifier>{bfec210f-9c7d-4817-a650-1f92986c9ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\Module\State\Monster.cpp">
+      <UniqueIdentifier>{5b392259-3865-4727-917b-1db2cba8819a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -205,6 +217,27 @@
     <ClInclude Include="libs\json.hpp">
       <Filter>02. Main\Header</Filter>
     </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>03. Game\Module\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="CFSM.h">
+      <Filter>03. Game\06. Component\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="CState.h">
+      <Filter>03. Game\Module\State</Filter>
+    </ClInclude>
+    <ClInclude Include="CAttackState.h">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="CDeadState.h">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="CIdleState.h">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="CTraceState.h">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -290,6 +323,27 @@
     </ClCompile>
     <ClCompile Include="CAnimation.cpp">
       <Filter>03. Game\Module\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.cpp">
+      <Filter>03. Game\Module\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CFSM.cpp">
+      <Filter>03. Game\06. Component\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="CState.cpp">
+      <Filter>03. Game\Module\State</Filter>
+    </ClCompile>
+    <ClCompile Include="CAttackState.cpp">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CDeadState.cpp">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CIdleState.cpp">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CTraceState.cpp">
+      <Filter>03. Game\Module\State\Monster.cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
