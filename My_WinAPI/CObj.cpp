@@ -11,7 +11,9 @@
 CObj::CObj() :
 	m_eType(LAYER_TYPE::NONE),
 	m_bAlive(true),
-	m_Animator(nullptr)
+	m_fSpeed(0),
+	m_Animator(nullptr),
+	m_Rigidbody{}
 {
 }
 

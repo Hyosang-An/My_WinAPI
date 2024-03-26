@@ -27,6 +27,8 @@ CPlayer::CPlayer() :
 	m_BodyCol->SetOffsetPos(Vec2(0.f, 0.f));
 	m_BodyCol->SetScale(Vec2(60.f, 60.f));
 
+	m_Rigidbody = AddComponent(new CRigidbody);
+
 	m_Animator = AddComponent(new CAnimator);
 
 	{
