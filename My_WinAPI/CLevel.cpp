@@ -92,5 +92,19 @@ const vector<CObj*>& CLevel::GetObjvec(LAYER_TYPE _type)
 	return m_arrObjvec[(UINT)_type];
 }
 
+CObj* CLevel::FindObjectByName(const wstring& _strName)
+{
+	for (UINT i = 0; i < (UINT)LAYER_TYPE::END; i++)
+	{
+		for (auto const obj : m_arrObjvec[i])
+		{
+			if (obj->GetName() == _strName)
+				return obj;
+		}
+	}
+
+	return nullptr;
+}
+
 
 

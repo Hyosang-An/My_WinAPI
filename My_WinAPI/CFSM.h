@@ -41,7 +41,7 @@ public:
     virtual void finaltick() override;
 
 public:
-    CLONE(CFSM);
+    CLONE(CFSM)
     CFSM();
     ~CFSM();
 };

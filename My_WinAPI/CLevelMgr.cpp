@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CLevelMgr.h"
 
+#include "CLevel.h"
 #include "CLevel_Stage01.h"
 #include "CObj.h"
 #include "CPlayer.h"
@@ -36,7 +37,7 @@ void CLevelMgr::init()
 
 	pObj = new CMonster;
 	pObj->SetName(L"Monster");
-	pObj->SetPos(800.f, 200.f);
+	pObj->SetPos(100.f, 100.f);
 	pObj->SetScale(100.f, 100.f);
 	m_pCurrentLevel->AddObject(LAYER_TYPE::MONSTER ,pObj);
 
@@ -45,6 +46,7 @@ void CLevelMgr::init()
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::MONSTER);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER_MISSILE, LAYER_TYPE::MONSTER);
 
+	m_pCurrentLevel->begin();
 }
 
 void CLevelMgr::progress()
@@ -58,6 +60,11 @@ void CLevelMgr::progress()
 void CLevelMgr::render()
 {
 	m_pCurrentLevel->render();
+}
+
+CObj* CLevelMgr::FindObjectByName(const wstring& _strName)
+{
+	return m_pCurrentLevel->FindObjectByName(_strName);
 }
 
 

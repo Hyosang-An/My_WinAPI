@@ -1,24 +1,51 @@
 #include "pch.h"
 #include "CMonster.h"
+
 #include "CCollider.h"
 #include "CEngine.h"
+#include "CLevelMgr.h"
 
-CMonster::CMonster()
-	: m_iHP(3)
-	, m_pCollider(nullptr)
+#include "CIdleState.h"
+#include "CTraceState.h"
+
+
+
+CMonster::CMonster() :
+	m_iHP(3),
+	m_fDetectRange(500),
+	m_pCollider(nullptr),
+	m_pFSM(nullptr)
 {
 	m_eType = LAYER_TYPE::MONSTER;
 
 	m_pCollider = AddComponent(new CCollider);
 	m_pCollider->SetScale(Vec2(120, 120));
+
+	m_pFSM = AddComponent(new CFSM);
+	m_pFSM->AddState(L"Idle", new CIdleState);
+	m_pFSM->AddState(L"Trace", new CTraceState);
 }
 
 CMonster::~CMonster()
 {
 }
 
+void CMonster::begin()
+{
+	m_pFSM->SetBlackboardData(L"DetectRange", DATA_TYPE::FLOAT, &m_fDetectRange);
+	m_pFSM->SetBlackboardData(L"Speed", DATA_TYPE::FLOAT, &m_fSpeed);
+	m_pFSM->SetBlackboardData(L"Self", DATA_TYPE::OBJ_PTR, this);
+
+	CObj* pPlayer = CLevelMgr::GetInstance().FindObjectByName(L"Player");
+	m_pFSM->SetBlackboardData(L"Target", DATA_TYPE::OBJ_PTR, pPlayer);
+
+	m_pFSM->ChangeState(L"Idle");
+
+}
+
 void CMonster::tick()
 {
+	SetPos(GetPos() + (m_Dir * m_fSpeed * DT));
 }
 
 void CMonster::render()

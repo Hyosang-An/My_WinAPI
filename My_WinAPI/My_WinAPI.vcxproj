@@ -173,6 +173,7 @@
     <ClInclude Include="CObj.h" />
     <ClInclude Include="CPathMgr.h" />
     <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CRigidbody.h" />
     <ClInclude Include="CSelectObj.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CState.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
     <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CRigidbody.cpp" />
     <ClCompile Include="CSelectObj.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CState.cpp" />

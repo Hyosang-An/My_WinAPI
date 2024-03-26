@@ -7,6 +7,9 @@
 #include "CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
+#include "CFSM.h"
+#include "CRigidbody.h"
+
 
 class CObj :
 	public CEntity
@@ -23,12 +26,13 @@ protected:
 	Vec2    m_Pos;
 	Vec2    m_Scale;
 	Vec2	m_Dir;
+	float	m_fSpeed;
 
 	bool	m_bAlive;
 
 	LAYER_TYPE	m_eType;
 	CAnimator* m_Animator;
-
+	CRigidbody* m_Rigidbody;
 
 
 private:
@@ -44,11 +48,15 @@ public:
 	void SetDir(Vec2 _dir) { m_Dir = _dir; m_Dir.Normalize(); }
 	void SetDir(float x, float y) { m_Dir = Vec2(x, y); m_Dir.Normalize(); }
 
+	void SetSpeed(float _speed) { m_fSpeed = _speed; }
+
 
 	void Destroy();
 
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetScale() { return m_Scale; }
+	Vec2 GetDir() { return m_Dir; }
+	float GetSpeed() { return m_fSpeed; }
 
 	bool IsDead() { return !m_bAlive; }
 	LAYER_TYPE GetLayerType() { return m_eType; }

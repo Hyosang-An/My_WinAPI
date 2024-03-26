@@ -4,10 +4,9 @@ class CTraceState :
     public CState
 {
 public:
-    float Range;
-    float Speed;
-    CObj* pSelf;
-    CObj* pTarget;
+    float m_fRange;
+    CObj* m_pSelf;
+    CObj* m_pTarget;
 
 public:
     virtual void Enter() override;
@@ -17,6 +16,7 @@ public:
 
 
 public:
+    CLONE(CTraceState)
     CTraceState();
     ~CTraceState();
 };

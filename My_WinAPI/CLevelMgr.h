@@ -18,6 +18,7 @@ public:
     void render();
 
     CLevel* GetCurrentLevel() { return m_pCurrentLevel; }
+    CObj* FindObjectByName(const wstring& _strName);
 
 private:
     CLevelMgr();

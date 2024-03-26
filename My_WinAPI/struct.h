@@ -23,7 +23,7 @@ public:
 		return sqrtf(x * x + y * y);
 	}
 
-	void Normalize()
+	Vec2 Normalize()
 	{
 		// 크기가 0인 벡터를 정규화 하는 것에 대한 예외처리
 		assert(!IsZero());
@@ -31,6 +31,8 @@ public:
 		float fLen = Length();
 		x /= fLen;
 		y /= fLen;
+
+		return *this;
 	}
 
 	Vec2 operator +(float f) { return Vec2(x + f, y + f); }

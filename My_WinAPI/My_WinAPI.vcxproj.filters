@@ -107,8 +107,11 @@
     <Filter Include="03. Game\Module\State">
       <UniqueIdentifier>{bfec210f-9c7d-4817-a650-1f92986c9ad2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\Module\State\Monster.cpp">
+    <Filter Include="03. Game\Module\State\MonsterState">
       <UniqueIdentifier>{5b392259-3865-4727-917b-1db2cba8819a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\06. Component\Rigidbody">
+      <UniqueIdentifier>{2ccf35ce-06de-4688-b2b6-9275ae333789}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -227,17 +230,18 @@
       <Filter>03. Game\Module\State</Filter>
     </ClInclude>
     <ClInclude Include="CAttackState.h">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClInclude>
     <ClInclude Include="CDeadState.h">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClInclude>
     <ClInclude Include="CIdleState.h">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClInclude>
     <ClInclude Include="CTraceState.h">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClInclude>
+    <ClInclude Include="CRigidbody.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -334,17 +338,18 @@
       <Filter>03. Game\Module\State</Filter>
     </ClCompile>
     <ClCompile Include="CAttackState.cpp">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClCompile>
     <ClCompile Include="CDeadState.cpp">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClCompile>
     <ClCompile Include="CIdleState.cpp">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClCompile>
     <ClCompile Include="CTraceState.cpp">
-      <Filter>03. Game\Module\State\Monster.cpp</Filter>
+      <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClCompile>
+    <ClCompile Include="CRigidbody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

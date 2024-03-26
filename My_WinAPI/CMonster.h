@@ -6,9 +6,14 @@ class CMonster :
 {
 private:
 	int			m_iHP;
+	float		m_fDetectRange;
+
 	CCollider*	m_pCollider;
 
+	CFSM*		m_pFSM;
+
 public:
+	virtual void begin() override;
 	virtual void tick() override;
 	virtual void render() override;
 
