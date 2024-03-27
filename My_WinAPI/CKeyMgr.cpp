@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CKeyMgr.h"
+#include "CEngine.h"
 
 CKeyMgr::CKeyMgr()
 {
@@ -24,38 +25,72 @@ void CKeyMgr::init()
 
 void CKeyMgr::tick()
 {
-	for (UINT i = 0; i < (UINT)KEY::END; ++i)
+	// MainWindow가 포커싱 상태일때만 키 입력 적용
+	if (CEngine::GetInstance().GetMainWnd() == GetFocus())
 	{
-		auto &KeyInfo = m_vecKeyInfo[i];
-		// 현재 키가 눌렸는지 체크
-		if (0x8001 & GetAsyncKeyState(m_RealKey[i]))
+		for (UINT i = 0; i < (UINT)KEY::END; ++i)
 		{
-			//이전에도 눌려 있었는지
-			if (KeyInfo.bPressed)
+			auto& KeyInfo = m_vecKeyInfo[i];
+			// 현재 키가 눌렸는지 체크
+			if (0x8001 & GetAsyncKeyState(m_RealKey[i]))
 			{
-				KeyInfo.eKeyState = KEY_STATE::PRESSED;
+				//이전에도 눌려 있었는지
+				if (KeyInfo.bPressed)
+				{
+					KeyInfo.eKeyState = KEY_STATE::PRESSED;
+				}
+				else
+				{
+					KeyInfo.eKeyState = KEY_STATE::JUST_PRESSED;
+					KeyInfo.bPressed = true;
+				}
 			}
+
 			else
 			{
-				KeyInfo.eKeyState = KEY_STATE::JUST_PRESSED;
-				KeyInfo.bPressed = true;
+				//이전에도 눌려 있었는지
+				if (KeyInfo.bPressed)
+				{
+					KeyInfo.eKeyState = KEY_STATE::RELEASED;
+					KeyInfo.bPressed = false;
+				}
+				else
+				{
+					KeyInfo.eKeyState = KEY_STATE::NONE;
+				}
 			}
 		}
 
-		else
+		// 마우스 좌표 계산
+		m_PrevMousePos = m_MousePos;
+
+		POINT ptMousePos{};
+		GetCursorPos(&ptMousePos);
+		ScreenToClient(CEngine::GetInstance().GetMainWnd(), &ptMousePos);
+		m_MousePos = ptMousePos;
+		m_DragDir = (m_MousePos - m_PrevMousePos);
+	}
+
+	// 윈도우 포커싱이 해제되면 눌려있던 키 해제(Release)
+	else
+	{
+		for (UINT i = 0; i < (UINT)KEY::END; i++)
 		{
-			//이전에도 눌려 있었는지
-			if (KeyInfo.bPressed)
-			{
+			auto& KeyInfo = m_vecKeyInfo[i];
+
+			if (KeyInfo.eKeyState == KEY_STATE::NONE)
+				continue;
+
+			if (KeyInfo.eKeyState == KEY_STATE::JUST_PRESSED || KeyInfo.eKeyState == KEY_STATE::PRESSED)
 				KeyInfo.eKeyState = KEY_STATE::RELEASED;
-				KeyInfo.bPressed = false;
-			}
+
 			else
-			{
 				KeyInfo.eKeyState = KEY_STATE::NONE;
-			}
+
+			KeyInfo.bPressed = false;
 		}
 	}
+	
 }
 
 

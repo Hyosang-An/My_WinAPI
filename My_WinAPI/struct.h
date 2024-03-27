@@ -9,7 +9,7 @@ public:
 public:
 	bool IsZero()
 	{
-		return x == 0.f && y == 0.f;
+		return Length() == 0;
 	}
 
 	float GetDistanceWith(Vec2 _other)

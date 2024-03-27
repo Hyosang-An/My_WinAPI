@@ -13,6 +13,9 @@ enum class KEY
 
 	ENTER, SPACE, ALT, CTRL, SHIFT, ESC,
 
+	LBTN,
+	RBTN,
+
 	END
 };
 
@@ -39,12 +42,17 @@ class CKeyMgr :
 private:
 	vector<tKeyInfo>    m_vecKeyInfo;
 
+	Vec2	m_MousePos;
+	Vec2	m_PrevMousePos;
+	Vec2	m_DragDir;
 
 public:
 	void init();
 	void tick();
 
 	KEY_STATE GetKeyState(KEY _key) { return m_vecKeyInfo[(UINT)_key].eKeyState; }
+	Vec2 GetMousePos() { return m_MousePos; }
+	Vec2 GetDragDir() { return m_DragDir; }
 
 private:
 	UINT    m_RealKey[(UINT)KEY::END] =
@@ -62,6 +70,9 @@ private:
 		VK_CONTROL,
 		VK_LSHIFT,
 		VK_ESCAPE,
+
+		VK_LBUTTON,
+		VK_RBUTTON
 	};
 
 private:

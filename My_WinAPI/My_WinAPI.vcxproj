@@ -161,6 +161,7 @@
     <ClInclude Include="CDeadState.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CForce.h" />
     <ClInclude Include="CFSM.h" />
     <ClInclude Include="CGuidedMissile.h" />
     <ClInclude Include="CIdleState.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="CDeadState.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
+    <ClCompile Include="CForce.cpp" />
     <ClCompile Include="CFSM.cpp" />
     <ClCompile Include="CGuidedMissile.cpp" />
     <ClCompile Include="CIdleState.cpp" />

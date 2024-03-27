@@ -86,7 +86,7 @@ public:
 	{
 		for (size_t i = 0; i < m_vecComponent.size(); i++)
 		{
-			T* pComponent = dynamic_cast<T*>(m_vecComponent);
+			T* pComponent = dynamic_cast<T*>(m_vecComponent[i]);
 
 			if (pComponent)
 			{

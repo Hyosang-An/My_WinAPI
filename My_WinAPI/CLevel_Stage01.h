@@ -4,6 +4,8 @@ class CLevel_Stage01 :
     public CLevel
 {
 public:
+    virtual void tick() override;
+
     virtual CLevel_Stage01* Clone() override { return new CLevel_Stage01(*this); }
 public:
     CLevel_Stage01();

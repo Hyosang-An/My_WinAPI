@@ -4,13 +4,13 @@
 CRigidbody::CRigidbody() :
 	m_fMass(1),
 	m_GravityAccel(100),
-	m_Friction(10000),
-	m_MinWalkSpeed(90),
-	m_MaxWalkSpeed(200),
+	m_Friction(0),
+	m_MinWalkSpeed(0),
+	m_MaxWalkSpeed(0),
 	m_MaxGravitySpeed(500),
 	m_UseGravity(false),
 	m_OnGround(true),
-	m_JumpSpeed(400)
+	m_JumpSpeed(0)
 {
 }
 
@@ -34,12 +34,14 @@ void CRigidbody::finaltick()
 		m_Velocity = m_Velocity.Normalize() * m_MaxWalkSpeed;
 
 	// 최소 속도 보정
+	// 반드시 가속도 방향으로 속도를 맞춰주어야 한다.
 	if (m_MinWalkSpeed != 0 && m_Velocity.Length() < m_MinWalkSpeed && !AccelWithoutGravity.IsZero())
 	{
 		auto accel = AccelWithoutGravity;
 		m_Velocity = accel.Normalize() * m_MinWalkSpeed;
 	}
 
+	// 마찰 적용
 	// 만약 RigidBody 에 적용된 힘이 없으면서, OnGround인데 속도는 있는경우
 	// 마찰에 의해서 현재 속도를 줄인다
 	if (m_Force.IsZero() && m_OnGround)
@@ -59,7 +61,13 @@ void CRigidbody::finaltick()
 	}
 
 	// 위치 업데이트
+	
+	//디버깅
+	auto prev_pos = m_pOwner->GetPos();
+
 	m_pOwner->SetPos(m_pOwner->GetPos() + m_Velocity * DT);
+
+	auto new_pos = m_pOwner->GetPos();
 
 	// 힘 초기화
 	m_Force = Vec2(0, 0);

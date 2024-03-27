@@ -28,6 +28,9 @@ CPlayer::CPlayer() :
 	m_BodyCol->SetScale(Vec2(60.f, 60.f));
 
 	m_Rigidbody = AddComponent(new CRigidbody);
+	m_Rigidbody->SetMinWalkSpeed(0);
+	m_Rigidbody->SetMaxWalkSpeed(400);
+	m_Rigidbody->SetFriction(2000);
 
 	m_Animator = AddComponent(new CAnimator);
 
@@ -88,22 +91,46 @@ void CPlayer::tick()
 
 	if (upPressed)
 	{
-		m_Rigidbody->AddForce(Vec2(0, -forceMagnitude));
+		//m_Rigidbody->AddForce(Vec2(0, -forceMagnitude));
+		m_Rigidbody->AddForce(Vec2(0, -200));
 	}
 
 	if (downPressed)
 	{
-		m_Rigidbody->AddForce(Vec2(0, forceMagnitude));
+		//m_Rigidbody->AddForce(Vec2(0, forceMagnitude));
+		m_Rigidbody->AddForce(Vec2(0, 200));
 	}
 
 	if (leftPressed)
 	{
-		m_Rigidbody->AddForce(Vec2(-forceMagnitude, 0));
+		//m_Rigidbody->AddForce(Vec2(-forceMagnitude, 0));
+		m_Rigidbody->AddForce(Vec2(-200, 0));
 	}
 
 	if (rightPressed)
 	{
-		m_Rigidbody->AddForce(Vec2(forceMagnitude, 0));
+		//m_Rigidbody->AddForce(Vec2(forceMagnitude, 0));
+		m_Rigidbody->AddForce(Vec2(200, 0));
+
+	}
+
+	if (KEY_JUST_PRESSED(KEY::UP))
+	{
+		m_Rigidbody->AddVelocity(Vec2(0, -200));
+	}
+	if (KEY_JUST_PRESSED(KEY::DOWN))
+	{
+		m_Rigidbody->AddVelocity(Vec2(0, 200));
+
+	}
+	if (KEY_JUST_PRESSED(KEY::LEFT))
+	{
+		m_Rigidbody->AddVelocity(Vec2(-200, 0));
+
+	}
+	if (KEY_JUST_PRESSED(KEY::RIGHT))
+	{
+		m_Rigidbody->AddVelocity(Vec2(200, 0));
 	}
 }
 

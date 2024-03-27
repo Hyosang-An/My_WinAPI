@@ -113,6 +113,9 @@
     <Filter Include="03. Game\06. Component\Rigidbody">
       <UniqueIdentifier>{2ccf35ce-06de-4688-b2b6-9275ae333789}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Force">
+      <UniqueIdentifier>{c225d237-c84e-4b98-9f21-fbae715dc2d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -241,7 +244,12 @@
     <ClInclude Include="CTraceState.h">
       <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClInclude>
-    <ClInclude Include="CRigidbody.h" />
+    <ClInclude Include="CRigidbody.h">
+      <Filter>03. Game\06. Component\Rigidbody</Filter>
+    </ClInclude>
+    <ClInclude Include="CForce.h">
+      <Filter>03. Game\05. Object\Force</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -349,7 +357,12 @@
     <ClCompile Include="CTraceState.cpp">
       <Filter>03. Game\Module\State\MonsterState</Filter>
     </ClCompile>
-    <ClCompile Include="CRigidbody.cpp" />
+    <ClCompile Include="CRigidbody.cpp">
+      <Filter>03. Game\06. Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="CForce.cpp">
+      <Filter>03. Game\05. Object\Force</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
