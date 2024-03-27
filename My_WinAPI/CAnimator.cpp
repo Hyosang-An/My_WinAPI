@@ -118,7 +118,7 @@ void CAnimator::Play(const wstring& _AnimName, bool _Repeat)
 namespace fs = std::filesystem;
 using json = nlohmann::json;
 
-void CAnimator::CreateAnimationFromJSON(std::wstring relativeFolderPath, int _FPS)
+void CAnimator::CreateAnimationByJSON(std::wstring relativeFolderPath, int _FPS)
 {
     // relativeFolderPath의 맨 앞에 "\\"가 있으면, "."을 앞에 추가하여 상대 경로로 만듭니다.
     if (!relativeFolderPath.empty() && relativeFolderPath[0] == L'\\') {
@@ -145,8 +145,8 @@ void CAnimator::CreateAnimationFromJSON(std::wstring relativeFolderPath, int _FP
 
     // 아틀라스 텍스쳐 로드
     // JSON 파일에서 텍스쳐 파일 이름을 읽어옵니다.
-    auto tmpAtlasTextureName = j["meta"]["image"].get<std::string>();
-    std::wstring atlasTextureName(tmpAtlasTextureName.begin(), tmpAtlasTextureName.end());
+    //auto tmpAtlasTextureName = j["meta"]["image"].get<std::string>();
+    //std::wstring atlasTextureName(tmpAtlasTextureName.begin(), tmpAtlasTextureName.end());
 
     // 아틀라스 텍스쳐를 불러오는 새로운 방식을 사용합니다.
     wstring strAtlasTextureName = folderName.wstring() + L"_Atlas";    
@@ -155,7 +155,7 @@ void CAnimator::CreateAnimationFromJSON(std::wstring relativeFolderPath, int _FP
 
     if (pAtlas == nullptr)
     {
-        std::wstring message = L"Failed to load atlas texture: " + atlasTextureName;
+        std::wstring message = L"Failed to load atlas texture: " + strAtlasTextureName;
         MessageBox(NULL, message.c_str(), L"Error", MB_ICONERROR | MB_OK);
         return;
     }

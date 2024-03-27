@@ -60,7 +60,8 @@ CPlayer::CPlayer() :
 	}
 
 	//{
-		m_Animator->CreateAnimationFromJSON(L"animation\\run", 30);
+		//m_Animator->CreateAnimationByJSON(L"animation\\run", 30);
+		m_Animator->LoadAnimation(L"animation\\run\\run.anim");
 		m_Animator->Play(L"run", true);
 	//}
 
