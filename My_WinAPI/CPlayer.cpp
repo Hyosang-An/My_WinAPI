@@ -13,7 +13,12 @@
 
 CPlayer::CPlayer() :
 	m_fSpeed(500.f),
-	m_Texture{}
+	m_Texture{},
+	m_bFacingRight(true),
+	m_ShootingDir(SHOOTING_DIR::RIGHT),
+	m_CurBaseState(BASE_STATE::IDLE),
+	m_CurActionState(ACTION_STATE::NONE),
+	m_PrevBaseState(m_CurBaseState)
 {
 	m_eType = LAYER_TYPE::PLAYER;
 
@@ -61,8 +66,8 @@ CPlayer::CPlayer() :
 
 	//{
 		//m_Animator->CreateAnimationByJSON(L"animation\\run", 30);
-		m_Animator->LoadAnimation(L"animation\\run\\run.anim");
-		m_Animator->Play(L"run", true);
+	m_Animator->LoadAnimation(L"animation\\run\\run.anim");
+	m_Animator->Play(L"run", true);
 	//}
 
 
@@ -75,13 +80,104 @@ CPlayer::~CPlayer()
 {
 }
 
-void CPlayer::begin()
+void CPlayer::UpdateState()
 {
+	m_PrevBaseState = m_CurBaseState;
+
+	bool leftPressed = KEY_JUST_PRESSED(KEY::LEFT);
+	bool rightPressed = KEY_JUST_PRESSED(KEY::RIGHT);
+	bool upPressed = KEY_JUST_PRESSED(KEY::UP);
+	bool downPressed = KEY_JUST_PRESSED(KEY::DOWN);
+
+	bool leftJustPressed = KEY_JUST_PRESSED(KEY::LEFT);
+	bool rightJustPressed = KEY_JUST_PRESSED(KEY::RIGHT);
+	bool upJustPressed = KEY_JUST_PRESSED(KEY::UP);
+	bool downJustPressed = KEY_JUST_PRESSED(KEY::DOWN);
+
+
+
+	// 바라보는 방향 전환 (두 케이스 모두 아니라면 기존 방향 유지)
+	if (m_bFacingRight && leftPressed && !rightPressed)
+		m_bFacingRight = false;
+	else if (!m_bFacingRight && !leftPressed && rightPressed)
+		m_bFacingRight = true;
+
+
+	// BASE_STATE 설정
+	{
+		// 땅 위에 있는 경우
+		if (m_Rigidbody->IsOnGround())
+		{
+			// 방향키 안누르면 Idle
+			if (!leftPressed && !rightPressed && !upPressed && !downPressed)
+				m_CurBaseState = BASE_STATE::IDLE;
+
+			// 아래 키 누르면 무조건 crouch 모드
+			else if (downPressed)
+				m_CurBaseState = BASE_STATE::CROUCH;
+
+			// 좌우 방향키 누르면 run
+			else if (leftPressed || rightPressed)
+				m_CurBaseState = BASE_STATE::RUN;
+
+			// Z키 누르면 점프
+			if (KEY_PRESSED(KEY::_Z))
+				m_CurBaseState = BASE_STATE::JUMP;
+
+			if (KEY_PRESSED(KEY::_C))
+				m_CurBaseState = BASE_STATE::FIXED;
+		}
+
+		// Shift 키 누르면 대쉬
+		if (KEY_PRESSED(KEY::SHIFT) && (m_CurBaseState != BASE_STATE::DASH))
+			m_CurBaseState = BASE_STATE::DASH;
+	}
+
+
+	// ACTION_STATE 설정
+	// 총쏘기
+	if (KEY_PRESSED(KEY::_C))
+	{
+		AddActionState(ACTION_STATE::SHOOTING);
+	}
+	else
+	{
+		RemoveActionState(ACTION_STATE::SHOOTING);
+	}
+
+	// ShootingDir 설정
+	{
+		// 오른쪽을 보고 있는 경우
+		if (m_bFacingRight)
+		{
+			if (upPressed && !rightPressed)
+				m_ShootingDir = SHOOTING_DIR::UP;
+			else if (downPressed && !rightPressed)
+				m_ShootingDir = SHOOTING_DIR::DOWN;
+			else if (upPressed && rightPressed)
+				m_ShootingDir = SHOOTING_DIR::UP_RIGHT;
+			else if (downPressed && rightPressed)
+				m_ShootingDir = SHOOTING_DIR::DOWN_RIGHT;
+		}
+
+		// 왼쪽을 보고 있는 경우
+		if (!m_bFacingRight)
+		{
+			if (upPressed && !leftPressed)
+				m_ShootingDir = SHOOTING_DIR::UP;
+			else if (downPressed && !leftPressed)
+				m_ShootingDir = SHOOTING_DIR::DOWN;
+			else if (upPressed && leftPressed)
+				m_ShootingDir = SHOOTING_DIR::UP_LEFT;
+			else if (downPressed && leftPressed)
+				m_ShootingDir = SHOOTING_DIR::DOWN_LEFT;
+		}
+	}
 }
 
-void CPlayer::tick()
+void CPlayer::Move()
 {
-	m_Rigidbody;
+
 
 	bool leftPressed = KEY_PRESSED(KEY::LEFT);
 	bool rightPressed = KEY_PRESSED(KEY::RIGHT);
@@ -133,6 +229,66 @@ void CPlayer::tick()
 	{
 		m_Rigidbody->AddVelocity(Vec2(200, 0));
 	}
+}
+
+void CPlayer::UpdateAnimation()
+{
+	// 총쏘지 않는 상태
+	if (!IsInActionState(ACTION_STATE::SHOOTING))
+	{
+		switch (m_CurBaseState)
+		{
+			case BASE_STATE::IDLE:
+				break;
+			case BASE_STATE::CROUCH:
+				break;
+			case BASE_STATE::RUN:
+				break;
+			case BASE_STATE::DASH:
+				break;
+			case BASE_STATE::JUMP:
+				break;
+			case BASE_STATE::DEATH:
+				break;
+			default:
+				break;
+		}
+	}
+
+	// 총쏘는 상태
+	else
+	{
+		switch (m_CurBaseState)
+		{
+			case BASE_STATE::IDLE:
+				break;
+			case BASE_STATE::CROUCH:
+				break;
+			case BASE_STATE::RUN:
+				break;
+			case BASE_STATE::DASH:
+				break;
+			case BASE_STATE::JUMP:
+				break;
+			case BASE_STATE::DEATH:
+				break;
+			default:
+				break;
+		}
+	}
+
+
+}
+
+void CPlayer::begin()
+{
+}
+
+void CPlayer::tick()
+{
+	UpdateState();
+
+	Move();
 }
 
 

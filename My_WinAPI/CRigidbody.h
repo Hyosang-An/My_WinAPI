@@ -31,6 +31,8 @@ public:
     void SetVelocity(Vec2 _vel) { m_Velocity = _vel; }
     void AddVelocity(Vec2 _vel) { m_Velocity += _vel; }
 
+    bool IsOnGround() { return m_OnGround; }
+
 
     float GetMass() { return m_fMass; }
 

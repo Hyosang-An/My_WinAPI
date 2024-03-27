@@ -39,19 +39,6 @@ enum class LEVEL_TYPE
 	END,
 };
 
-enum class PLAYER_STATE
-{
-	IDLE,
-	RUN,
-	MOVE,
-	DASH,
-	ATTACK,
-	HIT,
-	DEAD,
-
-	END,
-};
-
 enum class LAYER_TYPE
 {
 	DEFAULT,
