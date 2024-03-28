@@ -84,16 +84,10 @@ void CPlayer::UpdateState()
 {
 	m_PrevBaseState = m_CurBaseState;
 
-	bool leftPressed = KEY_JUST_PRESSED(KEY::LEFT);
-	bool rightPressed = KEY_JUST_PRESSED(KEY::RIGHT);
-	bool upPressed = KEY_JUST_PRESSED(KEY::UP);
-	bool downPressed = KEY_JUST_PRESSED(KEY::DOWN);
-
-	bool leftJustPressed = KEY_JUST_PRESSED(KEY::LEFT);
-	bool rightJustPressed = KEY_JUST_PRESSED(KEY::RIGHT);
-	bool upJustPressed = KEY_JUST_PRESSED(KEY::UP);
-	bool downJustPressed = KEY_JUST_PRESSED(KEY::DOWN);
-
+	bool leftPressed = KEY_PRESSED(KEY::LEFT);
+	bool rightPressed = KEY_PRESSED(KEY::RIGHT);
+	bool upPressed = KEY_PRESSED(KEY::UP);
+	bool downPressed = KEY_PRESSED(KEY::DOWN);
 
 
 	// 바라보는 방향 전환 (두 케이스 모두 아니라면 기존 방향 유지)
@@ -121,7 +115,7 @@ void CPlayer::UpdateState()
 				m_CurBaseState = BASE_STATE::RUN;
 
 			// Z키 누르면 점프
-			if (KEY_PRESSED(KEY::_Z))
+			if (KEY_PRESSED(KEY::_Z) && !(m_CurBaseState == BASE_STATE::DASH))
 				m_CurBaseState = BASE_STATE::JUMP;
 
 			if (KEY_PRESSED(KEY::_C))
@@ -150,7 +144,9 @@ void CPlayer::UpdateState()
 		// 오른쪽을 보고 있는 경우
 		if (m_bFacingRight)
 		{
-			if (upPressed && !rightPressed)
+			if (!leftPressed && !rightPressed && !upPressed && !downPressed)
+				m_ShootingDir = SHOOTING_DIR::RIGHT;
+			else if (upPressed && !rightPressed)
 				m_ShootingDir = SHOOTING_DIR::UP;
 			else if (downPressed && !rightPressed)
 				m_ShootingDir = SHOOTING_DIR::DOWN;
@@ -163,7 +159,9 @@ void CPlayer::UpdateState()
 		// 왼쪽을 보고 있는 경우
 		if (!m_bFacingRight)
 		{
-			if (upPressed && !leftPressed)
+			if (!leftPressed && !rightPressed && !upPressed && !downPressed)
+				m_ShootingDir = SHOOTING_DIR::LEFT;
+			else if (upPressed && !leftPressed)
 				m_ShootingDir = SHOOTING_DIR::UP;
 			else if (downPressed && !leftPressed)
 				m_ShootingDir = SHOOTING_DIR::DOWN;
@@ -233,14 +231,26 @@ void CPlayer::Move()
 
 void CPlayer::UpdateAnimation()
 {
+	// 상태 변경이 일어나지 않으면 기존 애니메이션 계속 출력
+	if (m_PrevShootingDir == m_ShootingDir && m_PrevBaseState == m_CurBaseState && m_PrevActionState == m_CurActionState)
+		return;
+
 	// 총쏘지 않는 상태
 	if (!IsInActionState(ACTION_STATE::SHOOTING))
 	{
 		switch (m_CurBaseState)
 		{
 			case BASE_STATE::IDLE:
+			{
+				//if (m_bFacingRight)
+				//	m_Animator->Play();
+				//else
+				//	m_Animator->Play();
+			}
 				break;
 			case BASE_STATE::CROUCH:
+				break;
+			case BASE_STATE::FIXED:
 				break;
 			case BASE_STATE::RUN:
 				break;
@@ -264,6 +274,8 @@ void CPlayer::UpdateAnimation()
 				break;
 			case BASE_STATE::CROUCH:
 				break;
+			case BASE_STATE::FIXED:
+				break;
 			case BASE_STATE::RUN:
 				break;
 			case BASE_STATE::DASH:
@@ -276,9 +288,8 @@ void CPlayer::UpdateAnimation()
 				break;
 		}
 	}
-
-
 }
+
 
 void CPlayer::begin()
 {
@@ -287,194 +298,198 @@ void CPlayer::begin()
 void CPlayer::tick()
 {
 	UpdateState();
-
+	UpdateAnimation();
 	Move();
+
+	m_PrevShootingDir = m_ShootingDir;
+	m_PrevBaseState = m_CurBaseState;
+	m_PrevActionState = m_CurActionState;
 }
 
 
 
 
-//=====================================================================================
-// 레거시 코드
+	//=====================================================================================
+	// 레거시 코드
 
 
-//void CPlayer::tick()
-//{
-//	auto vPos = GetPos();
-//
-//	auto prevPos = vPos;
-//
-//	bool leftPressed = KEY_PRESSED(KEY::LEFT);
-//	bool rightPressed = KEY_PRESSED(KEY::RIGHT);
-//	bool upPressed = KEY_PRESSED(KEY::UP);
-//	bool downPressed = KEY_PRESSED(KEY::DOWN);
-//
-//	// 방향 입력에 대한 처리
-//	static int lastInputDirection = 0;  // 마지막 입력 방향을 기억하기 위한 변수
-//	static int lastState = 0;			// 마지막 상태를 기억하기 위한 변수
-//
-//	if (KEY_JUST_PRESSED(KEY::UP)) {
-//		lastInputDirection = 1; // 위쪽
-//	}
-//	if (KEY_JUST_PRESSED(KEY::DOWN)) {
-//		lastInputDirection = 2; // 아래쪽
-//	}
-//	if (KEY_JUST_PRESSED(KEY::LEFT)) {
-//		lastInputDirection = 3; // 왼쪽
-//	}
-//	if (KEY_JUST_PRESSED(KEY::RIGHT)) {
-//		lastInputDirection = 4; // 오른쪽
-//	}
-//
-//	// 왼쪽-위 대각선 이동 및 애니메이션 처리
-//	if (leftPressed && upPressed) {
-//		vPos.x -= m_fSpeed * DT / sqrtf(2);
-//		vPos.y -= m_fSpeed * DT / sqrtf(2);
-//		if (lastInputDirection == 1)
-//		{
-//			m_Animator->Play(L"WALK_UP", true);
-//			lastState = 1;
-//		}
-//		if (lastInputDirection == 3)
-//		{
-//			m_Animator->Play(L"WALK_LEFT", true);
-//			lastState = 3;
-//		}
-//	}
-//	// 왼쪽-아래 대각선 이동 및 애니메이션 처리
-//	else if (leftPressed && downPressed) {
-//		vPos.x -= m_fSpeed * DT / sqrtf(2);
-//		vPos.y += m_fSpeed * DT / sqrtf(2);
-//		if (lastInputDirection == 2)
-//		{
-//			m_Animator->Play(L"WALK_DOWN", true);
-//			lastState = 2;
-//		}
-//		if (lastInputDirection == 3)
-//		{
-//			m_Animator->Play(L"WALK_LEFT", true);
-//			lastState = 3;
-//		}
-//	}
-//	// 오른쪽-위 대각선 이동 및 애니메이션 처리
-//	else if (rightPressed && upPressed) {
-//		vPos.x += m_fSpeed * DT / sqrtf(2);
-//		vPos.y -= m_fSpeed * DT / sqrtf(2);
-//		if (lastInputDirection == 1)
-//		{
-//			m_Animator->Play(L"WALK_UP", true);
-//			lastState = 1;
-//		}
-//		if (lastInputDirection == 4)
-//		{
-//			m_Animator->Play(L"WALK_RIGHT", true);
-//			lastState = 4;
-//		}
-//	}
-//	// 오른쪽-아래 대각선 이동 및 애니메이션 처리
-//	else if (rightPressed && downPressed) {
-//		vPos.x += m_fSpeed * DT / sqrtf(2);
-//		vPos.y += m_fSpeed * DT / sqrtf(2);
-//		if (lastInputDirection == 2)
-//		{
-//			m_Animator->Play(L"WALK_DOWN", true);
-//			lastState = 2;
-//		}
-//		if (lastInputDirection == 4)
-//		{
-//			m_Animator->Play(L"WALK_RIGHT", true);
-//			lastState = 4;
-//		}
-//	}
-//
-//	// 단일 방향 이동 및 애니메이션 처리
-//	if (!upPressed && !downPressed && !rightPressed && leftPressed) {
-//		vPos.x -= m_fSpeed * DT;
-//		m_Animator->Play(L"WALK_LEFT", true);
-//		lastState = 3;
-//	}
-//	else if (!upPressed && !downPressed && !leftPressed && rightPressed) {
-//		vPos.x += m_fSpeed * DT;
-//		m_Animator->Play(L"WALK_RIGHT", true);
-//		lastState = 4;
-//	}
-//	else if (!leftPressed && !rightPressed && !downPressed && upPressed) {
-//		vPos.y -= m_fSpeed * DT;
-//		m_Animator->Play(L"WALK_UP", true);
-//		lastState = 1;
-//	}
-//	else if (!leftPressed && !rightPressed && !upPressed && downPressed) {
-//		vPos.y += m_fSpeed * DT;
-//		m_Animator->Play(L"WALK_DOWN", true);
-//		lastState = 2;
-//	}
-//
-//	// 모든 이동 키가 눌리지 않았을 때 IDLE 애니메이션 처리
-//	if (prevPos == vPos)
-//	{
-//		switch (lastState) {
-//			case 1: // 마지막 방향이 위쪽
-//				m_Animator->Play(L"IDLE_UP", true);
-//				break;
-//			case 2: // 마지막 방향이 아래쪽
-//				m_Animator->Play(L"IDLE_DOWN", true);
-//				break;
-//			case 3: // 마지막 방향이 왼쪽
-//				m_Animator->Play(L"IDLE_LEFT", true);
-//				break;
-//			case 4: // 마지막 방향이 오른쪽
-//				m_Animator->Play(L"IDLE_RIGHT", true);
-//				break;
-//			default:
-//				// 기본 IDLE 애니메이션 처리
-//				//m_Animator->Play(L"WALK_DOWN", true);
-//				break;
-//		}
-//
-//		lastState = 0;
-//	}
-//
-//	SetPos(vPos);
-//
-//	if (KEY_JUST_PRESSED(KEY::SPACE))
-//	{
-//		CMissile* pMissile = new CGuidedMissile;
-//
-//		pMissile->SetPos(Vec2(GetPos() + Vec2(0, -GetScale().y * 0.5f)));
-//		pMissile->SetScale(20, 20);
-//		//pMissile->SetAngle(-3.141592f * 0.5);
-//		pMissile->SetName(L"Player Guided Missile");
-//
-//		SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
-//
-//		/*tDbgLog log{};
-//		log.Type = LOG_TYPE::DBG_LOG;
-//		log.strLog = L"!! 미사일 발사 !!";
-//		CDbgRenderer::GetInstance().AddDbgLog(log);*/
-//
-//		LOG(LOG_TYPE::DBG_WARNING, L"@@ 미사일 발사 @@");
-//	}
-//}
+	//void CPlayer::tick()
+	//{
+	//	auto vPos = GetPos();
+	//
+	//	auto prevPos = vPos;
+	//
+	//	bool leftPressed = KEY_PRESSED(KEY::LEFT);
+	//	bool rightPressed = KEY_PRESSED(KEY::RIGHT);
+	//	bool upPressed = KEY_PRESSED(KEY::UP);
+	//	bool downPressed = KEY_PRESSED(KEY::DOWN);
+	//
+	//	// 방향 입력에 대한 처리
+	//	static int lastInputDirection = 0;  // 마지막 입력 방향을 기억하기 위한 변수
+	//	static int lastState = 0;			// 마지막 상태를 기억하기 위한 변수
+	//
+	//	if (KEY_JUST_PRESSED(KEY::UP)) {
+	//		lastInputDirection = 1; // 위쪽
+	//	}
+	//	if (KEY_JUST_PRESSED(KEY::DOWN)) {
+	//		lastInputDirection = 2; // 아래쪽
+	//	}
+	//	if (KEY_JUST_PRESSED(KEY::LEFT)) {
+	//		lastInputDirection = 3; // 왼쪽
+	//	}
+	//	if (KEY_JUST_PRESSED(KEY::RIGHT)) {
+	//		lastInputDirection = 4; // 오른쪽
+	//	}
+	//
+	//	// 왼쪽-위 대각선 이동 및 애니메이션 처리
+	//	if (leftPressed && upPressed) {
+	//		vPos.x -= m_fSpeed * DT / sqrtf(2);
+	//		vPos.y -= m_fSpeed * DT / sqrtf(2);
+	//		if (lastInputDirection == 1)
+	//		{
+	//			m_Animator->Play(L"WALK_UP", true);
+	//			lastState = 1;
+	//		}
+	//		if (lastInputDirection == 3)
+	//		{
+	//			m_Animator->Play(L"WALK_LEFT", true);
+	//			lastState = 3;
+	//		}
+	//	}
+	//	// 왼쪽-아래 대각선 이동 및 애니메이션 처리
+	//	else if (leftPressed && downPressed) {
+	//		vPos.x -= m_fSpeed * DT / sqrtf(2);
+	//		vPos.y += m_fSpeed * DT / sqrtf(2);
+	//		if (lastInputDirection == 2)
+	//		{
+	//			m_Animator->Play(L"WALK_DOWN", true);
+	//			lastState = 2;
+	//		}
+	//		if (lastInputDirection == 3)
+	//		{
+	//			m_Animator->Play(L"WALK_LEFT", true);
+	//			lastState = 3;
+	//		}
+	//	}
+	//	// 오른쪽-위 대각선 이동 및 애니메이션 처리
+	//	else if (rightPressed && upPressed) {
+	//		vPos.x += m_fSpeed * DT / sqrtf(2);
+	//		vPos.y -= m_fSpeed * DT / sqrtf(2);
+	//		if (lastInputDirection == 1)
+	//		{
+	//			m_Animator->Play(L"WALK_UP", true);
+	//			lastState = 1;
+	//		}
+	//		if (lastInputDirection == 4)
+	//		{
+	//			m_Animator->Play(L"WALK_RIGHT", true);
+	//			lastState = 4;
+	//		}
+	//	}
+	//	// 오른쪽-아래 대각선 이동 및 애니메이션 처리
+	//	else if (rightPressed && downPressed) {
+	//		vPos.x += m_fSpeed * DT / sqrtf(2);
+	//		vPos.y += m_fSpeed * DT / sqrtf(2);
+	//		if (lastInputDirection == 2)
+	//		{
+	//			m_Animator->Play(L"WALK_DOWN", true);
+	//			lastState = 2;
+	//		}
+	//		if (lastInputDirection == 4)
+	//		{
+	//			m_Animator->Play(L"WALK_RIGHT", true);
+	//			lastState = 4;
+	//		}
+	//	}
+	//
+	//	// 단일 방향 이동 및 애니메이션 처리
+	//	if (!upPressed && !downPressed && !rightPressed && leftPressed) {
+	//		vPos.x -= m_fSpeed * DT;
+	//		m_Animator->Play(L"WALK_LEFT", true);
+	//		lastState = 3;
+	//	}
+	//	else if (!upPressed && !downPressed && !leftPressed && rightPressed) {
+	//		vPos.x += m_fSpeed * DT;
+	//		m_Animator->Play(L"WALK_RIGHT", true);
+	//		lastState = 4;
+	//	}
+	//	else if (!leftPressed && !rightPressed && !downPressed && upPressed) {
+	//		vPos.y -= m_fSpeed * DT;
+	//		m_Animator->Play(L"WALK_UP", true);
+	//		lastState = 1;
+	//	}
+	//	else if (!leftPressed && !rightPressed && !upPressed && downPressed) {
+	//		vPos.y += m_fSpeed * DT;
+	//		m_Animator->Play(L"WALK_DOWN", true);
+	//		lastState = 2;
+	//	}
+	//
+	//	// 모든 이동 키가 눌리지 않았을 때 IDLE 애니메이션 처리
+	//	if (prevPos == vPos)
+	//	{
+	//		switch (lastState) {
+	//			case 1: // 마지막 방향이 위쪽
+	//				m_Animator->Play(L"IDLE_UP", true);
+	//				break;
+	//			case 2: // 마지막 방향이 아래쪽
+	//				m_Animator->Play(L"IDLE_DOWN", true);
+	//				break;
+	//			case 3: // 마지막 방향이 왼쪽
+	//				m_Animator->Play(L"IDLE_LEFT", true);
+	//				break;
+	//			case 4: // 마지막 방향이 오른쪽
+	//				m_Animator->Play(L"IDLE_RIGHT", true);
+	//				break;
+	//			default:
+	//				// 기본 IDLE 애니메이션 처리
+	//				//m_Animator->Play(L"WALK_DOWN", true);
+	//				break;
+	//		}
+	//
+	//		lastState = 0;
+	//	}
+	//
+	//	SetPos(vPos);
+	//
+	//	if (KEY_JUST_PRESSED(KEY::SPACE))
+	//	{
+	//		CMissile* pMissile = new CGuidedMissile;
+	//
+	//		pMissile->SetPos(Vec2(GetPos() + Vec2(0, -GetScale().y * 0.5f)));
+	//		pMissile->SetScale(20, 20);
+	//		//pMissile->SetAngle(-3.141592f * 0.5);
+	//		pMissile->SetName(L"Player Guided Missile");
+	//
+	//		SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
+	//
+	//		/*tDbgLog log{};
+	//		log.Type = LOG_TYPE::DBG_LOG;
+	//		log.strLog = L"!! 미사일 발사 !!";
+	//		CDbgRenderer::GetInstance().AddDbgLog(log);*/
+	//
+	//		LOG(LOG_TYPE::DBG_WARNING, L"@@ 미사일 발사 @@");
+	//	}
+	//}
 
-//void CPlayer::render()
-//{
-//	auto vPos = GetPos();
-//
-//	// AlphaBlending
-//	BLENDFUNCTION bf = {};
-//
-//	bf.BlendOp = AC_SRC_OVER;
-//	bf.BlendFlags = 0;
-//	bf.SourceConstantAlpha = 255;
-//	bf.AlphaFormat = AC_SRC_ALPHA;
-//
-//	auto m_Img = m_Texture;
-//
-//	AlphaBlend(SUBDC, (int)(vPos.x - m_Img->GetWidth() / 2.f)
-//		, (int)(vPos.y - m_Img->GetHeight() / 2.f)
-//		, m_Img->GetWidth(), m_Img->GetHeight()
-//		, m_Img->GetDC(), 0, 0, m_Img->GetWidth(), m_Img->GetHeight(), bf);
-//}
+	//void CPlayer::render()
+	//{
+	//	auto vPos = GetPos();
+	//
+	//	// AlphaBlending
+	//	BLENDFUNCTION bf = {};
+	//
+	//	bf.BlendOp = AC_SRC_OVER;
+	//	bf.BlendFlags = 0;
+	//	bf.SourceConstantAlpha = 255;
+	//	bf.AlphaFormat = AC_SRC_ALPHA;
+	//
+	//	auto m_Img = m_Texture;
+	//
+	//	AlphaBlend(SUBDC, (int)(vPos.x - m_Img->GetWidth() / 2.f)
+	//		, (int)(vPos.y - m_Img->GetHeight() / 2.f)
+	//		, m_Img->GetWidth(), m_Img->GetHeight()
+	//		, m_Img->GetDC(), 0, 0, m_Img->GetWidth(), m_Img->GetHeight(), bf);
+	//}
 
 
 

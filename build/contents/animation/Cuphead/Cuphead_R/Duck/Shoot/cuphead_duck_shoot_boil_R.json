@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "cuphead_duck_shoot_boil_0001.png",
+	"frame": {"x":0,"y":0,"w":193,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":193,"h":72},
+	"sourceSize": {"w":193,"h":72}
+},
+{
+	"filename": "cuphead_duck_shoot_boil_0002.png",
+	"frame": {"x":0,"y":72,"w":192,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":72},
+	"sourceSize": {"w":192,"h":72}
+},
+{
+	"filename": "cuphead_duck_shoot_boil_0003.png",
+	"frame": {"x":0,"y":144,"w":193,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":193,"h":72},
+	"sourceSize": {"w":193,"h":72}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_duck_shoot_boil_R.png",
+	"format": "RGBA8888",
+	"size": {"w":193,"h":216},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a835fb05088461dae9a3b989b8b26392:5217015e7b1a73142f2c6a01316e2edc:732e5a7f7704d3d475dd281e41a81190$"
+}
+}

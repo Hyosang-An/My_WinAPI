@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "cuphead_shoot_diagonal_down_0001.png",
+	"frame": {"x":0,"y":0,"w":117,"h":159},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":159},
+	"sourceSize": {"w":117,"h":159}
+},
+{
+	"filename": "cuphead_shoot_diagonal_down_0002.png",
+	"frame": {"x":0,"y":159,"w":120,"h":156},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":156},
+	"sourceSize": {"w":120,"h":156}
+},
+{
+	"filename": "cuphead_shoot_diagonal_down_0003.png",
+	"frame": {"x":0,"y":315,"w":120,"h":161},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":161},
+	"sourceSize": {"w":120,"h":161}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_shoot_diagonal_down_R.png",
+	"format": "RGBA8888",
+	"size": {"w":120,"h":476},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ed7376c7236bdf45b88d541497d93b3b:caf69702523e4c92d15eca8f6308d84e:7d1ffd8406511c2c49ea62b06da3ad3b$"
+}
+}

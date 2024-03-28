@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "cuphead_aim_diagonal_up_L_0001.png",
+	"frame": {"x":0,"y":0,"w":129,"h":151},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":129,"h":151},
+	"sourceSize": {"w":129,"h":151}
+},
+{
+	"filename": "cuphead_aim_diagonal_up_L_0002.png",
+	"frame": {"x":129,"y":0,"w":127,"h":148},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":127,"h":148},
+	"sourceSize": {"w":127,"h":148}
+},
+{
+	"filename": "cuphead_aim_diagonal_up_L_0003.png",
+	"frame": {"x":0,"y":151,"w":128,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":144},
+	"sourceSize": {"w":128,"h":144}
+},
+{
+	"filename": "cuphead_aim_diagonal_up_L_0004.png",
+	"frame": {"x":0,"y":295,"w":129,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":129,"h":140},
+	"sourceSize": {"w":129,"h":140}
+},
+{
+	"filename": "cuphead_aim_diagonal_up_L_0005.png",
+	"frame": {"x":129,"y":295,"w":126,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":133},
+	"sourceSize": {"w":126,"h":133}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_aim_diagonal_up_L.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":435},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a6a6e391b15ced59845c5e307d381696:ce18c48cc0b26bcc87f28be44bbaa336:d6a7ad80b4888840522f585670bfb7a7$"
+}
+}

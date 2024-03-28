@@ -60,7 +60,10 @@ private:
 	BASE_STATE		m_CurBaseState;
 	ACTION_STATE	m_CurActionState;
 
+	SHOOTING_DIR	m_PrevShootingDir;
 	BASE_STATE		m_PrevBaseState;
+	ACTION_STATE	m_PrevActionState;
+
 
 
 	CTexture* m_Texture;

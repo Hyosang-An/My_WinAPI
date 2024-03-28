@@ -1,0 +1,140 @@
+{"frames": [
+
+{
+	"filename": "cuphead_run_shoot_L_0001.png",
+	"frame": {"x":267,"y":473,"w":138,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":155},
+	"sourceSize": {"w":138,"h":155}
+},
+{
+	"filename": "cuphead_run_shoot_L_0002.png",
+	"frame": {"x":126,"y":323,"w":128,"h":146},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":146},
+	"sourceSize": {"w":128,"h":146}
+},
+{
+	"filename": "cuphead_run_shoot_L_0003.png",
+	"frame": {"x":0,"y":0,"w":119,"h":148},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":119,"h":148},
+	"sourceSize": {"w":119,"h":148}
+},
+{
+	"filename": "cuphead_run_shoot_L_0004.png",
+	"frame": {"x":119,"y":0,"w":119,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":119,"h":155},
+	"sourceSize": {"w":119,"h":155}
+},
+{
+	"filename": "cuphead_run_shoot_L_0005.png",
+	"frame": {"x":238,"y":0,"w":121,"h":162},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":162},
+	"sourceSize": {"w":121,"h":162}
+},
+{
+	"filename": "cuphead_run_shoot_L_0006.png",
+	"frame": {"x":123,"y":162,"w":124,"h":157},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":124,"h":157},
+	"sourceSize": {"w":124,"h":157}
+},
+{
+	"filename": "cuphead_run_shoot_L_0007.png",
+	"frame": {"x":0,"y":473,"w":133,"h":145},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":133,"h":145},
+	"sourceSize": {"w":133,"h":145}
+},
+{
+	"filename": "cuphead_run_shoot_L_0008.png",
+	"frame": {"x":0,"y":628,"w":140,"h":149},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":149},
+	"sourceSize": {"w":140,"h":149}
+},
+{
+	"filename": "cuphead_run_shoot_L_0009.png",
+	"frame": {"x":133,"y":473,"w":134,"h":154},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":134,"h":154},
+	"sourceSize": {"w":134,"h":154}
+},
+{
+	"filename": "cuphead_run_shoot_L_0010.png",
+	"frame": {"x":254,"y":323,"w":128,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":150},
+	"sourceSize": {"w":128,"h":150}
+},
+{
+	"filename": "cuphead_run_shoot_L_0011.png",
+	"frame": {"x":0,"y":162,"w":123,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":123,"h":150},
+	"sourceSize": {"w":123,"h":150}
+},
+{
+	"filename": "cuphead_run_shoot_L_0012.png",
+	"frame": {"x":359,"y":0,"w":122,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":122,"h":155},
+	"sourceSize": {"w":122,"h":155}
+},
+{
+	"filename": "cuphead_run_shoot_L_0013.png",
+	"frame": {"x":247,"y":162,"w":126,"h":161},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":161},
+	"sourceSize": {"w":126,"h":161}
+},
+{
+	"filename": "cuphead_run_shoot_L_0014.png",
+	"frame": {"x":0,"y":323,"w":126,"h":143},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":143},
+	"sourceSize": {"w":126,"h":143}
+},
+{
+	"filename": "cuphead_run_shoot_L_0015.png",
+	"frame": {"x":140,"y":628,"w":140,"h":149},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":149},
+	"sourceSize": {"w":140,"h":149}
+},
+{
+	"filename": "cuphead_run_shoot_L_0016.png",
+	"frame": {"x":280,"y":628,"w":144,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":150},
+	"sourceSize": {"w":144,"h":150}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_run_shoot_L.png",
+	"format": "RGBA8888",
+	"size": {"w":481,"h":778},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ed039961482698540e4669c5541ef865:5da5656c74d62be9c6fab421fc037631:7134b189094b92b2ddd83e4dabd01cd3$"
+}
+}

@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "cuphead_idle_0001.png",
+	"frame": {"x":0,"y":0,"w":98,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":98,"h":155},
+	"sourceSize": {"w":98,"h":155}
+},
+{
+	"filename": "cuphead_idle_0002.png",
+	"frame": {"x":0,"y":155,"w":98,"h":152},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":98,"h":152},
+	"sourceSize": {"w":98,"h":152}
+},
+{
+	"filename": "cuphead_idle_0003.png",
+	"frame": {"x":0,"y":307,"w":98,"h":149},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":98,"h":149},
+	"sourceSize": {"w":98,"h":149}
+},
+{
+	"filename": "cuphead_idle_0004.png",
+	"frame": {"x":0,"y":456,"w":100,"h":143},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":143},
+	"sourceSize": {"w":100,"h":143}
+},
+{
+	"filename": "cuphead_idle_0005.png",
+	"frame": {"x":0,"y":599,"w":97,"h":138},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":138},
+	"sourceSize": {"w":97,"h":138}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_idle_R.png",
+	"format": "RGBA8888",
+	"size": {"w":100,"h":737},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fcd337dab296735e2b4839740b31ee64:01060af28ede5277fcb980039103af00:0f0b18482d36f11f7b548b17c31bada1$"
+}
+}
