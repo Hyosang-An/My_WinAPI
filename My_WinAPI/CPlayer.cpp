@@ -52,23 +52,25 @@ CPlayer::CPlayer() :
 		//m_Animator->CreateAnimation(L"WALK_UP", pAtlas, Vec2(0.f, 780.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
 		//m_Animator->CreateAnimation(L"WALK_RIGHT", pAtlas, Vec2(0.f, 910.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
 
-		m_Animator->LoadAnimation(L"animation\\player\\WALK_DOWN.anim");
-		m_Animator->LoadAnimation(L"animation\\player\\WALK_RIGHT.anim");
-		m_Animator->LoadAnimation(L"animation\\player\\WALK_LEFT.anim");
-		m_Animator->LoadAnimation(L"animation\\player\\WALK_UP.anim");
-		m_Animator->LoadAnimation(L"animation\\player\\IDLE_DOWN.anim");
-		m_Animator->LoadAnimation(L"animation\\player\\IDLE_LEFT.anim");
-		m_Animator->LoadAnimation(L"animation\\player\\IDLE_UP.anim");
-		m_Animator->LoadAnimation(L"animation\\player\\IDLE_RIGHT.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\WALK_DOWN.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\WALK_RIGHT.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\WALK_LEFT.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\WALK_UP.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_DOWN.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_LEFT.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_UP.anim");
+		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_RIGHT.anim");
 
-		m_Animator->Play(L"IDLE_DOWN", true);
+		//m_Animator->Play(L"IDLE_DOWN", true);
 	}
 
-	//{
-		//m_Animator->CreateAnimationByJSON(L"animation\\run", 30);
-	m_Animator->LoadAnimation(L"animation\\run\\run.anim");
-	m_Animator->Play(L"run", true);
-	//}
+	{
+		//m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Normal\\cuphead_run_R.json", 30);
+		//m_Animator->FindAnimation(L"cuphead_run_R")->Save(L"animation\\Cuphead\\Cuphead_R\\Run\\Normal");		
+		
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Run\\Normal\\cuphead_run_R.anim");
+		m_Animator->Play(L"cuphead_run_R", true);
+	}
 
 
 	//m_Texture = CAssetMgr::GetInstance().LoadTexture(L"PlayerTexture", L"texture\\Character.png");

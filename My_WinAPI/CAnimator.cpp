@@ -118,24 +118,22 @@ void CAnimator::Play(const wstring& _AnimName, bool _Repeat)
 namespace fs = std::filesystem;
 using json = nlohmann::json;
 
-void CAnimator::CreateAnimationByJSON(std::wstring relativeFolderPath, int _FPS)
+void CAnimator::CreateAnimationByJSON(std::wstring strRelativeJsonFilePath, int _FPS)
 {
     // relativeFolderPath의 맨 앞에 "\\"가 있으면, "."을 앞에 추가하여 상대 경로로 만듭니다.
-    if (!relativeFolderPath.empty() && relativeFolderPath[0] == L'\\') {
-        relativeFolderPath = L"." + relativeFolderPath;
+    if (!strRelativeJsonFilePath.empty() && strRelativeJsonFilePath[0] == L'\\') {
+        strRelativeJsonFilePath = L"." + strRelativeJsonFilePath;
     }
 
     // 파일 경로 구성
     fs::path contents_path = CPathMgr::GetInstance().GetContentsPath();
-    fs::path folderPath = contents_path / relativeFolderPath;
-    fs::path folderName = folderPath.filename();
-    fs::path jsonFilePath = folderPath / (folderName.wstring() + L".json");
+    fs::path JsonFilePath = contents_path / strRelativeJsonFilePath;
 
     // JSON 파일 열기
-    std::ifstream jsonFile(jsonFilePath);
+    std::ifstream jsonFile(JsonFilePath);
     if (!jsonFile.is_open())
     {
-        std::wstring message = L"Failed to open JSON file: " + jsonFilePath.wstring();
+        std::wstring message = L"Failed to open JSON file: " + JsonFilePath.wstring();
         MessageBox(NULL, message.c_str(), L"Error", MB_ICONERROR | MB_OK);
         return;
     }
@@ -149,9 +147,12 @@ void CAnimator::CreateAnimationByJSON(std::wstring relativeFolderPath, int _FPS)
     //std::wstring atlasTextureName(tmpAtlasTextureName.begin(), tmpAtlasTextureName.end());
 
     // 아틀라스 텍스쳐를 불러오는 새로운 방식을 사용합니다.
-    wstring strAtlasTextureName = folderName.wstring() + L"_Atlas";    
-    wstring strRelativePngPath = relativeFolderPath + L"\\" + folderName.wstring() + L".png";
-    CTexture* pAtlas = CAssetMgr::GetInstance().LoadTexture(strAtlasTextureName, strRelativePngPath);
+    // Json파일 경로에서 .json만 제거하고 .png 추가.
+    fs::path RelativeJsonFilePath = strRelativeJsonFilePath;
+    wstring strRelativeAtlasFilePath = (RelativeJsonFilePath.parent_path() / RelativeJsonFilePath.stem()).wstring() + L".png";
+
+    wstring strAtlasTextureName = RelativeJsonFilePath.stem().wstring() + L"_Atlas";
+    CTexture* pAtlas = CAssetMgr::GetInstance().LoadTexture(strAtlasTextureName, strRelativeAtlasFilePath);
 
     if (pAtlas == nullptr)
     {
@@ -179,7 +180,12 @@ void CAnimator::CreateAnimationByJSON(std::wstring relativeFolderPath, int _FPS)
     }
 
     // 애니메이션 이름 설정 및 Animator에 애니메이션 추가
-    pAnim->SetName(folderName.wstring()); // 폴더 이름을 애니메이션 이름으로 사용
+    pAnim->SetName(RelativeJsonFilePath.stem().wstring()); // 폴더 이름을 애니메이션 이름으로 사용
     pAnim->m_Animator = this;
     m_mapAnimation.insert(std::make_pair(pAnim->GetName(), pAnim));
+
+
+
+    // 해당 폴더에 .anim 파일 저장
+    pAnim->Save(RelativeJsonFilePath.parent_path().wstring());
 }
