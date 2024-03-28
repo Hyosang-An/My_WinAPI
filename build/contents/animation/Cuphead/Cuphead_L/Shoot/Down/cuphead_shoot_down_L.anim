@@ -1,0 +1,28 @@
+[ANIMATION_NAME]
+cuphead_shoot_down_L
+
+[ALTAS_TEXTURE]
+[ALTAS_KEY]	cuphead_shoot_down_L_Atlas
+[ALTAS_PATH]	animation\Cuphead\Cuphead_L\Shoot\Down\cuphead_shoot_down_L.png
+
+[FRAME_COUNT]
+3
+
+[FRAME_INDEX]	0
+[POS_IN_ATLAS]	0 0
+[SLICE_SIZE]	101 169
+[OFFSET]	0 0
+[DURATION]	0.166667
+
+[FRAME_INDEX]	1
+[POS_IN_ATLAS]	0 169
+[SLICE_SIZE]	96 155
+[OFFSET]	0 0
+[DURATION]	0.166667
+
+[FRAME_INDEX]	2
+[POS_IN_ATLAS]	0 324
+[SLICE_SIZE]	98 159
+[OFFSET]	0 0
+[DURATION]	0.166667
+
