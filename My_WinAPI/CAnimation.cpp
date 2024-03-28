@@ -15,7 +15,9 @@ CAnimation::CAnimation() :
 	m_Atlas(nullptr),
 	m_frameElapsedTime(0),
 	m_CurFrameIdx(0),
-	m_bFinished(false)
+	m_bFinished(false),
+	m_bPlayingForward(true),
+	m_bRepeatReverse(false)
 {
 }
 
@@ -28,6 +30,15 @@ void CAnimation::Reset()
 	m_frameElapsedTime = 0;
 	m_CurFrameIdx = 0;
 	m_bFinished = false;
+	m_bPlayingForward = true;
+}
+
+void CAnimation::ResetReverse()
+{
+	m_frameElapsedTime = 0;
+	m_CurFrameIdx = m_vecAnimFrame.size() - 2;
+	m_bFinished = false;
+	m_bPlayingForward = false;
 }
 
 void CAnimation::finaltick()
@@ -39,17 +50,42 @@ void CAnimation::finaltick()
 	const tAnimationFrame& frm = m_vecAnimFrame[m_CurFrameIdx];
 	m_frameElapsedTime += DT;
 
+
 	if (frm.fDuration <= m_frameElapsedTime)
 	{
+
 		m_frameElapsedTime -= frm.fDuration;
 
-		// 프레임이 마지막에 도달한 경우
-		if (m_vecAnimFrame.size() - 1 <= m_CurFrameIdx)
+		// 정방향 재생인지 역방향 재생인지 구분
+		if (m_bPlayingForward)
 		{
-			m_bFinished = true;
+			// 프레임이 마지막에 도달한 경우
+			if (m_vecAnimFrame.size() - 1 <= m_CurFrameIdx)
+			{
+				// 왕복 재생 모드인 경우
+				if (m_bRepeatReverse)
+				{
+					m_bPlayingForward = false;
+					m_CurFrameIdx--;
+				}
+				else
+					m_bFinished = true;
+			}
+			else
+				++m_CurFrameIdx;
 		}
 		else
-			++m_CurFrameIdx;
+		{
+			// 프레임이 처음에 도달한 경우 (1로 해야 맨 처음 프레임을 재생 하지 않음. 반복할 때 어차피 재생하니까.)
+			if (m_CurFrameIdx <= 1)
+			{
+				m_bPlayingForward = true;
+				m_bFinished = true;
+			}
+			else
+				--m_CurFrameIdx;
+		}
+
 	}
 }
 

@@ -19,7 +19,7 @@ enum class SHOOTING_DIR
 enum class BASE_STATE
 {
 	IDLE,
-	CROUCH,
+	DUCK,
 	FIXED,
 	RUN,
 	DASH,
@@ -56,6 +56,8 @@ private:
 
 	bool			m_bFacingRight;
 
+	float m_DashDuration = 0.5;
+
 	SHOOTING_DIR    m_ShootingDir;
 	BASE_STATE		m_CurBaseState;
 	ACTION_STATE	m_CurActionState;
@@ -75,6 +77,9 @@ private:
 	void UpdateState();
 	void Move();
 	void UpdateAnimation();
+
+public:
+	BASE_STATE	GetBaseState() { return m_CurBaseState; }
 
 	// 상태 추가
 	void AddActionState(ACTION_STATE newState)
@@ -99,7 +104,7 @@ public:
 	virtual void begin();
 	virtual void tick();
 
-	//virtual void render();
+	virtual void render();
 
 	virtual CPlayer* Clone() override { return new CPlayer(*this); }
 

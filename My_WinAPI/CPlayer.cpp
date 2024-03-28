@@ -18,7 +18,9 @@ CPlayer::CPlayer() :
 	m_ShootingDir(SHOOTING_DIR::RIGHT),
 	m_CurBaseState(BASE_STATE::IDLE),
 	m_CurActionState(ACTION_STATE::NONE),
-	m_PrevBaseState(m_CurBaseState)
+	m_PrevShootingDir(SHOOTING_DIR::RIGHT),
+	m_PrevBaseState(m_CurBaseState),
+	m_PrevActionState(ACTION_STATE::NONE)
 {
 	m_eType = LAYER_TYPE::PLAYER;
 
@@ -33,44 +35,21 @@ CPlayer::CPlayer() :
 	m_BodyCol->SetScale(Vec2(60.f, 60.f));
 
 	m_Rigidbody = AddComponent(new CRigidbody);
-	m_Rigidbody->SetMinWalkSpeed(0);
-	m_Rigidbody->SetMaxWalkSpeed(400);
+	m_Rigidbody->SetMinWalkSpeed(200);
+	m_Rigidbody->SetMaxWalkSpeed(200);
 	m_Rigidbody->SetFriction(2000);
 
 	m_Animator = AddComponent(new CAnimator);
 
-	{
-		CTexture* pAtlas = CAssetMgr::GetInstance().LoadTexture(L"PlayerAtlasTexture", L"texture\\link.png");
 
-		//m_Animator->CreateAnimation(L"IDLE_DOWN", pAtlas, Vec2(0.f, 0.f), Vec2(120.f, 130.f), 3, 10)->Save(L"animation\\player\\");
-		//m_Animator->CreateAnimation(L"IDLE_LEFT", pAtlas, Vec2(0.f, 130.f), Vec2(120.f, 130.f), 3, 10)->Save(L"animation\\player\\");
-		//m_Animator->CreateAnimation(L"IDLE_UP", pAtlas, Vec2(0.f, 260.f), Vec2(120.f, 130.f), 1, 1)->Save(L"animation\\player\\");
-		//m_Animator->CreateAnimation(L"IDLE_RIGHT", pAtlas, Vec2(0.f, 390.f), Vec2(120.f, 130.f), 3, 1)->Save(L"animation\\player\\");
-		//
-		//m_Animator->CreateAnimation(L"WALK_DOWN", pAtlas, Vec2(0.f, 520.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
-		//m_Animator->CreateAnimation(L"WALK_LEFT", pAtlas, Vec2(0.f, 650.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
-		//m_Animator->CreateAnimation(L"WALK_UP", pAtlas, Vec2(0.f, 780.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
-		//m_Animator->CreateAnimation(L"WALK_RIGHT", pAtlas, Vec2(0.f, 910.f), Vec2(120.f, 130.f), 10, 18)->Save(L"animation\\player\\");
-
-		//m_Animator->LoadAnimation(L"animation\\player\\WALK_DOWN.anim");
-		//m_Animator->LoadAnimation(L"animation\\player\\WALK_RIGHT.anim");
-		//m_Animator->LoadAnimation(L"animation\\player\\WALK_LEFT.anim");
-		//m_Animator->LoadAnimation(L"animation\\player\\WALK_UP.anim");
-		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_DOWN.anim");
-		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_LEFT.anim");
-		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_UP.anim");
-		//m_Animator->LoadAnimation(L"animation\\player\\IDLE_RIGHT.anim");
-
-		//m_Animator->Play(L"IDLE_DOWN", true);
-	}
-
+	// 애니메이션 불러오기
 	{
 		// R
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Idle\\cuphead_idle_R.json", 10);
 
-		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Normal\\cuphead_run_R.json", 30);
-		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Shooting\\Diagonal Up\\cuphead_run_shoot_diagonal_up_R.json", 30);
-		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Shooting\\Straight\\cuphead_run_shoot_R.json", 30);
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Normal\\cuphead_run_R.json", 24);
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Shooting\\Diagonal Up\\cuphead_run_shoot_diagonal_up_R.json", 24);
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Shooting\\Straight\\cuphead_run_shoot_R.json", 24);
 
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Shoot\\Diagonal Down\\cuphead_shoot_diagonal_down_R.json", 6);
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Shoot\\Diagonal Up\\cuphead_shoot_diagonal_up_R.json", 6);
@@ -89,13 +68,16 @@ CPlayer::CPlayer() :
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Duck\\Shoot\\cuphead_duck_shoot_boil_R.json", 6);
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Duck\\Shoot\\cuphead_duck_shoot_R.json", 6);
 
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Dash\\Ground\\cuphead_dash_R.json", 12);
+
+
 
 		// L
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Idle\\cuphead_idle_L.json", 10);
 																		
-		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Normal\\cuphead_run_L.json", 30);
-		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Shooting\\Diagonal Up\\cuphead_run_shoot_diagonal_up_L.json", 30);
-		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Shooting\\Straight\\cuphead_run_shoot_L.json", 30);
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Normal\\cuphead_run_L.json", 24);
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Shooting\\Diagonal Up\\cuphead_run_shoot_diagonal_up_L.json", 24);
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Shooting\\Straight\\cuphead_run_shoot_L.json", 24);
 																		
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Shoot\\Diagonal Down\\cuphead_shoot_diagonal_down_L.json", 6);
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Shoot\\Diagonal Up\\cuphead_shoot_diagonal_up_L.json", 6);
@@ -113,17 +95,14 @@ CPlayer::CPlayer() :
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Duck\\Idle\\cuphead_duck_L.json", 6);
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Duck\\Shoot\\cuphead_duck_shoot_boil_L.json", 6);
 		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Duck\\Shoot\\cuphead_duck_shoot_L.json", 6);
-		
-		//m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Run\\Normal\\cuphead_run_R.anim");
+
+		m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Dash\\Ground\\cuphead_dash_L.json", 12);
 
 
-		m_Animator->Play(L"cuphead_idle_R", true);
+
+
+		m_Animator->Play(L"cuphead_idle_R", true, true);
 	}
-
-
-	//m_Texture = CAssetMgr::GetInstance().LoadTexture(L"PlayerTexture", L"texture\\Character.png");
-
-
 }
 
 CPlayer::~CPlayer()
@@ -132,7 +111,23 @@ CPlayer::~CPlayer()
 
 void CPlayer::UpdateState()
 {
-	m_PrevBaseState = m_CurBaseState;
+
+	// 현재 대쉬 모드인 경우
+	if (m_CurBaseState == BASE_STATE::DASH)
+	{
+		static float DashTime = 0;
+		DashTime += DT;
+		
+		if (m_DashDuration < DashTime)
+		{
+			DashTime = 0;
+			if (m_Rigidbody->IsOnGround())
+				m_CurBaseState = BASE_STATE::JUMP;
+			else
+				m_CurBaseState = BASE_STATE::IDLE;
+		}
+		return;
+	}
 
 	bool leftPressed = KEY_PRESSED(KEY::LEFT);
 	bool rightPressed = KEY_PRESSED(KEY::RIGHT);
@@ -149,16 +144,16 @@ void CPlayer::UpdateState()
 
 	// BASE_STATE 설정
 	{
-		// 땅 위에 있는 경우
+		// 땅 위에 있으면서 대쉬가 아닌 경우
 		if (m_Rigidbody->IsOnGround())
 		{
 			// 방향키 안누르면 Idle
 			if (!leftPressed && !rightPressed && !upPressed && !downPressed)
 				m_CurBaseState = BASE_STATE::IDLE;
 
-			// 아래 키 누르면 무조건 crouch 모드
+			// 아래 키 누르면 무조건 duck 모드
 			else if (downPressed)
-				m_CurBaseState = BASE_STATE::CROUCH;
+				m_CurBaseState = BASE_STATE::DUCK;
 
 			// 좌우 방향키 누르면 run
 			else if (leftPressed || rightPressed)
@@ -168,19 +163,21 @@ void CPlayer::UpdateState()
 			if (KEY_PRESSED(KEY::_Z) && !(m_CurBaseState == BASE_STATE::DASH))
 				m_CurBaseState = BASE_STATE::JUMP;
 
+			// C키 누르면 고정 모드
 			if (KEY_PRESSED(KEY::_C))
 				m_CurBaseState = BASE_STATE::FIXED;
+
+			// Shift 키 누르면 대쉬
+			if (KEY_PRESSED(KEY::SHIFT))
+				m_CurBaseState = BASE_STATE::DASH;
 		}
 
-		// Shift 키 누르면 대쉬
-		if (KEY_PRESSED(KEY::SHIFT) && (m_CurBaseState != BASE_STATE::DASH))
-			m_CurBaseState = BASE_STATE::DASH;
 	}
 
 
 	// ACTION_STATE 설정
 	// 총쏘기
-	if (KEY_PRESSED(KEY::_C))
+	if (KEY_PRESSED(KEY::_X))
 	{
 		AddActionState(ACTION_STATE::SHOOTING);
 	}
@@ -194,30 +191,30 @@ void CPlayer::UpdateState()
 		// 오른쪽을 보고 있는 경우
 		if (m_bFacingRight)
 		{
-			if (!leftPressed && !rightPressed && !upPressed && !downPressed)
+			if (!leftPressed && !upPressed && !downPressed)
 				m_ShootingDir = SHOOTING_DIR::RIGHT;
 			else if (upPressed && !rightPressed)
 				m_ShootingDir = SHOOTING_DIR::UP;
-			else if (downPressed && !rightPressed)
+			else if (downPressed && !rightPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
 				m_ShootingDir = SHOOTING_DIR::DOWN;
 			else if (upPressed && rightPressed)
 				m_ShootingDir = SHOOTING_DIR::UP_RIGHT;
-			else if (downPressed && rightPressed)
+			else if (downPressed && rightPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
 				m_ShootingDir = SHOOTING_DIR::DOWN_RIGHT;
 		}
 
 		// 왼쪽을 보고 있는 경우
 		if (!m_bFacingRight)
 		{
-			if (!leftPressed && !rightPressed && !upPressed && !downPressed)
+			if (!rightPressed && !upPressed && !downPressed)
 				m_ShootingDir = SHOOTING_DIR::LEFT;
 			else if (upPressed && !leftPressed)
 				m_ShootingDir = SHOOTING_DIR::UP;
-			else if (downPressed && !leftPressed)
+			else if (downPressed && !leftPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
 				m_ShootingDir = SHOOTING_DIR::DOWN;
 			else if (upPressed && leftPressed)
 				m_ShootingDir = SHOOTING_DIR::UP_LEFT;
-			else if (downPressed && leftPressed)
+			else if (downPressed && leftPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
 				m_ShootingDir = SHOOTING_DIR::DOWN_LEFT;
 		}
 	}
@@ -225,58 +222,59 @@ void CPlayer::UpdateState()
 
 void CPlayer::Move()
 {
+	//bool leftPressed = KEY_PRESSED(KEY::LEFT);
+	//bool rightPressed = KEY_PRESSED(KEY::RIGHT);
+	//bool upPressed = KEY_PRESSED(KEY::UP);
+	//bool downPressed = KEY_PRESSED(KEY::DOWN);
 
+	float runspeed = 50;
+	float dashspeed = 300;
 
-	bool leftPressed = KEY_PRESSED(KEY::LEFT);
-	bool rightPressed = KEY_PRESSED(KEY::RIGHT);
-	bool upPressed = KEY_PRESSED(KEY::UP);
-	bool downPressed = KEY_PRESSED(KEY::DOWN);
-
-	float forceMagnitude = 10000;
-
-	if (upPressed)
+	switch (m_CurBaseState)
 	{
-		//m_Rigidbody->AddForce(Vec2(0, -forceMagnitude));
-		m_Rigidbody->AddForce(Vec2(0, -200));
+		case BASE_STATE::RUN:
+		{
+			if (m_bFacingRight)
+				m_Rigidbody->AddVelocity(Vec2(runspeed, 0));
+			else
+				m_Rigidbody->AddVelocity(Vec2(-runspeed, 0));
+		}
+			break;
+		case BASE_STATE::DASH:
+		{
+
+			if (m_bFacingRight)
+				m_Rigidbody->AddVelocity(Vec2(dashspeed, 0));
+			else
+				m_Rigidbody->AddVelocity(Vec2(-dashspeed, 0));
+		}
+			break;
+		case BASE_STATE::JUMP:
+			break;
+		case BASE_STATE::DEATH:
+			break;
+		default:
+			break;
 	}
 
-	if (downPressed)
-	{
-		//m_Rigidbody->AddForce(Vec2(0, forceMagnitude));
-		m_Rigidbody->AddForce(Vec2(0, 200));
-	}
+	//if (KEY_JUST_PRESSED(KEY::UP))
+	//{
+	//	m_Rigidbody->AddVelocity(Vec2(0, -200));
+	//}
+	//if (KEY_JUST_PRESSED(KEY::DOWN))
+	//{
+	//	m_Rigidbody->AddVelocity(Vec2(0, 200));
 
-	if (leftPressed)
-	{
-		//m_Rigidbody->AddForce(Vec2(-forceMagnitude, 0));
-		m_Rigidbody->AddForce(Vec2(-200, 0));
-	}
+	//}
+	//if (KEY_JUST_PRESSED(KEY::LEFT))
+	//{
+	//	m_Rigidbody->AddVelocity(Vec2(-200, 0));
 
-	if (rightPressed)
-	{
-		//m_Rigidbody->AddForce(Vec2(forceMagnitude, 0));
-		m_Rigidbody->AddForce(Vec2(200, 0));
-
-	}
-
-	if (KEY_JUST_PRESSED(KEY::UP))
-	{
-		m_Rigidbody->AddVelocity(Vec2(0, -200));
-	}
-	if (KEY_JUST_PRESSED(KEY::DOWN))
-	{
-		m_Rigidbody->AddVelocity(Vec2(0, 200));
-
-	}
-	if (KEY_JUST_PRESSED(KEY::LEFT))
-	{
-		m_Rigidbody->AddVelocity(Vec2(-200, 0));
-
-	}
-	if (KEY_JUST_PRESSED(KEY::RIGHT))
-	{
-		m_Rigidbody->AddVelocity(Vec2(200, 0));
-	}
+	//}
+	//if (KEY_JUST_PRESSED(KEY::RIGHT))
+	//{
+	//	m_Rigidbody->AddVelocity(Vec2(200, 0));
+	//}
 }
 
 void CPlayer::UpdateAnimation()
@@ -292,20 +290,33 @@ void CPlayer::UpdateAnimation()
 		{
 			case BASE_STATE::IDLE:
 			{
-				//if (m_bFacingRight)
-				//	m_Animator->Play();
-				//else
-				//	m_Animator->Play();
-			}
+				if (m_bFacingRight)
+					m_Animator->Play(L"cuphead_idle_R", true, true);
+				else
+					m_Animator->Play(L"cuphead_idle_L", true, true);
 				break;
-			case BASE_STATE::CROUCH:
+			}
+				
+			case BASE_STATE::DUCK:
 				break;
 			case BASE_STATE::FIXED:
 				break;
 			case BASE_STATE::RUN:
+			{
+				if (m_bFacingRight)
+					m_Animator->Play(L"cuphead_run_R", true);
+				else
+					m_Animator->Play(L"cuphead_run_L", true);
 				break;
+			}
 			case BASE_STATE::DASH:
+			{
+				if (m_bFacingRight)
+					m_Animator->Play(L"cuphead_dash_R", true);
+				else
+					m_Animator->Play(L"cuphead_dash_L", true);
 				break;
+			}
 			case BASE_STATE::JUMP:
 				break;
 			case BASE_STATE::DEATH:
@@ -322,7 +333,7 @@ void CPlayer::UpdateAnimation()
 		{
 			case BASE_STATE::IDLE:
 				break;
-			case BASE_STATE::CROUCH:
+			case BASE_STATE::DUCK:
 				break;
 			case BASE_STATE::FIXED:
 				break;
@@ -351,12 +362,29 @@ void CPlayer::tick()
 	UpdateAnimation();
 	Move();
 
+
+
 	m_PrevShootingDir = m_ShootingDir;
 	m_PrevBaseState = m_CurBaseState;
 	m_PrevActionState = m_CurActionState;
 }
 
+void CPlayer::render()
+{
+	CObj::render();
 
+	wchar_t szBuff[255]{};
+	swprintf_s(szBuff, L"ShootingDir : %dBase State : %d, Action State : %d ", (int)m_ShootingDir, (int)m_CurBaseState, (int)m_CurActionState);
+	//swprintf_s(szBuff, L"ShootingDir :  Base State : , Action State : ");
+
+	wstring strShootingDir = L"Shooting Dir : " + std::to_wstring((int)m_ShootingDir);
+	wstring strBaseState = L"Base State : " + std::to_wstring((int)m_CurBaseState);
+	wstring strActionState = L"Action State : " + std::to_wstring((int)m_CurActionState);
+
+	TextOut(SUBDC, 10, 10, strShootingDir.c_str(), strShootingDir.length());
+	TextOut(SUBDC, 10, 25, strBaseState.c_str(), strBaseState.length());
+	TextOut(SUBDC, 10, 40, strActionState.c_str(), strActionState.length());
+}
 
 
 	//=====================================================================================
@@ -521,25 +549,7 @@ void CPlayer::tick()
 	//	}
 	//}
 
-	//void CPlayer::render()
-	//{
-	//	auto vPos = GetPos();
-	//
-	//	// AlphaBlending
-	//	BLENDFUNCTION bf = {};
-	//
-	//	bf.BlendOp = AC_SRC_OVER;
-	//	bf.BlendFlags = 0;
-	//	bf.SourceConstantAlpha = 255;
-	//	bf.AlphaFormat = AC_SRC_ALPHA;
-	//
-	//	auto m_Img = m_Texture;
-	//
-	//	AlphaBlend(SUBDC, (int)(vPos.x - m_Img->GetWidth() / 2.f)
-	//		, (int)(vPos.y - m_Img->GetHeight() / 2.f)
-	//		, m_Img->GetWidth(), m_Img->GetHeight()
-	//		, m_Img->GetDC(), 0, 0, m_Img->GetWidth(), m_Img->GetHeight(), bf);
-	//}
+
 
 
 

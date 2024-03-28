@@ -12,7 +12,7 @@
 
 CMonster::CMonster() :
 	m_iHP(3),
-	m_fDetectRange(500),
+	m_fDetectRange(100),
 	m_pCollider(nullptr),
 	m_pFSM(nullptr)
 {

@@ -86,20 +86,27 @@ void CAnimator::LoadAnimation(wstring _strRelativeFilePath)
     m_mapAnimation.insert(make_pair(pAnim->GetName(), pAnim));
 }
 
-void CAnimator::Play(const wstring& _AnimName, bool _Repeat)
+void CAnimator::Play(const wstring& _AnimName, bool _Repeat, bool _RepeatReverse)
 {
-    auto foundAnim = FindAnimation(_AnimName);
+    // bool _RepeatReverse 는 디폴트 파라미터 false
 
-    if (foundAnim == nullptr)
+    auto anim = FindAnimation(_AnimName);
+
+    if (anim == nullptr)
     {
         LOG(LOG_TYPE::DBG_ERROR, L"Play할 애니메이션을 찾을 수 없음");
         return;
     }
+    
+    // 애니메이션 왕복 재생 여부 설정
+    if (_RepeatReverse)
+        anim->m_bRepeatReverse = true;
 
-    if (foundAnim == m_CurAnimation)
+    // 기존 재생중인 애니메이션이면 그냥 리턴
+    if (anim == m_CurAnimation)
         return;
 
-    m_CurAnimation = foundAnim;
+    m_CurAnimation = anim;
 
     m_CurAnimation->Reset();
     m_bRepeat = _Repeat;

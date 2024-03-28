@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "cuphead_dash_0001.png",
+	"frame": {"x":0,"y":0,"w":254,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":133},
+	"sourceSize": {"w":254,"h":133}
+},
+{
+	"filename": "cuphead_dash_0002.png",
+	"frame": {"x":254,"y":0,"w":273,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":273,"h":133},
+	"sourceSize": {"w":273,"h":133}
+},
+{
+	"filename": "cuphead_dash_0003.png",
+	"frame": {"x":527,"y":0,"w":290,"h":135},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":290,"h":135},
+	"sourceSize": {"w":290,"h":135}
+},
+{
+	"filename": "cuphead_dash_0004.png",
+	"frame": {"x":0,"y":135,"w":312,"h":143},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":312,"h":143},
+	"sourceSize": {"w":312,"h":143}
+},
+{
+	"filename": "cuphead_dash_0005.png",
+	"frame": {"x":312,"y":135,"w":326,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":326,"h":155},
+	"sourceSize": {"w":326,"h":155}
+},
+{
+	"filename": "cuphead_dash_0006.png",
+	"frame": {"x":638,"y":135,"w":227,"h":163},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":163},
+	"sourceSize": {"w":227,"h":163}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_dash_R.png",
+	"format": "RGBA8888",
+	"size": {"w":865,"h":298},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3a54f71071429e9dadc462ee3ee074f7:46eb68de3a8c25598c25b1b6174e79e5:6655f3ec1c9ff39935ab0573ba2fb49f$"
+}
+}

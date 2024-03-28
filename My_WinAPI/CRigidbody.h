@@ -21,13 +21,17 @@ public:
 
     float m_JumpSpeed;
 
+    float m_maxDashSpeed;
+
 public:
     void AddForce(Vec2 _force) { m_Force += _force; }
     void SetMass(float _m) { m_fMass = _m; }
 
     void SetFriction(float _friction) { m_Friction = _friction; }
     void SetMinWalkSpeed(float _min) { m_MinWalkSpeed = _min; }
-    void SetMaxWalkSpeed(float _max) { m_MaxGravitySpeed = _max; }
+    void SetMaxWalkSpeed(float _max) { m_MaxWalkSpeed = _max; }
+    void SetMaxGravitySpeed(float _max) { m_MaxGravitySpeed = _max; }
+
     void SetVelocity(Vec2 _vel) { m_Velocity = _vel; }
     void AddVelocity(Vec2 _vel) { m_Velocity += _vel; }
 

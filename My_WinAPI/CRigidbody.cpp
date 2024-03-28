@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CRigidbody.h"
 
+#include "CPlayer.h"
+
 CRigidbody::CRigidbody() :
 	m_fMass(1),
 	m_GravityAccel(100),
@@ -10,7 +12,8 @@ CRigidbody::CRigidbody() :
 	m_MaxGravitySpeed(500),
 	m_UseGravity(false),
 	m_OnGround(true),
-	m_JumpSpeed(0)
+	m_JumpSpeed(0),
+	m_maxDashSpeed(400)
 {
 }
 
@@ -30,8 +33,20 @@ void CRigidbody::finaltick()
 	m_Velocity += AccelWithoutGravity * DT;
 
 	// 최대 속도 제한
-	if (m_MaxWalkSpeed !=0 && m_MaxWalkSpeed < m_Velocity.Length())
-		m_Velocity = m_Velocity.Normalize() * m_MaxWalkSpeed;
+	auto player = dynamic_cast<CPlayer*>(m_pOwner);
+	// 플레이어가 아니거나 대쉬모드가 아닌 경우
+	if (!(player != nullptr && player->GetBaseState() == BASE_STATE::DASH))
+	{
+		if (m_MaxWalkSpeed != 0 && m_MaxWalkSpeed < m_Velocity.Length())
+			m_Velocity = m_Velocity.Normalize() * m_MaxWalkSpeed;
+	}
+	// 플레이어면서 대쉬모드일 때
+	else
+	{
+		if (m_maxDashSpeed < m_Velocity.Length())
+			m_Velocity = m_Velocity.Normalize() * m_maxDashSpeed;
+	}
+
 
 	// 최소 속도 보정
 	// 반드시 가속도 방향으로 속도를 맞춰주어야 한다.
@@ -61,7 +76,7 @@ void CRigidbody::finaltick()
 	}
 
 	// 위치 업데이트
-	
+
 	//디버깅
 	auto prev_pos = m_pOwner->GetPos();
 

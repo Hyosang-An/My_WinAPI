@@ -26,11 +26,15 @@ private:
 	int							m_CurFrameIdx;			// 현재 프레임 인덱스
 	bool						m_bFinished;			// 애니메이션 재생이 종료됨을 알림
 
+	bool						m_bRepeatReverse;		// 왕복 재생인지 아닌지
+	bool						m_bPlayingForward;		// 애니메이션 재생이 정방향인지 역방향인지
+
 public:
 	bool IsFinished() { return m_bFinished; }
 	tAnimationFrame& GetFrame(int _idx) { return m_vecAnimFrame[_idx]; }
 
 	void Reset();
+	void ResetReverse();
 	void SetAtlasTexture(CTexture* _atlas) { m_Atlas = _atlas; }
 
 public:

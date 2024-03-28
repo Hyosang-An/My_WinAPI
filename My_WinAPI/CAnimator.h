@@ -25,7 +25,7 @@ public:
     CAnimation* FindAnimation(const wstring& _AnimName);
     void LoadAnimation(wstring _strRelativeFilePath);
 
-    void Play(const wstring& _AnimName, bool _Repeat);
+    void Play(const wstring& _AnimName, bool _Repeat, bool _RepeatReverse = false);
 
     CLONE(CAnimator)
 
