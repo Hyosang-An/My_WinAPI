@@ -58,7 +58,7 @@ private:
 
 	float m_DashDuration = 0.5;
 
-	SHOOTING_DIR    m_ShootingDir;
+	SHOOTING_DIR    m_CurShootingDir;
 	BASE_STATE		m_CurBaseState;
 	ACTION_STATE	m_CurActionState;
 
@@ -75,8 +75,10 @@ private:
 
 private:
 	void UpdateState();
-	void Move();
+	void MoveAndAction();
 	void UpdateAnimation();
+
+	void Shoot(SHOOTING_DIR _dir);
 
 public:
 	BASE_STATE	GetBaseState() { return m_CurBaseState; }

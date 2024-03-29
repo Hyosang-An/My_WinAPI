@@ -15,7 +15,7 @@ CPlayer::CPlayer() :
 	m_fSpeed(500.f),
 	m_Texture{},
 	m_bFacingRight(true),
-	m_ShootingDir(SHOOTING_DIR::RIGHT),
+	m_CurShootingDir(SHOOTING_DIR::RIGHT),
 	m_CurBaseState(BASE_STATE::IDLE),
 	m_CurActionState(ACTION_STATE::NONE),
 	m_PrevShootingDir(SHOOTING_DIR::RIGHT),
@@ -200,6 +200,26 @@ CPlayer::~CPlayer()
 {
 }
 
+
+
+
+
+
+void CPlayer::begin()
+{
+}
+
+void CPlayer::tick()
+{
+	UpdateState();
+	MoveAndAction();
+	UpdateAnimation();
+
+	m_PrevShootingDir = m_CurShootingDir;
+	m_PrevBaseState = m_CurBaseState;
+	m_PrevActionState = m_CurActionState;
+}
+
 void CPlayer::UpdateState()
 {
 
@@ -207,7 +227,7 @@ void CPlayer::UpdateState()
 	if (m_CurBaseState == BASE_STATE::DASH)
 	{
 		static float DashTime = 0;
-		
+
 		if (m_DashDuration < DashTime)
 		{
 			DashTime = 0;
@@ -283,36 +303,36 @@ void CPlayer::UpdateState()
 		// 오른쪽을 보고 있는 경우
 		if (m_bFacingRight)
 		{
-			if (!leftPressed && !upPressed && !downPressed)
-				m_ShootingDir = SHOOTING_DIR::RIGHT;
+			if ((!leftPressed && !upPressed && !downPressed) || m_CurBaseState == BASE_STATE::DUCK)
+				m_CurShootingDir = SHOOTING_DIR::RIGHT;
 			else if (upPressed && !rightPressed)
-				m_ShootingDir = SHOOTING_DIR::UP;
+				m_CurShootingDir = SHOOTING_DIR::UP;
 			else if (downPressed && !rightPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
-				m_ShootingDir = SHOOTING_DIR::DOWN;
+				m_CurShootingDir = SHOOTING_DIR::DOWN;
 			else if (upPressed && rightPressed)
-				m_ShootingDir = SHOOTING_DIR::UP_RIGHT;
+				m_CurShootingDir = SHOOTING_DIR::UP_RIGHT;
 			else if (downPressed && rightPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
-				m_ShootingDir = SHOOTING_DIR::DOWN_RIGHT;
+				m_CurShootingDir = SHOOTING_DIR::DOWN_RIGHT;
 		}
 
 		// 왼쪽을 보고 있는 경우
 		if (!m_bFacingRight)
 		{
-			if (!rightPressed && !upPressed && !downPressed)
-				m_ShootingDir = SHOOTING_DIR::LEFT;
+			if ((!rightPressed && !upPressed && !downPressed) || m_CurBaseState == BASE_STATE::DUCK)
+				m_CurShootingDir = SHOOTING_DIR::LEFT;
 			else if (upPressed && !leftPressed)
-				m_ShootingDir = SHOOTING_DIR::UP;
+				m_CurShootingDir = SHOOTING_DIR::UP;
 			else if (downPressed && !leftPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
-				m_ShootingDir = SHOOTING_DIR::DOWN;
+				m_CurShootingDir = SHOOTING_DIR::DOWN;
 			else if (upPressed && leftPressed)
-				m_ShootingDir = SHOOTING_DIR::UP_LEFT;
+				m_CurShootingDir = SHOOTING_DIR::UP_LEFT;
 			else if (downPressed && leftPressed && (m_CurBaseState == BASE_STATE::FIXED || !m_Rigidbody->IsOnGround()))
-				m_ShootingDir = SHOOTING_DIR::DOWN_LEFT;
+				m_CurShootingDir = SHOOTING_DIR::DOWN_LEFT;
 		}
 	}
 }
 
-void CPlayer::Move()
+void CPlayer::MoveAndAction()
 {
 	float runspeed = 50;
 	float dashspeed = 300;
@@ -326,19 +346,44 @@ void CPlayer::Move()
 			else
 				m_Rigidbody->AddVelocity(Vec2(-runspeed, 0));
 		}
-			break;
+		break;
 		case BASE_STATE::DASH:
 		{
-
 			if (m_bFacingRight)
 				m_Rigidbody->AddVelocity(Vec2(dashspeed, 0));
 			else
 				m_Rigidbody->AddVelocity(Vec2(-dashspeed, 0));
 		}
-			break;
+		break;
 		case BASE_STATE::JUMP:
 			break;
 		case BASE_STATE::DEATH:
+			break;
+		default:
+			break;
+	}
+
+	switch (m_CurActionState)
+	{
+		case ACTION_STATE::NONE:
+			break;
+		case ACTION_STATE::SHOOTING:
+		{
+			float shootingFrequency = 5;
+			static float timeFromLastShoot = 0;
+
+			if ((1.f / shootingFrequency) <= timeFromLastShoot)
+			{
+				Shoot(m_CurShootingDir);
+				timeFromLastShoot = 0;
+			}
+
+			timeFromLastShoot += DT;
+			break;
+		}
+		case ACTION_STATE::HITTED:
+			break;
+		case ACTION_STATE::PARRYING:
 			break;
 		default:
 			break;
@@ -347,10 +392,6 @@ void CPlayer::Move()
 
 void CPlayer::UpdateAnimation()
 {
-	// 상태 변경이 일어나지 않으면 기존 애니메이션 계속 출력
-	//if (m_PrevShootingDir == m_ShootingDir && m_PrevBaseState == m_CurBaseState && m_PrevActionState == m_CurActionState)
-	//	return;
-
 	// 총쏘지 않는 상태
 	if (!IsInActionState(ACTION_STATE::SHOOTING))
 	{
@@ -364,7 +405,7 @@ void CPlayer::UpdateAnimation()
 					m_Animator->Play(L"cuphead_idle_L", true, true);
 				break;
 			}
-				
+
 			case BASE_STATE::DUCK:
 			{
 				float duckingDuration = 0.5;
@@ -373,12 +414,15 @@ void CPlayer::UpdateAnimation()
 				if (m_PrevBaseState != BASE_STATE::DUCK)
 					duckingTime = 0;
 
+				if (m_PrevShootingDir != m_CurShootingDir || m_PrevActionState != m_CurActionState)
+					duckingTime = duckingDuration;
+
 				if (duckingTime < duckingDuration)
 				{
 					if (m_bFacingRight)
-						m_Animator->Play(L"cuphead_duck_R", true);
+						m_Animator->Play(L"cuphead_duck_R", false);
 					else
-						m_Animator->Play(L"cuphead_duck_L", true);
+						m_Animator->Play(L"cuphead_duck_L", false);
 				}
 				else
 				{
@@ -393,7 +437,7 @@ void CPlayer::UpdateAnimation()
 			}
 			case BASE_STATE::FIXED:
 			{
-				switch (m_ShootingDir)
+				switch (m_CurShootingDir)
 				{
 					case SHOOTING_DIR::LEFT:
 						m_Animator->Play(L"cuphead_aim_straight_L", true, true);
@@ -464,13 +508,113 @@ void CPlayer::UpdateAnimation()
 		switch (m_CurBaseState)
 		{
 			case BASE_STATE::IDLE:
+				if (m_bFacingRight)
+					m_Animator->Play(L"cuphead_shoot_straight_R", true);
+				else
+					m_Animator->Play(L"cuphead_shoot_straight_L", true);
 				break;
 			case BASE_STATE::DUCK:
+			{
+				float duckingDuration = 0.2;
+				static float duckingTime = 0;
+
+				if (m_PrevBaseState != BASE_STATE::DUCK)
+					duckingTime = 0;
+
+				if (m_PrevShootingDir != m_CurShootingDir || m_PrevActionState != m_CurActionState)
+					duckingTime = duckingDuration;
+
+				if (duckingTime < duckingDuration)
+				{
+					if (m_bFacingRight)
+						m_Animator->Play(L"cuphead_duck_R", false);
+					else
+						m_Animator->Play(L"cuphead_duck_L", false);
+				}
+				else
+				{
+					if (m_bFacingRight)
+						m_Animator->Play(L"cuphead_duck_shoot_R", true);
+					else
+						m_Animator->Play(L"cuphead_duck_shoot_L", true);
+				}
+				duckingTime += DT;
+
 				break;
+			}
+
 			case BASE_STATE::FIXED:
+			{
+				switch (m_CurShootingDir)
+				{
+					case SHOOTING_DIR::LEFT:
+						m_Animator->Play(L"cuphead_shoot_straight_L", true);
+						break;
+					case SHOOTING_DIR::RIGHT:
+						m_Animator->Play(L"cuphead_shoot_straight_R", true);
+						break;
+					case SHOOTING_DIR::UP:
+						if (m_bFacingRight)
+							m_Animator->Play(L"cuphead_shoot_up_R", true);
+						else
+							m_Animator->Play(L"cuphead_shoot_up_L", true);
+						break;
+					case SHOOTING_DIR::DOWN:
+						if (m_bFacingRight)
+							m_Animator->Play(L"cuphead_shoot_down_R", true);
+						else
+							m_Animator->Play(L"cuphead_shoot_down_L", true);
+						break;
+					case SHOOTING_DIR::UP_LEFT:
+						m_Animator->Play(L"cuphead_shoot_diagonal_up_L", true);
+						break;
+					case SHOOTING_DIR::UP_RIGHT:
+						m_Animator->Play(L"cuphead_shoot_diagonal_up_R", true);
+						break;
+					case SHOOTING_DIR::DOWN_LEFT:
+						m_Animator->Play(L"cuphead_shoot_diagonal_down_L", true);
+						break;
+					case SHOOTING_DIR::DOWN_RIGHT:
+						m_Animator->Play(L"cuphead_shoot_diagonal_down_R", true);
+						break;
+					case SHOOTING_DIR::END:
+						break;
+					default:
+						break;
+				}
 				break;
+			}
 			case BASE_STATE::RUN:
+			{
+				switch (m_CurShootingDir)
+				{
+					case SHOOTING_DIR::LEFT:
+						m_Animator->Play(L"cuphead_run_shoot_L", true);
+						break;
+					case SHOOTING_DIR::RIGHT:
+						m_Animator->Play(L"cuphead_run_shoot_R", true);
+						break;
+					case SHOOTING_DIR::UP:
+						break;
+					case SHOOTING_DIR::DOWN:
+						break;
+					case SHOOTING_DIR::UP_LEFT:
+						m_Animator->Play(L"cuphead_run_shoot_diagonal_up_L", true);
+						break;
+					case SHOOTING_DIR::UP_RIGHT:
+						m_Animator->Play(L"cuphead_run_shoot_diagonal_up_R", true);						
+						break;
+					case SHOOTING_DIR::DOWN_LEFT:
+						break;
+					case SHOOTING_DIR::DOWN_RIGHT:
+						break;
+					case SHOOTING_DIR::END:
+						break;
+					default:
+						break;
+				}
 				break;
+			}
 			case BASE_STATE::DASH:
 				break;
 			case BASE_STATE::JUMP:
@@ -483,22 +627,56 @@ void CPlayer::UpdateAnimation()
 	}
 }
 
-
-void CPlayer::begin()
+void CPlayer::Shoot(SHOOTING_DIR _dir)
 {
-}
+	CMissile* pMissile = new CMissile;
 
-void CPlayer::tick()
-{
-	UpdateState();
-	UpdateAnimation();
-	Move();
+	pMissile->SetScale(20, 20);
+
+	switch (_dir)
+	{
+		case SHOOTING_DIR::LEFT:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(-GetScale().x * 0.5f, 0)));
+			pMissile->SetAngle(PI);
+			break;
+		case SHOOTING_DIR::RIGHT:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(GetScale().x * 0.5f, 0)));
+			pMissile->SetAngle(0);
+			break;
+		case SHOOTING_DIR::UP:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(0, -GetScale().y * 0.5f)));
+			pMissile->SetAngle(-0.5f * PI);
+			break;
+		case SHOOTING_DIR::DOWN:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(0, GetScale().y * 0.5f)));
+			pMissile->SetAngle(0.5f * PI);
+			break;
+		case SHOOTING_DIR::UP_LEFT:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(-GetScale().x * 0.5f, -GetScale().y * 0.5f)));
+			pMissile->SetAngle(-0.75f * PI);
+			break;
+		case SHOOTING_DIR::UP_RIGHT:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(GetScale().x * 0.5f, -GetScale().y * 0.5f)));
+			pMissile->SetAngle(-0.25f * PI);
+			break;
+		case SHOOTING_DIR::DOWN_LEFT:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(-GetScale().x * 0.5f, GetScale().y * 0.5f)));
+			pMissile->SetAngle(0.75f * PI);
+			break;
+		case SHOOTING_DIR::DOWN_RIGHT:
+			pMissile->SetPos(Vec2(GetPos() + Vec2(GetScale().x * 0.5f, GetScale().y * 0.5f)));
+			pMissile->SetAngle(0.25f * PI);
+			break;
+		case SHOOTING_DIR::END:
+			break;
+		default:
+			break;
+	}
 
 
+	pMissile->SetName(L"Player Missile");
 
-	m_PrevShootingDir = m_ShootingDir;
-	m_PrevBaseState = m_CurBaseState;
-	m_PrevActionState = m_CurActionState;
+	SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
 }
 
 void CPlayer::render()
@@ -506,10 +684,10 @@ void CPlayer::render()
 	CObj::render();
 
 	wchar_t szBuff[255]{};
-	swprintf_s(szBuff, L"ShootingDir : %dBase State : %d, Action State : %d ", (int)m_ShootingDir, (int)m_CurBaseState, (int)m_CurActionState);
+	swprintf_s(szBuff, L"ShootingDir : %dBase State : %d, Action State : %d ", (int)m_CurShootingDir, (int)m_CurBaseState, (int)m_CurActionState);
 	//swprintf_s(szBuff, L"ShootingDir :  Base State : , Action State : ");
 
-	wstring strShootingDir = L"Shooting Dir : " + std::to_wstring((int)m_ShootingDir);
+	wstring strShootingDir = L"Shooting Dir : " + std::to_wstring((int)m_CurShootingDir);
 	wstring strBaseState = L"Base State : " + std::to_wstring((int)m_CurBaseState);
 	wstring strActionState = L"Action State : " + std::to_wstring((int)m_CurActionState);
 
@@ -680,7 +858,6 @@ void CPlayer::render()
 	//		LOG(LOG_TYPE::DBG_WARNING, L"@@ 미사일 발사 @@");
 	//	}
 	//}
-
 
 
 
