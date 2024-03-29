@@ -9,7 +9,7 @@
 #define CLONE(type)	virtual type* Clone() override { return new type(*this); };
 #define CLONE_DISABLE(type) virtual type* Clone() override { return nullptr; };
 
-#define PI 3.1415926535f
+#define PI 3.14159265359f
 
 #define LOG(_LOG_TYPE, _Msg)	{\
 									string FuncName = __FUNCTION__;\

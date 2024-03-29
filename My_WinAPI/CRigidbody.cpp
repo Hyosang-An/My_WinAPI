@@ -75,14 +75,21 @@ void CRigidbody::finaltick()
 		m_Velocity *= speed;
 	}
 
+	// 중력 적용
+	if (m_UseGravity && !m_OnGround)
+	{
+		m_Velocity += Vec2(0, m_GravityAccel) * DT;
+		
+		if (m_MaxGravitySpeed != 0 && m_Velocity.y > m_MaxGravitySpeed)
+			m_Velocity.y = m_MaxGravitySpeed;
+	}
+
 	// 위치 업데이트
+	auto objPos = m_pOwner->GetPos();
+	m_pOwner->SetPos(objPos + m_Velocity * DT);
 
-	//디버깅
-	auto prev_pos = m_pOwner->GetPos();
-
-	m_pOwner->SetPos(m_pOwner->GetPos() + m_Velocity * DT);
-
-	auto new_pos = m_pOwner->GetPos();
+	// DebugRender
+	DrawDebugLine(PEN_TYPE::BLUE, objPos, objPos + m_Velocity, 0.f);
 
 	// 힘 초기화
 	m_Force = Vec2(0, 0);

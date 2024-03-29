@@ -63,6 +63,13 @@ void CDbgRenderer::render()
 
 				break;
 			}
+
+			case DBG_SHAPE::LINE:
+			{
+				MoveToEx(SUBDC, (int)(iter_RenderList->Position.x), (int)(iter_RenderList->Position.y), nullptr);
+				LineTo(SUBDC, (int)iter_RenderList->Scale.x, (int)iter_RenderList->Scale.y);
+				break;
+			}
 			default:
 				break;
 		}

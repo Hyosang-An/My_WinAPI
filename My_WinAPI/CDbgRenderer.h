@@ -5,7 +5,8 @@
 enum class DBG_SHAPE
 {
 	CIRCLE,
-	RECT
+	RECT,
+	LINE
 };
 
 struct tDbgRenderInfo
@@ -82,3 +83,17 @@ inline void DrawDebugCircle(PEN_TYPE _Type, Vec2 _Pos, Vec2 _Scale, float _Time)
 #endif
 }
 
+inline void DrawDebugLine(PEN_TYPE _Type, Vec2 _LineStartPos, Vec2 _LineEndPos, float _Time)
+{
+#ifdef _DEBUG
+	tDbgRenderInfo info{};
+	info.Shape = DBG_SHAPE::LINE;
+	info.Color = _Type;
+	info.Position = _LineStartPos;
+	info.Scale = _LineEndPos;
+	info.fDuration = _Time;
+	info.fElapsedTime = 0.f;
+
+	CDbgRenderer::GetInstance().AddDbgRenderInfo(info);
+#endif
+}
