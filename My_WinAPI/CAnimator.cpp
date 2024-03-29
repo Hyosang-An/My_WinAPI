@@ -77,8 +77,9 @@ void CAnimator::LoadAnimation(wstring _strRelativeFilePath)
 
     if (FindAnimation(pAnim->GetName()) != nullptr)
     {
+        wstring str = L"중복된 애니메이션 이름 : " + pAnim->GetName();
+        LOG(LOG_TYPE::DBG_ERROR, str.c_str());
         delete pAnim;
-        LOG(LOG_TYPE::DBG_ERROR, L"중복된 애니메이션 이름");
         return;
     }
 
@@ -187,12 +188,19 @@ void CAnimator::CreateAnimationByJSON(std::wstring strRelativeJsonFilePath, int 
     }
 
     // 애니메이션 이름 설정 및 Animator에 애니메이션 추가
-    pAnim->SetName(RelativeJsonFilePath.stem().wstring()); // 폴더 이름을 애니메이션 이름으로 사용
+    pAnim->SetName(RelativeJsonFilePath.stem().wstring()); // json 및 png 파일 이름을 애니메이션 이름으로 사용
     pAnim->m_Animator = this;
     m_mapAnimation.insert(std::make_pair(pAnim->GetName(), pAnim));
 
 
 
-    // 해당 폴더에 .anim 파일 저장
-    pAnim->Save(RelativeJsonFilePath.parent_path().wstring());
+    // 해당 폴더에 .anim 파일이 없다면 저장 (덮어쓰기 방지)
+    wstring strRelativeFolderPath = RelativeJsonFilePath.parent_path().wstring();
+    wstring strRelativeAnimPath = strRelativeFolderPath + L"\\" + pAnim->GetName() + L".anim";
+    fs::path AnimPath = CPathMgr::GetInstance().GetContentsPath();
+    AnimPath /= strRelativeAnimPath;
+
+    std::wifstream inFile(AnimPath);
+    if (!inFile.is_open())
+        pAnim->Save(RelativeJsonFilePath.parent_path().wstring());
 }

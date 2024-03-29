@@ -173,16 +173,16 @@ void CAnimation::Save(const std::wstring& _strRelativeFolderPath)
 	outFile << L"[ANIMATION_NAME]\n" << GetName() << L"\n\n";
 
 	// 아틀라스 텍스처 정보 저장
-	outFile << L"[ALTAS_TEXTURE]\n";
+	outFile << L"[ATLAS_TEXTURE]\n";
 	if (nullptr == m_Atlas)
 	{
-		outFile << L"[ALTAS_KEY]\tNone\n";
-		outFile << L"[ALTAS_PATH]\tNone\n";
+		outFile << L"[ATLAS_KEY]\tNone\n";
+		outFile << L"[ATLAS_PATH]\tNone\n";
 	}
 	else
 	{
-		outFile << L"[ALTAS_KEY]\t" << m_Atlas->GetKey() << L"\n";
-		outFile << L"[ALTAS_PATH]\t" << m_Atlas->GetRelativePath() << L"\n";
+		outFile << L"[ATLAS_KEY]\t" << m_Atlas->GetKey() << L"\n";
+		outFile << L"[ATLAS_PATH]\t" << m_Atlas->GetRelativePath() << L"\n";
 	}
 	outFile << L"\n";
 
@@ -197,8 +197,6 @@ void CAnimation::Save(const std::wstring& _strRelativeFolderPath)
 		outFile << L"[DURATION]\t" << m_vecAnimFrame[i].fDuration << L"\n\n";
 	}
 }
-
-
 
 int CAnimation::Load(const std::wstring& _strRelativeFilePath)
 {
@@ -223,25 +221,36 @@ int CAnimation::Load(const std::wstring& _strRelativeFilePath)
 			std::getline(inFile, line); // 실제 이름을 읽어옴
 			SetName(line);
 		}
-		else if (tag == L"[ALTAS_TEXTURE]")
+		else if (tag == L"[ATLAS_TEXTURE]")
 		{
 			std::wstring atlasKey, atlasPath;
 			while (std::getline(inFile, line) && !line.empty())
 			{
-				std::wistringstream iss(line);
-				std::wstring key;
-				iss >> key;
-				if (key == L"[ALTAS_KEY]")
-				{
-					iss >> atlasKey;
+				// ']'를 찾습니다.
+				size_t endOfKey = line.find(L']');
+				if (endOfKey == std::wstring::npos) continue; // ']'를 찾지 못한 경우, 다음 줄로 넘어갑니다.
+
+				// 키를 추출합니다. ('['부터 ']'까지)
+				std::wstring key = line.substr(0, endOfKey + 1);
+
+				// ']' 다음부터의 문자열에서 첫 번째 공백이 아닌 문자를 찾습니다.
+				size_t startOfValue = line.find_first_not_of(L" \t\n", endOfKey + 1);
+				std::wstring value;
+				if (startOfValue != std::wstring::npos) {
+					// 값을 추출합니다.
+					value = line.substr(startOfValue);
 				}
-				else if (key == L"[ALTAS_PATH]")
-				{
-					iss >> atlasPath;
+
+				// 키와 값에 따라 적절히 처리합니다.
+				if (key == L"[ATLAS_KEY]") {
+					atlasKey = value;
+				}
+				else if (key == L"[ATLAS_PATH]") {
+					atlasPath = value;
 				}
 			}
-			if (!atlasKey.empty() && !atlasPath.empty())
-			{
+
+			if (!atlasKey.empty() && !atlasPath.empty()) {
 				m_Atlas = CAssetMgr::GetInstance().LoadTexture(atlasKey, atlasPath);
 			}
 		}
@@ -275,6 +284,7 @@ int CAnimation::Load(const std::wstring& _strRelativeFilePath)
 				std::wistringstream issD(line);
 				issD >> key >> frm.fDuration;
 
+				// 빈 줄 처리
 				std::getline(inFile, line);
 
 				m_vecAnimFrame[i] = frm;
@@ -284,5 +294,4 @@ int CAnimation::Load(const std::wstring& _strRelativeFilePath)
 
 	return S_OK;
 }
-
 
