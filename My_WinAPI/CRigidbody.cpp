@@ -10,11 +10,12 @@ CRigidbody::CRigidbody() :
 	m_MinWalkSpeed(0),
 	m_MaxWalkSpeed(0),
 	m_MaxGravitySpeed(500),
-	m_UseGravity(false),
-	m_OnGround(true),
+	m_UseGravity(true),
+	m_OnGround(false),
 	m_JumpSpeed(0),
 	m_maxDashSpeed(400)
 {
+
 }
 
 CRigidbody::~CRigidbody()
@@ -22,6 +23,30 @@ CRigidbody::~CRigidbody()
 }
 
 
+
+void CRigidbody::SetGround(bool _b)
+{
+	// 이전 상태와 같으면 그냥 리턴
+	if (m_OnGround == _b)
+		return;
+
+	// 이전 상태와 다른 경우
+
+	m_OnGround = _b;
+
+	if (m_OnGround)
+	{
+		m_Velocity.y = 0;
+
+		if (m_GroundCallbackFunc)
+			m_GroundCallbackFunc();
+	}
+	else
+	{
+		if (m_AirCallbackFunc)
+			m_AirCallbackFunc();
+	}
+}
 
 void CRigidbody::finaltick()
 {
@@ -75,7 +100,7 @@ void CRigidbody::finaltick()
 		m_Velocity *= speed;
 	}
 
-	// 중력 적용
+	// 중력 적용 ( 중력 사용상태이면서 OnGround일 때 )
 	if (m_UseGravity && !m_OnGround)
 	{
 		m_Velocity += Vec2(0, m_GravityAccel) * DT;

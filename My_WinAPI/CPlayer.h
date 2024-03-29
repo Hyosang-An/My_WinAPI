@@ -70,8 +70,8 @@ private:
 
 	CTexture* m_Texture;
 
-	CCollider* m_HeadCol;
-	CCollider* m_BodyCol;
+	//CCollider* m_HeadCol;
+	CCollider* m_PlayerCollider;
 
 private:
 	void UpdateState();
@@ -79,6 +79,10 @@ private:
 	void UpdateAnimation();
 
 	void Shoot(SHOOTING_DIR _dir);
+
+	// Callback ÇÔ¼ö
+	void EnterGround();
+	void LeaveGround();
 
 public:
 	BASE_STATE	GetBaseState() { return m_CurBaseState; }

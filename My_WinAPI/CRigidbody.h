@@ -1,5 +1,8 @@
 #pragma once
 #include "CComponent.h"
+
+#include <functional>
+
 class CRigidbody :
     public CComponent
 {
@@ -23,22 +26,28 @@ public:
 
     float m_maxDashSpeed;
 
+    // CallBack (기본적으로 nullptr 초기화)
+    std::function<void()>   m_GroundCallbackFunc;
+    std::function<void()>   m_AirCallbackFunc;
+
 public:
     void AddForce(Vec2 _force) { m_Force += _force; }
-    void SetMass(float _m) { m_fMass = _m; }
+    void AddVelocity(Vec2 _vel) { m_Velocity += _vel; }
 
+    void SetMass(float _m) { m_fMass = _m; }
     void SetFriction(float _friction) { m_Friction = _friction; }
     void SetMinWalkSpeed(float _min) { m_MinWalkSpeed = _min; }
     void SetMaxWalkSpeed(float _max) { m_MaxWalkSpeed = _max; }
     void SetMaxGravitySpeed(float _max) { m_MaxGravitySpeed = _max; }
-
     void SetVelocity(Vec2 _vel) { m_Velocity = _vel; }
-    void AddVelocity(Vec2 _vel) { m_Velocity += _vel; }
-
-    bool IsOnGround() { return m_OnGround; }
-
+    void SetGround(bool _b);
 
     float GetMass() { return m_fMass; }
+    bool IsOnGround() { return m_OnGround; }
+
+    // CallBack 함수 설정
+    void SetGroundCallbackFunc(std::function<void()> func) { m_GroundCallbackFunc = func; }
+    void SetAirCallbackFunc(std::function<void()> func) { m_AirCallbackFunc = func; }
 
 public:
     virtual void finaltick() override;

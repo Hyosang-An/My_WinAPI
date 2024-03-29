@@ -24,20 +24,19 @@ CPlayer::CPlayer() :
 {
 	m_eType = LAYER_TYPE::PLAYER;
 
-	m_HeadCol = AddComponent(new CCollider);
-	m_HeadCol->SetName(L"Head Collider");
-	m_HeadCol->SetOffsetPos(Vec2(0, -80));
-	m_HeadCol->SetScale(Vec2(30, 30));
-
-	m_BodyCol = AddComponent(new CCollider);
-	m_BodyCol->SetName(L"Body Collider");
-	m_BodyCol->SetOffsetPos(Vec2(0.f, 0.f));
-	m_BodyCol->SetScale(Vec2(60.f, 60.f));
+	m_PlayerCollider = AddComponent(new CCollider);
+	m_PlayerCollider->SetName(L"Player Collider");
+	m_PlayerCollider->SetOffsetPos(Vec2(0.f, 20.f));
+	m_PlayerCollider->SetScale(Vec2(60.f, 100.f));
 
 	m_Rigidbody = AddComponent(new CRigidbody);
 	m_Rigidbody->SetMinWalkSpeed(200);
 	m_Rigidbody->SetMaxWalkSpeed(200);
 	m_Rigidbody->SetFriction(2000);
+	
+	// 콜백함수 설정
+	m_Rigidbody->SetGroundCallbackFunc([this]() {this->EnterGround(); });
+	m_Rigidbody->SetAirCallbackFunc([this]() {this->LeaveGround(); });
 
 	m_Animator = AddComponent(new CAnimator);
 
@@ -370,15 +369,15 @@ void CPlayer::MoveAndAction()
 		case ACTION_STATE::SHOOTING:
 		{
 			float shootingFrequency = 5;
-			static float timeFromLastShoot = 0;
+			static float timeSinceLastShot = 0;
 
-			if ((1.f / shootingFrequency) <= timeFromLastShoot)
+			if ((1.f / shootingFrequency) <= timeSinceLastShot)
 			{
 				Shoot(m_CurShootingDir);
-				timeFromLastShoot = 0;
+				timeSinceLastShot = 0;
 			}
 
-			timeFromLastShoot += DT;
+			timeSinceLastShot += DT;
 			break;
 		}
 		case ACTION_STATE::HITTED:
@@ -677,6 +676,16 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 	pMissile->SetName(L"Player Missile");
 
 	SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
+}
+
+void CPlayer::EnterGround()
+{
+	LOG(LOG_TYPE::DBG_WARNING, L"Grounded!!");
+}
+
+void CPlayer::LeaveGround()
+{
+	LOG(LOG_TYPE::DBG_WARNING, L"AirBoned!!");
 }
 
 void CPlayer::render()
