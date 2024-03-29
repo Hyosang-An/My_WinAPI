@@ -116,6 +116,9 @@
     <Filter Include="03. Game\05. Object\Force">
       <UniqueIdentifier>{c225d237-c84e-4b98-9f21-fbae715dc2d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Platform">
+      <UniqueIdentifier>{c51d1b3a-42f8-4f70-b64c-6b0707cb464f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -250,6 +253,9 @@
     <ClInclude Include="CForce.h">
       <Filter>03. Game\05. Object\Force</Filter>
     </ClInclude>
+    <ClInclude Include="CPlatform.h">
+      <Filter>03. Game\05. Object\Platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -362,6 +368,9 @@
     </ClCompile>
     <ClCompile Include="CForce.cpp">
       <Filter>03. Game\05. Object\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlatform.cpp">
+      <Filter>03. Game\05. Object\Platform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
