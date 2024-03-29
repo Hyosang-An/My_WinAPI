@@ -1,9 +1,9 @@
 [ANIMATION_NAME]
 cuphead_shoot_straight_R
 
-[ALTAS_TEXTURE]
-[ALTAS_KEY]	cuphead_shoot_straight_R_Atlas
-[ALTAS_PATH]	animation\Cuphead\Cuphead_R\Shoot\Straight\cuphead_shoot_straight_R.png
+[ATLAS_TEXTURE]
+[ATLAS_KEY]	cuphead_shoot_straight_R_Atlas
+[ATLAS_PATH]	animation\Cuphead\Cuphead_R\Shoot\Straight\cuphead_shoot_straight_R.png
 
 [FRAME_COUNT]
 3

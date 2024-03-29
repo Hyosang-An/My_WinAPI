@@ -1,9 +1,9 @@
 [ANIMATION_NAME]
 cuphead_run_shoot_diagonal_up_R
 
-[ALTAS_TEXTURE]
-[ALTAS_KEY]	cuphead_run_shoot_diagonal_up_R_Atlas
-[ALTAS_PATH]	animation\Cuphead\Cuphead_R\Run\Shooting\Diagonal Up\cuphead_run_shoot_diagonal_up_R.png
+[ATLAS_TEXTURE]
+[ATLAS_KEY]	cuphead_run_shoot_diagonal_up_R_Atlas
+[ATLAS_PATH]	animation\Cuphead\Cuphead_R\Run\Shooting\Diagonal Up\cuphead_run_shoot_diagonal_up_R.png
 
 [FRAME_COUNT]
 16

@@ -1,9 +1,9 @@
 [ANIMATION_NAME]
 cuphead_aim_straight_R
 
-[ALTAS_TEXTURE]
-[ALTAS_KEY]	cuphead_aim_straight_R_Atlas
-[ALTAS_PATH]	animation\Cuphead\Cuphead_R\Aim\Straight\cuphead_aim_straight_R.png
+[ATLAS_TEXTURE]
+[ATLAS_KEY]	cuphead_aim_straight_R_Atlas
+[ATLAS_PATH]	animation\Cuphead\Cuphead_R\Aim\Straight\cuphead_aim_straight_R.png
 
 [FRAME_COUNT]
 5
@@ -11,30 +11,30 @@ cuphead_aim_straight_R
 [FRAME_INDEX]	0
 [POS_IN_ATLAS]	0 0
 [SLICE_SIZE]	129 152
-[OFFSET]	0 0
-[DURATION]	0.166667
+[OFFSET]	15 -1
+[DURATION]	0.1
 
 [FRAME_INDEX]	1
 [POS_IN_ATLAS]	0 152
 [SLICE_SIZE]	133 161
-[OFFSET]	0 0
-[DURATION]	0.166667
+[OFFSET]	15 -4
+[DURATION]	0.1
 
 [FRAME_INDEX]	2
 [POS_IN_ATLAS]	0 313
 [SLICE_SIZE]	134 156
-[OFFSET]	0 0
-[DURATION]	0.166667
+[OFFSET]	15 -1
+[DURATION]	0.1
 
 [FRAME_INDEX]	3
 [POS_IN_ATLAS]	0 469
 [SLICE_SIZE]	130 141
-[OFFSET]	0 0
-[DURATION]	0.166667
+[OFFSET]	18 5
+[DURATION]	0.1
 
 [FRAME_INDEX]	4
 [POS_IN_ATLAS]	0 610
 [SLICE_SIZE]	131 136
-[OFFSET]	0 0
-[DURATION]	0.166667
+[OFFSET]	18 10
+[DURATION]	0.1
 

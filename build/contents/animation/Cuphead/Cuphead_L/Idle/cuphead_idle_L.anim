@@ -1,9 +1,9 @@
 [ANIMATION_NAME]
 cuphead_idle_L
 
-[ALTAS_TEXTURE]
-[ALTAS_KEY]	cuphead_idle_L_Atlas
-[ALTAS_PATH]	animation\Cuphead\Cuphead_L\Idle\cuphead_idle_L.png
+[ATLAS_TEXTURE]
+[ATLAS_KEY]	cuphead_idle_L_Atlas
+[ATLAS_PATH]	animation\Cuphead\Cuphead_L\Idle\cuphead_idle_L.png
 
 [FRAME_COUNT]
 5
@@ -11,30 +11,30 @@ cuphead_idle_L
 [FRAME_INDEX]	0
 [POS_IN_ATLAS]	0 0
 [SLICE_SIZE]	98 155
-[OFFSET]	0 0
+[OFFSET]	0 2
 [DURATION]	0.1
 
 [FRAME_INDEX]	1
 [POS_IN_ATLAS]	0 155
 [SLICE_SIZE]	98 152
-[OFFSET]	0 0
+[OFFSET]	0 4
 [DURATION]	0.1
 
 [FRAME_INDEX]	2
 [POS_IN_ATLAS]	0 307
 [SLICE_SIZE]	98 149
-[OFFSET]	0 0
+[OFFSET]	0 6
 [DURATION]	0.1
 
 [FRAME_INDEX]	3
 [POS_IN_ATLAS]	0 456
 [SLICE_SIZE]	100 143
-[OFFSET]	0 0
+[OFFSET]	0 8
 [DURATION]	0.1
 
 [FRAME_INDEX]	4
 [POS_IN_ATLAS]	0 599
 [SLICE_SIZE]	97 138
-[OFFSET]	0 0
+[OFFSET]	0 10
 [DURATION]	0.1
 

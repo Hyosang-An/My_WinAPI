@@ -1,9 +1,9 @@
 [ANIMATION_NAME]
 cuphead_run_shoot_R
 
-[ALTAS_TEXTURE]
-[ALTAS_KEY]	cuphead_run_shoot_R_Atlas
-[ALTAS_PATH]	animation\Cuphead\Cuphead_R\Run\Shooting\Straight\cuphead_run_shoot_R.png
+[ATLAS_TEXTURE]
+[ATLAS_KEY]	cuphead_run_shoot_R_Atlas
+[ATLAS_PATH]	animation\Cuphead\Cuphead_R\Run\Shooting\Straight\cuphead_run_shoot_R.png
 
 [FRAME_COUNT]
 16

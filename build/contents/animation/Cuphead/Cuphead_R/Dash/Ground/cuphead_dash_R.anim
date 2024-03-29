@@ -1,9 +1,9 @@
 [ANIMATION_NAME]
 cuphead_dash_R
 
-[ALTAS_TEXTURE]
-[ALTAS_KEY]	cuphead_dash_R_Atlas
-[ALTAS_PATH]	animation\Cuphead\Cuphead_R\Dash\Ground\cuphead_dash_R.png
+[ATLAS_TEXTURE]
+[ATLAS_KEY]	cuphead_dash_R_Atlas
+[ATLAS_PATH]	animation\Cuphead\Cuphead_R\Dash\Ground\cuphead_dash_R.png
 
 [FRAME_COUNT]
 6
