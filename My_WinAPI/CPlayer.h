@@ -61,9 +61,10 @@ class CPlayer :
 private:
 	float m_fSpeed;
 
-	bool			m_bFacingRight;
+	bool	m_bFacingRight;			// 바라보는 방향
 
 	float m_DashDuration = 0.5;		// 대쉬 지속 시간
+	bool m_bAirboneDashed = false;	// 공중에서 대쉬 했는지
 	float m_HittedDuration = 0.5;	// Hitted 상태 지속 시간
 
 	bool m_bInvincibleState = false;	// 무적 상태

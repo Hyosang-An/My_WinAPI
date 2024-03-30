@@ -263,6 +263,10 @@ void CPlayer::UpdateState()
 		}
 		DashTime += DT;
 
+		// 총 쏘는 상태 해제
+		if (m_CurActionState == ACTION_STATE::SHOOTING)
+			m_CurActionState = ACTION_STATE::NONE;
+
 		return;
 	}
 
@@ -308,7 +312,19 @@ void CPlayer::UpdateState()
 
 		// Shift 키 누르면 대쉬
 		if (KEY_JUST_PRESSED(KEY::SHIFT))
-			m_CurBaseState = BASE_STATE::DASH;
+		{
+			if (m_Rigidbody->IsOnGround())
+				m_CurBaseState = BASE_STATE::DASH;
+
+			else if (!m_bAirboneDashed)
+			{
+				m_CurBaseState = BASE_STATE::DASH;
+				m_bAirboneDashed = true;
+			}
+		}
+
+		if (m_Rigidbody->IsOnGround())
+			m_bAirboneDashed = false;
 	}
 
 
@@ -723,6 +739,10 @@ void CPlayer::UpdateAnimation()
 				break;
 			}
 			case BASE_STATE::DASH:
+				if (m_bFacingRight)
+					m_Animator->Play(L"cuphead_dash_R", true);
+				else
+					m_Animator->Play(L"cuphead_dash_L", true);
 				break;
 			case BASE_STATE::AIRBONE:
 				break;
@@ -789,6 +809,8 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 void CPlayer::EnterGround()
 {
 	LOG(LOG_TYPE::DBG_WARNING, L"Grounded!!");
+
+	m_bAirboneDashed = false;
 }
 
 void CPlayer::LeaveGround()
