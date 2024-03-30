@@ -32,5 +32,11 @@ void CPlatform::OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherColl
 
 void CPlatform::OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
 {
+	auto otherObj = _pOtherCollider->GetOwner();
+	if (otherObj->GetLayerType() == LAYER_TYPE::PLAYER)
+	{
+		auto rigidbody = otherObj->GetComponent<CRigidbody>();
+		rigidbody->SetGround(false);
+	}
 }
 

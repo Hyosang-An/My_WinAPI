@@ -33,6 +33,7 @@ CPlayer::CPlayer() :
 	m_Rigidbody->SetMinWalkSpeed(200);
 	m_Rigidbody->SetMaxWalkSpeed(200);
 	m_Rigidbody->SetFriction(2000);
+	m_Rigidbody->SetMaxGravitySpeed(800);
 	
 	// 콜백함수 설정
 	m_Rigidbody->SetGroundCallbackFunc([this]() {this->EnterGround(); });
@@ -221,8 +222,33 @@ void CPlayer::tick()
 
 void CPlayer::UpdateState()
 {
+	static float invincibleTime = 0;
+	if (m_CurActionState == ACTION_STATE::HITTED)
+	{
+		if (m_PrevActionState != ACTION_STATE::HITTED)
+		{
+			invincibleTime = 0;
+			m_bInvincibleState = true;
+		}
 
-	// 현재 대쉬 모드인 경우
+		invincibleTime += DT;
+
+		static float HittedTime = 0;
+		if (HittedTime < m_HittedDuration)
+		{
+			HittedTime += DT;
+			return;
+		}
+
+		// hitted 상태 해제
+		m_CurActionState = ACTION_STATE::NONE;
+	}
+
+	// 무적 지속시간이 끝나면 무적모드 해제
+	if (invincibleTime > m_InvincibleDuratoin)
+		m_bInvincibleState = false;
+
+	// 현재 대쉬 모드인 경우 대쉬 유지
 	if (m_CurBaseState == BASE_STATE::DASH)
 	{
 		static float DashTime = 0;
@@ -283,18 +309,21 @@ void CPlayer::UpdateState()
 				m_CurBaseState = BASE_STATE::DASH;
 		}
 
+		else
+		{
+			m_CurBaseState = BASE_STATE::JUMP;
+		}
 	}
-
 
 	// ACTION_STATE 설정
 	// 총쏘기
 	if (KEY_PRESSED(KEY::_X))
 	{
-		AddActionState(ACTION_STATE::SHOOTING);
+		m_CurActionState = ACTION_STATE::SHOOTING;
 	}
 	else
 	{
-		RemoveActionState(ACTION_STATE::SHOOTING);
+		m_CurActionState = ACTION_STATE::NONE;
 	}
 
 	// ShootingDir 설정
@@ -355,7 +384,16 @@ void CPlayer::MoveAndAction()
 		}
 		break;
 		case BASE_STATE::JUMP:
+		{
+			if (m_PrevBaseState != BASE_STATE::JUMP)
+				m_Rigidbody->AddVelocity(Vec2(0, -300));
+
+			if (m_bFacingRight && KEY_PRESSED(KEY::RIGHT))
+				m_Rigidbody->AddVelocity(Vec2(runspeed, 0));
+			else if (KEY_PRESSED(KEY::LEFT))
+				m_Rigidbody->AddVelocity(Vec2(-runspeed, 0));
 			break;
+		}
 		case BASE_STATE::DEATH:
 			break;
 		default:
@@ -392,16 +430,28 @@ void CPlayer::MoveAndAction()
 void CPlayer::UpdateAnimation()
 {
 	// 총쏘지 않는 상태
-	if (!IsInActionState(ACTION_STATE::SHOOTING))
+	if (m_CurActionState != ACTION_STATE::SHOOTING)
 	{
 		switch (m_CurBaseState)
 		{
 			case BASE_STATE::IDLE:
 			{
 				if (m_bFacingRight)
-					m_Animator->Play(L"cuphead_idle_R", true, true);
+				{
+
+					if (m_CurShootingDir == SHOOTING_DIR::UP)
+						m_Animator->Play(L"cuphead_aim_up_R", true);
+					else
+						m_Animator->Play(L"cuphead_idle_R", true, true);
+				}
 				else
-					m_Animator->Play(L"cuphead_idle_L", true, true);
+				{
+
+					if (m_CurShootingDir == SHOOTING_DIR::UP)
+						m_Animator->Play(L"cuphead_aim_up_L", true);
+					else
+						m_Animator->Play(L"cuphead_idle_L", true, true);
+				}
 				break;
 			}
 
@@ -507,11 +557,23 @@ void CPlayer::UpdateAnimation()
 		switch (m_CurBaseState)
 		{
 			case BASE_STATE::IDLE:
+			{
 				if (m_bFacingRight)
-					m_Animator->Play(L"cuphead_shoot_straight_R", true);
+				{
+					if (m_CurShootingDir == SHOOTING_DIR::RIGHT)
+						m_Animator->Play(L"cuphead_shoot_straight_R", true);
+					else if (m_CurShootingDir == SHOOTING_DIR::UP)
+						m_Animator->Play(L"cuphead_shoot_up_R", true);
+				}
 				else
-					m_Animator->Play(L"cuphead_shoot_straight_L", true);
+				{
+					if (m_CurShootingDir == SHOOTING_DIR::LEFT)
+						m_Animator->Play(L"cuphead_shoot_straight_L", true);
+					else if (m_CurShootingDir == SHOOTING_DIR::UP)
+						m_Animator->Play(L"cuphead_shoot_up_L", true);
+				}
 				break;
+			}
 			case BASE_STATE::DUCK:
 			{
 				float duckingDuration = 0.2;

@@ -29,10 +29,10 @@ enum class BASE_STATE
 
 enum class ACTION_STATE 
 {
-	NONE = 0,
-	SHOOTING = 1 << 0, // 0001
-	HITTED = 1 << 1,   // 0010
-	PARRYING = 1 << 2  // 0100
+	NONE,
+	SHOOTING, 
+	HITTED,   
+	PARRYING  
 };
 
 enum class PLAYER_ATTACK_STATE
@@ -56,7 +56,11 @@ private:
 
 	bool			m_bFacingRight;
 
-	float m_DashDuration = 0.5;
+	float m_DashDuration = 0.5;		// 대쉬 지속 시간
+	float m_HittedDuration = 0.5;	// Hitted 상태 지속 시간
+
+	bool m_bInvincibleState = false;	// 무적 상태
+	float m_InvincibleDuratoin = 2;		// 무적 지속 시간
 
 	SHOOTING_DIR    m_CurShootingDir;
 	BASE_STATE		m_CurBaseState;
