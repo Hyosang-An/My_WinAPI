@@ -42,8 +42,8 @@ private:
 	Vec2					m_LogPos;		// 로그 위치
 
 public:
-	void AddDbgRenderInfo(const tDbgRenderInfo& _info) { m_RenderList.push_back(_info); }
-	void AddDbgLog(const tDbgLog _tDbgLog) { m_LogList.push_back(_tDbgLog); }
+	void AddDbgRenderInfo(const tDbgRenderInfo& _info);
+	void AddDbgLog(const tDbgLog _tDbgLog);
 
 	void tick();
 	void render();

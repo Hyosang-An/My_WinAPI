@@ -7,7 +7,6 @@ CRigidbody::CRigidbody() :
 	m_fMass(1),
 	m_GravityAccel(300),
 	m_Friction(0),
-	m_MinWalkSpeed(0),
 	m_MaxWalkSpeed(0),
 	m_MaxGravitySpeed(800),
 	m_UseGravity(true),
@@ -78,33 +77,24 @@ void CRigidbody::finaltick()
 			m_Velocity = m_Velocity.Normalize() * m_maxDashSpeed;
 	}
 
-
-	// 최소 속도 보정
-	// 반드시 가속도 방향으로 속도를 맞춰주어야 한다.
-	if (m_MinWalkSpeed != 0 && m_Velocity.Length() < m_MinWalkSpeed && !AccelWithoutGravity.IsZero())
-	{
-		auto accel = AccelWithoutGravity;
-		m_Velocity = accel.Normalize() * m_MinWalkSpeed;
-	}
-
 	// 마찰 적용
 	// 만약 RigidBody 에 적용된 힘이 없으면서, OnGround인데 속도는 있는경우
 	// 마찰에 의해서 현재 속도를 줄인다
-	if (m_Force.IsZero() && m_OnGround)
-	{
-		float speed = m_Velocity.Length();
+	//if (m_Force.IsZero() && m_OnGround)
+	//{
+	//	float speed = m_Velocity.Length();
 
-		speed -= m_Friction * DT;
+	//	speed -= m_Friction * DT;
 
-		// 마찰에 의해 속도가 음수가 될 수는 없으므로 예외처리
-		if (speed <= 0)
-			speed = 0;
+	//	// 마찰에 의해 속도가 음수가 될 수는 없으므로 예외처리
+	//	if (speed <= 0)
+	//		speed = 0;
 
-		if (!m_Velocity.IsZero())
-			m_Velocity.Normalize();
+	//	if (!m_Velocity.IsZero())
+	//		m_Velocity.Normalize();
 
-		m_Velocity *= speed;
-	}
+	//	m_Velocity *= speed;
+	//}
 
 	// 중력 적용 ( 중력 사용상태이면서 OnGround일 때 )
 	if (m_UseGravity && !m_OnGround)

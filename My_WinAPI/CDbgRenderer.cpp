@@ -16,6 +16,18 @@ CDbgRenderer::~CDbgRenderer()
 {
 }
 
+void CDbgRenderer::AddDbgRenderInfo(const tDbgRenderInfo& _info)
+{
+	m_RenderList.push_back(_info);
+}
+
+void CDbgRenderer::AddDbgLog(const tDbgLog _tDbgLog)
+{
+	m_LogList.push_back(_tDbgLog);
+	if (m_LogList.size() > 10)
+		m_LogList.pop_front();
+}
+
 void CDbgRenderer::tick()
 {
 #ifdef _DEBUG

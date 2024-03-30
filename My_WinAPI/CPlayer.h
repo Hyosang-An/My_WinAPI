@@ -23,8 +23,15 @@ enum class BASE_STATE
 	FIXED,
 	RUN,
 	DASH,
-	JUMP,
+	AIRBONE,
 	DEATH
+};
+
+enum class JUMP_STATE
+{
+	NONE,
+	JUMP_START,
+	JUMPING
 };
 
 enum class ACTION_STATE 
@@ -62,12 +69,21 @@ private:
 	bool m_bInvincibleState = false;	// 무적 상태
 	float m_InvincibleDuratoin = 2;		// 무적 지속 시간
 
+	float m_bJumping = false;			// 점프 중인지
+	float m_JumpingTime = 0;
+	float m_LowJumpKeyTime = 0.5;
+	float m_HighJumpKeyTime = 1;		// 높은 점프를 하기 위한 키 누름 지속 시간
+
+	
+
 	SHOOTING_DIR    m_CurShootingDir;
 	BASE_STATE		m_CurBaseState;
+	JUMP_STATE		m_CurJumpState;
 	ACTION_STATE	m_CurActionState;
 
 	SHOOTING_DIR	m_PrevShootingDir;
 	BASE_STATE		m_PrevBaseState;
+	JUMP_STATE		m_PrevJumpState;
 	ACTION_STATE	m_PrevActionState;
 
 

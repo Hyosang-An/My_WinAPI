@@ -30,7 +30,6 @@ CPlayer::CPlayer() :
 	m_PlayerCollider->SetScale(Vec2(60.f, 100.f));
 
 	m_Rigidbody = AddComponent(new CRigidbody);
-	m_Rigidbody->SetMinWalkSpeed(200);
 	m_Rigidbody->SetMaxWalkSpeed(200);
 	m_Rigidbody->SetFriction(2000);
 	m_Rigidbody->SetMaxGravitySpeed(800);
@@ -217,6 +216,7 @@ void CPlayer::tick()
 
 	m_PrevShootingDir = m_CurShootingDir;
 	m_PrevBaseState = m_CurBaseState;
+	//m_PrevJumpState = m_CurJumpState;
 	m_PrevActionState = m_CurActionState;
 }
 
@@ -245,7 +245,7 @@ void CPlayer::UpdateState()
 	}
 
 	// 무적 지속시간이 끝나면 무적모드 해제
-	if (invincibleTime > m_InvincibleDuratoin)
+	if (m_InvincibleDuratoin < invincibleTime)
 		m_bInvincibleState = false;
 
 	// 현재 대쉬 모드인 경우 대쉬 유지
@@ -257,7 +257,7 @@ void CPlayer::UpdateState()
 		{
 			DashTime = 0;
 			if (m_Rigidbody->IsOnGround())
-				m_CurBaseState = BASE_STATE::JUMP;
+				m_CurBaseState = BASE_STATE::AIRBONE;
 			else
 				m_CurBaseState = BASE_STATE::IDLE;
 		}
@@ -281,7 +281,7 @@ void CPlayer::UpdateState()
 
 	// BASE_STATE 설정
 	{
-		// 땅 위에 있으면서 대쉬가 아닌 경우
+		// 땅 위에 있는 경우
 		if (m_Rigidbody->IsOnGround())
 		{
 			// 방향키 안누르면 Idle
@@ -296,27 +296,52 @@ void CPlayer::UpdateState()
 			else if (leftPressed || rightPressed)
 				m_CurBaseState = BASE_STATE::RUN;
 
-			// Z키 누르면 점프
-			if (KEY_PRESSED(KEY::_Z) && !(m_CurBaseState == BASE_STATE::DASH))
-				m_CurBaseState = BASE_STATE::JUMP;
-
 			// C키 누르면 고정 모드
 			if (KEY_PRESSED(KEY::_C))
 				m_CurBaseState = BASE_STATE::FIXED;
-
-			// Shift 키 누르면 대쉬
-			if (KEY_JUST_PRESSED(KEY::SHIFT))
-				m_CurBaseState = BASE_STATE::DASH;
 		}
 
 		else
 		{
-			m_CurBaseState = BASE_STATE::JUMP;
+			m_CurBaseState = BASE_STATE::AIRBONE;
 		}
+
+		// Shift 키 누르면 대쉬
+		if (KEY_JUST_PRESSED(KEY::SHIFT))
+			m_CurBaseState = BASE_STATE::DASH;
 	}
 
-	// ACTION_STATE 설정
-	// 총쏘기
+
+	// JUMP
+	if (m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::_Z))
+	{
+		LOG(LOG_TYPE::DBG_WARNING, L"JUMP_START");
+		m_JumpingTime = 0;
+		m_CurJumpState = JUMP_STATE::JUMP_START;
+	}
+	else if ((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_PRESSED(KEY::_Z))
+	{
+		LOG(LOG_TYPE::DBG_LOG, L"JUMPING");
+		m_CurJumpState = JUMP_STATE::JUMPING;
+		m_JumpingTime += DT;
+
+		if (m_HighJumpKeyTime < m_JumpingTime)
+		{
+			LOG(LOG_TYPE::DBG_ERROR, L"NONE");
+			m_JumpingTime = 0;
+			m_CurJumpState = JUMP_STATE::NONE;
+		}
+	}
+	else if ((m_CurJumpState == JUMP_STATE::JUMPING && KEY_RELEASED(KEY::_Z)) || m_Rigidbody->IsOnGround())
+	{
+		LOG(LOG_TYPE::DBG_LOG, L"NONE");
+		m_JumpingTime = 0;
+		m_CurJumpState = JUMP_STATE::NONE;
+	}
+		
+
+
+	// SHOOTING
 	if (KEY_PRESSED(KEY::_X))
 	{
 		m_CurActionState = ACTION_STATE::SHOOTING;
@@ -365,6 +390,25 @@ void CPlayer::MoveAndAction()
 	float runspeed = 50;
 	float dashspeed = 300;
 
+	if (KEY_RELEASED(KEY::RIGHT) || KEY_RELEASED(KEY::LEFT))
+		m_Rigidbody->SetVelocity_X(0);
+
+	// 점프
+	switch (m_CurJumpState)
+	{
+		case JUMP_STATE::NONE:
+			break;
+		case JUMP_STATE::JUMP_START:
+			m_Rigidbody->AddVelocity(Vec2(0, -150));
+			break;
+		case JUMP_STATE::JUMPING:
+			m_Rigidbody->AddForce(Vec2(0, -200));
+			break;
+		default:
+			break;
+	}
+
+	// 기본 상태
 	switch (m_CurBaseState)
 	{
 		case BASE_STATE::RUN:
@@ -383,10 +427,12 @@ void CPlayer::MoveAndAction()
 				m_Rigidbody->AddVelocity(Vec2(-dashspeed, 0));
 		}
 		break;
-		case BASE_STATE::JUMP:
+		case BASE_STATE::AIRBONE:
 		{
-			if (m_PrevBaseState != BASE_STATE::JUMP)
-				m_Rigidbody->AddVelocity(Vec2(0, -300));
+			//if (m_PrevBaseState != BASE_STATE::AIRBONE)
+			//	m_Rigidbody->AddVelocity(Vec2(0, -300));
+
+
 
 			if (m_bFacingRight && KEY_PRESSED(KEY::RIGHT))
 				m_Rigidbody->AddVelocity(Vec2(runspeed, 0));
@@ -542,7 +588,7 @@ void CPlayer::UpdateAnimation()
 					m_Animator->Play(L"cuphead_dash_L", true);
 				break;
 			}
-			case BASE_STATE::JUMP:
+			case BASE_STATE::AIRBONE:
 				break;
 			case BASE_STATE::DEATH:
 				break;
@@ -678,7 +724,7 @@ void CPlayer::UpdateAnimation()
 			}
 			case BASE_STATE::DASH:
 				break;
-			case BASE_STATE::JUMP:
+			case BASE_STATE::AIRBONE:
 				break;
 			case BASE_STATE::DEATH:
 				break;
