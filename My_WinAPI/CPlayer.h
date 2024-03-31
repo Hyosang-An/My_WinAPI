@@ -34,12 +34,18 @@ enum class JUMP_STATE
 	JUMPING
 };
 
+enum class PARRY_STATE
+{
+	NONE,
+	PARRY,
+	PARRY_PINK
+};
+
 enum class ACTION_STATE 
 {
 	NONE,
 	SHOOTING, 
-	HITTED,   
-	PARRYING  
+	HITTED  
 };
 
 enum class PLAYER_ATTACK_STATE
@@ -65,30 +71,34 @@ private:
 
 	float m_DashDuration = 0.5;		// 대쉬 지속 시간
 	bool m_bAirboneDashed = false;	// 공중에서 대쉬 했는지
+
 	float m_HittedDuration = 0.5;	// Hitted 상태 지속 시간
 
-	bool m_bInvincibleState = false;	// 무적 상태
 	float m_InvincibleDuratoin = 2;		// 무적 지속 시간
 
-	float m_bJumping = false;			// 점프 중인지
-	float m_JumpingTime = 0;
 	float m_LowJumpKeyTime = 0.5;
 	float m_HighJumpKeyTime = 1;		// 높은 점프를 하기 위한 키 누름 지속 시간
 
+	float m_ParryDuration = 0.5;		// 패링 지속 시간
 	int m_ParryCount = 1;				// 패링 가능 횟수
 
 	bool m_bOnPlatform = false;			// 플랫폼 위에 있는지
 
 	
+	// 플레이어 각종 상태 변수들
+
+	bool m_bInvincibleState = false;	// 무적 상태
 
 	SHOOTING_DIR    m_CurShootingDir;
 	BASE_STATE		m_CurBaseState;
 	JUMP_STATE		m_CurJumpState;
+	PARRY_STATE		m_CurParryState;
 	ACTION_STATE	m_CurActionState;
 
 	SHOOTING_DIR	m_PrevShootingDir;
 	BASE_STATE		m_PrevBaseState;
 	JUMP_STATE		m_PrevJumpState;
+	PARRY_STATE		m_PrevParryState;
 	ACTION_STATE	m_PrevActionState;
 
 

@@ -113,6 +113,32 @@ void CAnimator::Play(const wstring& _AnimName, bool _Repeat, bool _RepeatReverse
     m_bRepeat = _Repeat;
 }
 
+void CAnimator::PlayFromFrame(const wstring& _AnimName, bool _Repeat, int _frameIdx)
+{
+    auto anim = FindAnimation(_AnimName);
+
+    if (anim == nullptr)
+    {
+        LOG(LOG_TYPE::DBG_ERROR, L"Play할 애니메이션을 찾을 수 없음");
+        return;
+    }
+
+    // 기존 재생중인 애니메이션이면 그냥 리턴
+    if (anim == m_CurAnimation)
+        return;
+
+    m_CurAnimation = anim;
+
+    //m_CurAnimation->Reset();
+
+    anim->m_frameElapsedTime = 0;
+    anim->m_CurFrameIdx = _frameIdx;
+    anim->m_bFinished = false;
+    anim->m_bPlayingForward = true;
+
+    m_bRepeat = _Repeat;
+}
+
 
 
 // ====================================================================================================================================

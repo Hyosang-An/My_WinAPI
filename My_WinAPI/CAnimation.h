@@ -32,6 +32,7 @@ private:
 public:
 	bool IsFinished() { return m_bFinished; }
 	tAnimationFrame& GetFrame(int _idx) { return m_vecAnimFrame[_idx]; }
+	int GetCurFrameIdx() { return m_CurFrameIdx; }
 
 	void Reset();
 	void ResetReverse();

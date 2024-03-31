@@ -243,12 +243,15 @@ void CPlayer::tick()
 
 	m_PrevShootingDir = m_CurShootingDir;
 	m_PrevBaseState = m_CurBaseState;
-	//m_PrevJumpState = m_CurJumpState;
+	m_PrevJumpState = m_CurJumpState;
+	m_PrevParryState = m_CurParryState;
 	m_PrevActionState = m_CurActionState;
 }
 
 void CPlayer::UpdateState()
 {
+	// Hitted 및 무적 상태 설정
+	// ========================================================================
 	static float invincibleTime = 0;
 	if (m_CurActionState == ACTION_STATE::HITTED)
 	{
@@ -275,7 +278,8 @@ void CPlayer::UpdateState()
 	if (m_InvincibleDuratoin < invincibleTime)
 		m_bInvincibleState = false;
 
-	// 현재 대쉬 모드인 경우 대쉬 유지
+	// Dash 상태 설정
+	// ========================================================================
 	if (m_CurBaseState == BASE_STATE::DASH)
 	{
 		static float DashTime = 0;
@@ -297,11 +301,14 @@ void CPlayer::UpdateState()
 		return;
 	}
 
+	
+	// 바라보는 방향 전환 (두 케이스 모두 아니라면 기존 방향 유지)
+	// ========================================================================
+
 	bool leftPressed = KEY_PRESSED(KEY::LEFT);
 	bool rightPressed = KEY_PRESSED(KEY::RIGHT);
 	bool upPressed = KEY_PRESSED(KEY::UP);
 	bool downPressed = KEY_PRESSED(KEY::DOWN);
-
 
 	// 바라보는 방향 전환 (두 케이스 모두 아니라면 기존 방향 유지)
 	if (m_bFacingRight && leftPressed && !rightPressed)
@@ -364,8 +371,10 @@ void CPlayer::UpdateState()
 		return;
 	}
 
+
 	// Jump State 설정
 	// ========================================================================
+	static float m_JumpingTime = 0;
 	if (m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::_Z))
 	{
 		LOG(LOG_TYPE::DBG_WARNING, L"JUMP_START");
@@ -393,19 +402,41 @@ void CPlayer::UpdateState()
 	}
 
 
-
-	// Action State 설정
+	// Parry State 설정
 	// ========================================================================
+	static float parryTime = 0;
 
-	// PARRYING
-	//if (!m_Rigidbody->IsOnGround() && m_CurJumpState == JUMP_STATE::NONE && m_ParryCount > 0)
-	//{
-	//	m_ParryCount--;
-	//	m_CurActionState = ACTION_STATE::PARRYING;
+	// Parry 시작 조건
+	if (!m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::_Z) && m_ParryCount > 0)
+	{
+		parryTime = 0;
+		parryTime += DT;
+		m_ParryCount--;
+		m_CurParryState = PARRY_STATE::PARRY;
+	}
 
-	//}
+	else if (m_CurParryState == PARRY_STATE::PARRY || m_CurParryState == PARRY_STATE::PARRY_PINK)
+	{
+		// Parry 끝나는 조건
+		if (m_ParryDuration < parryTime)
+			m_CurParryState = PARRY_STATE::NONE;
+
+		else
+			parryTime += DT;
+	}
+
+	// Parry 끝나는 조건
+	if (m_Rigidbody->IsOnGround() || m_CurActionState == ACTION_STATE::HITTED)
+	{
+		m_CurParryState = PARRY_STATE::NONE;
+	}
+
+	if (m_Rigidbody->IsOnGround())
+		m_ParryCount = 1;
 	
-	// SHOOTING
+
+	// SHOOTING 설정
+	// ========================================================================
 	if (KEY_PRESSED(KEY::_X))
 	{
 		m_CurActionState = ACTION_STATE::SHOOTING;
@@ -415,7 +446,9 @@ void CPlayer::UpdateState()
 		m_CurActionState = ACTION_STATE::NONE;
 	}
 
+
 	// ShootingDir 설정
+	// ========================================================================
 	{
 		// 오른쪽을 보고 있는 경우
 		if (m_bFacingRight)
@@ -528,8 +561,6 @@ void CPlayer::MoveAndAction()
 		}
 		case ACTION_STATE::HITTED:
 			break;
-		case ACTION_STATE::PARRYING:
-			break;
 		default:
 			break;
 	}
@@ -537,6 +568,26 @@ void CPlayer::MoveAndAction()
 
 void CPlayer::UpdateAnimation()
 {
+	// 패링 상태
+	if (m_CurParryState != PARRY_STATE::NONE)
+	{
+		if (m_CurParryState == PARRY_STATE::PARRY)
+		{
+			if (m_bFacingRight)
+				m_Animator->Play(L"cuphead_parry_R", true);
+			else
+				m_Animator->Play(L"cuphead_parry_L", true);
+		}
+		else
+		{
+			if (m_bFacingRight)
+				m_Animator->PlayFromFrame(L"cuphead_parry_pink_R", true, m_Animator->GetCurAnimation()->GetCurFrameIdx());
+			else
+				m_Animator->PlayFromFrame(L"cuphead_parry_pink_L", true, m_Animator->GetCurAnimation()->GetCurFrameIdx());
+		}
+		return;
+	}
+
 	// 총쏘지 않는 상태
 	if (m_CurActionState != ACTION_STATE::SHOOTING)
 	{
