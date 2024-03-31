@@ -327,6 +327,13 @@ void CPlayer::UpdateState()
 			m_bAirboneDashed = false;
 	}
 
+	// ÇÃ·§Æû ³»·Á°¡±â
+	if (m_CurBaseState == BASE_STATE::DUCK && m_bOnPlatform && KEY_JUST_PRESSED(KEY::_Z))
+	{
+		m_bOnPlatform = false;
+		m_Rigidbody->SetGround(false);
+		return;
+	}
 
 	// JUMP
 	if (m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::_Z))
@@ -415,10 +422,10 @@ void CPlayer::MoveAndAction()
 		case JUMP_STATE::NONE:
 			break;
 		case JUMP_STATE::JUMP_START:
-			m_Rigidbody->AddVelocity(Vec2(0, -150));
+			m_Rigidbody->AddVelocity(Vec2(0, -300));
 			break;
 		case JUMP_STATE::JUMPING:
-			m_Rigidbody->AddForce(Vec2(0, -200));
+			m_Rigidbody->AddForce(Vec2(0, -300));
 			break;
 		default:
 			break;

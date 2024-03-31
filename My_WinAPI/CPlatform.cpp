@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CPlatform.h"
+#include "CPlayer.h"
 
 CPlatform::CPlatform()
 {
@@ -21,13 +22,17 @@ void CPlatform::OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCol
 	auto otherObj = _pOtherCollider->GetOwner();
 	if (otherObj->GetLayerType() == LAYER_TYPE::PLAYER)
 	{
-		auto rigidbody = otherObj->GetComponent<CRigidbody>();
+		CPlayer* player = static_cast<CPlayer*>(otherObj);
+		auto rigidbody = player->GetComponent<CRigidbody>();
+
 		rigidbody->SetGround(true);
+		player->SetOnPlatform(true);
 	}
 }
 
 void CPlatform::OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
 {
+
 }
 
 void CPlatform::OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
@@ -35,8 +40,11 @@ void CPlatform::OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherColl
 	auto otherObj = _pOtherCollider->GetOwner();
 	if (otherObj->GetLayerType() == LAYER_TYPE::PLAYER)
 	{
-		auto rigidbody = otherObj->GetComponent<CRigidbody>();
+		CPlayer* player = static_cast<CPlayer*>(otherObj);
+		auto rigidbody = player->GetComponent<CRigidbody>();
+
 		rigidbody->SetGround(false);
+		player->SetOnPlatform(false);
 	}
 }
 

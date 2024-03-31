@@ -75,6 +75,8 @@ private:
 	float m_LowJumpKeyTime = 0.5;
 	float m_HighJumpKeyTime = 1;		// 높은 점프를 하기 위한 키 누름 지속 시간
 
+	bool m_bOnPlatform = false;			// 플랫폼 위에 있는지
+
 	
 
 	SHOOTING_DIR    m_CurShootingDir;
@@ -107,25 +109,8 @@ private:
 
 public:
 	BASE_STATE	GetBaseState() { return m_CurBaseState; }
-
-	// 상태 추가
-	void AddActionState(ACTION_STATE newState)
-	{
-		m_CurActionState = static_cast<ACTION_STATE>(static_cast<int>(m_CurActionState) | static_cast<int>(newState));
-	}
-
-	// 상태 제거
-	void RemoveActionState(ACTION_STATE removeState)
-	{
-		m_CurActionState = static_cast<ACTION_STATE>(static_cast<int>(m_CurActionState) & ~static_cast<int>(removeState));
-	}
-
-	// 상태 확인
-	bool IsInActionState(ACTION_STATE checkState)
-	{
-		return static_cast<int>(m_CurActionState) & static_cast<int>(checkState);
-	}
-
+	
+	void SetOnPlatform(bool _b) { m_bOnPlatform = _b; }
 
 public:
 	virtual void begin();
