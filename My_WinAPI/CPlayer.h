@@ -75,6 +75,8 @@ private:
 	float m_LowJumpKeyTime = 0.5;
 	float m_HighJumpKeyTime = 1;		// 높은 점프를 하기 위한 키 누름 지속 시간
 
+	int m_ParryCount = 1;				// 패링 가능 횟수
+
 	bool m_bOnPlatform = false;			// 플랫폼 위에 있는지
 
 	
