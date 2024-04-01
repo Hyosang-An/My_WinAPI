@@ -19,7 +19,7 @@ CObj::CObj() :
 
 CObj::~CObj()
 {
-	Safe_Del_Vec(m_vecComponent);
+	Safe_Del_List(m_listComponent);
 
 	//if (m_pCollider != nullptr)
 	//	delete m_pCollider;
@@ -45,9 +45,9 @@ void CObj::tick()
 
 void CObj::finaltick()
 {
-	for (size_t i = 0; i < m_vecComponent.size(); i++)
+	for (auto& e : m_listComponent)
 	{
-		m_vecComponent[i]->finaltick();
+		e->finaltick();
 	}
 }
 

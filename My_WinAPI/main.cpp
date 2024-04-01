@@ -135,7 +135,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(g_hWnd, nCmdShow);
    UpdateWindow(g_hWnd);
 
-   // Engine 초기화
+   // Engine 초기화, 해상도 설정 1280, 768
    if (FAILED(CEngine::GetInstance().init(hInst, g_hWnd, POINT{ 1280, 768 })))
    {
        // Engine 초기화 실패 ==> 프로그램 종료

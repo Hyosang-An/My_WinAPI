@@ -19,7 +19,7 @@ public:
 	friend class CTaskMgr;
 
 private:
-	vector<CComponent*> m_vecComponent;
+	list<CComponent*> m_listComponent;
 	vector<CCollider*> m_vecCollider;
 
 protected:
@@ -66,17 +66,22 @@ public:
 	T* AddComponent(T* _component)
 	{
 		_component->m_pOwner = this;
-		m_vecComponent.push_back(_component);
 
+		// Collider는 맨 뒤에 추가하고 나머지는 앞에 추가
 		if (CCollider* pCollider = dynamic_cast<CCollider*>(_component))
 		{
 			m_vecCollider.push_back(pCollider);
+			m_listComponent.push_back(_component);
 		}
 
 		else if (CAnimator* pAnimator = dynamic_cast<CAnimator*>(_component))
 		{
 			m_Animator = pAnimator;
+			m_listComponent.push_front(_component);
 		}
+
+		else
+			m_listComponent.push_front(_component);
 
 		return _component;
 	}
@@ -84,10 +89,9 @@ public:
 	template<typename T>
 	T* GetComponent()
 	{
-		for (size_t i = 0; i < m_vecComponent.size(); i++)
+		for (auto& e : m_listComponent)
 		{
-			T* pComponent = dynamic_cast<T*>(m_vecComponent[i]);
-
+			T* pComponent = dynamic_cast<T*>(e);
 			if (pComponent)
 			{
 				return pComponent;

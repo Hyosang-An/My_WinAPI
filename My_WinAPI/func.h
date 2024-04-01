@@ -13,6 +13,19 @@ inline void Safe_Del_Vec(vector<T*>& _vec)
 	_vec.clear();
 }
 
+template<typename T>
+inline void Safe_Del_List(list<T*>& _list)
+{
+	for (auto& e : _list)
+	{
+		if (e == nullptr)
+			continue;
+		delete e;
+	}
+
+	_list.clear();
+}
+
 template<typename T, size_t arr_size>
 inline void Safe_Del_Arr(T* (&arr)[arr_size])
 {
