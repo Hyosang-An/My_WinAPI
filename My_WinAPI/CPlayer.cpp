@@ -24,15 +24,19 @@ CPlayer::CPlayer() :
 {
 	m_eType = LAYER_TYPE::PLAYER;
 
-	m_PlayerCollider = AddComponent(new CCollider);
-	m_PlayerCollider->SetName(L"Player Collider");
-	m_PlayerCollider->SetOffsetPos(Vec2(0.f, 20.f));
-	m_PlayerCollider->SetScale(Vec2(60.f, 100.f));
-
 	m_Rigidbody = AddComponent(new CRigidbody);
 	m_Rigidbody->SetMaxWalkSpeed(200);
 	m_Rigidbody->SetFriction(2000);
 	m_Rigidbody->SetMaxGravitySpeed(800);
+
+
+	// !!중요!! Collider가 Rigidbody보다 항상 컴포넌트 벡터 상에서 뒤에 위치해야 함!! 그래야 최종 오브젝트 위치를 반영하여 Collider 위치 업데이트 가능
+	m_PlayerCollider = AddComponent(new CCollider);
+	m_PlayerCollider->SetName(L"Player Collider");
+	m_PlayerCollider->SetOffsetPos(Vec2(0.f, 0.f));
+	m_PlayerCollider->SetScale(Vec2(60.f, 100.f));
+
+
 	
 	// 콜백함수 설정
 	m_Rigidbody->SetGroundCallbackFunc([this]() {this->EnterGround(); });

@@ -8,6 +8,7 @@
 #include "CMonster.h"
 #include "CCollisionMgr.h"
 #include "CPlatform.h"
+#include "CGround.h"
 
 CLevelMgr::CLevelMgr()
 	: m_arrLevel{}
@@ -42,17 +43,25 @@ void CLevelMgr::init()
 	pObj->SetScale(100.f, 100.f);
 	m_pCurrentLevel->AddObject(LAYER_TYPE::MONSTER ,pObj);
 
+
+	// 플랫폼 생성
+	//pObj = new CPlatform;
+	//pObj->SetName(L"Platform");
+	//pObj->SetPos(Vec2(640.f, 600));
+	//m_pCurrentLevel->AddObject(LAYER_TYPE::PLATFORM, pObj);
+
+	// Ground 생성 (test)
+	pObj = new CGround;
+	pObj->SetName(L"Ground_test");
+	pObj->SetPos(Vec2(640.f, 600));
+	m_pCurrentLevel->AddObject(LAYER_TYPE::GROUND, pObj);
+
 	// 충돌 지정
 	// Player와 Monster 레이어 간 충돌 체크
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::MONSTER);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER_MISSILE, LAYER_TYPE::MONSTER);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::PLATFORM);
-
-	// 플랫폼 생성
-	pObj = new CPlatform;
-	pObj->SetName(L"Platform");
-	pObj->SetPos(Vec2(640.f, 600));
-	m_pCurrentLevel->AddObject(LAYER_TYPE::PLATFORM, pObj);
+	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::GROUND);
 
 	m_pCurrentLevel->begin();
 }

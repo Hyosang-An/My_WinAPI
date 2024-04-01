@@ -43,6 +43,7 @@ public:
     void SetGround(bool _b);
 
     float GetMass() { return m_fMass; }
+    Vec2 GetVelocity() { return m_Velocity; }
     bool IsOnGround() { return m_OnGround; }
 
     // CallBack 함수 설정

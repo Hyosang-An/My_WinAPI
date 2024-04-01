@@ -119,6 +119,9 @@
     <Filter Include="03. Game\05. Object\Platform">
       <UniqueIdentifier>{c51d1b3a-42f8-4f70-b64c-6b0707cb464f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Ground">
+      <UniqueIdentifier>{472b0e40-18d1-4acb-b1ad-97c1c5f3768c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -256,6 +259,9 @@
     <ClInclude Include="CPlatform.h">
       <Filter>03. Game\05. Object\Platform</Filter>
     </ClInclude>
+    <ClInclude Include="CGround.h">
+      <Filter>03. Game\05. Object\Ground</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -371,6 +377,9 @@
     </ClCompile>
     <ClCompile Include="CPlatform.cpp">
       <Filter>03. Game\05. Object\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="CGround.cpp">
+      <Filter>03. Game\05. Object\Ground</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

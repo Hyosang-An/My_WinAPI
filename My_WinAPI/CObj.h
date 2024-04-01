@@ -103,9 +103,9 @@ public:
 	virtual void finaltick() final;	// 오브젝트가 소유한 컴포넌트 업데이트. 물리 업데이트 (가속도에 의한 속도 변화, 속도에 의한 위치 변화 등)
 	virtual void render();
 
-	virtual void OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCollider) {}
-	virtual void OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherCollider) {}
-	virtual void OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider) {}
+	virtual void OnCollisionEnter(CCollider* _pOtherCollider) {}
+	virtual void OnCollisionStay(CCollider* _pOtherCollider) {}
+	virtual void OnCollisionExit(CCollider* _pOtherCollider) {}
 
 	virtual CObj* Clone() = 0;
 
