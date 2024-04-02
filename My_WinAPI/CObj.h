@@ -3,12 +3,15 @@
 
 #include "CAssetMgr.h"
 #include "CTimeMgr.h"
+#include "CCamera.h"
+
 #include "CComponent.h"
 #include "CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
 #include "CFSM.h"
 #include "CRigidbody.h"
+
 
 
 class CObj :
@@ -54,6 +57,7 @@ public:
 	void Destroy();
 
 	Vec2 GetPos() { return m_Pos; }
+	Vec2 GetRenderPos() { return CCamera::GetInstance().GetRenderPos(m_Pos); }
 	Vec2 GetScale() { return m_Scale; }
 	Vec2 GetDir() { return m_Dir; }
 	float GetSpeed() { return m_fSpeed; }

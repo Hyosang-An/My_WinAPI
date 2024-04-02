@@ -50,12 +50,12 @@ void CMonster::tick()
 
 void CMonster::render()
 {
-	auto Pos = GetPos();
+	auto RenderPos = GetRenderPos();
 	auto Scale = GetScale();
-	Rectangle(SUBDC, (int)(Pos.x - Scale.x * 0.5f)
-		, (int)(Pos.y - Scale.y * 0.5f)
-		, (int)(Pos.x + Scale.x * 0.5f)
-		, (int)(Pos.y + Scale.y * 0.5f));
+	Rectangle(SUBDC, (int)(RenderPos.x - Scale.x * 0.5f)
+		, (int)(RenderPos.y - Scale.y * 0.5f)
+		, (int)(RenderPos.x + Scale.x * 0.5f)
+		, (int)(RenderPos.y + Scale.y * 0.5f));
 }
 
 void CMonster::OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCollider)

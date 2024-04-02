@@ -77,9 +77,9 @@ void CRigidbody::finaltick()
 			m_Velocity = m_Velocity.Normalize() * m_maxDashSpeed;
 	}
 
-	// 마찰 적용
-	// 만약 RigidBody 에 적용된 힘이 없으면서, OnGround인데 속도는 있는경우
-	// 마찰에 의해서 현재 속도를 줄인다
+	 // 마찰 적용
+	 // 만약 RigidBody 에 적용된 힘이 없으면서, OnGround인데 속도는 있는경우
+	 // 마찰에 의해서 현재 속도를 줄인다
 	//if (m_Force.IsZero() && m_OnGround)
 	//{
 	//	float speed = m_Velocity.Length();

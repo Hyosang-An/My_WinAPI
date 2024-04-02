@@ -5,9 +5,9 @@ enum class KEY
 {
 	_0, _1, _2, _3, _4, _5, _6, _7, _8, _9,
 
-	_Q, W, _E, _R, _T, _Y, _U, _I, _O, _P,
-	_A, _S, _D, _F, _G, _H, _J, _K, _L,
-	_Z, _X, _C, _V, _B, _N, _M,
+	Q, W, E, R, T, Y, U, I, O, P,
+	A, S, D, F, G, H, J, K, L,
+	Z, X, C, V, B, N, M,
 
 	LEFT, RIGHT, UP, DOWN,
 

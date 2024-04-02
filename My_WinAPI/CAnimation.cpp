@@ -101,7 +101,7 @@ void CAnimation::render()
 	CObj* pOwnerObj = m_Animator->GetOwner();
 
 	// 오브젝트 위치
-	Vec2 vPos = pOwnerObj->GetPos();
+	Vec2 vRenderPos = pOwnerObj->GetRenderPos();
 
 	// AlphaBlending
 	BLENDFUNCTION bf = {};
@@ -113,7 +113,7 @@ void CAnimation::render()
 
 	// 현재 프레임 이미지를 오브젝트 위치에 렌더링
 	AlphaBlend(SUBDC, 
-		(int)(vPos.x - frm.SliceSize.x / 2.f + frm.Offset.x), (int)(vPos.y - frm.SliceSize.y / 2.f + frm.Offset.y), (int)frm.SliceSize.x, (int)frm.SliceSize.y,
+		(int)(vRenderPos.x - frm.SliceSize.x / 2.f + frm.Offset.x), (int)(vRenderPos.y - frm.SliceSize.y / 2.f + frm.Offset.y), (int)frm.SliceSize.x, (int)frm.SliceSize.y,
 		m_Atlas->GetDC(), (int)frm.PosInAtlas.x, (int)frm.PosInAtlas.y, (int)frm.SliceSize.x, (int)frm.SliceSize.y, 
 		bf);
 

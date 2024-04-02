@@ -40,6 +40,7 @@ public:
     void SetMaxGravitySpeed(float _max) { m_MaxGravitySpeed = _max; }
     void SetVelocity(Vec2 _vel) { m_Velocity = _vel; }
     void SetVelocity_X(float _vel) { m_Velocity.x = _vel; }
+    void SetVelocity_Y(float _vel) { m_Velocity.y = _vel; }
     void SetGround(bool _b);
 
     float GetMass() { return m_fMass; }

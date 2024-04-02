@@ -122,6 +122,9 @@
     <Filter Include="03. Game\05. Object\Ground">
       <UniqueIdentifier>{472b0e40-18d1-4acb-b1ad-97c1c5f3768c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\Camera">
+      <UniqueIdentifier>{c88a8dea-4ef2-4d93-9919-17a135fe7cf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -262,6 +265,7 @@
     <ClInclude Include="CGround.h">
       <Filter>03. Game\05. Object\Ground</Filter>
     </ClInclude>
+    <ClInclude Include="CCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -381,6 +385,7 @@
     <ClCompile Include="CGround.cpp">
       <Filter>03. Game\05. Object\Ground</Filter>
     </ClCompile>
+    <ClCompile Include="CCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

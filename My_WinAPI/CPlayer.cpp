@@ -342,7 +342,7 @@ void CPlayer::UpdateState()
 				m_CurBaseState = BASE_STATE::RUN;
 
 			// C키 누르면 고정 모드
-			if (KEY_PRESSED(KEY::_C))
+			if (KEY_PRESSED(KEY::C))
 				m_CurBaseState = BASE_STATE::FIXED;
 		}
 
@@ -370,7 +370,7 @@ void CPlayer::UpdateState()
 	}
 
 	// 플랫폼 내려가기
-	if (m_CurBaseState == BASE_STATE::DUCK && m_bOnPlatform && KEY_JUST_PRESSED(KEY::_Z))
+	if (m_CurBaseState == BASE_STATE::DUCK && m_bOnPlatform && KEY_JUST_PRESSED(KEY::Z))
 	{
 		m_bOnPlatform = false;
 		m_Rigidbody->SetGround(false);
@@ -381,28 +381,28 @@ void CPlayer::UpdateState()
 	// Jump State 설정
 	// ========================================================================
 	static float m_JumpingTime = 0;
-	if (m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::_Z))
+	if (m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::Z))
 	{
-		LOG(LOG_TYPE::DBG_WARNING, L"JUMP_START");
+		// LOG(LOG_TYPE::DBG_WARNING, L"JUMP_START");
 		m_JumpingTime = 0;
 		m_CurJumpState = JUMP_STATE::JUMP_START;
 	}
-	else if ((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_PRESSED(KEY::_Z))
+	else if ((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_PRESSED(KEY::Z))
 	{
-		LOG(LOG_TYPE::DBG_LOG, L"JUMPING");
+		// LOG(LOG_TYPE::DBG_LOG, L"JUMPING");
 		m_CurJumpState = JUMP_STATE::JUMPING;
 		m_JumpingTime += DT;
 
 		if (m_HighJumpKeyTime < m_JumpingTime)
 		{
-			LOG(LOG_TYPE::DBG_ERROR, L"NONE");
+			// LOG(LOG_TYPE::DBG_ERROR, L"NONE");
 			m_JumpingTime = 0;
 			m_CurJumpState = JUMP_STATE::NONE;
 		}
 	}
-	else if ((m_CurJumpState == JUMP_STATE::JUMPING && KEY_RELEASED(KEY::_Z)) || m_Rigidbody->IsOnGround())
+	else if ((m_CurJumpState == JUMP_STATE::JUMPING && KEY_RELEASED(KEY::Z)) || m_Rigidbody->IsOnGround())
 	{
-		LOG(LOG_TYPE::DBG_LOG, L"NONE");
+		// LOG(LOG_TYPE::DBG_LOG, L"NONE");
 		m_JumpingTime = 0;
 		m_CurJumpState = JUMP_STATE::NONE;
 	}
@@ -413,7 +413,7 @@ void CPlayer::UpdateState()
 	static float parryTime = 0;
 
 	// Parry 시작 조건
-	if (!m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::_Z) && m_ParryCount > 0)
+	if (!m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::Z) && m_ParryCount > 0)
 	{
 		parryTime = 0;
 		parryTime += DT;
@@ -443,7 +443,7 @@ void CPlayer::UpdateState()
 
 	// SHOOTING 설정
 	// ========================================================================
-	if (KEY_PRESSED(KEY::_X))
+	if (KEY_PRESSED(KEY::X))
 	{
 		m_CurActionState = ACTION_STATE::SHOOTING;
 	}
@@ -493,8 +493,11 @@ void CPlayer::MoveAndAction()
 	float runspeed = 200;
 	float dashspeed = 300;
 
-	if (!KEY_PRESSED(KEY::RIGHT) && !KEY_PRESSED(KEY::LEFT))
+	if ((KEY_RELEASED(KEY::RIGHT) && m_bFacingRight) || (KEY_RELEASED(KEY::LEFT) && !m_bFacingRight))
 		m_Rigidbody->SetVelocity_X(0);
+
+	//if (!KEY_PRESSED(KEY::RIGHT) && !KEY_PRESSED(KEY::LEFT))
+	//	m_Rigidbody->SetVelocity_X(0);
 
 	// 점프
 	switch (m_CurJumpState)
@@ -940,14 +943,84 @@ void CPlayer::render()
 {
 	CObj::render();
 
-	wchar_t szBuff[255]{};
-	swprintf_s(szBuff, L"ShootingDir : %dBase State : %d, Action State : %d ", (int)m_CurShootingDir, (int)m_CurBaseState, (int)m_CurActionState);
+	wstring strShootingDir = L"Shooting Dir : ";
+	switch (m_CurShootingDir)
+	{
+		case SHOOTING_DIR::LEFT:
+			strShootingDir += L"LEFT";
+			break;
+		case SHOOTING_DIR::RIGHT:
+			strShootingDir += L"RIGHT";
+			break;
+		case SHOOTING_DIR::UP:
+			strShootingDir += L"UP";
+			break;
+		case SHOOTING_DIR::DOWN:
+			strShootingDir += L"DOWN";
+			break;
+		case SHOOTING_DIR::UP_LEFT:
+			strShootingDir += L"UP_LEFT";
+			break;
+		case SHOOTING_DIR::UP_RIGHT:
+			strShootingDir += L"UP_RIGHT";
+			break;
+		case SHOOTING_DIR::DOWN_LEFT:
+			strShootingDir += L"DOWN_LEFT";
+			break;
+		case SHOOTING_DIR::DOWN_RIGHT:
+			strShootingDir += L"DOWN_RIGHT";
+			break;
+		case SHOOTING_DIR::END:
+			break;
+		default:
+			break;
+	}
 
-	wstring strShootingDir = L"Shooting Dir : " + std::to_wstring((int)m_CurShootingDir);
-	wstring strBaseState = L"Base State : " + std::to_wstring((int)m_CurBaseState);
-	wstring strActionState = L"Action State : " + std::to_wstring((int)m_CurActionState);
+	wstring strBaseState = L"Base State : ";
+	switch (m_CurBaseState)
+	{
+		case BASE_STATE::IDLE:
+			strBaseState += L"IDLE";
+			break;
+		case BASE_STATE::DUCK:
+			strBaseState += L"DUCK";
+			break;
+		case BASE_STATE::FIXED:
+			strBaseState += L"FIXED";
+			break;
+		case BASE_STATE::RUN:
+			strBaseState += L"RUN";
+			break;
+		case BASE_STATE::DASH:
+			strBaseState += L"DASH";
+			break;
+		case BASE_STATE::AIRBONE:
+			strBaseState += L"AIRBONE";
+			break;
+		case BASE_STATE::DEATH:
+			strBaseState += L"DEATH";
+			break;
+		default:
+			break;
+	}
 
-	TextOut(SUBDC, 10, 10, strShootingDir.c_str(), strShootingDir.length());
-	TextOut(SUBDC, 10, 25, strBaseState.c_str(), strBaseState.length());
-	TextOut(SUBDC, 10, 40, strActionState.c_str(), strActionState.length());
+	wstring strActionState = L"Action State : ";
+	switch (m_CurActionState)
+	{
+		case ACTION_STATE::NONE:
+			strActionState += L"NONE";
+			break;
+		case ACTION_STATE::SHOOTING:
+			strActionState += L"SHOOTING";
+			break;
+		case ACTION_STATE::HITTED:
+			strActionState += L"HITTED";
+			break;
+		default:
+			break;
+	}
+
+	TextOut(SUBDC, 10, 2, strShootingDir.c_str(), strShootingDir.length());
+	TextOut(SUBDC, 10, 17, strBaseState.c_str(), strBaseState.length());
+	TextOut(SUBDC, 10, 32, strActionState.c_str(), strActionState.length());
 }

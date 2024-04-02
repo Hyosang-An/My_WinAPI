@@ -57,6 +57,7 @@ int CEngine::init(HINSTANCE _hInst, HWND _hWnd, POINT _Resolution)
 	CTimeMgr::GetInstance().init();
 	CKeyMgr::GetInstance().init();
 	CAssetMgr::GetInstance().init();
+	CCamera::GetInstance().init();
 	
 	CLevelMgr::GetInstance().init();
 
@@ -70,6 +71,7 @@ void CEngine::progress()
 	CTimeMgr::GetInstance().tick();			// 매 프레임간 DT, FPS 계산 및 출력
 	CKeyMgr::GetInstance().tick();			// 키 입력 확인 및 키 상태 변경
 	CDbgRenderer::GetInstance().tick();
+	CCamera::GetInstance().tick();
 	// ==================================================================================
 
 

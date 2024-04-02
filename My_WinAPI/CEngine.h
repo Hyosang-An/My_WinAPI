@@ -27,6 +27,7 @@ public:
     HDC     GetSubDC() { return m_hSubDC; }
     HWND    GetMainWnd() { return m_hMainWnd; }
     HINSTANCE GetProcessInstance() { return m_hInstance; }
+    Vec2    GetResolution() { return m_Resolution; }
 
 private:
     void CreateDefaultGDIObj();

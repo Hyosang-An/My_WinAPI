@@ -3,6 +3,7 @@
 #include "CKeyMgr.h"
 #include "CEngine.h"
 #include "CTimeMgr.h"
+#include "CCamera.h"
 
 CDbgRenderer::CDbgRenderer() :
 	m_bRender(true),
@@ -53,6 +54,9 @@ void CDbgRenderer::render()
 		USE_BRUSH(SUBDC, BRUSH_TYPE::HOLLOW);
 		USE_PEN(SUBDC, iter_RenderList->Color);
 
+		// 렌더링 포지션으로 전환
+		iter_RenderList->Position = CCamera::GetInstance().GetRenderPos(iter_RenderList->Position);
+
 		switch (iter_RenderList->Shape)
 		{
 			case DBG_SHAPE::RECT:
@@ -79,6 +83,9 @@ void CDbgRenderer::render()
 			case DBG_SHAPE::LINE:
 			{
 				MoveToEx(SUBDC, (int)(iter_RenderList->Position.x), (int)(iter_RenderList->Position.y), nullptr);
+
+				iter_RenderList->Scale = CCamera::GetInstance().GetRenderPos(iter_RenderList->Scale);
+
 				LineTo(SUBDC, (int)iter_RenderList->Scale.x, (int)iter_RenderList->Scale.y);
 				break;
 			}
