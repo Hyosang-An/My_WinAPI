@@ -100,7 +100,7 @@ void CEngine::progress()
 	// Ä«¸Þ¶ó ÀÌÆåÆ® ·»´õ¸µ
 	CCamera::GetInstance().CameraEffectRender();
 
-	// µð¹ö±× ·»´õ¸µ
+	// µð¹ö±× ·»´õ¸µ !µð¹ö±ë
 	CDbgRenderer::GetInstance().render();
 
 	// Path ·»´õ¸µ

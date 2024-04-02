@@ -42,7 +42,7 @@ void CForce::tick()
 void CForce::AddForce(LAYER_TYPE _type)
 {
 	CLevel* pCurLevel = CLevelMgr::GetInstance().GetCurrentLevel();
-	const vector<CObj*>& vecObj = pCurLevel->GetObjvec(_type);
+	const vector<CObj*>& vecObj = pCurLevel->GetObjvecOfLayer(_type);
 
 	for (size_t i = 0; i < vecObj.size(); i++)
 	{

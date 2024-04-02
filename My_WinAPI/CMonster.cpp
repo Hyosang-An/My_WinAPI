@@ -33,7 +33,6 @@ CMonster::~CMonster()
 void CMonster::begin()
 {
 	m_pFSM->SetBlackboardData(L"DetectRange", DATA_TYPE::FLOAT, &m_fDetectRange);
-	m_pFSM->SetBlackboardData(L"Speed", DATA_TYPE::FLOAT, &m_fSpeed);
 	m_pFSM->SetBlackboardData(L"Self", DATA_TYPE::OBJ_PTR, this);
 
 	CObj* pPlayer = CLevelMgr::GetInstance().FindObjectByName(L"Player");
@@ -45,7 +44,7 @@ void CMonster::begin()
 
 void CMonster::tick()
 {
-	SetPos(GetPos() + (m_Dir * m_fSpeed * DT));
+	// SetPos(GetPos() + (m_Dir * m_fSpeed * DT));
 }
 
 void CMonster::render()

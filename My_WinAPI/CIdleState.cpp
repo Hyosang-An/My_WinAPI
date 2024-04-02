@@ -17,8 +17,6 @@ void CIdleState::Enter()
 	m_fRange = GetBlackboardData<float>(L"DetectRange");
 	m_pSelf = GetBlackboardData<CObj*>(L"Self");
 	m_pTarget = GetBlackboardData<CObj*>(L"Target");
-
-	m_pSelf->SetSpeed(0);
 }
 
 void CIdleState::finaltick()

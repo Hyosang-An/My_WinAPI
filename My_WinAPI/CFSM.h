@@ -39,10 +39,11 @@ public:
 
 public:
     virtual void finaltick() override;
+    virtual CFSM* Clone() override { return new CFSM(*this); };
 
 public:
-    CLONE(CFSM)
     CFSM();
+    CFSM(const CFSM& _other);
     ~CFSM();
 };
 

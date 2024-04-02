@@ -25,9 +25,11 @@ public:
     virtual void finaltick() = 0; // 상태를유지하고 있을 때 할 일
     virtual void Exit() = 0; // 상태를 벗어날 때 할 일
 
+    virtual CState* Clone() = 0;
+
 public:
-    // CState는 여전히 추상 클래스이므로 Clone을 override할 필요가 없다.
     CState();
+    CState(const CState& _other);
     ~CState();
 
 };

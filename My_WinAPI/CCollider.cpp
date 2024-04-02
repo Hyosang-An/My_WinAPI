@@ -10,6 +10,15 @@ CCollider::CCollider()
 {
 }
 
+CCollider::CCollider(const CCollider& _other) :
+	CComponent(_other),
+	m_vOffsetPos(_other.m_vOffsetPos),
+	m_vScale(_other.m_vScale),
+	m_CollisionCount(0),
+	m_bActive(_other.m_bActive)
+{
+}
+
 CCollider::~CCollider()
 {
 }
@@ -19,10 +28,10 @@ void CCollider::finaltick()
 
 
 	// Obj의 위치를 따라가도록 업데이트
-	auto pos = m_pOwner->GetPos();
+	auto pos = m_Owner->GetPos();
 	m_vFinalPos = pos + m_vOffsetPos;
 
-	// Collider 디버그 렌더링
+	// Collider 디버그 렌더링 !디버깅
 #ifdef _DEBUG
 	if (m_bActive)
 	{
@@ -39,16 +48,16 @@ void CCollider::finaltick()
 void CCollider::OnCollisionEnter(CCollider* _pOtherCollider)
 {
 	m_CollisionCount++;
-	m_pOwner->OnCollisionEnter(_pOtherCollider);
+	m_Owner->OnCollisionEnter(_pOtherCollider);
 }
 
 void CCollider::OnCollisionStay(CCollider* _pOtherCollider)
 {
-	m_pOwner->OnCollisionStay(_pOtherCollider);
+	m_Owner->OnCollisionStay(_pOtherCollider);
 }
 
 void CCollider::OnCollisionExit(CCollider* _pOtherCollider)
 {
 	m_CollisionCount--;
-	m_pOwner->OnCollisionExit(_pOtherCollider);
+	m_Owner->OnCollisionExit(_pOtherCollider);
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Singleton.h"
 
-class CLevel;
+#include "CLevel.h"
 
 class CLevelMgr :
     public Singleton<CLevelMgr>

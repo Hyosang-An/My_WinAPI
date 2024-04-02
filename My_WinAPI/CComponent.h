@@ -9,10 +9,10 @@ class CComponent :
     friend class CObj;
 
 protected:
-    CObj* m_pOwner;
+    CObj* m_Owner;
 
 public:
-    CObj* GetOwner() { return m_pOwner; }
+    CObj* GetOwner() { return m_Owner; }
 
 public:
     virtual void finaltick() = 0;
@@ -20,6 +20,7 @@ public:
 
 public:
     CComponent();
+    CComponent(const CComponent& _other);
     ~CComponent();
 };
 

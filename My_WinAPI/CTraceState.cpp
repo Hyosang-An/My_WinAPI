@@ -18,7 +18,8 @@ void CTraceState::Enter()
 	m_pSelf = GetBlackboardData<CObj*>(L"Self");
 	m_pTarget = GetBlackboardData<CObj*>(L"Target");
 
-	m_pSelf->SetSpeed(100);
+	// 몬스터 속도 설정
+	// TODO
 }
 
 void CTraceState::finaltick()
@@ -30,7 +31,8 @@ void CTraceState::finaltick()
 	Vec2 vDir = m_pTarget->GetPos() - m_pSelf->GetPos();
 	if (!vDir.IsZero())
 	{
-		m_pSelf->SetDir(vDir.Normalize());
+		// 몬스터 방향 설정
+		// TODO
 	}
 
 	// 플레이어가 탐지 범위 밖으로 가면 Idle State로 변경
@@ -42,6 +44,7 @@ void CTraceState::finaltick()
 
 void CTraceState::Exit()
 {
-	m_pSelf->SetSpeed(0);
+	// 몬스터 속도 0
+	// TODO
 }
 

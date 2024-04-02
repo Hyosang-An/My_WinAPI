@@ -22,9 +22,8 @@ public:
     bool m_UseGravity;
     bool m_OnGround;
 
-    float m_JumpSpeed;
-
-    float m_maxDashSpeed;
+    // Player 전용
+    float m_maxDashSpeed;           
 
     // CallBack (기본적으로 nullptr 초기화)
     std::function<void()>   m_GroundCallbackFunc;
@@ -53,12 +52,11 @@ public:
 
 public:
     virtual void finaltick() override;
-
-
+    virtual CRigidbody* Clone() override { return new CRigidbody(*this); };
 
 public:
-    CLONE(CRigidbody)
     CRigidbody();
+    CRigidbody(const CRigidbody& _other);
     ~CRigidbody();
 };
 

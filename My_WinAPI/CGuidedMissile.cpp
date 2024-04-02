@@ -21,7 +21,7 @@ void CGuidedMissile::FindTarget()
 
 		// 몬스터를 탐색
 		CLevel* pCurLevel = CLevelMgr::GetInstance().GetCurrentLevel();
-		const vector<CObj*>& vecMonster = pCurLevel->GetObjvec(LAYER_TYPE::MONSTER);
+		const vector<CObj*>& vecMonster = pCurLevel->GetObjvecOfLayer(LAYER_TYPE::MONSTER);
 
 		float fMinDist = m_fRange;
 

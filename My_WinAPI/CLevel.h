@@ -23,7 +23,7 @@ public:
 
 public:
     void AddObject(LAYER_TYPE _type, CObj* _pObj);
-    const vector<CObj*> &GetObjvec(LAYER_TYPE _type);
+    const vector<CObj*> &GetObjvecOfLayer(LAYER_TYPE _type);
     CObj* FindObjectByName(const wstring& _strName);
 
 public:

@@ -11,10 +11,29 @@
 CObj::CObj() :
 	m_eType(LAYER_TYPE::NONE),
 	m_bAlive(true),
-	m_fSpeed(0),
 	m_Animator(nullptr),
 	m_Rigidbody{}
 {
+}
+
+CObj::CObj(const CObj& _other) :
+	CEntity(_other),
+	m_Pos(_other.m_Pos),
+	m_Scale(_other.m_Scale),
+	m_bAlive(_other.m_bAlive),
+	m_eType(_other.m_eType),
+	m_Rigidbody(nullptr),
+	m_Animator(nullptr)
+{
+	for (auto component : _other.m_listComponent)
+	{
+		AddComponent(component->Clone());
+	}
+
+	for (auto collider : _other.m_vecCollider)
+	{
+		m_vecCollider.push_back(collider->Clone());
+	}
 }
 
 CObj::~CObj()

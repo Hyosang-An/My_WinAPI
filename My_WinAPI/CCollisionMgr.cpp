@@ -37,8 +37,8 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 {
 	// 더 작은 값이 left Layer
 	auto pCurLevel = CLevelMgr::GetInstance().GetCurrentLevel();
-	const auto& leftObjVec = pCurLevel->GetObjvec(_leftLayer);
-	const auto& rightObjVec = pCurLevel->GetObjvec(_rightLayer);
+	const auto& leftObjVec = pCurLevel->GetObjvecOfLayer(_leftLayer);
+	const auto& rightObjVec = pCurLevel->GetObjvecOfLayer(_rightLayer);
 
 	auto iter = m_mapCollisionInfo.begin();
 

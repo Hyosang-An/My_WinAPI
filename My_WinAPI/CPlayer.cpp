@@ -942,10 +942,10 @@ void CPlayer::LeaveGround()
 
 void CPlayer::render()
 {
-	// 디버그
+	// !디버깅
 	if (KEY_JUST_PRESSED(KEY::H))
 		m_bInvincibleState = !m_bInvincibleState;
-	// ~디버그
+	// ~디버깅
 
 	auto anim = m_Animator->GetCurAnimation();
 
@@ -996,7 +996,7 @@ void CPlayer::render()
 		bf);
 
 
-	// 디버그 용
+	// !디버깅
 	StatusRender();
 }
 

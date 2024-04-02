@@ -33,6 +33,7 @@ public:
 
 public:
     CCollider();
+    CCollider(const CCollider& _other);
     ~CCollider();
 };
 

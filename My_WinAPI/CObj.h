@@ -28,14 +28,13 @@ private:
 protected:
 	Vec2    m_Pos;
 	Vec2    m_Scale;
-	Vec2	m_Dir;
-	float	m_fSpeed;
 
 	bool	m_bAlive;
 
 	LAYER_TYPE	m_eType;
-	CAnimator* m_Animator;
+
 	CRigidbody* m_Rigidbody;
+	CAnimator* m_Animator;
 
 
 private:
@@ -48,19 +47,12 @@ public:
 	void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
 	void SetScale(float x, float y) { m_Scale = Vec2(x, y); }
 
-	void SetDir(Vec2 _dir) { m_Dir = _dir; m_Dir.Normalize(); }
-	void SetDir(float x, float y) { m_Dir = Vec2(x, y); m_Dir.Normalize(); }
-
-	void SetSpeed(float _speed) { m_fSpeed = _speed; }
-
-
 	void Destroy();
 
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetRenderPos() { return CCamera::GetInstance().GetRenderPos(m_Pos); }
 	Vec2 GetScale() { return m_Scale; }
-	Vec2 GetDir() { return m_Dir; }
-	float GetSpeed() { return m_fSpeed; }
+
 
 	bool IsDead() { return !m_bAlive; }
 	LAYER_TYPE GetLayerType() { return m_eType; }
@@ -69,7 +61,7 @@ public:
 	template<typename T>
 	T* AddComponent(T* _component)
 	{
-		_component->m_pOwner = this;
+		_component->m_Owner = this;
 
 		// Collider는 맨 뒤에 추가하고 나머지는 앞에 추가
 		if (CCollider* pCollider = dynamic_cast<CCollider*>(_component))
@@ -119,6 +111,7 @@ public:
 
 public:
 	CObj();
+	CObj(const CObj& _other);
 	~CObj();
 };
 

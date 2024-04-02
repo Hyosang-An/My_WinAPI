@@ -11,10 +11,27 @@ CRigidbody::CRigidbody() :
 	m_MaxGravitySpeed(800),
 	m_UseGravity(true),
 	m_OnGround(false),
-	m_JumpSpeed(0),
 	m_maxDashSpeed(400)
 {
 
+}
+
+CRigidbody::CRigidbody(const CRigidbody& _other) :
+	CComponent(_other),
+	m_fMass(_other.m_fMass),
+
+	m_GravityAccel(_other.m_GravityAccel),
+
+	m_Friction(_other.m_Friction),
+
+	m_MaxWalkSpeed(_other.m_MaxWalkSpeed),
+	m_MaxGravitySpeed(_other.m_MaxGravitySpeed),
+	m_UseGravity(_other.m_UseGravity),
+	m_OnGround(_other.m_OnGround),
+	m_GroundCallbackFunc(nullptr),
+	m_AirCallbackFunc(nullptr),
+	m_maxDashSpeed(_other.m_maxDashSpeed)
+{
 }
 
 CRigidbody::~CRigidbody()
@@ -58,7 +75,7 @@ void CRigidbody::finaltick()
 
 	// 플레이어 좌우 running 속도 제한
 	// 플레이어면서 대쉬모드가 아닌 경우
-	auto player = dynamic_cast<CPlayer*>(m_pOwner);
+	auto player = dynamic_cast<CPlayer*>(m_Owner);
 	if (!(player != nullptr && player->GetBaseState() == BASE_STATE::DASH))
 	{
 		if (m_MaxWalkSpeed != 0 && m_MaxWalkSpeed < abs(m_Velocity.x))
@@ -106,8 +123,8 @@ void CRigidbody::finaltick()
 	}
 
 	// 위치 업데이트
-	auto objPos = m_pOwner->GetPos();
-	m_pOwner->SetPos(objPos + m_Velocity * DT);
+	auto objPos = m_Owner->GetPos();
+	m_Owner->SetPos(objPos + m_Velocity * DT);
 
 	// DebugRender
 	DrawDebugLine(PEN_TYPE::BLUE, objPos, objPos + m_Velocity, 0.f);

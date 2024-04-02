@@ -4,6 +4,8 @@
 #include "CEngine.h"
 #include "CTimeMgr.h"
 #include "CCamera.h"
+#include "CKeyMgr.h"
+#include "CLevelMgr.h"
 
 CDbgRenderer::CDbgRenderer() :
 	m_bDBGMode(true),
@@ -152,6 +154,26 @@ void CDbgRenderer::render()
 
 	SetBkMode(SUBDC, OPAQUE);
 	SetTextColor(SUBDC, RGB(0, 0, 0));
+
+	// 마우스 좌표 출력
+	Vec2 mousePos = CKeyMgr::GetInstance().GetMousePos();
+	wstring strMousePos = std::to_wstring((int)mousePos.x) + L", " + std::to_wstring((int)mousePos.y);
+	TextOut(SUBDC, (int)(CEngine::GetInstance().GetResolution().x * 0.5f) - 50, 5,
+		strMousePos.c_str(), strMousePos.length());
+
+	// 오브젝트 좌표 출력
+	for (UINT i = 0; i < (UINT)LAYER_TYPE::END; i++)
+	{
+		const auto &ObjvecLayer = CLevelMgr::GetInstance().GetCurrentLevel()->GetObjvecOfLayer((LAYER_TYPE)i);
+
+		for (auto obj : ObjvecLayer)
+		{
+			auto objpos = obj->GetPos();
+			wstring strObjPos = std::to_wstring((int)objpos.x) + L", " + std::to_wstring((int)objpos.y);
+			TextOut(SUBDC, (int)obj->GetRenderPos().x, (int)obj->GetRenderPos().y,
+				strObjPos.c_str(), strObjPos.length());
+		}
+	}
 
 #endif // _DEBUG
 }

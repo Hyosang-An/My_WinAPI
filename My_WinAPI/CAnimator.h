@@ -30,10 +30,11 @@ public:
 
     CAnimation* GetCurAnimation() { return m_CurAnimation; }
 
-    CLONE(CAnimator)
+    virtual CAnimator* Clone() override { return new CAnimator(*this); }
 
 public:
     CAnimator();
+    CAnimator(const CAnimator& _other);
     ~CAnimator();
 };
 
