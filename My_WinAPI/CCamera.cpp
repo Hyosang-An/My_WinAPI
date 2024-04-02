@@ -18,6 +18,25 @@ CCamera::~CCamera()
 {
 }
 
+void CCamera::init()
+{
+	// 카메라 시작 위치
+	m_CameraLeftTopPos = Vec2(0, 0);
+
+	// 윈도우 해상도랑 동일한 크기의 검은색 텍스쳐를 생성
+	Vec2 resolution = CEngine::GetInstance().GetResolution();
+	m_FadeTex = CAssetMgr::GetInstance().CreateTexture(L"Fade Textrue", (UINT)resolution.x, (UINT)resolution.y);
+}
+
+void CCamera::tick()
+{
+	// 카메라 이동
+	Move();
+
+	// 카메라 이펙트 적용
+	CameraEffect();
+}
+
 void CCamera::Move()
 {
 	if (KEY_PRESSED(KEY::W))
@@ -78,26 +97,7 @@ void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)
 	m_listEffect.push_back(info);
 }
 
-void CCamera::init()
-{
-	// 카메라 시작 위치
-	m_CameraLeftTopPos = Vec2(0, 0);
-
-	// 윈도우 해상도랑 동일한 크기의 검은색 텍스쳐를 생성
-	Vec2 resolution = CEngine::GetInstance().GetResolution();
-	m_FadeTex = CAssetMgr::GetInstance().CreateTexture(L"Fade Textrue", (UINT)resolution.x, (UINT)resolution.y);	
-}
-
-void CCamera::tick()
-{
-	// 카메라 이동
-	Move();
-	
-	// 카메라 이펙트 적용
-	CameraEffect();
-}
-
-void CCamera::render()
+void CCamera::CameraEffectRender()
 {
 	if (m_listEffect.empty())
 		return;

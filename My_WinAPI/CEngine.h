@@ -1,5 +1,8 @@
 #pragma once
 #include "Singleton.h"
+
+class CTexture;
+
 class CEngine :
     public Singleton<CEngine>
 {
@@ -10,8 +13,8 @@ private:
     HWND        m_hMainWnd;     // 메인 윈도우 핸들
     POINT       m_Resolution;   // 메인 윈도우 해상도
     HDC         m_hMainDC;          // 메인 윈도우 DC
-    HDC         m_hSubDC;       // 보조 DC
-    HBITMAP     m_hSubBitmap;   // 보조 bitmap
+   
+    CTexture*   m_SubTexture;     // 더블 버퍼링 용도 텍스쳐
 
     HPEN    m_arrPen[(UINT)PEN_TYPE::END];
     HBRUSH  m_arrBrush[(UINT)BRUSH_TYPE::END];
@@ -24,7 +27,7 @@ public:
     HBRUSH  GetBrush(BRUSH_TYPE _type) { return m_arrBrush[(UINT)_type]; }
 
     HDC     GetMainDC() { return m_hMainDC; }
-    HDC     GetSubDC() { return m_hSubDC; }
+    HDC     GetSubDC();
     HWND    GetMainWnd() { return m_hMainWnd; }
     HINSTANCE GetProcessInstance() { return m_hInstance; }
     Vec2    GetResolution() { return m_Resolution; }

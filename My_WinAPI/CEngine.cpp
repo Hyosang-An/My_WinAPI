@@ -14,10 +14,9 @@ CEngine::CEngine()
 	, m_hMainWnd(nullptr)
 	, m_Resolution{}
 	, m_hMainDC(nullptr)
-	, m_hSubDC(nullptr)
-	, m_hSubBitmap(nullptr)
 	, m_arrPen{}
 	, m_arrBrush{}
+	, m_SubTexture{}
 {
 
 }
@@ -91,12 +90,15 @@ void CEngine::progress()
 	// ==================================================================================
 	// 화면 Clear
 	{
-		USE_BRUSH(m_hSubDC, BRUSH_TYPE::GRAY);
-		Rectangle(m_hSubDC, -1, -1, m_Resolution.x + 1, m_Resolution.y + 1);
+		USE_BRUSH(GetSubDC(), BRUSH_TYPE::GRAY);
+		Rectangle(GetSubDC(), -1, -1, m_Resolution.x + 1, m_Resolution.y + 1);
 	}
 
 	// 레벨에 있는 모든 오브젝트 렌더링
-	CLevelMgr::GetInstance().render();		
+	CLevelMgr::GetInstance().render();	
+
+	// 카메라 이펙트 렌더링
+	CCamera::GetInstance().CameraEffectRender();
 
 	// 디버그 렌더링
 	CDbgRenderer::GetInstance().render();
@@ -105,7 +107,7 @@ void CEngine::progress()
 	//CPathMgr::GetInstance().render();
 
 	// SubDC -> MainDC
-	BitBlt(m_hMainDC, 0, 0, m_Resolution.x, m_Resolution.y, m_hSubDC, 0, 0, SRCCOPY);
+	BitBlt(m_hMainDC, 0, 0, m_Resolution.x, m_Resolution.y, GetSubDC(), 0, 0, SRCCOPY);
 	// ==================================================================================
 
 
@@ -116,18 +118,18 @@ void CEngine::progress()
 
 }
 
+HDC CEngine::GetSubDC()
+{
+	return m_SubTexture->GetDC();
+}
+
 void CEngine::CreateDefaultGDIObj()
 {
 	// DC생성
 	// DC 란? 렌더링과 관련, 비트맵에 렌더링하기 위해 필요한 필수 정보 집합체
 	m_hMainDC = GetDC(m_hMainWnd);
-	m_hSubDC = CreateCompatibleDC(m_hMainDC);
-
-	m_hSubBitmap = CreateCompatibleBitmap(m_hMainDC, m_Resolution.x, m_Resolution.y);
-
-	// SubDC가 SubBitmap을 지정하게 함.
-	HBITMAP hPrevBitmap = static_cast<HBITMAP>(SelectObject(m_hSubDC, m_hSubBitmap));
-	DeleteObject(hPrevBitmap);
+	
+	m_SubTexture = CAssetMgr::GetInstance().CreateTexture(L"SubTexture", (UINT)m_Resolution.x, (UINT)m_Resolution.y);
 
 	// 자주 사용할 펜 생성
 	m_arrPen[(UINT)PEN_TYPE::RED] = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
