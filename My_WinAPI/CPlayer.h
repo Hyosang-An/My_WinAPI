@@ -130,6 +130,8 @@ public:
 
 	virtual void render();
 
+	void StatusRender();
+
 	virtual CPlayer* Clone() override { return new CPlayer(*this); }
 
 public:

@@ -35,7 +35,7 @@ class CDbgRenderer :
 private:
 	list<tDbgRenderInfo>	m_RenderList;
 	list<tDbgLog>			m_LogList;
-	bool					m_bRender;
+	bool					m_bDBGMode;
 
 	float					m_LogDuration;	// 로그 지속시간
 	int						m_LogSpace;		// 로그 줄간격
@@ -44,6 +44,8 @@ private:
 public:
 	void AddDbgRenderInfo(const tDbgRenderInfo& _info);
 	void AddDbgLog(const tDbgLog _tDbgLog);
+
+	bool IsDBGMode() { return m_bDBGMode; }
 
 	void tick();
 	void render();

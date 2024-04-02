@@ -6,7 +6,7 @@
 #include "CCamera.h"
 
 CDbgRenderer::CDbgRenderer() :
-	m_bRender(true),
+	m_bDBGMode(true),
 	m_LogDuration(2),
 	m_LogSpace(18),
 	m_LogPos(Vec2(10, 10))
@@ -34,7 +34,7 @@ void CDbgRenderer::tick()
 #ifdef _DEBUG
 	if (KEY_JUST_PRESSED(KEY::_0))
 	{
-		m_bRender = !m_bRender;
+		m_bDBGMode = !m_bDBGMode;
 	}
 #endif // _DEBUG
 }
@@ -43,7 +43,7 @@ void CDbgRenderer::render()
 {
 #ifdef _DEBUG
 
-	if (m_bRender == false)
+	if (m_bDBGMode == false)
 		return;
 
 	// RenderList Ãâ·Â

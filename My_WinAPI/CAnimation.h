@@ -15,7 +15,7 @@ struct tAnimationFrame
 class CAnimation :
     public CEntity
 {
-	friend class CAnimator;
+	friend class CAnimator; friend class CPlayer;
 
 private:
 	CAnimator*					m_Animator;				// Animation을 소유하고 있는 Animator

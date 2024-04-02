@@ -10,6 +10,7 @@
 #include "CDbgRenderer.h"
 #include "CEngine.h"
 #include "CGuidedMissile.h"
+#include "CAnimation.h"
 
 CPlayer::CPlayer() :
 	m_fSpeed(500.f),
@@ -941,7 +942,68 @@ void CPlayer::LeaveGround()
 
 void CPlayer::render()
 {
-	CObj::render();
+	// 디버그
+	if (KEY_JUST_PRESSED(KEY::H))
+		m_bInvincibleState = !m_bInvincibleState;
+	// ~디버그
+
+	auto anim = m_Animator->GetCurAnimation();
+
+	// 현재 프레임 정보
+	const tAnimationFrame& frm = anim->m_vecAnimFrame[anim->m_CurFrameIdx];
+
+	// 애니메이션을 재생하고 있는 오브젝트
+	CObj* pOwnerObj = m_Animator->GetOwner();
+
+	// 오브젝트 위치
+	Vec2 vRenderPos = pOwnerObj->GetRenderPos();
+
+	static float alpha = 0;
+	static float dir = 1;
+	const float ALPHA_MAX = 255.f;
+
+	// 무적모드 인지 아닌지에 맞춰서 알파값 적용
+	if (m_bInvincibleState)
+	{
+		if (ALPHA_MAX < alpha)
+		{
+			alpha = ALPHA_MAX;
+			dir *= -1.f;
+		}
+		else if (alpha < 0.f)
+		{
+			alpha = 0;
+			dir *= -1.f;
+		}
+
+		alpha += DT * 800.f * dir;
+	}
+	else
+		alpha = ALPHA_MAX;
+
+	// AlphaBlending
+	BLENDFUNCTION bf = {};
+
+	bf.BlendOp = AC_SRC_OVER;
+	bf.BlendFlags = 0;
+	bf.SourceConstantAlpha = (int)alpha;
+	bf.AlphaFormat = AC_SRC_ALPHA;
+
+	// 현재 프레임 이미지를 오브젝트 위치에 렌더링
+	AlphaBlend(SUBDC,
+		(int)(vRenderPos.x - frm.SliceSize.x / 2.f + frm.Offset.x), (int)(vRenderPos.y - frm.SliceSize.y / 2.f + frm.Offset.y), (int)frm.SliceSize.x, (int)frm.SliceSize.y,
+		anim->m_Atlas->GetDC(), (int)frm.PosInAtlas.x, (int)frm.PosInAtlas.y, (int)frm.SliceSize.x, (int)frm.SliceSize.y,
+		bf);
+
+
+	// 디버그 용
+	StatusRender();
+}
+
+void CPlayer::StatusRender()
+{
+	if (!CDbgRenderer::GetInstance().IsDBGMode())
+		return;
 
 	wstring strShootingDir = L"Shooting Dir : ";
 	switch (m_CurShootingDir)
