@@ -5,7 +5,6 @@ class CIdleState :
 {
 private:
     float m_fRange;
-    CObj* m_pSelf;
     CObj* m_pTarget;
 
 public:
@@ -13,8 +12,9 @@ public:
     virtual void finaltick() override;
     virtual void Exit() override;
 
+    virtual CIdleState* Clone() override { return new CIdleState(*this); }
+
 public:
-    CLONE(CIdleState)
     CIdleState();
     ~CIdleState();
 };

@@ -5,7 +5,6 @@ class AI :
 {
 
 public:
-	CLONE(AI);
 	AI();
 	~AI();
 };

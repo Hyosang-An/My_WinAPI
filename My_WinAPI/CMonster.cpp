@@ -26,6 +26,20 @@ CMonster::CMonster() :
 	m_pFSM->AddState(L"Trace", new CTraceState);
 }
 
+CMonster::CMonster(const CMonster& _other) :
+	CObj(_other),
+	m_iHP(_other.m_iHP),
+	m_fDetectRange(100),
+	m_pCollider(nullptr),
+	m_pFSM(nullptr)
+{
+	m_eType = LAYER_TYPE::MONSTER;
+
+	m_pCollider = AddComponent(new CCollider(*_other.m_pCollider));
+
+	m_pFSM = AddComponent(new CFSM(*_other.m_pFSM));
+}
+
 CMonster::~CMonster()
 {
 }
@@ -33,7 +47,6 @@ CMonster::~CMonster()
 void CMonster::begin()
 {
 	m_pFSM->SetBlackboardData(L"DetectRange", DATA_TYPE::FLOAT, &m_fDetectRange);
-	m_pFSM->SetBlackboardData(L"Self", DATA_TYPE::OBJ_PTR, this);
 
 	CObj* pPlayer = CLevelMgr::GetInstance().FindObjectByName(L"Player");
 	m_pFSM->SetBlackboardData(L"Target", DATA_TYPE::OBJ_PTR, pPlayer);

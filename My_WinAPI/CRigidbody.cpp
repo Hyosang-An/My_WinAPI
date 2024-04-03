@@ -19,18 +19,16 @@ CRigidbody::CRigidbody() :
 CRigidbody::CRigidbody(const CRigidbody& _other) :
 	CComponent(_other),
 	m_fMass(_other.m_fMass),
-
 	m_GravityAccel(_other.m_GravityAccel),
-
 	m_Friction(_other.m_Friction),
-
 	m_MaxWalkSpeed(_other.m_MaxWalkSpeed),
 	m_MaxGravitySpeed(_other.m_MaxGravitySpeed),
 	m_UseGravity(_other.m_UseGravity),
 	m_OnGround(_other.m_OnGround),
-	m_GroundCallbackFunc(nullptr),
-	m_AirCallbackFunc(nullptr),
-	m_maxDashSpeed(_other.m_maxDashSpeed)
+	m_maxDashSpeed(_other.m_maxDashSpeed),
+
+	m_GroundCallbackFunc(_other.m_GroundCallbackFunc),
+	m_AirCallbackFunc(_other.m_AirCallbackFunc)
 {
 }
 

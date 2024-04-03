@@ -25,15 +25,20 @@ CObj::CObj(const CObj& _other) :
 	m_Rigidbody(nullptr),
 	m_Animator(nullptr)
 {
-	for (auto component : _other.m_listComponent)
-	{
-		AddComponent(component->Clone());
-	}
+	//m_Rigidbody = new CRigidbody(*_other.m_Rigidbody);
+	//m_Animator = new CAnimator(*_other.m_Animator);
 
-	for (auto collider : _other.m_vecCollider)
-	{
-		m_vecCollider.push_back(collider->Clone());
-	}
+	// 컴포넌트는 실제 하위 클래스에서 추가
+	
+	//for (auto component : _other.m_listComponent)
+	//{
+	//	AddComponent(component->Clone());
+	//}
+
+	//for (auto collider : _other.m_vecCollider)
+	//{
+	//	m_vecCollider.push_back(collider->Clone());
+	//}
 }
 
 CObj::~CObj()

@@ -16,8 +16,8 @@ public:
 
 public:
     virtual void finaltick() = 0;
-    virtual CComponent* Clone() = 0;
 
+    // 컴포넌트는 Clone 불가
 public:
     CComponent();
     CComponent(const CComponent& _other);

@@ -12,16 +12,7 @@
 #include "CGuidedMissile.h"
 #include "CAnimation.h"
 
-CPlayer::CPlayer() :
-	m_fSpeed(500.f),
-	m_Texture{},
-	m_bFacingRight(true),
-	m_CurShootingDir(SHOOTING_DIR::RIGHT),
-	m_CurBaseState(BASE_STATE::IDLE),
-	m_CurActionState(ACTION_STATE::NONE),
-	m_PrevShootingDir(SHOOTING_DIR::RIGHT),
-	m_PrevBaseState(m_CurBaseState),
-	m_PrevActionState(ACTION_STATE::NONE)
+CPlayer::CPlayer()
 {
 	m_eType = LAYER_TYPE::PLAYER;
 
@@ -36,11 +27,6 @@ CPlayer::CPlayer() :
 	m_Rigidbody->SetFriction(2000);
 	m_Rigidbody->SetMaxGravitySpeed(800);
 
-
-
-
-
-	
 	// 콜백함수 설정
 	m_Rigidbody->SetGroundCallbackFunc([this]() {this->EnterGround(); });
 	m_Rigidbody->SetAirCallbackFunc([this]() {this->LeaveGround(); });
@@ -227,6 +213,13 @@ CPlayer::CPlayer() :
 	}
 
 	m_Animator->Play(L"cuphead_idle_R", true, true);
+}
+
+CPlayer::CPlayer(const CPlayer& _other)
+{
+	m_Rigidbody = AddComponent(new CRigidbody(*_other.m_Rigidbody));
+	m_PlayerCollider = AddComponent(new CCollider(*_other.m_PlayerCollider));
+	m_Animator = AddComponent(new CAnimator(*_other.m_Animator));
 }
 
 CPlayer::~CPlayer()
@@ -491,8 +484,7 @@ void CPlayer::UpdateState()
 
 void CPlayer::MoveAndAction()
 {
-	float runspeed = 200;
-	float dashspeed = 300;
+	
 
 	if ((KEY_RELEASED(KEY::RIGHT) && m_bFacingRight) || (KEY_RELEASED(KEY::LEFT) && !m_bFacingRight))
 		m_Rigidbody->SetVelocity_X(0);
@@ -527,25 +519,25 @@ void CPlayer::MoveAndAction()
 		case BASE_STATE::RUN:
 		{
 			if (m_bFacingRight)
-				m_Rigidbody->AddVelocity(Vec2(runspeed, 0));
+				m_Rigidbody->AddVelocity(Vec2(m_RunSpeed, 0));
 			else
-				m_Rigidbody->AddVelocity(Vec2(-runspeed, 0));
+				m_Rigidbody->AddVelocity(Vec2(-m_RunSpeed, 0));
 		}
 		break;
 		case BASE_STATE::DASH:
 		{
 			if (m_bFacingRight)
-				m_Rigidbody->AddVelocity(Vec2(dashspeed, 0));
+				m_Rigidbody->AddVelocity(Vec2(m_DashSpeed, 0));
 			else
-				m_Rigidbody->AddVelocity(Vec2(-dashspeed, 0));
+				m_Rigidbody->AddVelocity(Vec2(-m_DashSpeed, 0));
 		}
 		break;
 		case BASE_STATE::AIRBONE:
 		{
 			if (m_bFacingRight && KEY_PRESSED(KEY::RIGHT))
-				m_Rigidbody->AddVelocity(Vec2(runspeed, 0));
+				m_Rigidbody->AddVelocity(Vec2(m_RunSpeed, 0));
 			else if (KEY_PRESSED(KEY::LEFT))
-				m_Rigidbody->AddVelocity(Vec2(-runspeed, 0));
+				m_Rigidbody->AddVelocity(Vec2(-m_RunSpeed, 0));
 			break;
 		}
 		case BASE_STATE::DEATH:

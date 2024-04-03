@@ -52,7 +52,6 @@ public:
 
 public:
     virtual void finaltick() override;
-    virtual CRigidbody* Clone() override { return new CRigidbody(*this); };
 
 public:
     CRigidbody();

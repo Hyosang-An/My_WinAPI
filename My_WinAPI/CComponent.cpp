@@ -7,9 +7,9 @@ CComponent::CComponent()
 }
 
 CComponent::CComponent(const CComponent& _other) :
-	m_Owner(nullptr)
+	CEntity(_other),
+	m_Owner{}
 {
-	// m_Owner 는 AddComponent하면서 _Component->m_Owner = this;로 설정
 }
 
 CComponent::~CComponent()

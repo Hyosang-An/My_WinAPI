@@ -29,7 +29,6 @@ public:
 
 public:
     CState();
-    CState(const CState& _other);
     ~CState();
 
 };

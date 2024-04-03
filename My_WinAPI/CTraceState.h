@@ -5,7 +5,6 @@ class CTraceState :
 {
 public:
     float m_fRange;
-    CObj* m_pSelf;
     CObj* m_pTarget;
 
 public:
@@ -13,10 +12,9 @@ public:
     virtual void finaltick() override;
     virtual void Exit() override;
 
-
+    virtual CTraceState* Clone() override { return new CTraceState(*this); } 
 
 public:
-    CLONE(CTraceState)
     CTraceState();
     ~CTraceState();
 };

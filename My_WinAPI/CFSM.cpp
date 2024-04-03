@@ -10,13 +10,14 @@ CFSM::CFSM() :
 
 CFSM::CFSM(const CFSM& _other) :
 	CComponent(_other), // 부모 클래스의 복사 생성자 호출
-	m_mapData(_other.m_mapData), // 일단 얕은 복사로 시작 (데이터 포인터 복사)
+	m_mapData(_other.m_mapData), // 일단 얕은 복사 (데이터 포인터 복사)
 	m_mapState(), // 초기화만 해둠, 깊은 복사 필요
 	m_CurState(nullptr) // 복사 후 설정 필요
 {
-	// m_mapState 깊은 복사 처리 (예시)
-	for (const auto& pair : _other.m_mapState) {
-		// m_mapState[pair.first] = new CState(*pair.second); // CState의 복사 생성자 필요
+	// m_mapState 깊은 복사 처리
+	for (const auto& pair : _other.m_mapState) 
+	{
+		 m_mapState[pair.first] = pair.second ->Clone();
 	}
 }
 

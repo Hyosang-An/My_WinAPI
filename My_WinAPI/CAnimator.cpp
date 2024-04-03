@@ -18,10 +18,10 @@ CAnimator::CAnimator(const CAnimator& _other) :
     // 원본 Animator 가 보유한 Animation 들을 복제해서 가져온다.
     for (const auto& pair : _other.m_mapAnimation)
     {
-        CAnimation* pCloneAnim = pair.second->Clone();
+        CAnimation* newAnim = new CAnimation(*pair.second);
 
-        pCloneAnim->m_Animator = this;
-        m_mapAnimation.insert(make_pair(pair.first, pCloneAnim));
+        newAnim->m_Animator = this;
+        m_mapAnimation.insert(make_pair(pair.first, newAnim));
     }
 
     // 현재 재생중인 애니메이션 설정

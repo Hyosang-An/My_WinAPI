@@ -30,8 +30,6 @@ public:
 
     CAnimation* GetCurAnimation() { return m_CurAnimation; }
 
-    virtual CAnimator* Clone() override { return new CAnimator(*this); }
-
 public:
     CAnimator();
     CAnimator(const CAnimator& _other);

@@ -29,8 +29,6 @@ public:
 public:
     virtual void finaltick() override;
 
-    virtual CCollider* Clone() { return new CCollider(*this); }
-
 public:
     CCollider();
     CCollider(const CCollider& _other);

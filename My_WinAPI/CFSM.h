@@ -39,7 +39,6 @@ public:
 
 public:
     virtual void finaltick() override;
-    virtual CFSM* Clone() override { return new CFSM(*this); };
 
 public:
     CFSM();

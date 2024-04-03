@@ -16,7 +16,6 @@ public:
 
 public:
     // Load가 순수 가상함수라서 CAsset은 Clone이 안됨.
-    CLONE_DISABLE(CAsset)
     virtual int Load(const wstring& _strFilePath) = 0;
 public:
     CAsset();

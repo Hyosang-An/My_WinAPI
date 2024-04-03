@@ -14,8 +14,6 @@ public:
 	const wstring& GetName() { return m_strName; }
 
 public:
-	// CEntity는 추상클래스이다.
-	virtual CEntity* Clone() = 0;
 
 public:
 	CEntity();

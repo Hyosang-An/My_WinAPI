@@ -65,9 +65,10 @@ class CPlayer :
 	public CObj
 {
 private:
-	float m_fSpeed;
+	float m_RunSpeed = 200;
+	float m_DashSpeed = 300;
 
-	bool	m_bFacingRight;			// 바라보는 방향
+	bool	m_bFacingRight = true;			// 바라보는 방향
 
 	float m_DashDuration = 0.5;		// 대쉬 지속 시간
 	bool m_bAirboneDashed = false;	// 공중에서 대쉬 했는지
@@ -89,21 +90,17 @@ private:
 
 	bool m_bInvincibleState = false;	// 무적 상태
 
-	SHOOTING_DIR    m_CurShootingDir;
-	BASE_STATE		m_CurBaseState;
-	JUMP_STATE		m_CurJumpState;
-	PARRY_STATE		m_CurParryState;
-	ACTION_STATE	m_CurActionState;
+	SHOOTING_DIR    m_CurShootingDir = SHOOTING_DIR::RIGHT;
+	BASE_STATE		m_CurBaseState = BASE_STATE::IDLE;
+	JUMP_STATE		m_CurJumpState = JUMP_STATE::NONE;
+	PARRY_STATE		m_CurParryState = PARRY_STATE::NONE;
+	ACTION_STATE	m_CurActionState = ACTION_STATE::NONE;
+	SHOOTING_DIR	m_PrevShootingDir = SHOOTING_DIR::RIGHT;
+	BASE_STATE		m_PrevBaseState = BASE_STATE::IDLE;
+	JUMP_STATE		m_PrevJumpState = JUMP_STATE::NONE;
+	PARRY_STATE		m_PrevParryState = PARRY_STATE::NONE;
+	ACTION_STATE	m_PrevActionState = ACTION_STATE::NONE;
 
-	SHOOTING_DIR	m_PrevShootingDir;
-	BASE_STATE		m_PrevBaseState;
-	JUMP_STATE		m_PrevJumpState;
-	PARRY_STATE		m_PrevParryState;
-	ACTION_STATE	m_PrevActionState;
-
-
-
-	CTexture* m_Texture;
 
 	//CCollider* m_HeadCol;
 	CCollider* m_PlayerCollider;
@@ -136,6 +133,7 @@ public:
 
 public:
 	CPlayer();
+	CPlayer(const CPlayer& _other);
 	~CPlayer();
 };
 

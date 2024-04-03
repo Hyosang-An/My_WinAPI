@@ -22,7 +22,7 @@ private:
 	CTexture*					m_Atlas;				// Animation 이미지를 보유하고 있는 Atlas Texture
 	vector<tAnimationFrame>		m_vecAnimFrame;	// 각 프레임 정보를 담은 벡터
 
-	float						m_frameElapsedTime;			// 애니메이션 재생 시간
+	float						m_frameElapsedTime;		// 애니메이션 재생 시간
 	int							m_CurFrameIdx;			// 현재 프레임 인덱스
 	bool						m_bFinished;			// 애니메이션 재생이 종료됨을 알림
 
@@ -47,10 +47,9 @@ public:
 	void Save(const wstring& _strRelativeFolderPath);
 	int	Load(const wstring& _strRelativeFilePath);
 
-	CLONE(CAnimation)
-
 public:
 	CAnimation();
+	// 기본 복사생성자 사용
 	~CAnimation();
 
 };

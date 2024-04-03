@@ -25,6 +25,7 @@ public:
 
 public:
 	CMonster();
+	CMonster(const CMonster& _other);
 	~CMonster();
 };
 
