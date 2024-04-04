@@ -563,13 +563,13 @@ void CPlayer::MoveAndAction()
 				Shoot(m_CurShootingDir);
 				timeSinceLastShot = 0;
 			}
-
-			timeSinceLastShot += DT;
 			break;
 		}
 		default:
 			break;
 	}
+
+	timeSinceLastShot += DT;
 }
 
 void CPlayer::UpdateAnimation()
