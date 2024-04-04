@@ -49,6 +49,8 @@ int SaveWStringToFile(_In_ const wstring& _str, _Inout_ FILE* _pFile)
 
 int LoadWStringFromFile(_Out_ std::wstring& _str, _Inout_ FILE* _pFile)
 {
+    _str.clear();
+
     size_t len = 0;
     if (fread(&len, sizeof(size_t), 1, _pFile) != 1)
     {
@@ -65,4 +67,29 @@ int LoadWStringFromFile(_Out_ std::wstring& _str, _Inout_ FILE* _pFile)
     return S_OK;
 }
 
+wstring ExtractFileName(const wstring& fullPath)
+{
+    // 파일 이름이 시작되는 위치 찾기 (마지막 '\\'의 다음 위치)
+    size_t lastSlashPos = fullPath.find_last_of(L"\\");
+    if (lastSlashPos == std::wstring::npos) {
+        // '\\'가 없다면, fullPath가 이미 파일 이름일 수 있음
+        lastSlashPos = 0;
+    }
+    else {
+        // 파일 이름만 추출하기 위해 lastSlashPos을 1 증가
+        lastSlashPos++;
+    }
 
+    // 파일 이름 추출 (확장자 포함)
+    std::wstring fileNameWithExt = fullPath.substr(lastSlashPos);
+
+    // 확장자 제거하기 위해 마지막 '.'의 위치 찾기
+    size_t lastDotPos = fileNameWithExt.find_last_of(L".");
+    if (lastDotPos == std::wstring::npos) {
+        // '.'가 없다면, 확장자가 없는 경우임
+        return fileNameWithExt;
+    }
+
+    // 확장자 제거한 순수 파일 이름 반환
+    return fileNameWithExt.substr(0, lastDotPos);
+}

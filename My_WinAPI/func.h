@@ -64,3 +64,5 @@ void ChangeLevel(LEVEL_TYPE _NextLevelType);
 // Save, Load 관련 함수
 int SaveWStringToFile(_In_ const wstring& _str, _Inout_ FILE* _pFile);
 int LoadWStringFromFile(_Out_ wstring& _str, _Inout_ FILE* _pFile);
+
+wstring ExtractFileName(const wstring& fullPath);

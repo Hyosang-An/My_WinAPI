@@ -46,6 +46,8 @@ void CCamera::tick()
 
 void CCamera::Move()
 {
+	m_PrevCameraLeftTopPos = m_CameraLeftTopPos;
+
 	if (CDbgRenderer::GetInstance().IsDBGMode())
 	{
 		if (KEY_PRESSED(KEY::W))

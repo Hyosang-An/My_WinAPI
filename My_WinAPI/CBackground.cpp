@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CBackground.h"
+#include "CCamera.h"
 
 CBackground::CBackground() :
 	m_Texture{}
@@ -11,8 +12,52 @@ CBackground::~CBackground()
 }
 
 
+void CBackground::SetAnimation(const wstring& strRelativeAnimPath)
+{
+	if (m_Animator == nullptr)
+		m_Animator = AddComponent(new CAnimator);
+
+	m_Animator->LoadAnimation(strRelativeAnimPath);
+	m_Animator->Play(ExtractFileName(strRelativeAnimPath), true);
+}
+	
+
+void CBackground::begin()
+{
+
+}
+
+void CBackground::tick()
+{
+	auto CameraDeltaPos = CCamera::GetInstance().GetCameraDeltaPos();
+
+	switch (m_Depth)
+	{
+		case BACKGROUND_DEPTH::Fore:
+			break;
+		case BACKGROUND_DEPTH::Middle:
+		{
+			SetPos(GetPos() + 0.5*CameraDeltaPos);
+			break;
+		}
+		case BACKGROUND_DEPTH::Far:
+		{
+			SetPos(GetPos() + CameraDeltaPos);
+			break;
+		}
+		default:
+			break;
+	}
+}
+
 void CBackground::render()
 {
+	if (m_Texture == nullptr && m_Animator != nullptr)
+	{
+		m_Animator->render();
+		return;
+	}
+
 	// 오브젝트 위치
 	Vec2 vRenderPos = GetRenderPos();
 	Vec2 vScale = GetScale();

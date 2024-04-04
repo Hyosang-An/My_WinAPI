@@ -36,6 +36,8 @@ CPlayer::CPlayer()
 	CCamera::GetInstance().SetPlayerToCamera(this);
 
 
+	
+
 	// .json으로 부터 불러오기
 	//{
 	//	// R

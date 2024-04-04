@@ -34,6 +34,8 @@ class CCamera :
 
 private:
     Vec2        m_CameraLeftTopPos;
+    Vec2        m_PrevCameraLeftTopPos;
+
     Vec2        m_CameraRealCenterPos;
 
     CPlayer* m_Player;
@@ -59,6 +61,8 @@ private:
 public:
     Vec2 GetRenderPos(Vec2 _realPos) { return _realPos - m_CameraLeftTopPos; }
     Vec2 GetRealPos(Vec2 _renderPos) { return _renderPos + m_CameraLeftTopPos; }
+
+    Vec2 GetCameraDeltaPos() { return m_CameraLeftTopPos - m_PrevCameraLeftTopPos; }
 
     void SetCameraLeftTopPos(Vec2 _pos) { m_CameraLeftTopPos = _pos; }
     void SetCameraEffect(CAM_EFFECT _effect, float _duration);
