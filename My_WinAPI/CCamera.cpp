@@ -14,7 +14,8 @@
 
 CCamera::CCamera() :
 	m_FadeTex{},
-	m_RedTex{}
+	m_RedTex{},
+	m_Player{}
 {
 }
 
@@ -55,11 +56,59 @@ void CCamera::Move()
 			m_CameraLeftTopPos.x -= DT * m_CamSpeed;
 		if (KEY_PRESSED(KEY::D))
 			m_CameraLeftTopPos.x += DT * m_CamSpeed;
-
-		return;
 	}
 
-	
+	else
+	{
+		TrackingPlayer_RunAndGunStage();
+		TrackingPlayer_BossStage();
+	}
+
+
+	m_CameraRealCenterPos = m_CameraLeftTopPos + CEngine::GetInstance().GetResolution() / 2.f;
+}
+
+
+void CCamera::CameraEffect()
+{
+	// 완료된 이펙트 제거
+	while (!m_listEffect.empty())
+	{
+		CAM_EFFECT_INFO& info = m_listEffect.front();
+
+		if (info.Duration < info.ElapsedTime)
+			m_listEffect.pop_front();
+		else
+			break;
+	}
+
+	if (m_listEffect.empty())
+		return;
+
+	// 이펙트 상태 업데이트
+	CAM_EFFECT_INFO& info = m_listEffect.front();
+	info.ElapsedTime += DT;
+
+	const float ALPHA_MAX = 255.f;
+
+	switch (info.Effect)
+	{
+		case CAM_EFFECT::FADE_IN:
+			info.Alpha = (1.f - (info.ElapsedTime / info.Duration)) * ALPHA_MAX;
+			break;
+		case CAM_EFFECT::FADE_OUT:
+			info.Alpha = (info.ElapsedTime / info.Duration) * ALPHA_MAX;
+			break;
+		default:
+			break;
+	}
+
+}
+
+void CCamera::TrackingPlayer_RunAndGunStage()
+{
+	if (m_bTrackingState != CAM_TRACKING_STATE::RUN_AND_GUN)
+		return;
 
 	if (m_Player == nullptr)
 		return;
@@ -110,7 +159,7 @@ void CCamera::Move()
 	if (abs(diff.x) >= max_diff_X - 25)
 	{
 		bCameraCentering = true;
-		cameraSpeed_X = cameraSpeed_X > 0 ? playerRunSpeed * 1.3 : -playerRunSpeed * 1.3;
+		cameraSpeed_X = cameraSpeed_X > 0 ? playerRunSpeed * 1.4 : -playerRunSpeed * 1.4;
 	}
 
 	//!디버그
@@ -119,7 +168,7 @@ void CCamera::Move()
 	}
 
 	//if (!CDbgRenderer::GetInstance().IsDBGMode())
-		m_CameraLeftTopPos.x += cameraSpeed_X * DT;
+	m_CameraLeftTopPos.x += cameraSpeed_X * DT;
 
 	// Y방향 카메라 위치 업데이트
 	//=================================================================
@@ -131,45 +180,14 @@ void CCamera::Move()
 	{
 		m_CameraLeftTopPos.y += (diff.y - 150);
 	}
-
-	m_CameraRealCenterPos = m_CameraLeftTopPos + CEngine::GetInstance().GetResolution() / 2.f;
 }
 
-
-void CCamera::CameraEffect()
+void CCamera::TrackingPlayer_BossStage()
 {
-	// 완료된 이펙트 제거
-	while (!m_listEffect.empty())
-	{
-		CAM_EFFECT_INFO& info = m_listEffect.front();
-
-		if (info.Duration < info.ElapsedTime)
-			m_listEffect.pop_front();
-		else
-			break;
-	}
-
-	if (m_listEffect.empty())
+	if (m_bTrackingState != CAM_TRACKING_STATE::BOSS)
 		return;
 
-	// 이펙트 상태 업데이트
-	CAM_EFFECT_INFO& info = m_listEffect.front();
-	info.ElapsedTime += DT;
-
-	const float ALPHA_MAX = 255.f;
-
-	switch (info.Effect)
-	{
-		case CAM_EFFECT::FADE_IN:
-			info.Alpha = (1.f - (info.ElapsedTime / info.Duration)) * ALPHA_MAX;
-			break;
-		case CAM_EFFECT::FADE_OUT:
-			info.Alpha = (info.ElapsedTime / info.Duration) * ALPHA_MAX;
-			break;
-		default:
-			break;
-	}
-
+	// TODO
 }
 
 void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)
@@ -193,10 +211,10 @@ void CCamera::SetCameraLookAt(Vec2 _pos)
 void CCamera::CameraEffectRender()
 {
 	// !디버그 
-	if (CDbgRenderer::GetInstance().IsDBGMode())
+	//if (CDbgRenderer::GetInstance().IsDBGMode())
 	{
 		wstring strDiff = std::to_wstring(m_diff.x) + L", " + std::to_wstring(m_diff.y);
-		TextOut(SUBDC, (int)500, 300,
+		TextOut(SUBDC, (int)400, 10,
 			strDiff.c_str(), strDiff.length());
 	}
 

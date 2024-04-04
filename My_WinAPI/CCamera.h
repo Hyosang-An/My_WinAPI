@@ -18,6 +18,13 @@ struct CAM_EFFECT_INFO
     float       Alpha;
 };
 
+enum class CAM_TRACKING_STATE
+{
+    NONE,
+    BOSS,
+    RUN_AND_GUN
+};
+
 class CTexture;
 
 class CCamera :
@@ -37,11 +44,17 @@ private:
     CTexture* m_FadeTex;
     CTexture* m_RedTex;
 
+    CAM_TRACKING_STATE    m_bTrackingState = CAM_TRACKING_STATE::NONE;
+
+    // !µð¹ö±ë
+    Vec2 m_diff;
+
 private:
     void Move();
     void CameraEffect();
+    void TrackingPlayer_RunAndGunStage();
+    void TrackingPlayer_BossStage();
 
-    Vec2 m_diff;
 
 public:
     Vec2 GetRenderPos(Vec2 _realPos) { return _realPos - m_CameraLeftTopPos; }
@@ -50,6 +63,7 @@ public:
     void SetCameraLeftTopPos(Vec2 _pos) { m_CameraLeftTopPos = _pos; }
     void SetCameraEffect(CAM_EFFECT _effect, float _duration);
     void SetCameraLookAt(Vec2 _pos);
+    void SetTrackingState(CAM_TRACKING_STATE _state) { m_bTrackingState = _state; }
 
     void SetPlayerToCamera(CPlayer* _player) { m_Player = _player; }
 

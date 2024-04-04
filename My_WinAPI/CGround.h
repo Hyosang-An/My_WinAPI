@@ -11,9 +11,11 @@ private:
 	CCollider* m_GroundCollider;
 
 public:
+	void SetColliderScale(Vec2 _scale);
+
+public:
 	virtual void begin() override;
 	virtual void tick() override;
-	virtual void render() override;
 
 	virtual void OnCollisionEnter(CCollider* _pOtherCollider) override;
 	virtual void OnCollisionStay(CCollider* _pOtherCollider) override;

@@ -12,8 +12,7 @@ public:
 public:
     virtual void render() override;
 
-    // 클론 사용하지 않음
-    virtual CBackground* Clone() { return nullptr; }
+    virtual CBackground* Clone() { return new CBackground(*this); }
 
 public:
     CBackground();
