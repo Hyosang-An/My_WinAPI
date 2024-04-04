@@ -2,6 +2,7 @@
 #include "CStage_Goopy_Le_Grande.h"
 
 #include "CBackground.h"
+#include "CKeyMgr.h"
 
 CStage_Goopy_Le_Grande::CStage_Goopy_Le_Grande()
 {
@@ -23,7 +24,10 @@ void CStage_Goopy_Le_Grande::tick()
 {
 	CLevel::tick();
 
-
+	if (KEY_JUST_PRESSED(KEY::M))
+	{
+		ChangeLevel(LEVEL_TYPE::Test);
+	}
 }
 
 void CStage_Goopy_Le_Grande::Enter()

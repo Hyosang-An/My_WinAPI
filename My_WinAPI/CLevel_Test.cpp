@@ -7,6 +7,7 @@
 #include "CMonster.h"
 #include "CGround.h"
 #include "CCollisionMgr.h"
+#include "CBackground.h"
 
 
 CLevel_Test::CLevel_Test()
@@ -46,6 +47,9 @@ void CLevel_Test::tick()
 
 void CLevel_Test::Enter()
 {
+	// 카메라 트래킹 설정
+	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::RUN_AND_GUN);
+
 	// 레벨에 물체 추가하기
 	CObj* pObj = new CPlayer;
 	pObj->SetName(L"Player");
@@ -66,16 +70,29 @@ void CLevel_Test::Enter()
 	pObj->SetPos(Vec2(640.f, 600));
 	AddObject(LAYER_TYPE::PLATFORM, pObj);
 
-	// Ground 생성 (test)
-	pObj = new CGround;
-	pObj->SetName(L"Ground_test");
-	pObj->SetPos(Vec2(640.f, 600));
-	AddObject(LAYER_TYPE::GROUND, pObj);
+	// Background 생성
+	auto bg = new CBackground;
+	bg->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Test Background", L"texture\\Funfair Fever\\main playable\\lv2-1_main_playable_ground_loop.png"));
+	bg->SetName(L"BG_Test");
+	bg->SetPos(Vec2(640.f, 600));
+	AddObject(LAYER_TYPE::GROUND, bg);
 
-	pObj = pObj->Clone();
-	pObj->SetPos(Vec2(640.f + 1910, 600));
-	pObj->SetName(L"Ground_test2");
-	AddObject(LAYER_TYPE::GROUND, pObj);
+	bg = bg->Clone();
+	bg->SetName(L"BG_Test2");
+	bg->SetPos(Vec2(640.f + 1910, 600));
+	AddObject(LAYER_TYPE::GROUND, bg);
+
+	// Ground 생성 (test)
+	auto ground = new CGround;
+	ground->SetName(L"Ground_test");
+	ground->SetPos(Vec2(640.f, 600));
+	ground->SetColliderScale(Vec2(1910, 10));
+	AddObject(LAYER_TYPE::GROUND, ground);
+
+	ground = ground->Clone();
+	ground->SetPos(Vec2(640.f + 1910, 600));
+	ground->SetName(L"Ground_test2");
+	AddObject(LAYER_TYPE::GROUND, ground);
 
 	// 충돌 지정
 	// Player와 Monster 레이어 간 충돌 체크
