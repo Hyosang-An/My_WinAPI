@@ -24,7 +24,7 @@ void CTraceState::finaltick()
 {
 	auto selfObj = GetObj();
 	// 몬스터의 탐지 범위를 시각화
-	DrawDebugCircle(PEN_TYPE::GREEN, selfObj->GetPos(), Vec2(m_fRange * 2.f, m_fRange * 2.f), 0);
+	DrawDebugCircle(PEN_TYPE::RED, selfObj->GetPos(), Vec2(m_fRange * 2.f, m_fRange * 2.f), 0);
 
 	// 플레이어를 향한다.
 	Vec2 vDir = m_pTarget->GetPos() - selfObj->GetPos();

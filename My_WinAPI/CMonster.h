@@ -19,9 +19,9 @@ public:
 
 	virtual CMonster* Clone() override { return new CMonster(*this); }
 
-	virtual void OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCollider);
-	virtual void OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherCollider);
-	virtual void OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider);
+	virtual void OnCollisionEnter(CCollider* _pOtherCollider);
+	virtual void OnCollisionStay(CCollider* _pOtherCollider);
+	virtual void OnCollisionExit(CCollider* _pOtherCollider);
 
 public:
 	CMonster();

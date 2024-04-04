@@ -12,7 +12,7 @@
 
 CMonster::CMonster() :
 	m_iHP(3),
-	m_fDetectRange(100),
+	m_fDetectRange(200),
 	m_pCollider(nullptr),
 	m_pFSM(nullptr)
 {
@@ -29,7 +29,7 @@ CMonster::CMonster() :
 CMonster::CMonster(const CMonster& _other) :
 	CObj(_other),
 	m_iHP(_other.m_iHP),
-	m_fDetectRange(100),
+	m_fDetectRange(_other.m_fDetectRange),
 	m_pCollider(nullptr),
 	m_pFSM(nullptr)
 {
@@ -70,7 +70,7 @@ void CMonster::render()
 		, (int)(RenderPos.y + Scale.y * 0.5f));
 }
 
-void CMonster::OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
+void CMonster::OnCollisionEnter(CCollider* _pOtherCollider)
 {
 	CObj* pOtherObj = _pOtherCollider->GetOwner();
 
@@ -87,11 +87,11 @@ void CMonster::OnCollisionEnter(CCollider* _pOwnCollider, CCollider* _pOtherColl
 
 }
 
-void CMonster::OnCollisionStay(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
+void CMonster::OnCollisionStay(CCollider* _pOtherCollider)
 {
 }
 
-void CMonster::OnCollisionExit(CCollider* _pOwnCollider, CCollider* _pOtherCollider)
+void CMonster::OnCollisionExit(CCollider* _pOtherCollider)
 {
 
 }
