@@ -48,7 +48,7 @@ void CLevel_Test::tick()
 void CLevel_Test::Enter()
 {
 	// 카메라 트래킹 설정
-	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::RUN_AND_GUN);
+	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::RUN_AND_GUN_STAGE);
 
 	// 레벨에 물체 추가하기
 	CObj* pObj = new CPlayer;

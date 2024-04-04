@@ -3,6 +3,8 @@
 
 #include "CBackground.h"
 #include "CKeyMgr.h"
+#include "CPlayer.h"
+#include "CGround.h"
 
 CStage_Goopy_Le_Grande::CStage_Goopy_Le_Grande()
 {
@@ -12,12 +14,57 @@ CStage_Goopy_Le_Grande::~CStage_Goopy_Le_Grande()
 {
 }
 
+
+
+void CStage_Goopy_Le_Grande::Enter()
+{
+	// 스테이지 좌우 범위 -710 ~ 722
+
+	// 카메라 설정
+	CCamera::GetInstance().SetCameraInitialLookAt(Vec2(0, 0));
+	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::BOSS_STAGE);
+
+	//뒷 배경 추가
+	LoadBackGround();
+
+	// 오브젝트 추가
+	CObj* pObj = new CPlayer;
+	pObj->SetName(L"Player");
+	pObj->SetPos(0, 0);
+	pObj->SetScale(100, 100);
+	AddObject(LAYER_TYPE::PLAYER, pObj);
+
+
+	// Ground 생성
+	auto ground = new CGround;
+	ground->SetName(L"Ground");
+	ground->SetPos(Vec2(0, 240));
+	ground->SetColliderScale(Vec2(1910, 10));
+	AddObject(LAYER_TYPE::GROUND, ground);
+
+
+	// 오브젝트 앞에 위치하는 배경
+	CBackground* BG;
+
+
+}
+
+void CStage_Goopy_Le_Grande::tick()
+{
+	CLevel::tick();
+
+	if (KEY_JUST_PRESSED(KEY::M))
+	{
+		ChangeLevel(LEVEL_TYPE::Test);
+	}
+}
+
 void CStage_Goopy_Le_Grande::LoadBackGround()
 {
-	// 스테이지 좌우 범위 -700 ~ 700
+	// 스테이지 좌우 범위 -710 ~ 722
 
 	// 먼저 그려야 하는것부터 추가
-	CBackground* BG; 
+	CBackground* BG;
 
 	// 아주 먼 배경
 	BG = new CBackground;
@@ -52,17 +99,6 @@ void CStage_Goopy_Le_Grande::LoadBackGround()
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
 
 	BG = new CBackground;
-	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_fg_mushrooms_left", L"texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_fg_mushrooms_left.png"));
-	BG->SetPos(Vec2(-500, 270));
-	AddObject(LAYER_TYPE::BACKGROUND, BG);
-
-	BG = new CBackground;
-	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_fg_mushrooms_right", L"\\texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_fg_mushrooms_right.png"));
-	BG->SetPos(Vec2(400, 220));
-	AddObject(LAYER_TYPE::BACKGROUND, BG);
-
-
-	BG = new CBackground;
 	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_fg_left_branch", L"texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_fg_left_branch.png"));
 	BG->SetPos(Vec2(-650, -300));
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
@@ -71,25 +107,19 @@ void CStage_Goopy_Le_Grande::LoadBackGround()
 	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_fg_right_branch", L"texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_fg_right_branches.png"));
 	BG->SetPos(Vec2(650, -300));
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
+
+
+	// 플레이어 앞에 위치하는 배경
+	BG = new CBackground;
+	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_fg_mushrooms_left", L"texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_fg_mushrooms_left.png"));
+	BG->SetPos(Vec2(-500, 270));
+	AddObject(LAYER_TYPE::FOREGROUND, BG);
+
+	BG = new CBackground;
+	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_fg_mushrooms_right", L"\\texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_fg_mushrooms_right.png"));
+	BG->SetPos(Vec2(400, 220));
+	AddObject(LAYER_TYPE::FOREGROUND, BG);
 }
-
-void CStage_Goopy_Le_Grande::Enter()
-{
-	CCamera::GetInstance().SetCameraLookAt(Vec2(0, 0));
-	LoadBackGround();
-}
-
-void CStage_Goopy_Le_Grande::tick()
-{
-	CLevel::tick();
-
-	if (KEY_JUST_PRESSED(KEY::M))
-	{
-		ChangeLevel(LEVEL_TYPE::Test);
-	}
-}
-
-
 
 void CStage_Goopy_Le_Grande::Exit()
 {
