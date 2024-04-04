@@ -4,6 +4,8 @@ class CGround :
 	public CObj
 {
 private:
+	static int havePlayerCnt;
+
 	CTexture* m_Textrue;
 
 	CCollider* m_GroundCollider;
@@ -20,6 +22,7 @@ public:
 public:
 	virtual CGround* Clone() override { return new CGround(*this); };
 	CGround();
+	CGround(const CGround& _other);
 	~CGround();
 };
 

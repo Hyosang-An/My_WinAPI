@@ -4,6 +4,8 @@
 #include "CEngine.h"
 #include "CPlayer.h"
 
+int CGround::havePlayerCnt = 0;
+
 CGround::CGround() :
 	m_Textrue(nullptr),
 	m_GroundCollider{}
@@ -13,6 +15,12 @@ CGround::CGround() :
 	m_GroundCollider = AddComponent(new CCollider);
 	m_GroundCollider->SetOffsetPos(Vec2(0, 0));
 	m_GroundCollider->SetScale(Vec2(m_Textrue->GetWidth(), 10));
+}
+
+CGround::CGround(const CGround& _other) :
+	m_Textrue(_other.m_Textrue)
+{
+	m_GroundCollider = AddComponent(new CCollider(*_other.m_GroundCollider));
 }
 
 CGround::~CGround()
@@ -53,10 +61,14 @@ void CGround::render()
 
 void CGround::OnCollisionEnter(CCollider* _pOtherCollider)
 {
-	
 	if (CPlayer* player = dynamic_cast<CPlayer*>(_pOtherCollider->GetOwner()))
 	{
+		havePlayerCnt++;
+
 		auto playerRigidbody = player->GetComponent<CRigidbody>();
+		if (playerRigidbody->IsOnGround())
+			return;
+
 		playerRigidbody->SetGround(true);
 
 		auto playerCollider = _pOtherCollider;
@@ -80,6 +92,7 @@ void CGround::OnCollisionStay(CCollider* _pOtherCollider)
 	if (CPlayer* player = dynamic_cast<CPlayer*>(_pOtherCollider->GetOwner()))
 	{
 		auto playerRigidbody = player->GetComponent<CRigidbody>();
+
 		playerRigidbody->SetGround(true);
 
 		auto playerCollider = _pOtherCollider;
@@ -105,7 +118,10 @@ void CGround::OnCollisionExit(CCollider* _pOtherCollider)
 {
 	if (CPlayer* player = dynamic_cast<CPlayer*>(_pOtherCollider->GetOwner()))
 	{
-		auto rigidbody = player->GetComponent<CRigidbody>();
-		rigidbody->SetGround(false);
+		auto playerRigidbody = player->GetComponent<CRigidbody>();
+		if (havePlayerCnt == 1)
+			playerRigidbody->SetGround(false);
+
+		havePlayerCnt--;
 	}
 }
