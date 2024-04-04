@@ -49,14 +49,19 @@ enum class LAYER_TYPE
 	PLATFORM,
 	TILE,
 	MONSTER,
+	BOSS,
 	PLAYER,
 	PLAYER_MISSILE,
 	MONSTER_MISSILE,
 
 	FORCE,
 
-	UI = 15,
-	END = 16,
+	FOREGROUND,
+
+	UI,
+
+	// END는 32 이하여야 한다.
+	END,
 
 	NONE = -1,
 };
