@@ -33,6 +33,8 @@ CPlayer::CPlayer()
 
 	m_Animator = AddComponent(new CAnimator);
 
+	CCamera::GetInstance().SetPlayerToCamera(this);
+
 
 	// .json으로 부터 불러오기
 	//{
@@ -252,10 +254,9 @@ void CPlayer::UpdateState()
 {
 	// Hitted 및 무적 상태 설정
 	// ========================================================================
-	static float invincibleTime = 0;
-	if (m_CurActionState == ACTION_STATE::HITTED)
+	if (m_CurBaseState == BASE_STATE::HITTED)
 	{
-		if (m_PrevActionState != ACTION_STATE::HITTED)
+		if (m_PrevBaseState != BASE_STATE::HITTED)
 		{
 			invincibleTime = 0;
 			m_bInvincibleState = true;
@@ -263,7 +264,6 @@ void CPlayer::UpdateState()
 
 		invincibleTime += DT;
 
-		static float HittedTime = 0;
 		if (HittedTime < m_HittedDuration)
 		{
 			HittedTime += DT;
@@ -282,11 +282,11 @@ void CPlayer::UpdateState()
 	// ========================================================================
 	if (m_CurBaseState == BASE_STATE::DASH)
 	{
-		static float DashTime = 0;
-
+		auto dt = DT;
 		if (m_DashDuration < DashTime)
 		{
 			DashTime = 0;
+			m_Rigidbody->SetVelocity_X(0);
 			if (m_Rigidbody->IsOnGround())
 				m_CurBaseState = BASE_STATE::AIRBONE;
 			else
@@ -374,7 +374,6 @@ void CPlayer::UpdateState()
 
 	// Jump State 설정
 	// ========================================================================
-	static float m_JumpingTime = 0;
 	if (m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::Z))
 	{
 		// LOG(LOG_TYPE::DBG_WARNING, L"JUMP_START");
@@ -394,7 +393,7 @@ void CPlayer::UpdateState()
 			m_CurJumpState = JUMP_STATE::NONE;
 		}
 	}
-	else if ((m_CurJumpState == JUMP_STATE::JUMPING && KEY_RELEASED(KEY::Z)) || m_Rigidbody->IsOnGround())
+	else if (((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_RELEASED(KEY::Z)) || m_Rigidbody->IsOnGround())
 	{
 		// LOG(LOG_TYPE::DBG_LOG, L"NONE");
 		m_JumpingTime = 0;
@@ -404,7 +403,6 @@ void CPlayer::UpdateState()
 
 	// Parry State 설정
 	// ========================================================================
-	static float parryTime = 0;
 
 	// Parry 시작 조건
 	if (!m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::Z) && m_ParryCount > 0)
@@ -426,7 +424,7 @@ void CPlayer::UpdateState()
 	}
 
 	// Parry 끝나는 조건
-	if (m_Rigidbody->IsOnGround() || m_CurActionState == ACTION_STATE::HITTED)
+	if (m_Rigidbody->IsOnGround() || m_CurBaseState == BASE_STATE::HITTED)
 	{
 		m_CurParryState = PARRY_STATE::NONE;
 	}
@@ -484,7 +482,8 @@ void CPlayer::UpdateState()
 
 void CPlayer::MoveAndAction()
 {
-	
+	if (m_CurBaseState == BASE_STATE::HITTED)
+		return;
 
 	if ((KEY_RELEASED(KEY::RIGHT) && m_bFacingRight) || (KEY_RELEASED(KEY::LEFT) && !m_bFacingRight))
 		m_Rigidbody->SetVelocity_X(0);
@@ -540,6 +539,11 @@ void CPlayer::MoveAndAction()
 				m_Rigidbody->AddVelocity(Vec2(-m_RunSpeed, 0));
 			break;
 		}
+		case BASE_STATE::HITTED:
+		{
+			
+			break;
+		}
 		case BASE_STATE::DEATH:
 			break;
 		default:
@@ -553,7 +557,6 @@ void CPlayer::MoveAndAction()
 		case ACTION_STATE::SHOOTING:
 		{
 			float shootingFrequency = 5;
-			static float timeSinceLastShot = 0;
 
 			if ((1.f / shootingFrequency) <= timeSinceLastShot)
 			{
@@ -564,8 +567,6 @@ void CPlayer::MoveAndAction()
 			timeSinceLastShot += DT;
 			break;
 		}
-		case ACTION_STATE::HITTED:
-			break;
 		default:
 			break;
 	}
@@ -621,7 +622,6 @@ void CPlayer::UpdateAnimation()
 			case BASE_STATE::DUCK:
 			{
 				float duckingDuration = 0.5;
-				static float duckingTime = 0;
 
 				if (m_PrevBaseState != BASE_STATE::DUCK)
 					duckingTime = 0;
@@ -746,7 +746,6 @@ void CPlayer::UpdateAnimation()
 			case BASE_STATE::DUCK:
 			{
 				float duckingDuration = 0.2;
-				static float duckingTime = 0;
 
 				if (m_PrevBaseState != BASE_STATE::DUCK)
 					duckingTime = 0;
@@ -950,8 +949,6 @@ void CPlayer::render()
 	// 오브젝트 위치
 	Vec2 vRenderPos = pOwnerObj->GetRenderPos();
 
-	static float alpha = 0;
-	static float dir = 1;
 	const float ALPHA_MAX = 255.f;
 
 	// 무적모드 인지 아닌지에 맞춰서 알파값 적용
@@ -1051,6 +1048,9 @@ void CPlayer::StatusRender()
 		case BASE_STATE::AIRBONE:
 			strBaseState += L"AIRBONE";
 			break;
+		case BASE_STATE::HITTED:
+			strBaseState += L"HITTED";
+			break;
 		case BASE_STATE::DEATH:
 			strBaseState += L"DEATH";
 			break;
@@ -1066,9 +1066,6 @@ void CPlayer::StatusRender()
 			break;
 		case ACTION_STATE::SHOOTING:
 			strActionState += L"SHOOTING";
-			break;
-		case ACTION_STATE::HITTED:
-			strActionState += L"HITTED";
 			break;
 		default:
 			break;

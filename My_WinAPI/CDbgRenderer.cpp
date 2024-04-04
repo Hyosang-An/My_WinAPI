@@ -157,11 +157,14 @@ void CDbgRenderer::render()
 
 	// 마우스 좌표 출력
 	Vec2 mousePos = CKeyMgr::GetInstance().GetMousePos();
+	mousePos = CCamera::GetInstance().GetRealPos(mousePos);
 	wstring strMousePos = std::to_wstring((int)mousePos.x) + L", " + std::to_wstring((int)mousePos.y);
 	TextOut(SUBDC, (int)(CEngine::GetInstance().GetResolution().x * 0.5f) - 50, 5,
 		strMousePos.c_str(), strMousePos.length());
 
 	// 오브젝트 좌표 출력
+	if (CLevelMgr::GetInstance().GetCurrentLevel() == nullptr)
+		return;
 	for (UINT i = 0; i < (UINT)LAYER_TYPE::END; i++)
 	{
 		const auto &ObjvecLayer = CLevelMgr::GetInstance().GetCurrentLevel()->GetObjvecOfLayer((LAYER_TYPE)i);

@@ -24,6 +24,7 @@ enum class BASE_STATE
 	RUN,
 	DASH,
 	AIRBONE,
+	HITTED,
 	DEATH
 };
 
@@ -44,26 +45,22 @@ enum class PARRY_STATE
 enum class ACTION_STATE 
 {
 	NONE,
-	SHOOTING, 
-	HITTED  
+	SHOOTING,
+	EX
 };
 
 enum class PLAYER_ATTACK_STATE
 {
-	NORMAL_ATT_1,
-	NORMAL_ATT_2,
-	NORMAL_ATT_3,
-
-	ULT_ATT_1,
-	ULT_ATT_2,
-	ULT_ATT_3,
-
+	PEASHOOTER,
+	SPREAD,
+	
 	END
 };
 
 class CPlayer :
 	public CObj
 {
+	friend class CCamera;
 private:
 	float m_RunSpeed = 200;
 	float m_DashSpeed = 300;
@@ -85,6 +82,17 @@ private:
 
 	bool m_bOnPlatform = false;			// 플랫폼 위에 있는지
 
+
+	// 액션 누적 시간 (static 변수들 멤버변수로 전환)
+	float invincibleTime = 0;
+	float HittedTime = 0;
+	float DashTime = 0;
+	float m_JumpingTime = 0;
+	float parryTime = 0;
+	float timeSinceLastShot = 0;
+	float duckingTime = 0;
+	float alpha = 0;
+	float dir = 1;
 	
 	// 플레이어 각종 상태 변수들
 

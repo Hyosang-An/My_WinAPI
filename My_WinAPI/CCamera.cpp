@@ -7,6 +7,10 @@
 
 #include "CAssetMgr.h"
 #include "CTexture.h"
+#include "CEngine.h"
+#include "CDbgRenderer.h"
+#include "CPlayer.h"
+#include "CLevelMgr.h"
 
 CCamera::CCamera() :
 	m_FadeTex{},
@@ -23,8 +27,10 @@ void CCamera::init()
 	// 카메라 시작 위치
 	m_CameraLeftTopPos = Vec2(0, 0);
 
-	// 윈도우 해상도랑 동일한 크기의 검은색 텍스쳐를 생성
 	Vec2 resolution = CEngine::GetInstance().GetResolution();
+	m_CameraRealCenterPos = resolution / 2.f;
+	// 윈도우 해상도랑 동일한 크기의 검은색 텍스쳐를 생성
+	
 	m_FadeTex = CAssetMgr::GetInstance().CreateTexture(L"Fade Textrue", (UINT)resolution.x, (UINT)resolution.y);
 }
 
@@ -39,15 +45,79 @@ void CCamera::tick()
 
 void CCamera::Move()
 {
-	if (KEY_PRESSED(KEY::W))
-		m_CameraLeftTopPos.y -= DT * m_CamSpeed;
-	if (KEY_PRESSED(KEY::S))
-		m_CameraLeftTopPos.y += DT * m_CamSpeed;
-	if (KEY_PRESSED(KEY::A))
-		m_CameraLeftTopPos.x -= DT * m_CamSpeed;
-	if (KEY_PRESSED(KEY::D))
-		m_CameraLeftTopPos.x += DT * m_CamSpeed;
+	if (CDbgRenderer::GetInstance().IsDBGMode())
+	{
+		if (KEY_PRESSED(KEY::W))
+			m_CameraLeftTopPos.y -= DT * m_CamSpeed;
+		if (KEY_PRESSED(KEY::S))
+			m_CameraLeftTopPos.y += DT * m_CamSpeed;
+		if (KEY_PRESSED(KEY::A))
+			m_CameraLeftTopPos.x -= DT * m_CamSpeed;
+		if (KEY_PRESSED(KEY::D))
+			m_CameraLeftTopPos.x += DT * m_CamSpeed;
+	}
+
+	
+
+	if (m_Player == nullptr)
+		return;
+
+	Vec2 diff = m_Player->GetPos() - m_CameraRealCenterPos;
+	float min_camera_speed = 80;
+	static float cameraSpeed{};
+	static bool bCameraCentering = false;
+
+	// 카메라와 플레이어 간의 거리가 매우 가까울 때 카메라 이동을 멈추게 하는 임계값 설정
+	float thresholdDistance = 10.0f; // 이 값을 조정하여 카메라와 플레이어 간의 원하는 최소 거리 설정
+	float playerRunSpeed = m_Player->m_RunSpeed;
+	float lerpFactor = 1.4;
+
+	// 플레이어와 카메라 간의 이론상 최대 거리 (saturated 거리)
+	float max_diff = playerRunSpeed / lerpFactor;
+
+	// focus모드 일 때, 임계 거리
+	float focus_diff = 50;
+
+	if (bCameraCentering == false)
+	{
+		// diff.x의 절대값이 임계값보다 작으면 카메라 이동을 멈춥니다.
+		if (abs(diff.x) < thresholdDistance) {
+			cameraSpeed = 0;
+		}
+		else
+		{
+			cameraSpeed = max(abs(diff.x * lerpFactor), min_camera_speed);
+			cameraSpeed = diff.x > 0 ? cameraSpeed : -cameraSpeed;
+		}
+	}
+	else
+	{
+		if (abs(diff.x) <= focus_diff)
+			cameraSpeed = cameraSpeed > 0 ? playerRunSpeed : -playerRunSpeed;
+
+		if (abs(diff.x) < thresholdDistance) {
+			bCameraCentering = false;
+			cameraSpeed = 0;
+		}
+	}
+
+	// cameraCentering 임계 거리는 이론상 최대 멀어지는 거리보다 좀 작게 해야 원활함.
+	if (abs(diff.x) >= max_diff - 25)
+	{
+		bCameraCentering = true;
+		cameraSpeed = cameraSpeed > 0 ? playerRunSpeed * 1.3 : -playerRunSpeed * 1.3;
+	}
+
+	//!디버그
+	{
+		diff_x = (abs(diff.x));
+	}
+
+	m_CameraLeftTopPos.x += cameraSpeed * DT;
+
+	m_CameraRealCenterPos = m_CameraLeftTopPos + CEngine::GetInstance().GetResolution() / 2.f;
 }
+
 
 void CCamera::CameraEffect()
 {
@@ -99,6 +169,14 @@ void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)
 
 void CCamera::CameraEffectRender()
 {
+	// !디버그 
+	{
+		wstring strDiff = std::to_wstring(diff_x);
+		TextOut(SUBDC, (int)500, (int)m_CameraRealCenterPos.y - 300,
+			strDiff.c_str(), strDiff.length());
+	}
+
+
 	if (m_listEffect.empty())
 		return;
 

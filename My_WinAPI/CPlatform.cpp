@@ -33,14 +33,14 @@ void CPlatform::OnCollisionEnter(CCollider* _pOtherCollider)
 		Vec2 platformLeftTop(m_PlatformCollider->GetFinalPos().x - m_PlatformCollider->GetScale().x / 2, m_PlatformCollider->GetFinalPos().y - m_PlatformCollider->GetScale().y / 2);
 		Vec2 platformRightBottom(m_PlatformCollider->GetFinalPos().x + m_PlatformCollider->GetScale().x / 2, m_PlatformCollider->GetFinalPos().y + m_PlatformCollider->GetScale().y / 2);
 		Vec2 playerLeftTop(playerCollider->GetFinalPos().x - playerCollider->GetScale().x / 2, playerCollider->GetFinalPos().y - playerCollider->GetScale().y / 2);
-		Vec2 playerRightBottom(playerCollider->GetFinalPos().x + playerCollider->GetScale().x / 2, playerCollider->GetFinalPos().y+- playerCollider->GetScale().y / 2);
+		Vec2 playerRightBottom(playerCollider->GetFinalPos().x + playerCollider->GetScale().x / 2, playerCollider->GetFinalPos().y + playerCollider->GetScale().y / 2);
 
 		// 겹치는 영역의 좌측 상단과 우측 하단 좌표 계산
-		Vec2 overlapTopLeft = Vec2(max(platformLeftTop.x, playerLeftTop.x), max(platformLeftTop.y, playerLeftTop.y));
-		Vec2 overlapBottomRight = Vec2(min(platformRightBottom.x, playerRightBottom.x), min(platformRightBottom.y, playerRightBottom.y));
+		Vec2 overlapLeftTop = Vec2(max(platformLeftTop.x, playerLeftTop.x), max(platformLeftTop.y, playerLeftTop.y));
+		Vec2 overlapRightBottom = Vec2(min(platformRightBottom.x, playerRightBottom.x), min(platformRightBottom.y, playerRightBottom.y));
 
 		// 겹치는 영역 가로 세로 비율 (0 이상)
-		float overlapRatio = (overlapBottomRight.y - overlapTopLeft.y) / (overlapBottomRight.x - overlapTopLeft.x);
+		float overlapRatio = (overlapRightBottom.y - overlapLeftTop.y) / (overlapRightBottom.x - overlapLeftTop.x);
 
 		// 플레이어 속도 가로 세로 비율 (0 이상)
 		float playerVelocityRatio = abs(playerRigidbody->GetVelocity().y / playerRigidbody->GetVelocity().x);
