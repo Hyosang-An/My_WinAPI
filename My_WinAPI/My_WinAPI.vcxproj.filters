@@ -32,9 +32,6 @@
     <Filter Include="03. Game\05. Object">
       <UniqueIdentifier>{2273ef25-bf68-4622-bb95-8aef950a0359}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\Stage01">
-      <UniqueIdentifier>{14748a8c-d6bd-4ddf-94c7-7858fac8e09b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03. Game\03. Manager\LevelMgr">
       <UniqueIdentifier>{184f3844-c97e-4938-984f-c77697c20274}</UniqueIdentifier>
     </Filter>
@@ -125,6 +122,15 @@
     <Filter Include="03. Game\03. Manager\Camera">
       <UniqueIdentifier>{c88a8dea-4ef2-4d93-9919-17a135fe7cf5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\04. Level\Boss Stage 1">
+      <UniqueIdentifier>{00ff60bb-3bf3-4efc-ba40-bbec89a128e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\04. Level\Run and Gun Stage 1">
+      <UniqueIdentifier>{6ab9300b-0765-4703-a161-c40f29e76924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\04. Level\Test Level">
+      <UniqueIdentifier>{581d2d6e-aad2-4ea6-b843-edb9eadf3565}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -162,9 +168,6 @@
     </ClInclude>
     <ClInclude Include="CLevel.h">
       <Filter>03. Game\04. Level</Filter>
-    </ClInclude>
-    <ClInclude Include="CLevel_Stage01.h">
-      <Filter>03. Game\04. Level\Stage01</Filter>
     </ClInclude>
     <ClInclude Include="CLevelMgr.h">
       <Filter>03. Game\03. Manager\LevelMgr</Filter>
@@ -268,6 +271,15 @@
     <ClInclude Include="CCamera.h">
       <Filter>03. Game\03. Manager\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="CRunAndGunStage1.h">
+      <Filter>03. Game\04. Level\Run and Gun Stage 1</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevel_Test.h">
+      <Filter>03. Game\04. Level\Test Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossStage1.h">
+      <Filter>03. Game\04. Level\Boss Stage 1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -287,9 +299,6 @@
     </ClCompile>
     <ClCompile Include="CLevel.cpp">
       <Filter>03. Game\04. Level</Filter>
-    </ClCompile>
-    <ClCompile Include="CLevel_Stage01.cpp">
-      <Filter>03. Game\04. Level\Stage01</Filter>
     </ClCompile>
     <ClCompile Include="CLevelMgr.cpp">
       <Filter>03. Game\03. Manager\LevelMgr</Filter>
@@ -389,6 +398,15 @@
     </ClCompile>
     <ClCompile Include="CCamera.cpp">
       <Filter>03. Game\03. Manager\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CRunAndGunStage1.cpp">
+      <Filter>03. Game\04. Level\Run and Gun Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevel_Test.cpp">
+      <Filter>03. Game\04. Level\Test Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossStage1.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -6,11 +6,14 @@
 class CLevelMgr :
     public Singleton<CLevelMgr>
 {
-    friend Singleton<CLevelMgr>;
+    friend Singleton<CLevelMgr>; friend CTaskMgr;
 
 private:
     CLevel* m_arrLevel[(UINT)LEVEL_TYPE::END];
     CLevel* m_pCurrentLevel;
+
+private:
+    void ChangeLevel(LEVEL_TYPE _nextLevelType);
 
 public:
     void init();

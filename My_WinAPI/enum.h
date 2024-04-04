@@ -30,11 +30,13 @@ enum class LEVEL_TYPE
 	LOGO_START,
 	EDITOR,
 
-	STAGE_01,
+	RUN_AND_GUN_STAGE_1,
 	STAGE_02,
 	STAGE_03,
 
-	BOSS_01,
+	BOSS_STAGE_1,
+
+	Test,
 
 	END,
 };

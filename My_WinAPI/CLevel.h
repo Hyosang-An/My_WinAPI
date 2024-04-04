@@ -1,6 +1,8 @@
 #pragma once
 #include "CEntity.h"
 
+#include "CCamera.h"
+
 class CObj;
 class CCollider;
 
@@ -9,7 +11,10 @@ class CLevel :
 {
 private:
     vector<CObj*>   m_arrObjvec[(UINT)LAYER_TYPE::END];
-    vector<CCollider*>  m_arrCollider[(UINT)LAYER_TYPE::END];
+
+protected:
+    void DeleteAllObjects();
+    void DeleteObjectsOfLayer(LAYER_TYPE _LayerType);
 
 public:
     virtual void begin();
@@ -17,9 +22,8 @@ public:
     virtual void finaltick();
     virtual void render();
 
-    virtual void progress();
-
-    virtual CLevel* Clone() = 0;
+    virtual void Enter() = 0;   // 레벨이 전환되고 처음 초기화 작업
+    virtual void Exit() = 0;    // 레벨이 끝날때 할 일
 
 public:
     void AddObject(LAYER_TYPE _type, CObj* _pObj);

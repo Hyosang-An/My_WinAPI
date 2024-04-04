@@ -28,6 +28,11 @@ void SpawnObject(CLevel* _Level, LAYER_TYPE _type, CObj* _pSpawned)
 
 void ChangeLevel(LEVEL_TYPE _NextLevelType)
 {
+    tTask task{};
+    task.eType = TASK_TYPE::CHANGE_LEVEL;
+    task.param1 = (DWORD_PTR)_NextLevelType;
+
+    CTaskMgr::GetInstance().AddTask(task);
 }
 
 int SaveWStringToFile(_In_ const wstring& _str, _Inout_ FILE* _pFile)

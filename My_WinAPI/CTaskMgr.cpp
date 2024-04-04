@@ -30,52 +30,59 @@ void CTaskMgr::ExcuteTask()
 	{
 		switch (m_vecTask[i].eType)
 		{
-		case TASK_TYPE::SPAWN_OBJECT:
-		{
-			// 1 : Level adress, 2 : LAYER_TYPE, 3 : Object Adress
-
-			CLevel* pSpawnLevel = reinterpret_cast<CLevel*>(m_vecTask[i].param1);
-			LAYER_TYPE	layer_type = static_cast<LAYER_TYPE>(m_vecTask[i].param2);
-			CObj* pObj = reinterpret_cast<CObj*>(m_vecTask[i].param3);
-
-			if (CLevelMgr::GetInstance().GetCurrentLevel() != pSpawnLevel)
+			case TASK_TYPE::SPAWN_OBJECT:
 			{
-				delete pObj;
-			}
-			else
-			{
-				pSpawnLevel->AddObject(layer_type, pObj);
-				pObj->begin();
-			}
+				// 1 : Level adress, 2 : LAYER_TYPE, 3 : Object Adress
 
-			break;
-		}
-		case TASK_TYPE::DELETE_OBJECT:
-		{
-			// 1 : Object Adress
-			// 삭제 예정 Obj들을 Dead상태로 변경하고 GarbageCollector에 모아둔다.
-			CObj* pDeadObj = reinterpret_cast<CObj*>(m_vecTask[i].param1);
+				CLevel* pSpawnLevel = reinterpret_cast<CLevel*>(m_vecTask[i].param1);
+				LAYER_TYPE	layer_type = static_cast<LAYER_TYPE>(m_vecTask[i].param2);
+				CObj* pObj = reinterpret_cast<CObj*>(m_vecTask[i].param3);
 
-			// 동일한 오브젝트에 대한 삭제 요청이 동시에 여러번 들어올 경우 한 번만 처리하도록 함.
- 			if (pDeadObj->IsDead())
+				if (CLevelMgr::GetInstance().GetCurrentLevel() != pSpawnLevel)
+				{
+					delete pObj;
+				}
+				else
+				{
+					pSpawnLevel->AddObject(layer_type, pObj);
+					pObj->begin();
+				}
+
 				break;
-
-			pDeadObj->SetDead();
-			m_vecGarbageCollector.push_back(pDeadObj);
-
-			// 충돌체 꺼주기
-			for (auto& collider : pDeadObj->GetVecCollider())
-			{
-				collider->SetActive(false);
 			}
+			case TASK_TYPE::DELETE_OBJECT:
+			{
+				// 1 : Object Adress
+				// 삭제 예정 Obj들을 Dead상태로 변경하고 GarbageCollector에 모아둔다.
+				CObj* pDeadObj = reinterpret_cast<CObj*>(m_vecTask[i].param1);
 
-			break;
-		}
-		case TASK_TYPE::CHANGE_LEVEL:
-		{
+				// 동일한 오브젝트에 대한 삭제 요청이 동시에 여러번 들어올 경우 한 번만 처리하도록 함.
+				if (pDeadObj->IsDead())
+					break;
 
-			break;
-		}
+				pDeadObj->SetDead();
+				m_vecGarbageCollector.push_back(pDeadObj);
+
+				// 충돌체 꺼주기
+				for (auto& collider : pDeadObj->GetVecCollider())
+				{
+					collider->SetActive(false);
+				}
+
+				break;
+			}
+			case TASK_TYPE::CHANGE_LEVEL:
+			{
+				// 이전에 이미 레벨이 CHANGE_LEVEL Task가 들어온 경우 예외 처리
+				assert(!bLevelChanged);
+				bLevelChanged = true;
+
+
+				LEVEL_TYPE NextLevelType = (LEVEL_TYPE)m_vecTask[i].param1;
+				CLevelMgr::GetInstance().ChangeLevel(NextLevelType);
+
+				break;
+			}
 		}
 	}
 

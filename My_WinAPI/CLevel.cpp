@@ -16,6 +16,26 @@ CLevel::~CLevel()
 	
 }
 
+void CLevel::DeleteAllObjects()
+{
+	for (UINT i = 0; i < (UINT)LAYER_TYPE::END; ++i)
+	{
+		DeleteObjectsOfLayer((LAYER_TYPE)i);
+	}
+}
+
+void CLevel::DeleteObjectsOfLayer(LAYER_TYPE _LayerType)
+{
+	vector<CObj*>& vecObjects = m_arrObjvec[(UINT)_LayerType];
+
+	for (size_t i = 0; i < vecObjects.size(); ++i)
+	{
+		delete vecObjects[i];
+	}
+
+	vecObjects.clear();
+}
+
 void CLevel::begin()
 {
 	for (size_t i = 0; i < (size_t)LAYER_TYPE::END; i++)
@@ -73,13 +93,6 @@ void CLevel::render()
 		}
 	}
 }
-
-void CLevel::progress()
-{
-	tick();
-	finaltick();
-}
-
 
 void CLevel::AddObject(LAYER_TYPE _type, CObj* _pObj)
 {
