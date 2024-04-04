@@ -109,7 +109,7 @@ void CCamera::CameraEffect()
 
 void CCamera::TrackingPlayer_RunAndGunStage()
 {
-	if (m_bTrackingState != CAM_TRACKING_STATE::RUN_AND_GUN)
+	if (m_bTrackingState != CAM_TRACKING_STATE::RUN_AND_GUN_STAGE)
 		return;
 
 	if (m_Player == nullptr)
@@ -186,7 +186,7 @@ void CCamera::TrackingPlayer_RunAndGunStage()
 
 void CCamera::TrackingPlayer_BossStage()
 {
-	if (m_bTrackingState != CAM_TRACKING_STATE::BOSS)
+	if (m_bTrackingState != CAM_TRACKING_STATE::BOSS_STAGE)
 		return;
 
 	// TODO
@@ -202,6 +202,13 @@ void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)
 	info.Alpha = 0;
 
 	m_listEffect.push_back(info);
+}
+
+void CCamera::SetCameraInitialLookAt(Vec2 _pos)
+{
+	auto res = CEngine::GetInstance().GetResolution();
+	m_CameraLeftTopPos = _pos - (0.5 * res);
+	m_PrevCameraLeftTopPos = m_CameraLeftTopPos;
 }
 
 void CCamera::SetCameraLookAt(Vec2 _pos)

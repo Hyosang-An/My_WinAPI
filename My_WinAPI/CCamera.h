@@ -21,8 +21,8 @@ struct CAM_EFFECT_INFO
 enum class CAM_TRACKING_STATE
 {
     NONE,
-    BOSS,
-    RUN_AND_GUN
+    BOSS_STAGE,
+    RUN_AND_GUN_STAGE
 };
 
 class CTexture;
@@ -66,6 +66,7 @@ public:
 
     void SetCameraLeftTopPos(Vec2 _pos) { m_CameraLeftTopPos = _pos; }
     void SetCameraEffect(CAM_EFFECT _effect, float _duration);
+    void SetCameraInitialLookAt(Vec2 _pos);
     void SetCameraLookAt(Vec2 _pos);
     void SetTrackingState(CAM_TRACKING_STATE _state) { m_bTrackingState = _state; }
 
