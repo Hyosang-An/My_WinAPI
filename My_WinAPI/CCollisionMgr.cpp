@@ -21,6 +21,8 @@ void CCollisionMgr::init()
 
 void CCollisionMgr::tick()
 {
+	// (UINT)LAYER_TYPE::END 가 32 이하여야 함!
+
 	for (UINT iRow = 0; iRow < (UINT)LAYER_TYPE::END; iRow++)
 	{
 		for (UINT iCol = iRow; iCol < (UINT)LAYER_TYPE::END; iCol++)
