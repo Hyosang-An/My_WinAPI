@@ -154,7 +154,8 @@
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CAssetMgr.h" />
     <ClInclude Include="CAttackState.h" />
-    <ClInclude Include="CBossStage1.h" />
+    <ClInclude Include="CBackground.h" />
+    <ClInclude Include="CStage_Goopy_Le_Grande.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCollisionMgr.h" />
     <ClInclude Include="CCollider.h" />
@@ -205,7 +206,8 @@
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CAssetMgr.cpp" />
     <ClCompile Include="CAttackState.cpp" />
-    <ClCompile Include="CBossStage1.cpp" />
+    <ClCompile Include="CBackground.cpp" />
+    <ClCompile Include="CStage_Goopy_Le_Grande.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCollisionMgr.cpp" />
     <ClCompile Include="CCollider.cpp" />

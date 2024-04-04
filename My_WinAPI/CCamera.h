@@ -41,7 +41,7 @@ private:
     void Move();
     void CameraEffect();
 
-    float diff_x;
+    Vec2 m_diff;
 
 public:
     Vec2 GetRenderPos(Vec2 _realPos) { return _realPos - m_CameraLeftTopPos; }
@@ -49,6 +49,7 @@ public:
 
     void SetCameraLeftTopPos(Vec2 _pos) { m_CameraLeftTopPos = _pos; }
     void SetCameraEffect(CAM_EFFECT _effect, float _duration);
+    void SetCameraLookAt(Vec2 _pos);
 
     void SetPlayerToCamera(CPlayer* _player) { m_Player = _player; }
 

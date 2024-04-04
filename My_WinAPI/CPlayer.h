@@ -63,7 +63,7 @@ class CPlayer :
 	friend class CCamera;
 private:
 	float m_RunSpeed = 200;
-	float m_DashSpeed = 300;
+	float m_DashSpeed = 500;
 
 	bool	m_bFacingRight = true;			// 바라보는 방향
 

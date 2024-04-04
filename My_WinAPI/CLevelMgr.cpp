@@ -9,6 +9,7 @@
 #include "CCollisionMgr.h"
 #include "CPlatform.h"
 #include "CGround.h"
+#include "CStage_Goopy_Le_Grande.h"
 
 CLevelMgr::CLevelMgr()
 	: m_arrLevel{}
@@ -57,6 +58,7 @@ void CLevelMgr::init()
 {
 	// 모든 레벨 생성
 	m_arrLevel[(UINT)LEVEL_TYPE::Test] = new CLevel_Test;
+	m_arrLevel[(UINT)LEVEL_TYPE::BOSS_STAGE_1] = new CStage_Goopy_Le_Grande;
 
 	// 초기 레벨 지정
 	::ChangeLevel(LEVEL_TYPE::Test);

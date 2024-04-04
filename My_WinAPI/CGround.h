@@ -6,7 +6,7 @@ class CGround :
 private:
 	static int havePlayerCnt;
 
-	CTexture* m_Textrue;
+	CTexture* m_Texture;
 
 	CCollider* m_GroundCollider;
 

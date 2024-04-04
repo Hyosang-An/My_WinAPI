@@ -131,6 +131,9 @@
     <Filter Include="03. Game\04. Level\Test Level">
       <UniqueIdentifier>{581d2d6e-aad2-4ea6-b843-edb9eadf3565}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Background">
+      <UniqueIdentifier>{e208ba97-e3ac-48d3-a60d-f7bcbca27302}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -277,8 +280,11 @@
     <ClInclude Include="CLevel_Test.h">
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClInclude>
-    <ClInclude Include="CBossStage1.h">
+    <ClInclude Include="CStage_Goopy_Le_Grande.h">
       <Filter>03. Game\04. Level\Boss Stage 1</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackground.h">
+      <Filter>03. Game\05. Object\Background</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -405,8 +411,11 @@
     <ClCompile Include="CLevel_Test.cpp">
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClCompile>
-    <ClCompile Include="CBossStage1.cpp">
+    <ClCompile Include="CStage_Goopy_Le_Grande.cpp">
       <Filter>03. Game\04. Level\Boss Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackground.cpp">
+      <Filter>03. Game\05. Object\Background</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

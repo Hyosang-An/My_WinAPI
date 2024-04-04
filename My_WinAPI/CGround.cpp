@@ -7,18 +7,18 @@
 int CGround::havePlayerCnt = 0;
 
 CGround::CGround() :
-	m_Textrue(nullptr),
+	m_Texture(nullptr),
 	m_GroundCollider{}
 {
-	m_Textrue = CAssetMgr::GetInstance().LoadTexture(L"Ground_test", L"texture\\Funfair Fever\\main playable\\lv2-1_main_playable_ground_loop.png");
+	m_Texture = CAssetMgr::GetInstance().LoadTexture(L"Ground_test", L"texture\\Funfair Fever\\main playable\\lv2-1_main_playable_ground_loop.png");
 
 	m_GroundCollider = AddComponent(new CCollider);
 	m_GroundCollider->SetOffsetPos(Vec2(0, 0));
-	m_GroundCollider->SetScale(Vec2(m_Textrue->GetWidth(), 10));
+	m_GroundCollider->SetScale(Vec2(m_Texture->GetWidth(), 10));
 }
 
 CGround::CGround(const CGround& _other) :
-	m_Textrue(_other.m_Textrue)
+	m_Texture(_other.m_Texture)
 {
 	m_GroundCollider = AddComponent(new CCollider(*_other.m_GroundCollider));
 }
@@ -41,8 +41,8 @@ void CGround::render()
 	Vec2 vRenderPos = GetRenderPos();
 	Vec2 vScale = GetScale();
 
-	int Texture_width = m_Textrue->GetWidth();
-	int Texture_height = m_Textrue->GetHeight();
+	int Texture_width = m_Texture->GetWidth();
+	int Texture_height = m_Texture->GetHeight();
 
 	// AlphaBlending
 	BLENDFUNCTION bf = {};
@@ -55,7 +55,7 @@ void CGround::render()
 	// 현재 프레임 이미지를 오브젝트 위치에 렌더링
 	AlphaBlend(SUBDC,
 		(int)(vRenderPos.x - Texture_width / 2.f), (int)(vRenderPos.y - Texture_height / 2.f), Texture_width, Texture_height,
-		m_Textrue->GetDC(), 0, 0, Texture_width, Texture_height,
+		m_Texture->GetDC(), 0, 0, Texture_width, Texture_height,
 		bf);
 }
 
