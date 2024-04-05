@@ -23,9 +23,9 @@ CPlayer::CPlayer()
 	m_PlayerCollider->SetScale(Vec2(60.f, 100.f));
 
 	m_Rigidbody = AddComponent(new CRigidbody);
-	m_Rigidbody->SetMaxWalkSpeed(200);
-	m_Rigidbody->SetFriction(2000);
-	m_Rigidbody->SetMaxGravitySpeed(800);
+	m_Rigidbody->SetMaxWalkSpeed(m_RunSpeed);
+	//m_Rigidbody->SetFriction(2000);
+	//m_Rigidbody->SetMaxGravitySpeed(800);
 
 	// 콜백함수 설정
 	m_Rigidbody->SetGroundCallbackFunc([this]() {this->EnterGround(); });
@@ -252,6 +252,10 @@ void CPlayer::tick()
 	m_PrevActionState = m_CurActionState;
 }
 
+// ============================================================================================================================================================
+// ========================== UpdateState() ===============================================================================================================
+// ============================================================================================================================================================
+
 void CPlayer::UpdateState()
 {
 	// Hitted 및 무적 상태 설정
@@ -285,6 +289,8 @@ void CPlayer::UpdateState()
 	if (m_CurBaseState == BASE_STATE::DASH)
 	{
 		auto dt = DT;
+
+		// 대쉬 지속시간 끝남
 		if (m_DashDuration < DashTime)
 		{
 			DashTime = 0;
@@ -394,6 +400,13 @@ void CPlayer::UpdateState()
 			m_JumpingTime = 0;
 			m_CurJumpState = JUMP_STATE::NONE;
 		}
+
+		//if (m_Rigidbody->GetVelocity().y >=0 )
+		//{
+		//	// LOG(LOG_TYPE::DBG_ERROR, L"NONE");
+		//	m_JumpingTime = 0;
+		//	m_CurJumpState = JUMP_STATE::NONE;
+		//}
 	}
 	else if (((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_RELEASED(KEY::Z)) || m_Rigidbody->IsOnGround())
 	{
@@ -482,6 +495,10 @@ void CPlayer::UpdateState()
 	}
 }
 
+// ============================================================================================================================================================
+// ========================== MoveAndAction() ===============================================================================================================
+// ============================================================================================================================================================
+
 void CPlayer::MoveAndAction()
 {
 	if (m_CurBaseState == BASE_STATE::HITTED)
@@ -499,11 +516,16 @@ void CPlayer::MoveAndAction()
 		case JUMP_STATE::NONE:
 			break;
 		case JUMP_STATE::JUMP_START:
-			m_Rigidbody->AddVelocity(Vec2(0, -300));
+			m_Rigidbody->AddVelocity(Vec2(0, -m_JumpSpeed));
 			break;
 		case JUMP_STATE::JUMPING:
-			m_Rigidbody->AddForce(Vec2(0, -300));
+		{
+			if (m_JumpingTime < m_LowJumpKeyTime)
+				break;
+			else
+				m_Rigidbody->AddForce(Vec2(0, -3100));
 			break;
+		}
 		default:
 			break;
 	}
@@ -528,9 +550,9 @@ void CPlayer::MoveAndAction()
 		case BASE_STATE::DASH:
 		{
 			if (m_bFacingRight)
-				m_Rigidbody->AddVelocity(Vec2(m_DashSpeed, 0));
+				m_Rigidbody->SetVelocity(Vec2(m_DashSpeed, 0));
 			else
-				m_Rigidbody->AddVelocity(Vec2(-m_DashSpeed, 0));
+				m_Rigidbody->SetVelocity(Vec2(-m_DashSpeed, 0));
 		}
 		break;
 		case BASE_STATE::AIRBONE:
@@ -573,6 +595,10 @@ void CPlayer::MoveAndAction()
 
 	timeSinceLastShot += DT;
 }
+
+// ============================================================================================================================================================
+// ========================== UpdateAnimation() ===============================================================================================================
+// ============================================================================================================================================================
 
 void CPlayer::UpdateAnimation()
 {
@@ -1073,7 +1099,7 @@ void CPlayer::StatusRender()
 			break;
 	}
 
-	TextOut(SUBDC, 10, 2, strShootingDir.c_str(), strShootingDir.length());
-	TextOut(SUBDC, 10, 17, strBaseState.c_str(), strBaseState.length());
-	TextOut(SUBDC, 10, 32, strActionState.c_str(), strActionState.length());
+	TextOut(SUBDC, 10, 2, strShootingDir.c_str(), (int)strShootingDir.length());
+	TextOut(SUBDC, 10, 17, strBaseState.c_str(), (int)strBaseState.length());
+	TextOut(SUBDC, 10, 32, strActionState.c_str(), (int)strActionState.length());
 }

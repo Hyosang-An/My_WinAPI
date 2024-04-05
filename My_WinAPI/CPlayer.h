@@ -62,22 +62,23 @@ class CPlayer :
 {
 	friend class CCamera;
 private:
-	float m_RunSpeed = 200;
-	float m_DashSpeed = 500;
+	float m_RunSpeed = 400;
+	float m_DashSpeed = 800;
+	float m_JumpSpeed = 1040;
 
 	bool	m_bFacingRight = true;			// 바라보는 방향
 
-	float m_DashDuration = 0.5;		// 대쉬 지속 시간
+	float m_DashDuration = 0.3f;		// 대쉬 지속 시간
 	bool m_bAirboneDashed = false;	// 공중에서 대쉬 했는지
 
-	float m_HittedDuration = 0.5;	// Hitted 상태 지속 시간
+	float m_HittedDuration = 0.5f;	// Hitted 상태 지속 시간
 
-	float m_InvincibleDuratoin = 2;		// 무적 지속 시간
+	float m_InvincibleDuratoin = 2.f;		// 무적 지속 시간
 
-	float m_LowJumpKeyTime = 0.5;
-	float m_HighJumpKeyTime = 1;		// 높은 점프를 하기 위한 키 누름 지속 시간
+	float m_LowJumpKeyTime = 0.0f;		// 높은 점프를 하기위한 최소 키 누름 지속 시간
+	float m_HighJumpKeyTime = 0.16f;		// 높은 점프를 하기 위한 최대 키 누름 지속 시간
 
-	float m_ParryDuration = 0.5;		// 패링 지속 시간
+	float m_ParryDuration = 0.5f;		// 패링 지속 시간
 	int m_ParryCount = 1;				// 패링 가능 횟수
 
 	bool m_bOnPlatform = false;			// 플랫폼 위에 있는지

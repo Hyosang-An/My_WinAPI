@@ -5,13 +5,12 @@
 
 CRigidbody::CRigidbody() :
 	m_fMass(1),
-	m_GravityAccel(450),
 	m_Friction(0),
 	m_MaxWalkSpeed(0),
 	m_MaxGravitySpeed(800),
 	m_UseGravity(true),
 	m_OnGround(false),
-	m_maxDashSpeed(400)
+	m_maxDashSpeed(0)
 {
 
 }
@@ -74,7 +73,7 @@ void CRigidbody::finaltick()
 	// 플레이어 좌우 running 속도 제한
 	// 플레이어면서 대쉬모드가 아닌 경우
 	auto player = dynamic_cast<CPlayer*>(m_Owner);
-	if (!(player != nullptr && player->GetBaseState() == BASE_STATE::DASH))
+	if (player != nullptr && player->GetBaseState() != BASE_STATE::DASH)
 	{
 		if (m_MaxWalkSpeed != 0 && m_MaxWalkSpeed < abs(m_Velocity.x))
 		{
@@ -86,11 +85,11 @@ void CRigidbody::finaltick()
 		
 	}
 	// 플레이어면서 대쉬모드일 때
-	else
-	{
-		if (m_maxDashSpeed < m_Velocity.Length())
-			m_Velocity = m_Velocity.Normalize() * m_maxDashSpeed;
-	}
+	//else
+	//{
+	//	if (m_maxDashSpeed < m_Velocity.Length())
+	//		m_Velocity = m_Velocity.Normalize() * m_maxDashSpeed;
+	//}
 
 	 // 마찰 적용
 	 // 만약 RigidBody 에 적용된 힘이 없으면서, OnGround인데 속도는 있는경우
