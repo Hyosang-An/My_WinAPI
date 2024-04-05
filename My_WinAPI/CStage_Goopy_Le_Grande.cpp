@@ -22,7 +22,7 @@ void CStage_Goopy_Le_Grande::Enter()
 
 	// 카메라 설정
 	CCamera::GetInstance().SetCameraInitialLookAt(Vec2(0, 0));
-	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::BOSS_STAGE);
+	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::BOSS_STAGE, Vec2(-710, 720));
 
 	//배경 추가
 	LoadBackground();
@@ -108,6 +108,8 @@ void CStage_Goopy_Le_Grande::LoadBackground()
 
 void CStage_Goopy_Le_Grande::LoadObject()
 {
+	// 스테이지 좌우 범위 -710 ~ 720
+	// 
 	// 오브젝트 추가
 	CObj* pObj = new CPlayer;
 	pObj->SetName(L"Player");
@@ -123,6 +125,7 @@ void CStage_Goopy_Le_Grande::LoadObject()
 	ground->SetColliderScale(Vec2(1910, 10));
 	AddObject(LAYER_TYPE::GROUND, ground);
 
+	//
 }
 
 void CStage_Goopy_Le_Grande::SetCollision()

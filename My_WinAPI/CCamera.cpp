@@ -62,8 +62,21 @@ void CCamera::Move()
 
 	else
 	{
-		TrackingPlayer_RunAndGunStage();
-		TrackingPlayer_BossStage();
+		switch (m_bTrackingState)
+		{
+			case CAM_TRACKING_STATE::NONE:
+				break;
+			case CAM_TRACKING_STATE::BOSS_STAGE:
+				TrackingPlayer_BossStage();
+				break;
+			case CAM_TRACKING_STATE::RUN_AND_GUN_STAGE:
+				TrackingPlayer_RunAndGunStage();
+				break;
+			default:
+				break;
+		}
+
+
 	}
 
 
@@ -109,9 +122,6 @@ void CCamera::CameraEffect()
 
 void CCamera::TrackingPlayer_RunAndGunStage()
 {
-	if (m_bTrackingState != CAM_TRACKING_STATE::RUN_AND_GUN_STAGE)
-		return;
-
 	if (m_Player == nullptr)
 		return;
 
@@ -186,9 +196,6 @@ void CCamera::TrackingPlayer_RunAndGunStage()
 
 void CCamera::TrackingPlayer_BossStage()
 {
-	if (m_bTrackingState != CAM_TRACKING_STATE::BOSS_STAGE)
-		return;
-
 	// TODO
 }
 
