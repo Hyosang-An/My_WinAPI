@@ -38,7 +38,7 @@ CRigidbody::~CRigidbody()
 
 
 
-void CRigidbody::SetGround(bool _b)
+void CRigidbody::SetOnGround(bool _b)
 {
 	// 이전 상태와 같으면 그냥 리턴
 	if (m_OnGround == _b)
@@ -116,6 +116,7 @@ void CRigidbody::finaltick()
 	{
 		m_Velocity += Vec2(0, m_GravityAccel) * DT;
 		
+		// 낙하속도 제한
 		if (m_MaxGravitySpeed != 0 && m_Velocity.y > m_MaxGravitySpeed)
 			m_Velocity.y = m_MaxGravitySpeed;
 	}

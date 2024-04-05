@@ -49,7 +49,7 @@ void CPlatform::OnCollisionEnter(CCollider* _pOtherCollider)
 		if (playerVelocityRatio < overlapRatio)
 			return;
 
-		playerRigidbody->SetGround(true);
+		playerRigidbody->SetOnGround(true);
 		player->SetOnPlatform(true);
 	}
 }
@@ -67,7 +67,7 @@ void CPlatform::OnCollisionExit(CCollider* _pOtherCollider)
 		CPlayer* player = static_cast<CPlayer*>(otherObj);
 		auto rigidbody = player->GetComponent<CRigidbody>();
 
-		rigidbody->SetGround(false);
+		rigidbody->SetOnGround(false);
 		player->SetOnPlatform(false);
 	}
 }

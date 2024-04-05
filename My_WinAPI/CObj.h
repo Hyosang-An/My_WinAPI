@@ -17,6 +17,8 @@
 class CObj :
 	public CEntity
 {
+	friend class CGround;
+
 public:
 	friend class CLevel;
 	friend class CTaskMgr;
@@ -30,6 +32,9 @@ protected:
 	Vec2    m_Scale;
 
 	bool	m_bAlive;
+
+	bool	m_bUseGroundCollision = true;
+	int		m_iGroundCollisionCnt = 0;
 
 	LAYER_TYPE	m_eType;
 
@@ -55,6 +60,7 @@ public:
 
 
 	bool IsDead() { return !m_bAlive; }
+	bool IsGroundCollision() { return m_bUseGroundCollision; }
 	LAYER_TYPE GetLayerType() { return m_eType; }
 	const vector<CCollider*>& GetVecCollider() { return m_vecCollider; }
 

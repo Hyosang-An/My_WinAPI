@@ -38,67 +38,73 @@ void CGround::tick()
 
 void CGround::OnCollisionEnter(CCollider* _pOtherCollider)
 {
-	if (CPlayer* player = dynamic_cast<CPlayer*>(_pOtherCollider->GetOwner()))
-	{
-		havePlayerCnt++;
+	CObj* obj = _pOtherCollider->GetOwner();
+	if (!obj->m_bUseGroundCollision)
+		return;
 
-		auto playerRigidbody = player->GetComponent<CRigidbody>();
-		if (playerRigidbody->IsOnGround())
-			return;
+	obj->m_iGroundCollisionCnt++;
 
-		playerRigidbody->SetGround(true);
+	auto rigidbody = obj->GetComponent<CRigidbody>();
 
-		auto playerCollider = _pOtherCollider;
+	if (rigidbody == nullptr || obj->m_iGroundCollisionCnt >= 2)
+		return;
 
-		Vec2 playerColliderPos = playerCollider->GetFinalPos();
-		Vec2 playerColliderScale = playerCollider->GetScale();
+	rigidbody->SetOnGround(true);
 
-		Vec2 groundColliderPos = m_GroundCollider->GetFinalPos();
-		Vec2 groundColliderScale = m_GroundCollider->GetScale();
+	auto collider = _pOtherCollider;
 
-		// 파고 들어간 깊이
-		float depth = (playerColliderScale.y + groundColliderScale.y) * 0.5 - (groundColliderPos.y - playerColliderPos.y);
+	Vec2 colliderPos = collider->GetFinalPos();
+	Vec2 colliderScale = collider->GetScale();
 
-		player->SetPos(player->GetPos() + Vec2(0, -depth));
-		//playerRigidbody->SetVelocity_Y(0); // y 속도 0는 SetGround가 해줌
-	}
+	Vec2 groundColliderPos = m_GroundCollider->GetFinalPos();
+	Vec2 groundColliderScale = m_GroundCollider->GetScale();
+
+	// 파고 들어간 깊이
+	float depth = (colliderScale.y + groundColliderScale.y) * 0.5 - (groundColliderPos.y - colliderPos.y);
+
+	obj->SetPos(obj->GetPos() + Vec2(0, -depth));
 }
 
 void CGround::OnCollisionStay(CCollider* _pOtherCollider)
 {
-	if (CPlayer* player = dynamic_cast<CPlayer*>(_pOtherCollider->GetOwner()))
-	{
-		auto playerRigidbody = player->GetComponent<CRigidbody>();
 
-		playerRigidbody->SetGround(true);
+	CObj* obj = _pOtherCollider->GetOwner();
+	if (!obj->m_bUseGroundCollision)
+		return;
 
-		auto playerCollider = _pOtherCollider;
+	auto rigidbody = obj->GetComponent<CRigidbody>();
 
-		Vec2 playerColliderPos = playerCollider->GetFinalPos();
-		Vec2 playerColliderScale = playerCollider->GetScale();
+	if (rigidbody == nullptr || obj->m_iGroundCollisionCnt >= 2)
+		return;
 
-		Vec2 groundColliderPos = m_GroundCollider->GetFinalPos();
-		Vec2 groundColliderScale = m_GroundCollider->GetScale();
+	// 이미 OnGround 상태면 SetOnGround(true) 해도 내부에서 바로 return
+	rigidbody->SetOnGround(true);
 
-		// 파고 들어간 깊이
-		float depth = (playerColliderScale.y + groundColliderScale.y) * 0.5 - (groundColliderPos.y - playerColliderPos.y);
+	auto collider = _pOtherCollider;
 
-		if (depth > 0)
-		{
-			player->SetPos(player->GetPos() + Vec2(0, -depth));
-			//playerRigidbody->SetVelocity_Y(0); // y 속도 0는 SetGround가 해줌
-		}
-	}
+	Vec2 colliderPos = collider->GetFinalPos();
+	Vec2 colliderScale = collider->GetScale();
+
+	Vec2 groundColliderPos = m_GroundCollider->GetFinalPos();
+	Vec2 groundColliderScale = m_GroundCollider->GetScale();
+
+	// 파고 들어간 깊이
+	float depth = (colliderScale.y + groundColliderScale.y) * 0.5 - (groundColliderPos.y - colliderPos.y);
+
+	obj->SetPos(obj->GetPos() + Vec2(0, -depth));
 }
 
 void CGround::OnCollisionExit(CCollider* _pOtherCollider)
 {
-	if (CPlayer* player = dynamic_cast<CPlayer*>(_pOtherCollider->GetOwner()))
-	{
-		auto playerRigidbody = player->GetComponent<CRigidbody>();
-		if (havePlayerCnt == 1)
-			playerRigidbody->SetGround(false);
+	CObj* obj = _pOtherCollider->GetOwner();
+	if (!obj->m_bUseGroundCollision)
+		return;
 
-		havePlayerCnt--;
-	}
+	obj->m_iGroundCollisionCnt--;
+
+	auto rigidbody = obj->GetComponent<CRigidbody>();
+	if (rigidbody == nullptr || obj->m_iGroundCollisionCnt >= 1)
+		return;
+
+	rigidbody->SetOnGround(false);
 }

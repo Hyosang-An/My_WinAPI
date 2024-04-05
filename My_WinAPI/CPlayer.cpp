@@ -369,7 +369,7 @@ void CPlayer::UpdateState()
 	if (m_CurBaseState == BASE_STATE::DUCK && m_bOnPlatform && KEY_JUST_PRESSED(KEY::Z))
 	{
 		m_bOnPlatform = false;
-		m_Rigidbody->SetGround(false);
+		m_Rigidbody->SetOnGround(false);
 		return;
 	}
 
