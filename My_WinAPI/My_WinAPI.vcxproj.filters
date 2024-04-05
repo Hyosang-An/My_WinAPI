@@ -134,6 +134,9 @@
     <Filter Include="03. Game\05. Object\Background">
       <UniqueIdentifier>{e208ba97-e3ac-48d3-a60d-f7bcbca27302}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Wall">
+      <UniqueIdentifier>{724c17bd-6a5f-4a10-a8aa-d3dd66b258e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -286,6 +289,9 @@
     <ClInclude Include="CBackground.h">
       <Filter>03. Game\05. Object\Background</Filter>
     </ClInclude>
+    <ClInclude Include="CWall.h">
+      <Filter>03. Game\05. Object\Wall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -416,6 +422,9 @@
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>03. Game\05. Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="CWall.cpp">
+      <Filter>03. Game\05. Object\Wall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
