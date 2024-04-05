@@ -5,6 +5,7 @@
 #include "CKeyMgr.h"
 #include "CPlayer.h"
 #include "CGround.h"
+#include "CWall.h"
 
 CStage_Goopy_Le_Grande::CStage_Goopy_Le_Grande()
 {
@@ -125,7 +126,16 @@ void CStage_Goopy_Le_Grande::LoadObject()
 	ground->SetColliderScale(Vec2(1910, 10));
 	AddObject(LAYER_TYPE::GROUND, ground);
 
-	//
+	// ÁÂ¿ì Wall »ý¼º
+	auto wall = new CWall;
+	wall->SetName(L"Left Wall");
+	wall->SetPos(Vec2(-715, 0));
+	wall->SetColliderScale(Vec2(10, 1000));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = wall->Clone();
+	wall->SetPos(Vec2(725, 0));
+	AddObject(LAYER_TYPE::WALL, wall);
 }
 
 void CStage_Goopy_Le_Grande::SetCollision()
@@ -148,6 +158,7 @@ void CStage_Goopy_Le_Grande::SetCollision()
 
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::BOSS, LAYER_TYPE::PLATFORM);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::BOSS, LAYER_TYPE::GROUND);
+
 
 }
 
