@@ -129,14 +129,14 @@ void CCamera::TrackingPlayer_RunAndGunStage()
 
 	// X방향 카메라 속도 업데이트
 	//=================================================================
-	float min_camera_speed_X = 80;
+	float min_camera_speed_X = 80.f;
 	static float cameraSpeed_X{};
 	static bool bCameraCentering = false;
 
 	// 카메라와 플레이어 간의 거리가 매우 가까울 때 카메라 이동을 멈추게 하는 임계값 설정
 	float thresholdDistance_X = 10.0f; // 이 값을 조정하여 카메라와 플레이어 간의 원하는 최소 거리 설정
 	float playerRunSpeed = m_Player->m_RunSpeed;
-	float lerpFactor = 1.4;
+	float lerpFactor = 1.4f;
 
 	// 플레이어와 카메라 간의 이론상 최대 거리 (saturated 거리)
 	float max_diff_X = playerRunSpeed / lerpFactor;
@@ -171,7 +171,7 @@ void CCamera::TrackingPlayer_RunAndGunStage()
 	if (abs(diff.x) >= max_diff_X - 25)
 	{
 		bCameraCentering = true;
-		cameraSpeed_X = cameraSpeed_X > 0 ? playerRunSpeed * 1.4 : -playerRunSpeed * 1.4;
+		cameraSpeed_X = cameraSpeed_X > 0 ? playerRunSpeed * 1.4f : -playerRunSpeed * 1.4f;
 	}
 
 	//!디버그
@@ -231,7 +231,7 @@ void CCamera::CameraEffectRender()
 	{
 		wstring strDiff = std::to_wstring(m_diff.x) + L", " + std::to_wstring(m_diff.y);
 		TextOut(SUBDC, (int)400, 10,
-			strDiff.c_str(), strDiff.length());
+			strDiff.c_str(), (int)strDiff.length());
 	}
 
 
