@@ -39,13 +39,17 @@ void CPlatform::OnCollisionEnter(CCollider* _pOtherCollider)
 		Vec2 overlapLeftTop = Vec2(max(platformLeftTop.x, playerLeftTop.x), max(platformLeftTop.y, playerLeftTop.y));
 		Vec2 overlapRightBottom = Vec2(min(platformRightBottom.x, playerRightBottom.x), min(platformRightBottom.y, playerRightBottom.y));
 
+		// 겹치는 영역의 위쪽 y좌표가 플랫폼 위쪽 y좌표보다 아래에있으면 return;
+		if (overlapLeftTop.y > (m_PlatformCollider->GetFinalPos().y - m_PlatformCollider->GetScale().y * 0.5f))
+			return;
+
 		// 겹치는 영역 가로 세로 비율 (0 이상)
 		float overlapRatio = (overlapRightBottom.y - overlapLeftTop.y) / (overlapRightBottom.x - overlapLeftTop.x);
 
 		// 플레이어 속도 가로 세로 비율 (0 이상)
 		float playerVelocityRatio = abs(playerRigidbody->GetVelocity().y / playerRigidbody->GetVelocity().x);
 
-		// 플레이어 속도 비율이 더 완만한 경우 리턴
+		// 플레이어 속도 비율이 더 완만한 경우 옆에서 들어오는 것이므로 리턴
 		if (playerVelocityRatio < overlapRatio)
 			return;
 

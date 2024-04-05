@@ -35,8 +35,6 @@ public:
 		return *this;
 	}
 
-	Vec2 operator +(float f) { return Vec2(x + f, y + f); }
-	Vec2 operator -(float f) { return Vec2(x - f, y - f); }
 	Vec2 operator *(float f) { return Vec2(x * f, y * f); }
 	Vec2 operator /(float f) { assert(f); return Vec2(x / f, y / f); }
 
