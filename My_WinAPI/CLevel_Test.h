@@ -3,6 +3,11 @@
 class CLevel_Test :
     public CLevel
 {
+private:
+    virtual void LoadBackground() override;
+    virtual void LoadObject() override;
+    virtual void SetCollision() override;
+
 public:
     virtual void begin() override;
     virtual void tick() override;

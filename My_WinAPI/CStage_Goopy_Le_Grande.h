@@ -5,7 +5,9 @@ class CStage_Goopy_Le_Grande :
 	public CLevel
 {
 private:
-	void LoadBackGround();
+	virtual void LoadBackground() override;
+	virtual void LoadObject() override;
+	virtual void SetCollision() override;
 
 public:
 	virtual void Enter() override;
