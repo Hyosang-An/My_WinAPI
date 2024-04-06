@@ -1,66 +1,68 @@
 #pragma once
 #include "CObj.h"
 
-enum class SHOOTING_DIR
-{
-	LEFT,
-	RIGHT,
-	UP,
-	DOWN,
-
-	UP_LEFT,
-	UP_RIGHT,
-	DOWN_LEFT,
-	DOWN_RIGHT,
-
-	END
-};
-
-enum class BASE_STATE
-{
-	IDLE,
-	DUCK,
-	FIXED,
-	RUN,
-	DASH,
-	AIRBONE,
-	HITTED,
-	DEATH
-};
-
-enum class JUMP_STATE
-{
-	NONE,
-	JUMP_START,
-	JUMPING
-};
-
-enum class PARRY_STATE
-{
-	NONE,
-	PARRY,
-	PARRY_PINK
-};
-
-enum class ACTION_STATE 
-{
-	NONE,
-	SHOOTING,
-	EX
-};
-
-enum class PLAYER_ATTACK_STATE
-{
-	PEASHOOTER,
-	SPREAD,
-	
-	END
-};
-
 class CPlayer :
 	public CObj
 {
 	friend class CCamera;
+
+public:
+	enum class SHOOTING_DIR
+	{
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN,
+
+		UP_LEFT,
+		UP_RIGHT,
+		DOWN_LEFT,
+		DOWN_RIGHT,
+
+		END
+	};
+
+	enum class BASE_STATE
+	{
+		IDLE,
+		DUCK,
+		FIXED,
+		RUN,
+		DASH,
+		AIRBONE,
+		HITTED,
+		DEATH
+	};
+
+	enum class JUMP_STATE
+	{
+		NONE,
+		JUMP_START,
+		JUMPING
+	};
+
+	enum class PARRY_STATE
+	{
+		NONE,
+		PARRY,
+		PARRY_PINK
+	};
+
+	enum class ACTION_STATE
+	{
+		NONE,
+		SHOOTING,
+		EX
+	};
+
+	enum class PLAYER_ATTACK_STATE
+	{
+		PEASHOOTER,
+		SPREAD,
+
+		END
+	};
+
 private:
 	float m_RunSpeed = 400;
 	float m_DashSpeed = 800;

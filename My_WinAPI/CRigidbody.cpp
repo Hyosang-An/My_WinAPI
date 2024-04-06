@@ -73,7 +73,7 @@ void CRigidbody::finaltick()
 	// 플레이어 좌우 running 속도 제한
 	// 플레이어면서 대쉬모드가 아닌 경우
 	auto player = dynamic_cast<CPlayer*>(m_Owner);
-	if (player != nullptr && player->GetBaseState() != BASE_STATE::DASH)
+	if (player != nullptr && player->GetBaseState() != CPlayer::BASE_STATE::DASH)
 	{
 		if (m_MaxWalkSpeed != 0 && m_MaxWalkSpeed < abs(m_Velocity.x))
 		{
