@@ -9,8 +9,9 @@
 #include "CBackground.h"
 
 
-CLevel_Test::CLevel_Test()
+CLevel_Test::CLevel_Test() 
 {
+	SetName(L"Test Level");
 }
 
 CLevel_Test::~CLevel_Test()

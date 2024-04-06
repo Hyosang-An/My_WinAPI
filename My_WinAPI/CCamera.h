@@ -37,6 +37,8 @@ private:
 	Vec2        m_PrevCameraLeftTopPos;
 	Vec2        m_CameraRealCenterPos;
 
+	Vec2		m_resolution;
+
 	Vec2        m_StageRange;
 
 	CPlayer* m_Player;

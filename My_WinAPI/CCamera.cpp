@@ -28,11 +28,11 @@ void CCamera::init()
 	// 카메라 시작 위치
 	m_CameraLeftTopPos = Vec2(0, 0);
 
-	Vec2 resolution = CEngine::GetInstance().GetResolution();
-	m_CameraRealCenterPos = resolution / 2.f;
+	m_resolution = CEngine::GetInstance().GetResolution();
+	m_CameraRealCenterPos = m_resolution / 2.f;
 	// 윈도우 해상도랑 동일한 크기의 검은색 텍스쳐를 생성
 	
-	m_FadeTex = CAssetMgr::GetInstance().CreateTexture(L"Fade Textrue", (UINT)resolution.x, (UINT)resolution.y);
+	m_FadeTex = CAssetMgr::GetInstance().CreateTexture(L"Fade Textrue", (UINT)m_resolution.x, (UINT)m_resolution.y);
 }
 
 void CCamera::tick()
@@ -80,7 +80,7 @@ void CCamera::Move()
 	}
 
 
-	m_CameraRealCenterPos = m_CameraLeftTopPos + CEngine::GetInstance().GetResolution() / 2.f;
+	m_CameraRealCenterPos = m_CameraLeftTopPos + m_resolution / 2.f;
 }
 
 
@@ -136,7 +136,7 @@ void CCamera::TrackingPlayer_RunAndGunStage()
 	// 카메라와 플레이어 간의 거리가 매우 가까울 때 카메라 이동을 멈추게 하는 임계값 설정
 	float thresholdDistance_X = 10.0f; // 이 값을 조정하여 카메라와 플레이어 간의 원하는 최소 거리 설정
 	float playerRunSpeed = m_Player->m_RunSpeed;
-	float lerpFactor = 1.4f;
+	float lerpFactor = 2.2f;
 
 	// 플레이어와 카메라 간의 이론상 최대 거리 (saturated 거리)
 	float max_diff_X = playerRunSpeed / lerpFactor;
@@ -196,7 +196,17 @@ void CCamera::TrackingPlayer_RunAndGunStage()
 
 void CCamera::TrackingPlayer_BossStage()
 {
-	// TODO
+	// 카메라 좌표 기준은 lefttop
+	float cameraLeftLimit = m_StageRange.x;
+	float cameraRightLimit = m_StageRange.y - m_resolution.x;
+	float playerLeftLimit = m_StageRange.x + 30;
+	float playerRightLimit = m_StageRange.y - 30;
+	float player_posX = m_Player->m_Pos.x;
+
+	float playerPosRatio = (player_posX - playerLeftLimit) / (playerRightLimit - playerLeftLimit);
+
+	m_CameraLeftTopPos.x = cameraLeftLimit + playerPosRatio * (cameraRightLimit - cameraLeftLimit);
+
 }
 
 void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)
@@ -213,24 +223,26 @@ void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)
 
 void CCamera::SetCameraInitialLookAt(Vec2 _pos)
 {
-	auto res = CEngine::GetInstance().GetResolution();
-	m_CameraLeftTopPos = _pos - (0.5 * res);
+	m_CameraLeftTopPos = _pos - (0.5 * m_resolution);
 	m_PrevCameraLeftTopPos = m_CameraLeftTopPos;
 }
 
 void CCamera::SetCameraLookAt(Vec2 _pos)
 {
-	auto res = CEngine::GetInstance().GetResolution();
-	m_CameraLeftTopPos = _pos - (0.5 * res);
+	m_CameraLeftTopPos = _pos - (0.5 * m_resolution);
 }
 
 void CCamera::CameraEffectRender()
 {
 	// !디버그 
-	//if (CDbgRenderer::GetInstance().IsDBGMode())
+	
+	if (CLevelMgr::GetInstance().GetCurrentLevel() != nullptr 
+		&& CLevelMgr::GetInstance().GetCurrentLevel()->GetName() == L"Test Level"
+		&& !CDbgRenderer::GetInstance().IsDBGMode())
+
 	{
-		wstring strDiff = std::to_wstring(m_diff.x) + L", " + std::to_wstring(m_diff.y);
-		TextOut(SUBDC, (int)400, 10,
+		wstring strDiff = L"diff from camera center to player : " + std::to_wstring(m_diff.x) + L", " + std::to_wstring(m_diff.y);
+		TextOut(SUBDC, (int)400, 50,
 			strDiff.c_str(), (int)strDiff.length());
 	}
 
