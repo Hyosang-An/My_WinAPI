@@ -85,17 +85,6 @@ private:
 
 	bool m_bOnPlatform = false;			// 플랫폼 위에 있는지
 
-
-	// 액션 누적 시간 (static 변수들 멤버변수로 전환)
-	float invincibleTime = 0;
-	float HittedTime = 0;
-	float DashTime = 0;
-	float m_JumpingTime = 0;
-	float parryTime = 0;
-	float timeSinceLastShot = 0;
-	float duckingTime = 0;
-	float alpha = 0;
-	float dir = 1;
 	
 	// 플레이어 각종 상태 변수들
 
@@ -115,6 +104,18 @@ private:
 
 	//CCollider* m_HeadCol;
 	CCollider* m_PlayerCollider;
+
+
+	// 액션 누적 시간 (static 변수들 멤버변수로 전환)
+	float invincibleTime = 0;
+	float HittedTime = 0;
+	float DashTime = 0;
+	float m_JumpingTime = 0;
+	float parryTime = 0;
+	float timeSinceLastShot = 0;
+	float duckingTime = 0;
+	float alpha = 0;
+	float dir = 1;
 
 private:
 	void UpdateState();
