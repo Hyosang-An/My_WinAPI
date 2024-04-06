@@ -1,7 +1,7 @@
 #pragma once
 #include "CLevel.h"
 
-class CStage_Goopy_Le_Grande :
+class CLevel_Goopy_Le_Grande :
 	public CLevel
 {
 private:
@@ -16,7 +16,7 @@ public:
 	virtual void Exit() override;
 
 public:
-	CStage_Goopy_Le_Grande();
-	~CStage_Goopy_Le_Grande();
+	CLevel_Goopy_Le_Grande();
+	~CLevel_Goopy_Le_Grande();
 };
 

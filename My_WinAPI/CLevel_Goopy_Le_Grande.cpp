@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "CStage_Goopy_Le_Grande.h"
+#include "CLevel_Goopy_Le_Grande.h"
 
 #include "CBackground.h"
 #include "CKeyMgr.h"
@@ -7,17 +7,17 @@
 #include "CGround.h"
 #include "CWall.h"
 
-CStage_Goopy_Le_Grande::CStage_Goopy_Le_Grande()
+CLevel_Goopy_Le_Grande::CLevel_Goopy_Le_Grande()
 {
 }
 
-CStage_Goopy_Le_Grande::~CStage_Goopy_Le_Grande()
+CLevel_Goopy_Le_Grande::~CLevel_Goopy_Le_Grande()
 {
 }
 
 
 
-void CStage_Goopy_Le_Grande::Enter()
+void CLevel_Goopy_Le_Grande::Enter()
 {
 	// 스테이지 좌우 범위 -710 ~ 720
 
@@ -35,7 +35,7 @@ void CStage_Goopy_Le_Grande::Enter()
 	SetCollision();
 }
 
-void CStage_Goopy_Le_Grande::tick()
+void CLevel_Goopy_Le_Grande::tick()
 {
 	CLevel::tick();
 
@@ -45,7 +45,7 @@ void CStage_Goopy_Le_Grande::tick()
 	}
 }
 
-void CStage_Goopy_Le_Grande::LoadBackground()
+void CLevel_Goopy_Le_Grande::LoadBackground()
 {
 	// 스테이지 좌우 범위 -710 ~ 722
 
@@ -107,7 +107,7 @@ void CStage_Goopy_Le_Grande::LoadBackground()
 	AddObject(LAYER_TYPE::FOREGROUND, BG);
 }
 
-void CStage_Goopy_Le_Grande::LoadObject()
+void CLevel_Goopy_Le_Grande::LoadObject()
 {
 	// 스테이지 좌우 범위 -710 ~ 720
 	// 
@@ -138,7 +138,7 @@ void CStage_Goopy_Le_Grande::LoadObject()
 	AddObject(LAYER_TYPE::WALL, wall);
 }
 
-void CStage_Goopy_Le_Grande::SetCollision()
+void CLevel_Goopy_Le_Grande::SetCollision()
 {
 	// 플레이어와 적들 충돌
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::MONSTER);
@@ -166,7 +166,7 @@ void CStage_Goopy_Le_Grande::SetCollision()
 
 }
 
-void CStage_Goopy_Le_Grande::Exit()
+void CLevel_Goopy_Le_Grande::Exit()
 {
 	DeleteAllObjects();
 }

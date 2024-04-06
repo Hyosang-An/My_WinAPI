@@ -283,7 +283,7 @@
     <ClInclude Include="CLevel_Test.h">
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClInclude>
-    <ClInclude Include="CStage_Goopy_Le_Grande.h">
+    <ClInclude Include="CLevel_Goopy_Le_Grande.h">
       <Filter>03. Game\04. Level\Boss Stage 1</Filter>
     </ClInclude>
     <ClInclude Include="CBackground.h">
@@ -417,7 +417,7 @@
     <ClCompile Include="CLevel_Test.cpp">
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClCompile>
-    <ClCompile Include="CStage_Goopy_Le_Grande.cpp">
+    <ClCompile Include="CLevel_Goopy_Le_Grande.cpp">
       <Filter>03. Game\04. Level\Boss Stage 1</Filter>
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
