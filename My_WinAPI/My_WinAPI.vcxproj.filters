@@ -137,6 +137,12 @@
     <Filter Include="03. Game\05. Object\Wall">
       <UniqueIdentifier>{724c17bd-6a5f-4a10-a8aa-d3dd66b258e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\04. Level\Boss Stage 1\Level_Goopy_Le_Grande">
+      <UniqueIdentifier>{d709b47a-2066-4e8f-a4fc-c6d4e5bd4164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande">
+      <UniqueIdentifier>{e1339f70-000d-4b8d-8fa6-8973d9846cfc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -283,15 +289,16 @@
     <ClInclude Include="CLevel_Test.h">
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClInclude>
-    <ClInclude Include="CLevel_Goopy_Le_Grande.h">
-      <Filter>03. Game\04. Level\Boss Stage 1</Filter>
-    </ClInclude>
     <ClInclude Include="CBackground.h">
       <Filter>03. Game\05. Object\Background</Filter>
     </ClInclude>
     <ClInclude Include="CWall.h">
       <Filter>03. Game\05. Object\Wall</Filter>
     </ClInclude>
+    <ClInclude Include="CLevel_Goopy_Le_Grande.h">
+      <Filter>03. Game\04. Level\Boss Stage 1\Level_Goopy_Le_Grande</Filter>
+    </ClInclude>
+    <ClInclude Include="Goopy_Le_Grande.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -417,15 +424,16 @@
     <ClCompile Include="CLevel_Test.cpp">
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClCompile>
-    <ClCompile Include="CLevel_Goopy_Le_Grande.cpp">
-      <Filter>03. Game\04. Level\Boss Stage 1</Filter>
-    </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>03. Game\05. Object\Background</Filter>
     </ClCompile>
     <ClCompile Include="CWall.cpp">
       <Filter>03. Game\05. Object\Wall</Filter>
     </ClCompile>
+    <ClCompile Include="CLevel_Goopy_Le_Grande.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 1\Level_Goopy_Le_Grande</Filter>
+    </ClCompile>
+    <ClCompile Include="Goopy_Le_Grande.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
