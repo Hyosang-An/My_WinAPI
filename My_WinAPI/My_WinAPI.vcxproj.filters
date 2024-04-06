@@ -298,7 +298,9 @@
     <ClInclude Include="CLevel_Goopy_Le_Grande.h">
       <Filter>03. Game\04. Level\Boss Stage 1\Level_Goopy_Le_Grande</Filter>
     </ClInclude>
-    <ClInclude Include="Goopy_Le_Grande.h" />
+    <ClInclude Include="Goopy_Le_Grande.h">
+      <Filter>03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -433,7 +435,9 @@
     <ClCompile Include="CLevel_Goopy_Le_Grande.cpp">
       <Filter>03. Game\04. Level\Boss Stage 1\Level_Goopy_Le_Grande</Filter>
     </ClCompile>
-    <ClCompile Include="Goopy_Le_Grande.cpp" />
+    <ClCompile Include="Goopy_Le_Grande.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

@@ -60,7 +60,7 @@ void CGround::OnCollisionEnter(CCollider* _pOtherCollider)
 	Vec2 groundColliderScale = m_GroundCollider->GetScale();
 
 	// 파고 들어간 깊이
-	float depth = (colliderScale.y + groundColliderScale.y) * 0.5 - (groundColliderPos.y - colliderPos.y);
+	float depth = (colliderScale.y + groundColliderScale.y) * 0.5f - (groundColliderPos.y - colliderPos.y);
 
 	obj->SetPos(obj->GetPos() + Vec2(0, -depth));
 }
@@ -89,7 +89,7 @@ void CGround::OnCollisionStay(CCollider* _pOtherCollider)
 	Vec2 groundColliderScale = m_GroundCollider->GetScale();
 
 	// 파고 들어간 깊이
-	float depth = (colliderScale.y + groundColliderScale.y) * 0.5 - (groundColliderPos.y - colliderPos.y);
+	float depth = (colliderScale.y + groundColliderScale.y) * 0.5f - (groundColliderPos.y - colliderPos.y);
 
 	obj->SetPos(obj->GetPos() + Vec2(0, -depth));
 }

@@ -36,7 +36,7 @@ void CAnimation::Reset()
 void CAnimation::ResetReverse()
 {
 	m_frameElapsedTime = 0;
-	m_CurFrameIdx = m_vecAnimFrame.size() - 2;
+	m_CurFrameIdx = (int)m_vecAnimFrame.size() - 2;
 	m_bFinished = false;
 	m_bPlayingForward = false;
 }

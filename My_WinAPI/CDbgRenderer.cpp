@@ -160,7 +160,7 @@ void CDbgRenderer::render()
 	mousePos = CCamera::GetInstance().GetRealPos(mousePos);
 	wstring strMousePos = std::to_wstring((int)mousePos.x) + L", " + std::to_wstring((int)mousePos.y);
 	TextOut(SUBDC, (int)(CEngine::GetInstance().GetResolution().x * 0.5f) - 50, 5,
-		strMousePos.c_str(), strMousePos.length());
+		strMousePos.c_str(), (int)strMousePos.length());
 
 	// 오브젝트 좌표 출력
 	if (CLevelMgr::GetInstance().GetCurrentLevel() == nullptr)
@@ -174,7 +174,7 @@ void CDbgRenderer::render()
 			auto objpos = obj->GetPos();
 			wstring strObjPos = std::to_wstring((int)objpos.x) + L", " + std::to_wstring((int)objpos.y);
 			TextOut(SUBDC, (int)obj->GetRenderPos().x, (int)obj->GetRenderPos().y,
-				strObjPos.c_str(), strObjPos.length());
+				strObjPos.c_str(), (int)strObjPos.length());
 		}
 	}
 
