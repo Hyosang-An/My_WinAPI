@@ -369,6 +369,18 @@ void CPlayer::UpdateState()
 
 		if (m_Rigidbody->IsOnGround())
 			m_bAirboneDashed = false;
+
+		// Duck 상태 일 때 충돌체 설정
+		if (m_CurBaseState == BASE_STATE::DUCK)
+		{
+			m_PlayerCollider->SetScale(Vec2(60, 30));
+			m_PlayerCollider->SetOffsetPos(Vec2(0, 55));
+		}
+		else
+		{
+			m_PlayerCollider->SetScale(Vec2(60.f, 100.f));
+			m_PlayerCollider->SetOffsetPos(Vec2(0.f, 20.f));
+		}
 	}
 
 	// 플랫폼 내려가기
@@ -773,7 +785,7 @@ void CPlayer::UpdateAnimation()
 			}
 			case BASE_STATE::DUCK:
 			{
-				float duckingDuration = 0.2;
+				float duckingDuration = 0.2f;
 
 				if (m_PrevBaseState != BASE_STATE::DUCK)
 					duckingTime = 0;
