@@ -19,7 +19,7 @@ CLevel_Goopy_Le_Grande::~CLevel_Goopy_Le_Grande()
 
 void CLevel_Goopy_Le_Grande::Enter()
 {
-	// 스테이지 좌우 범위 -710 ~ 720
+	// 스테이지 좌우 범위 -710 ~ 720 -> 플레이어 이동 범위 : -680 ~ 690
 
 	// 카메라 설정
 	CCamera::GetInstance().SetCameraInitialLookAt(Vec2(0, 0));
@@ -75,7 +75,7 @@ void CLevel_Goopy_Le_Grande::LoadBackground()
 
 	// 약간 먼 배경의 애니메이션 배경
 	BG = new CBackground;
-	BG->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Background\\bg_stream.anim");
+	BG->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Background\\bg_stream.anim");
 	BG->SetPos(Vec2(96, 1));
 	BG->SetDepth(BACKGROUND_DEPTH::Middle);
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
