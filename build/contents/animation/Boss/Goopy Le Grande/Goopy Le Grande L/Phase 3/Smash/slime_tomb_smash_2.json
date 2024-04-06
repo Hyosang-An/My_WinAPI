@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "slime_tomb_smash_0009b.png",
+	"frame": {"x":1185,"y":0,"w":530,"h":744},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":530,"h":744},
+	"sourceSize": {"w":530,"h":744}
+},
+{
+	"filename": "slime_tomb_smash_0010.png",
+	"frame": {"x":564,"y":744,"w":873,"h":665},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":873,"h":665},
+	"sourceSize": {"w":873,"h":665}
+},
+{
+	"filename": "slime_tomb_smash_0011.png",
+	"frame": {"x":0,"y":744,"w":564,"h":531},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":564,"h":531},
+	"sourceSize": {"w":564,"h":531}
+},
+{
+	"filename": "slime_tomb_smash_0012.png",
+	"frame": {"x":394,"y":0,"w":395,"h":667},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":395,"h":667},
+	"sourceSize": {"w":395,"h":667}
+},
+{
+	"filename": "slime_tomb_smash_0013.png",
+	"frame": {"x":0,"y":0,"w":394,"h":624},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":394,"h":624},
+	"sourceSize": {"w":394,"h":624}
+},
+{
+	"filename": "slime_tomb_smash_0014.png",
+	"frame": {"x":789,"y":0,"w":396,"h":593},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":593},
+	"sourceSize": {"w":396,"h":593}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_tomb_smash_2.png",
+	"format": "RGBA8888",
+	"size": {"w":1715,"h":1409},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2e68f69301cdfd88b84d86dd18f89afa:3e533995106ee9736efd4151ae73cb91:9e88627d1ea4ed4476606529c01e68a5$"
+}
+}

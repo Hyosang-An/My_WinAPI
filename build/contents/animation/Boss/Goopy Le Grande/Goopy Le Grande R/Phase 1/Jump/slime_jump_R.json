@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "slime_jump_R_0001.png",
+	"frame": {"x":227,"y":737,"w":227,"h":197},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":197},
+	"sourceSize": {"w":227,"h":197}
+},
+{
+	"filename": "slime_jump_R_0002.png",
+	"frame": {"x":265,"y":358,"w":243,"h":186},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":243,"h":186},
+	"sourceSize": {"w":243,"h":186}
+},
+{
+	"filename": "slime_jump_R_0003.png",
+	"frame": {"x":0,"y":544,"w":254,"h":193},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":193},
+	"sourceSize": {"w":254,"h":193}
+},
+{
+	"filename": "slime_jump_R_0004.png",
+	"frame": {"x":243,"y":0,"w":265,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":265,"h":179},
+	"sourceSize": {"w":265,"h":179}
+},
+{
+	"filename": "slime_jump_R_0005.png",
+	"frame": {"x":0,"y":179,"w":270,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":270,"h":179},
+	"sourceSize": {"w":270,"h":179}
+},
+{
+	"filename": "slime_jump_R_0006.png",
+	"frame": {"x":0,"y":358,"w":265,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":265,"h":179},
+	"sourceSize": {"w":265,"h":179}
+},
+{
+	"filename": "slime_jump_R_0007.png",
+	"frame": {"x":254,"y":544,"w":254,"h":193},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":193},
+	"sourceSize": {"w":254,"h":193}
+},
+{
+	"filename": "slime_jump_R_0008.png",
+	"frame": {"x":0,"y":0,"w":243,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":243,"h":168},
+	"sourceSize": {"w":243,"h":168}
+},
+{
+	"filename": "slime_jump_R_0009.png",
+	"frame": {"x":0,"y":737,"w":227,"h":193},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":193},
+	"sourceSize": {"w":227,"h":193}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_jump_R.png",
+	"format": "RGBA8888",
+	"size": {"w":508,"h":934},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fabd8503b4673490389233cd4a48d7d7:bc386f5f5a86b534a41d1a6859a9e0aa:f1ee45788731fbf388c1276420f689de$"
+}
+}

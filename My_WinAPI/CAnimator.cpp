@@ -173,7 +173,7 @@ void CAnimator::PlayFromFrame(const wstring& _AnimName, bool _Repeat, int _frame
 namespace fs = std::filesystem;
 using json = nlohmann::json;
 
-void CAnimator::CreateAnimationByJSON(std::wstring strRelativeJsonFilePath, int _FPS)
+void CAnimator::CreateAndSaveAnimationFileByJSON(std::wstring strRelativeJsonFilePath, int _FPS)
 {
     // relativeFolderPath의 맨 앞에 "\\"가 있으면, "."을 앞에 추가하여 상대 경로로 만듭니다.
     if (!strRelativeJsonFilePath.empty() && strRelativeJsonFilePath[0] == L'\\') {

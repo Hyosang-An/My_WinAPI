@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "lg_slime_dust_b_0001.png",
+	"frame": {"x":0,"y":0,"w":491,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":491,"h":144},
+	"sourceSize": {"w":491,"h":144}
+},
+{
+	"filename": "lg_slime_dust_b_0002.png",
+	"frame": {"x":491,"y":0,"w":596,"h":207},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":596,"h":207},
+	"sourceSize": {"w":596,"h":207}
+},
+{
+	"filename": "lg_slime_dust_b_0003.png",
+	"frame": {"x":1087,"y":0,"w":682,"h":250},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":682,"h":250},
+	"sourceSize": {"w":682,"h":250}
+},
+{
+	"filename": "lg_slime_dust_b_0004.png",
+	"frame": {"x":0,"y":250,"w":798,"h":276},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":798,"h":276},
+	"sourceSize": {"w":798,"h":276}
+},
+{
+	"filename": "lg_slime_dust_b_0005.png",
+	"frame": {"x":798,"y":250,"w":836,"h":302},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":836,"h":302},
+	"sourceSize": {"w":836,"h":302}
+},
+{
+	"filename": "lg_slime_dust_b_0006.png",
+	"frame": {"x":0,"y":552,"w":883,"h":323},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":883,"h":323},
+	"sourceSize": {"w":883,"h":323}
+},
+{
+	"filename": "lg_slime_dust_b_0007.png",
+	"frame": {"x":883,"y":552,"w":918,"h":342},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":918,"h":342},
+	"sourceSize": {"w":918,"h":342}
+},
+{
+	"filename": "lg_slime_dust_b_0008.png",
+	"frame": {"x":0,"y":894,"w":920,"h":363},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":920,"h":363},
+	"sourceSize": {"w":920,"h":363}
+},
+{
+	"filename": "lg_slime_dust_b_0009.png",
+	"frame": {"x":920,"y":894,"w":945,"h":345},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":945,"h":345},
+	"sourceSize": {"w":945,"h":345}
+},
+{
+	"filename": "lg_slime_dust_b_0010.png",
+	"frame": {"x":0,"y":1257,"w":983,"h":275},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":983,"h":275},
+	"sourceSize": {"w":983,"h":275}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lg_slime_dust_b.png",
+	"format": "RGBA8888",
+	"size": {"w":1865,"h":1532},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d06be5c6d56ee9c08c9f3d78e51d29da:1a1ec73bc9f4344a100207ffa82562bb:2a573d0f8b00d387003dbd4c9c7ec164$"
+}
+}

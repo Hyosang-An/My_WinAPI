@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "lg_slime_punch_0001.png",
+	"frame": {"x":787,"y":788,"w":442,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":442,"h":400},
+	"sourceSize": {"w":442,"h":400}
+},
+{
+	"filename": "lg_slime_punch_0002.png",
+	"frame": {"x":1229,"y":788,"w":392,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":392,"h":400},
+	"sourceSize": {"w":392,"h":400}
+},
+{
+	"filename": "lg_slime_punch_0003.png",
+	"frame": {"x":0,"y":788,"w":391,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":391,"h":399},
+	"sourceSize": {"w":391,"h":399}
+},
+{
+	"filename": "lg_slime_punch_0004.png",
+	"frame": {"x":391,"y":788,"w":396,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":399},
+	"sourceSize": {"w":396,"h":399}
+},
+{
+	"filename": "lg_slime_punch_0005.png",
+	"frame": {"x":1116,"y":391,"w":416,"h":397},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":416,"h":397},
+	"sourceSize": {"w":416,"h":397}
+},
+{
+	"filename": "lg_slime_punch_0006.png",
+	"frame": {"x":0,"y":391,"w":605,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":605,"h":392},
+	"sourceSize": {"w":605,"h":392}
+},
+{
+	"filename": "lg_slime_punch_0007.png",
+	"frame": {"x":1189,"y":0,"w":479,"h":391},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":479,"h":391},
+	"sourceSize": {"w":479,"h":391}
+},
+{
+	"filename": "lg_slime_punch_0008.png",
+	"frame": {"x":604,"y":0,"w":585,"h":389},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":585,"h":389},
+	"sourceSize": {"w":585,"h":389}
+},
+{
+	"filename": "lg_slime_punch_0009.png",
+	"frame": {"x":0,"y":0,"w":604,"h":387},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":604,"h":387},
+	"sourceSize": {"w":604,"h":387}
+},
+{
+	"filename": "lg_slime_punch_0010.png",
+	"frame": {"x":605,"y":391,"w":511,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":511,"h":392},
+	"sourceSize": {"w":511,"h":392}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lg_slime_punch_L_1.png",
+	"format": "RGBA8888",
+	"size": {"w":1668,"h":1188},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:88f0e2e158888bea1b899633337fa537:e5adf36233f38ab25d29ca82eea28b03:9cf3dc1834d4eb26d6bbbc6d7af8dec9$"
+}
+}

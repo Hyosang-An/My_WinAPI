@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "slime_air_down_R_0001.png",
+	"frame": {"x":0,"y":0,"w":193,"h":191},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":193,"h":191},
+	"sourceSize": {"w":193,"h":191}
+},
+{
+	"filename": "slime_air_down_R_0002.png",
+	"frame": {"x":193,"y":0,"w":195,"h":192},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":192},
+	"sourceSize": {"w":195,"h":192}
+},
+{
+	"filename": "slime_air_down_R_0003.png",
+	"frame": {"x":388,"y":0,"w":193,"h":192},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":193,"h":192},
+	"sourceSize": {"w":193,"h":192}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_air_down_R.png",
+	"format": "RGBA8888",
+	"size": {"w":581,"h":192},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:496a9bf1815e5e21a0fdb1deb82eeaca:8d5a3495158d6a5072f42d877138eda7:82f8d343329936adcd520e4d0484326f$"
+}
+}

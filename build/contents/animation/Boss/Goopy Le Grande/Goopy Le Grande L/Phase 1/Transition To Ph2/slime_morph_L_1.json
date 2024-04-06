@@ -1,0 +1,204 @@
+{"frames": [
+
+{
+	"filename": "slime_morph_0001.png",
+	"frame": {"x":0,"y":0,"w":229,"h":202},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":229,"h":202},
+	"sourceSize": {"w":229,"h":202}
+},
+{
+	"filename": "slime_morph_0002.png",
+	"frame": {"x":229,"y":0,"w":219,"h":202},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":219,"h":202},
+	"sourceSize": {"w":219,"h":202}
+},
+{
+	"filename": "slime_morph_0003.png",
+	"frame": {"x":320,"y":442,"w":221,"h":310},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":221,"h":310},
+	"sourceSize": {"w":221,"h":310}
+},
+{
+	"filename": "slime_morph_0004.png",
+	"frame": {"x":300,"y":208,"w":194,"h":213},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":194,"h":213},
+	"sourceSize": {"w":194,"h":213}
+},
+{
+	"filename": "slime_morph_0005.png",
+	"frame": {"x":1564,"y":208,"w":212,"h":234},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":212,"h":234},
+	"sourceSize": {"w":212,"h":234}
+},
+{
+	"filename": "slime_morph_0006.png",
+	"frame": {"x":755,"y":0,"w":218,"h":204},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":218,"h":204},
+	"sourceSize": {"w":218,"h":204}
+},
+{
+	"filename": "slime_morph_0007.png",
+	"frame": {"x":0,"y":992,"w":290,"h":558},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":290,"h":558},
+	"sourceSize": {"w":290,"h":558}
+},
+{
+	"filename": "slime_morph_0008.png",
+	"frame": {"x":494,"y":208,"w":228,"h":213},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":228,"h":213},
+	"sourceSize": {"w":228,"h":213}
+},
+{
+	"filename": "slime_morph_0009.png",
+	"frame": {"x":1006,"y":208,"w":260,"h":223},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":260,"h":223},
+	"sourceSize": {"w":260,"h":223}
+},
+{
+	"filename": "slime_morph_0010.png",
+	"frame": {"x":722,"y":208,"w":284,"h":220},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":284,"h":220},
+	"sourceSize": {"w":284,"h":220}
+},
+{
+	"filename": "slime_morph_0011.png",
+	"frame": {"x":1266,"y":208,"w":298,"h":226},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":298,"h":226},
+	"sourceSize": {"w":298,"h":226}
+},
+{
+	"filename": "slime_morph_0012.png",
+	"frame": {"x":0,"y":208,"w":300,"h":211},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":211},
+	"sourceSize": {"w":300,"h":211}
+},
+{
+	"filename": "slime_morph_0013.png",
+	"frame": {"x":973,"y":0,"w":300,"h":207},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":207},
+	"sourceSize": {"w":300,"h":207}
+},
+{
+	"filename": "slime_morph_0014.png",
+	"frame": {"x":448,"y":0,"w":307,"h":202},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":307,"h":202},
+	"sourceSize": {"w":307,"h":202}
+},
+{
+	"filename": "slime_morph_0015.png",
+	"frame": {"x":1273,"y":0,"w":329,"h":208},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":329,"h":208},
+	"sourceSize": {"w":329,"h":208}
+},
+{
+	"filename": "slime_morph_0016.png",
+	"frame": {"x":0,"y":442,"w":320,"h":306},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":306},
+	"sourceSize": {"w":320,"h":306}
+},
+{
+	"filename": "slime_morph_0017.png",
+	"frame": {"x":541,"y":442,"w":320,"h":434},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":434},
+	"sourceSize": {"w":320,"h":434}
+},
+{
+	"filename": "slime_morph_0018.png",
+	"frame": {"x":861,"y":442,"w":319,"h":516},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":319,"h":516},
+	"sourceSize": {"w":319,"h":516}
+},
+{
+	"filename": "slime_morph_0019.png",
+	"frame": {"x":1501,"y":442,"w":318,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":318,"h":550},
+	"sourceSize": {"w":318,"h":550}
+},
+{
+	"filename": "slime_morph_0020.png",
+	"frame": {"x":613,"y":992,"w":318,"h":563},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":318,"h":563},
+	"sourceSize": {"w":318,"h":563}
+},
+{
+	"filename": "slime_morph_0021.png",
+	"frame": {"x":1250,"y":992,"w":320,"h":568},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":568},
+	"sourceSize": {"w":320,"h":568}
+},
+{
+	"filename": "slime_morph_0022.png",
+	"frame": {"x":931,"y":992,"w":319,"h":563},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":319,"h":563},
+	"sourceSize": {"w":319,"h":563}
+},
+{
+	"filename": "slime_morph_0023.png",
+	"frame": {"x":290,"y":992,"w":323,"h":559},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":323,"h":559},
+	"sourceSize": {"w":323,"h":559}
+},
+{
+	"filename": "slime_morph_0024.png",
+	"frame": {"x":1180,"y":442,"w":321,"h":523},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":321,"h":523},
+	"sourceSize": {"w":321,"h":523}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_morph_L_1.png",
+	"format": "RGBA8888",
+	"size": {"w":1819,"h":1560},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:555bacf5cb3f98a8afe472dad95da14c:53d104417f72e0fff7090394d4e46174:542523b5e926f59f98fdcc45e7e0494f$"
+}
+}

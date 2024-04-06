@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "lg_slime_up_down_trans_R_0001.png",
+	"frame": {"x":0,"y":0,"w":402,"h":371},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":371},
+	"sourceSize": {"w":402,"h":371}
+},
+{
+	"filename": "lg_slime_up_down_trans_R_0002.png",
+	"frame": {"x":402,"y":0,"w":345,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":345,"h":368},
+	"sourceSize": {"w":345,"h":368}
+},
+{
+	"filename": "lg_slime_up_down_trans_R_0003.png",
+	"frame": {"x":747,"y":0,"w":346,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":346,"h":364},
+	"sourceSize": {"w":346,"h":364}
+},
+{
+	"filename": "lg_slime_up_down_trans_R_0004.png",
+	"frame": {"x":1093,"y":0,"w":354,"h":365},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":354,"h":365},
+	"sourceSize": {"w":354,"h":365}
+},
+{
+	"filename": "lg_slime_up_down_trans_R_0005.png",
+	"frame": {"x":1447,"y":0,"w":359,"h":357},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":359,"h":357},
+	"sourceSize": {"w":359,"h":357}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lg_slime_up_down_trans_R.png",
+	"format": "RGBA8888",
+	"size": {"w":1806,"h":371},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7a0d1bb28da28898945571b8f7fe4bb6:b35b7b8c04da095594660bd4d904fb14:31e5f9ca766d024d57bd8088df4097dd$"
+}
+}

@@ -1,0 +1,68 @@
+{"frames": [
+
+{
+	"filename": "c_slime_question_mark_0001.png",
+	"frame": {"x":0,"y":0,"w":36,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":42},
+	"sourceSize": {"w":36,"h":42}
+},
+{
+	"filename": "c_slime_question_mark_0002.png",
+	"frame": {"x":36,"y":0,"w":48,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":94},
+	"sourceSize": {"w":48,"h":94}
+},
+{
+	"filename": "c_slime_question_mark_0003.png",
+	"frame": {"x":84,"y":0,"w":54,"h":106},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":106},
+	"sourceSize": {"w":54,"h":106}
+},
+{
+	"filename": "c_slime_question_mark_0004.png",
+	"frame": {"x":138,"y":0,"w":68,"h":105},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":105},
+	"sourceSize": {"w":68,"h":105}
+},
+{
+	"filename": "c_slime_question_mark_0005.png",
+	"frame": {"x":0,"y":106,"w":72,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":101},
+	"sourceSize": {"w":72,"h":101}
+},
+{
+	"filename": "c_slime_question_mark_0006.png",
+	"frame": {"x":72,"y":106,"w":71,"h":109},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":71,"h":109},
+	"sourceSize": {"w":71,"h":109}
+},
+{
+	"filename": "c_slime_question_mark_0007.png",
+	"frame": {"x":143,"y":106,"w":70,"h":111},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":111},
+	"sourceSize": {"w":70,"h":111}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "c_slime_question_mark_L.png",
+	"format": "RGBA8888",
+	"size": {"w":213,"h":217},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:770126907573eed51a30379e75537426:52c571ab752b4d58199b6c50a0ae406f:f53b3a88e0864bddf464539f8181b632$"
+}
+}

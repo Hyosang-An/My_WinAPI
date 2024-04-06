@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "lg_slime_air_up_R_0001.png",
+	"frame": {"x":0,"y":0,"w":338,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":338,"h":385},
+	"sourceSize": {"w":338,"h":385}
+},
+{
+	"filename": "lg_slime_air_up_R_0002.png",
+	"frame": {"x":338,"y":0,"w":371,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":371,"h":390},
+	"sourceSize": {"w":371,"h":390}
+},
+{
+	"filename": "lg_slime_air_up_R_0003.png",
+	"frame": {"x":709,"y":0,"w":338,"h":386},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":338,"h":386},
+	"sourceSize": {"w":338,"h":386}
+},
+{
+	"filename": "lg_slime_air_up_R_0004.png",
+	"frame": {"x":1047,"y":0,"w":371,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":371,"h":390},
+	"sourceSize": {"w":371,"h":390}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lg_slime_air_up_R.png",
+	"format": "RGBA8888",
+	"size": {"w":1418,"h":390},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9aa9bb3159172d9cd18335cb913bf267:b8dbac6f22eef501ce08dee71c3ee3eb:ababb9fce715f9ac8139f70368c475c8$"
+}
+}

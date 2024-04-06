@@ -20,7 +20,7 @@ public:
 
     CAnimation* CreateAnimation(const wstring& _AnimName, CTexture* _Atlas, Vec2 _StartPos, Vec2 _SliceSize, int _FrameCount, int _FPS);
 
-    void CreateAnimationByJSON(std::wstring relativeFolderPath, int _FPS);
+    void CreateAndSaveAnimationFileByJSON(std::wstring relativeFolderPath, int _FPS);
 
     CAnimation* FindAnimation(const wstring& _AnimName);
     void LoadAnimation(wstring _strRelativeFilePath);

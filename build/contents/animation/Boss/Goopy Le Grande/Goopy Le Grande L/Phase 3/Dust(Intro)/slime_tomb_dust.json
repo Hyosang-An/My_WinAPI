@@ -1,0 +1,124 @@
+{"frames": [
+
+{
+	"filename": "slime_tomb_dust_0002.png",
+	"frame": {"x":1005,"y":0,"w":813,"h":263},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":813,"h":263},
+	"sourceSize": {"w":813,"h":263}
+},
+{
+	"filename": "slime_tomb_dust_0003.png",
+	"frame": {"x":0,"y":1376,"w":850,"h":289},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":850,"h":289},
+	"sourceSize": {"w":850,"h":289}
+},
+{
+	"filename": "slime_tomb_dust_0004.png",
+	"frame": {"x":920,"y":1669,"w":884,"h":311},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":884,"h":311},
+	"sourceSize": {"w":884,"h":311}
+},
+{
+	"filename": "slime_tomb_dust_0005.png",
+	"frame": {"x":0,"y":1669,"w":920,"h":296},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":920,"h":296},
+	"sourceSize": {"w":920,"h":296}
+},
+{
+	"filename": "slime_tomb_dust_0006.png",
+	"frame": {"x":850,"y":1376,"w":933,"h":293},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":293},
+	"sourceSize": {"w":933,"h":293}
+},
+{
+	"filename": "slime_tomb_dust_0007.png",
+	"frame": {"x":951,"y":1088,"w":954,"h":288},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":954,"h":288},
+	"sourceSize": {"w":954,"h":288}
+},
+{
+	"filename": "slime_tomb_dust_0008.png",
+	"frame": {"x":0,"y":1088,"w":951,"h":283},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":951,"h":283},
+	"sourceSize": {"w":951,"h":283}
+},
+{
+	"filename": "slime_tomb_dust_0009.png",
+	"frame": {"x":967,"y":808,"w":957,"h":280},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":957,"h":280},
+	"sourceSize": {"w":957,"h":280}
+},
+{
+	"filename": "slime_tomb_dust_0010.png",
+	"frame": {"x":0,"y":808,"w":967,"h":277},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":967,"h":277},
+	"sourceSize": {"w":967,"h":277}
+},
+{
+	"filename": "slime_tomb_dust_0011.png",
+	"frame": {"x":975,"y":533,"w":978,"h":275},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":978,"h":275},
+	"sourceSize": {"w":978,"h":275}
+},
+{
+	"filename": "slime_tomb_dust_0012.png",
+	"frame": {"x":0,"y":533,"w":975,"h":274},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":975,"h":274},
+	"sourceSize": {"w":975,"h":274}
+},
+{
+	"filename": "slime_tomb_dust_0013.png",
+	"frame": {"x":994,"y":263,"w":982,"h":270},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":982,"h":270},
+	"sourceSize": {"w":982,"h":270}
+},
+{
+	"filename": "slime_tomb_dust_0014.png",
+	"frame": {"x":0,"y":263,"w":994,"h":267},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":994,"h":267},
+	"sourceSize": {"w":994,"h":267}
+},
+{
+	"filename": "slime_tomb_dust_0015.png",
+	"frame": {"x":0,"y":0,"w":1005,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1005,"h":222},
+	"sourceSize": {"w":1005,"h":222}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_tomb_dust.png",
+	"format": "RGBA8888",
+	"size": {"w":1976,"h":1980},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6ef8a04152f26f2fc6c041ec3ec3a21f:6b0fabe91774bb4780bc391ab24a7b2f:c9845aa8fe3484996762265defbe723c$"
+}
+}

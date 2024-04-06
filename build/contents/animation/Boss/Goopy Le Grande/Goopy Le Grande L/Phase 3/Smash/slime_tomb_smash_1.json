@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "slime_tomb_smash_0001.png",
+	"frame": {"x":0,"y":0,"w":393,"h":536},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":393,"h":536},
+	"sourceSize": {"w":393,"h":536}
+},
+{
+	"filename": "slime_tomb_smash_0002.png",
+	"frame": {"x":393,"y":0,"w":373,"h":498},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":373,"h":498},
+	"sourceSize": {"w":373,"h":498}
+},
+{
+	"filename": "slime_tomb_smash_0003.png",
+	"frame": {"x":766,"y":0,"w":368,"h":485},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":368,"h":485},
+	"sourceSize": {"w":368,"h":485}
+},
+{
+	"filename": "slime_tomb_smash_0004.png",
+	"frame": {"x":1134,"y":0,"w":359,"h":471},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":359,"h":471},
+	"sourceSize": {"w":359,"h":471}
+},
+{
+	"filename": "slime_tomb_smash_0005.png",
+	"frame": {"x":1493,"y":0,"w":381,"h":555},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":555},
+	"sourceSize": {"w":381,"h":555}
+},
+{
+	"filename": "slime_tomb_smash_0006.png",
+	"frame": {"x":0,"y":555,"w":384,"h":620},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":620},
+	"sourceSize": {"w":384,"h":620}
+},
+{
+	"filename": "slime_tomb_smash_0007.png",
+	"frame": {"x":384,"y":555,"w":389,"h":770},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":389,"h":770},
+	"sourceSize": {"w":389,"h":770}
+},
+{
+	"filename": "slime_tomb_smash_0008.png",
+	"frame": {"x":773,"y":555,"w":449,"h":821},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":449,"h":821},
+	"sourceSize": {"w":449,"h":821}
+},
+{
+	"filename": "slime_tomb_smash_0009.png",
+	"frame": {"x":1222,"y":555,"w":658,"h":815},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":658,"h":815},
+	"sourceSize": {"w":658,"h":815}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_tomb_smash_1.png",
+	"format": "RGBA8888",
+	"size": {"w":1880,"h":1376},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:16b263baf01917cb35cb64cc28740821:96a53fc0cf35ba90a22d32c5bad436d0:77123bb9106fee7fea6bc4628fc10fff$"
+}
+}

@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "slime_tomb_trans_0001.png",
+	"frame": {"x":0,"y":0,"w":395,"h":602},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":395,"h":602},
+	"sourceSize": {"w":395,"h":602}
+},
+{
+	"filename": "slime_tomb_trans_0002.png",
+	"frame": {"x":395,"y":0,"w":414,"h":574},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":414,"h":574},
+	"sourceSize": {"w":414,"h":574}
+},
+{
+	"filename": "slime_tomb_trans_0003.png",
+	"frame": {"x":809,"y":0,"w":432,"h":574},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":432,"h":574},
+	"sourceSize": {"w":432,"h":574}
+},
+{
+	"filename": "slime_tomb_trans_0004.png",
+	"frame": {"x":1241,"y":0,"w":471,"h":564},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":564},
+	"sourceSize": {"w":471,"h":564}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_tomb_trans.png",
+	"format": "RGBA8888",
+	"size": {"w":1712,"h":602},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:77931342988f253bc05400f4f28e4a55:78d625cb4dc5fd3fb20ffa95b367194a:31ab57afaf1700e8c9a8fc1e512273f2$"
+}
+}

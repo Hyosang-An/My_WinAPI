@@ -26,6 +26,7 @@ void CLevel_Test::begin()
 	//CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_OUT, 2);
 	CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_IN, 2);
 
+	CreateAndSaveAnimationByJson();
 }
 
 void CLevel_Test::tick()
@@ -60,6 +61,13 @@ void CLevel_Test::Enter()
 
 }
 
+
+void CLevel_Test::CreateAndSaveAnimationByJson()
+{
+	CAnimator* animator = new CAnimator;
+
+	//animator->CreateAndSaveAnimationFileByJSON(L"");
+}
 
 void CLevel_Test::LoadBackground()
 {

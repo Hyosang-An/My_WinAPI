@@ -4,6 +4,9 @@ class CLevel_Test :
     public CLevel
 {
 private:
+    void CreateAndSaveAnimationByJson();
+
+private:
     virtual void LoadBackground() override;
     virtual void LoadObject() override;
     virtual void SetCollision() override;

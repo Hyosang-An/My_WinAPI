@@ -1,0 +1,172 @@
+{"frames": [
+
+{
+	"filename": "lg_slime_death_R_0001.png",
+	"frame": {"x":761,"y":0,"w":373,"h":360},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":373,"h":360},
+	"sourceSize": {"w":373,"h":360}
+},
+{
+	"filename": "lg_slime_death_R_0002.png",
+	"frame": {"x":0,"y":0,"w":381,"h":358},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":358},
+	"sourceSize": {"w":381,"h":358}
+},
+{
+	"filename": "lg_slime_death_R_0003.png",
+	"frame": {"x":1134,"y":0,"w":383,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":383,"h":368},
+	"sourceSize": {"w":383,"h":368}
+},
+{
+	"filename": "lg_slime_death_R_0004.png",
+	"frame": {"x":1560,"y":743,"w":388,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":388,"h":385},
+	"sourceSize": {"w":388,"h":385}
+},
+{
+	"filename": "lg_slime_death_R_0005.png",
+	"frame": {"x":388,"y":1128,"w":385,"h":388},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":385,"h":388},
+	"sourceSize": {"w":385,"h":388}
+},
+{
+	"filename": "lg_slime_death_R_0006.png",
+	"frame": {"x":773,"y":1128,"w":381,"h":388},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":388},
+	"sourceSize": {"w":381,"h":388}
+},
+{
+	"filename": "lg_slime_death_R_0007.png",
+	"frame": {"x":786,"y":743,"w":387,"h":384},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":387,"h":384},
+	"sourceSize": {"w":387,"h":384}
+},
+{
+	"filename": "lg_slime_death_R_0008.png",
+	"frame": {"x":1167,"y":368,"w":394,"h":375},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":394,"h":375},
+	"sourceSize": {"w":394,"h":375}
+},
+{
+	"filename": "lg_slime_death_R_0009.png",
+	"frame": {"x":1517,"y":0,"w":393,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":393,"h":368},
+	"sourceSize": {"w":393,"h":368}
+},
+{
+	"filename": "lg_slime_death_R_0010.png",
+	"frame": {"x":0,"y":743,"w":393,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":393,"h":382},
+	"sourceSize": {"w":393,"h":382}
+},
+{
+	"filename": "lg_slime_death_R_0011.png",
+	"frame": {"x":776,"y":368,"w":391,"h":372},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":391,"h":372},
+	"sourceSize": {"w":391,"h":372}
+},
+{
+	"filename": "lg_slime_death_R_0012.png",
+	"frame": {"x":393,"y":743,"w":393,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":393,"h":382},
+	"sourceSize": {"w":393,"h":382}
+},
+{
+	"filename": "lg_slime_death_R_0013.png",
+	"frame": {"x":0,"y":368,"w":393,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":393,"h":368},
+	"sourceSize": {"w":393,"h":368}
+},
+{
+	"filename": "lg_slime_death_R_0014.png",
+	"frame": {"x":1561,"y":368,"w":394,"h":375},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":394,"h":375},
+	"sourceSize": {"w":394,"h":375}
+},
+{
+	"filename": "lg_slime_death_R_0015.png",
+	"frame": {"x":1173,"y":743,"w":387,"h":384},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":387,"h":384},
+	"sourceSize": {"w":387,"h":384}
+},
+{
+	"filename": "lg_slime_death_R_0016.png",
+	"frame": {"x":1154,"y":1128,"w":381,"h":388},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":388},
+	"sourceSize": {"w":381,"h":388}
+},
+{
+	"filename": "lg_slime_death_R_0017.png",
+	"frame": {"x":1535,"y":1128,"w":387,"h":388},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":387,"h":388},
+	"sourceSize": {"w":387,"h":388}
+},
+{
+	"filename": "lg_slime_death_R_0018.png",
+	"frame": {"x":0,"y":1128,"w":388,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":388,"h":385},
+	"sourceSize": {"w":388,"h":385}
+},
+{
+	"filename": "lg_slime_death_R_0019.png",
+	"frame": {"x":393,"y":368,"w":383,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":383,"h":368},
+	"sourceSize": {"w":383,"h":368}
+},
+{
+	"filename": "lg_slime_death_R_0020.png",
+	"frame": {"x":381,"y":0,"w":380,"h":358},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":358},
+	"sourceSize": {"w":380,"h":358}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lg_slime_death_R.png",
+	"format": "RGBA8888",
+	"size": {"w":1955,"h":1516},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f5bd0a09e580c404932ad3f08a4e33b1:1da0d3cfb009437fecbf07648b92f788:246dd0d0dbede0272512f252820b881d$"
+}
+}

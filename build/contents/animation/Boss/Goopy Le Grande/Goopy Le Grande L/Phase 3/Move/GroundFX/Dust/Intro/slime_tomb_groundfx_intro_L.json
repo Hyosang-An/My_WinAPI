@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "slime_tomb_groundfx_intro_0001.png",
+	"frame": {"x":0,"y":0,"w":135,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":40},
+	"sourceSize": {"w":135,"h":40}
+},
+{
+	"filename": "slime_tomb_groundfx_intro_0002.png",
+	"frame": {"x":135,"y":0,"w":142,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":25},
+	"sourceSize": {"w":142,"h":25}
+},
+{
+	"filename": "slime_tomb_groundfx_intro_0003.png",
+	"frame": {"x":277,"y":0,"w":202,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":32},
+	"sourceSize": {"w":202,"h":32}
+},
+{
+	"filename": "slime_tomb_groundfx_intro_0004.png",
+	"frame": {"x":479,"y":0,"w":254,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":43},
+	"sourceSize": {"w":254,"h":43}
+},
+{
+	"filename": "slime_tomb_groundfx_intro_0005.png",
+	"frame": {"x":0,"y":43,"w":299,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":299,"h":56},
+	"sourceSize": {"w":299,"h":56}
+},
+{
+	"filename": "slime_tomb_groundfx_intro_0006.png",
+	"frame": {"x":299,"y":43,"w":349,"h":67},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":349,"h":67},
+	"sourceSize": {"w":349,"h":67}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "slime_tomb_groundfx_intro_L.png",
+	"format": "RGBA8888",
+	"size": {"w":733,"h":110},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:985a5ce1b820509b8c56217c8fd2045b:3c42f3222012c4aba4774eeccffb3b61:c92ea840914a7b5a4990631ce74b40fe$"
+}
+}

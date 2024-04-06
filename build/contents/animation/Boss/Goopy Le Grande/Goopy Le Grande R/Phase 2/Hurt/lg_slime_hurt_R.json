@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "lg_slime_hurt_R_0001.png",
+	"frame": {"x":0,"y":0,"w":370,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":370,"h":380},
+	"sourceSize": {"w":370,"h":380}
+},
+{
+	"filename": "lg_slime_hurt_R_0002.png",
+	"frame": {"x":370,"y":0,"w":507,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":507,"h":383},
+	"sourceSize": {"w":507,"h":383}
+},
+{
+	"filename": "lg_slime_hurt_R_0003.png",
+	"frame": {"x":877,"y":0,"w":364,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":364,"h":380},
+	"sourceSize": {"w":364,"h":380}
+},
+{
+	"filename": "lg_slime_hurt_R_0004.png",
+	"frame": {"x":1241,"y":0,"w":359,"h":376},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":359,"h":376},
+	"sourceSize": {"w":359,"h":376}
+},
+{
+	"filename": "lg_slime_hurt_R_0005.png",
+	"frame": {"x":1600,"y":0,"w":368,"h":373},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":368,"h":373},
+	"sourceSize": {"w":368,"h":373}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lg_slime_hurt_R.png",
+	"format": "RGBA8888",
+	"size": {"w":1968,"h":383},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ffeaefa460f813a42fcb04f399c93cd7:2a2f230514df297bd53feecdb43c0dea:2f0ccb8170dccfbf89abb4454e638271$"
+}
+}

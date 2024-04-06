@@ -1,0 +1,100 @@
+{"frames": [
+
+{
+	"filename": "lg_generic_lightning_R_0001.png",
+	"frame": {"x":0,"y":0,"w":259,"h":245},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":259,"h":245},
+	"sourceSize": {"w":259,"h":245}
+},
+{
+	"filename": "lg_generic_lightning_R_0002.png",
+	"frame": {"x":259,"y":0,"w":343,"h":287},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":287},
+	"sourceSize": {"w":343,"h":287}
+},
+{
+	"filename": "lg_generic_lightning_R_0003.png",
+	"frame": {"x":602,"y":0,"w":422,"h":347},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":422,"h":347},
+	"sourceSize": {"w":422,"h":347}
+},
+{
+	"filename": "lg_generic_lightning_R_0004.png",
+	"frame": {"x":1024,"y":0,"w":456,"h":389},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":389},
+	"sourceSize": {"w":456,"h":389}
+},
+{
+	"filename": "lg_generic_lightning_R_0005.png",
+	"frame": {"x":1480,"y":0,"w":499,"h":434},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":499,"h":434},
+	"sourceSize": {"w":499,"h":434}
+},
+{
+	"filename": "lg_generic_lightning_R_0006.png",
+	"frame": {"x":0,"y":434,"w":530,"h":450},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":530,"h":450},
+	"sourceSize": {"w":530,"h":450}
+},
+{
+	"filename": "lg_generic_lightning_R_0007.png",
+	"frame": {"x":530,"y":434,"w":594,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":594,"h":510},
+	"sourceSize": {"w":594,"h":510}
+},
+{
+	"filename": "lg_generic_lightning_R_0008.png",
+	"frame": {"x":1124,"y":434,"w":622,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":622,"h":550},
+	"sourceSize": {"w":622,"h":550}
+},
+{
+	"filename": "lg_generic_lightning_R_0009.png",
+	"frame": {"x":0,"y":984,"w":648,"h":579},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":648,"h":579},
+	"sourceSize": {"w":648,"h":579}
+},
+{
+	"filename": "lg_generic_lightning_R_0010.png",
+	"frame": {"x":648,"y":984,"w":672,"h":602},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":672,"h":602},
+	"sourceSize": {"w":672,"h":602}
+},
+{
+	"filename": "lg_generic_lightning_R_0011.png",
+	"frame": {"x":1320,"y":984,"w":700,"h":615},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":615},
+	"sourceSize": {"w":700,"h":615}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lg_generic_lightning_R.png",
+	"format": "RGBA8888",
+	"size": {"w":2020,"h":1599},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ab5a7977beef12ef9523d1e978edd393:c8574d7c89e83e566ccf0d07a41bb4d5:378193df3fd76c4f546bf65e9b3328a5$"
+}
+}
