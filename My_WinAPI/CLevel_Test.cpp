@@ -66,7 +66,40 @@ void CLevel_Test::CreateAndSaveAnimationByJson()
 {
 	CAnimator* animator = new CAnimator;
 
-	//animator->CreateAndSaveAnimationFileByJSON(L"");
+	// Phase 1 ======================================================================
+	// L
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Intro\\slime_intro_L.json", 18);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Air Down\\slime_air_down_L.json", 18);
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Air Up\\slime_air_up_L.json", 18);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Jump\\slime_jump_L.json", 18);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Punch\\slime_punch_L.json", 12);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Transition To Ph2\\slime_morph_1_L.json", 12);
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Transition To Ph2\\slime_morph_2_L.json", 12);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Transition To Ph2\\Question Marks\\c_slime_question_mark_L.json", 12);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Up Down Transition\\slime_up_down_trans_L.json", 18);
+
+	// R
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Air Down\\slime_air_down_R.json", 18);
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Air Up\\slime_air_up_R.json", 18);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Jump\\slime_jump_R.json", 18);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Punch\\slime_punch_R.json", 12);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Transition To Ph2\\slime_morph_1_R.json", 12);
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Transition To Ph2\\slime_morph_2_R.json", 12);
+
+	animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Up Down Transition\\slime_up_down_trans_R.json", 18);
+
+
+	// Phase 2 ======================================================================
+	// L
 }
 
 void CLevel_Test::LoadBackground()

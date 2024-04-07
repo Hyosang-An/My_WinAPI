@@ -1,0 +1,28 @@
+[ANIMATION_NAME]
+slime_air_up_L
+
+[ATLAS_TEXTURE]
+[ATLAS_KEY]	slime_air_up_L_Atlas
+[ATLAS_PATH]	animation\Boss\Goopy Le Grande\Goopy Le Grande L\Phase 1\Air Up\slime_air_up_L.png
+
+[FRAME_COUNT]
+3
+
+[FRAME_INDEX]	0
+[POS_IN_ATLAS]	0 0
+[SLICE_SIZE]	212 197
+[OFFSET]	0 0
+[DURATION]	0.1
+
+[FRAME_INDEX]	1
+[POS_IN_ATLAS]	0 197
+[SLICE_SIZE]	210 198
+[OFFSET]	0 0
+[DURATION]	0.1
+
+[FRAME_INDEX]	2
+[POS_IN_ATLAS]	0 395
+[SLICE_SIZE]	212 195
+[OFFSET]	0 0
+[DURATION]	0.1
+

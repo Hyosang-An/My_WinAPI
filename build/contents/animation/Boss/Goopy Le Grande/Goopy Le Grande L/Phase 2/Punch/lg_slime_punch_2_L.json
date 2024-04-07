@@ -1,80 +1,72 @@
 {"frames": [
 
 {
-	"filename": "lg_slime_punch_R_0010.png",
-	"frame": {"x":761,"y":0,"w":511,"h":392},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":511,"h":392},
-	"sourceSize": {"w":511,"h":392}
-},
-{
-	"filename": "lg_slime_punch_R_0011.png",
-	"frame": {"x":1272,"y":0,"w":505,"h":394},
+	"filename": "lg_slime_punch_0011.png",
+	"frame": {"x":488,"y":0,"w":505,"h":394},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":505,"h":394},
 	"sourceSize": {"w":505,"h":394}
 },
 {
-	"filename": "lg_slime_punch_R_0012.png",
-	"frame": {"x":0,"y":394,"w":488,"h":394},
+	"filename": "lg_slime_punch_0012.png",
+	"frame": {"x":0,"y":0,"w":488,"h":394},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":488,"h":394},
 	"sourceSize": {"w":488,"h":394}
 },
 {
-	"filename": "lg_slime_punch_R_0013.png",
-	"frame": {"x":0,"y":0,"w":761,"h":391},
+	"filename": "lg_slime_punch_0013.png",
+	"frame": {"x":734,"y":396,"w":761,"h":391},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":761,"h":391},
 	"sourceSize": {"w":761,"h":391}
 },
 {
-	"filename": "lg_slime_punch_R_0014.png",
-	"frame": {"x":488,"y":394,"w":690,"h":396},
+	"filename": "lg_slime_punch_0014.png",
+	"frame": {"x":993,"y":0,"w":690,"h":396},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":690,"h":396},
 	"sourceSize": {"w":690,"h":396}
 },
 {
-	"filename": "lg_slime_punch_R_0015.png",
-	"frame": {"x":0,"y":815,"w":781,"h":422},
+	"filename": "lg_slime_punch_0015.png",
+	"frame": {"x":0,"y":817,"w":781,"h":422},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":781,"h":422},
 	"sourceSize": {"w":781,"h":422}
 },
 {
-	"filename": "lg_slime_punch_R_0016.png",
-	"frame": {"x":781,"y":815,"w":802,"h":423},
+	"filename": "lg_slime_punch_0016.png",
+	"frame": {"x":781,"y":817,"w":802,"h":423},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":802,"h":423},
 	"sourceSize": {"w":802,"h":423}
 },
 {
-	"filename": "lg_slime_punch_R_0017.png",
-	"frame": {"x":0,"y":1238,"w":814,"h":427},
+	"filename": "lg_slime_punch_0017.png",
+	"frame": {"x":0,"y":1240,"w":814,"h":427},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":814,"h":427},
 	"sourceSize": {"w":814,"h":427}
 },
 {
-	"filename": "lg_slime_punch_R_0018.png",
-	"frame": {"x":814,"y":1238,"w":823,"h":427},
+	"filename": "lg_slime_punch_0018.png",
+	"frame": {"x":814,"y":1240,"w":823,"h":427},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":823,"h":427},
 	"sourceSize": {"w":823,"h":427}
 },
 {
-	"filename": "lg_slime_punch_R_0019.png",
-	"frame": {"x":1178,"y":394,"w":734,"h":421},
+	"filename": "lg_slime_punch_0019.png",
+	"frame": {"x":0,"y":396,"w":734,"h":421},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":734,"h":421},
@@ -83,10 +75,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "lg_slime_punch_R_2.png",
+	"image": "lg_slime_punch_2_L.png",
 	"format": "RGBA8888",
-	"size": {"w":1912,"h":1665},
+	"size": {"w":1683,"h":1667},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:63f2bf6856f5bdbaff94d797f6b1924c:be7bba3bf2b53ded9b827e62d4115bbb:e57d77db92fb3918d47ce82f882a8a8d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ffb9c5cfe42fdadcdc9aa607c5d58366:9d9557c68f83f0f32d951285045364b4:c73aa7479336133acd10a90f73ced774$"
 }
 }

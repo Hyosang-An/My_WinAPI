@@ -17,6 +17,7 @@ CPlayer::CPlayer()
 	m_eType = LAYER_TYPE::PLAYER;
 
 	// !!중요!! Collider가 Rigidbody보다 항상 컴포넌트 벡터 상에서 뒤에 위치해야 함!! 그래야 최종 오브젝트 위치를 반영하여 Collider 위치 업데이트 가능
+	// 위 내용 AddComponent에서 처리 완료
 	m_PlayerCollider = AddComponent(new CCollider);
 	m_PlayerCollider->SetName(L"Player Collider");
 	m_PlayerCollider->SetOffsetPos(Vec2(0.f, 20.f));
@@ -666,6 +667,7 @@ void CPlayer::UpdateAnimation()
 				if (m_PrevBaseState != BASE_STATE::DUCK)
 					duckingTime = 0;
 
+				// Ducking 중에 바라보는 방향을 바꾸거나 총을 쏘는 등의 액션을 하면 바로 duck Idle을 유지하도록
 				if (m_PrevShootingDir != m_CurShootingDir || m_PrevActionState != m_CurActionState)
 					duckingTime = duckingDuration;
 

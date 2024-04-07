@@ -195,7 +195,7 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "slime_morph_L_2.png",
+	"image": "slime_morph_2_L.png",
 	"format": "RGBA8888",
 	"size": {"w":1919,"h":1903},
 	"scale": "1",

@@ -91,8 +91,9 @@ void CAnimator::LoadAnimation(wstring _strRelativeFilePath)
     CAnimation* pAnim = new CAnimation;
     if FAILED(pAnim->Load(_strRelativeFilePath))
     {
+        auto msg = (_strRelativeFilePath + L"애니메이션 로드 실패").c_str();
+        LOG(LOG_TYPE::DBG_ERROR, msg);
         delete pAnim;
-        LOG(LOG_TYPE::DBG_ERROR, L"애니메이션 로드 실패");
         return;
     }
 

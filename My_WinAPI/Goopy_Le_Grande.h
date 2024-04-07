@@ -27,17 +27,32 @@ public:
     };
 
 private:
-    PHASE_STATE     m_PhaseState;
-    BASE_STATE      m_BaseState;
+    bool                m_bFacingRight = false;
+
+    PHASE_STATE         m_PhaseState = PHASE_STATE::PHASE1;
+    BASE_STATE          m_BaseState = BASE_STATE::INTRO;
+
+    CCollider*          m_BodyCollider;
+    CCollider*          m_PunchCollider;
+    CCollider*          m_SmashCollider;
+
+    vector<CTexture*>   m_ShadowTextureVec;
+
+private:
+    void LoadAnimation();
+
+    // 콜백함수
+    void EnterGround();
+    void LeaveGround();
     
 public:
     virtual void begin();
-    virtual void tick();			// 오브젝트의 논리 업데이트 (입력 처리, 상태 변화, 게임 로직 실행 등)
+    virtual void tick();			
     virtual void render();
 
-    virtual void OnCollisionEnter(CCollider* _pOtherCollider) {}
-    virtual void OnCollisionStay(CCollider* _pOtherCollider) {}
-    virtual void OnCollisionExit(CCollider* _pOtherCollider) {}
+    virtual void OnCollisionEnter(CCollider* _pOtherCollider);
+    virtual void OnCollisionStay(CCollider* _pOtherCollider);
+    virtual void OnCollisionExit(CCollider* _pOtherCollider);
 
 public:
     Goopy_Le_Grande();
