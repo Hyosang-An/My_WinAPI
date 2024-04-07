@@ -1,7 +1,8 @@
 #pragma once
 #include "CComponent.h"
 
-class CAnimation;
+#include "CAnimation.h"
+
 class CTexture;
 
 class CAnimator :
@@ -29,6 +30,8 @@ public:
     void PlayFromFrame(const wstring& _AnimName, bool _Repeat, int _frameIdx);
 
     CAnimation* GetCurAnimation() { return m_CurAnimation; }
+
+    bool IsCurAnimationFinished() {return m_CurAnimation->m_bFinished;}
 
 public:
     CAnimator();

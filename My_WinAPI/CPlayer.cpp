@@ -980,10 +980,10 @@ void CPlayer::render()
 		m_bInvincibleState = !m_bInvincibleState;
 	// ~디버깅
 
-	auto anim = m_Animator->GetCurAnimation();
+	auto curAnim = m_Animator->GetCurAnimation();
 
 	// 현재 프레임 정보
-	const tAnimationFrame& frm = anim->m_vecAnimFrame[anim->m_CurFrameIdx];
+	const tAnimationFrame& frm = curAnim->GetCurFrame();
 
 	// 애니메이션을 재생하고 있는 오브젝트
 	CObj* pOwnerObj = m_Animator->GetOwner();
@@ -1023,7 +1023,7 @@ void CPlayer::render()
 	// 현재 프레임 이미지를 오브젝트 위치에 렌더링
 	AlphaBlend(SUBDC,
 		(int)(vRenderPos.x - frm.SliceSize.x / 2.f + frm.Offset.x), (int)(vRenderPos.y - frm.SliceSize.y / 2.f + frm.Offset.y), (int)frm.SliceSize.x, (int)frm.SliceSize.y,
-		anim->m_Atlas->GetDC(), (int)frm.PosInAtlas.x, (int)frm.PosInAtlas.y, (int)frm.SliceSize.x, (int)frm.SliceSize.y,
+		curAnim->GetAtlasDC(), (int)frm.PosInAtlas.x, (int)frm.PosInAtlas.y, (int)frm.SliceSize.x, (int)frm.SliceSize.y,
 		bf);
 
 

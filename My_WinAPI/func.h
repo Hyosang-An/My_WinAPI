@@ -50,6 +50,11 @@ inline void Safe_Del_Map(map<T1, T2>& _map)
 	_map.clear();
 }
 
+inline void ErrorMessageBox(wstring msg)
+{
+	MessageBox(NULL, msg.c_str(), L"Error", MB_ICONERROR | MB_OK);
+}
+
 #include "CObj.h"
 #include "CTaskMgr.h"
 

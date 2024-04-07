@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CAnimator.h"
 
-#include "CAnimation.h"
+
 #include "CPathMgr.h"
 
 CAnimator::CAnimator() :
@@ -76,7 +76,9 @@ CAnimation* CAnimator::FindAnimation(const wstring& _AnimName)
 {
     const auto& iter = m_mapAnimation.find(_AnimName);
     if (iter == m_mapAnimation.end())
+    {
         return nullptr;
+    }
 
     return iter->second;
 }
@@ -91,16 +93,16 @@ void CAnimator::LoadAnimation(wstring _strRelativeFilePath)
     CAnimation* pAnim = new CAnimation;
     if FAILED(pAnim->Load(_strRelativeFilePath))
     {
-        auto msg = (_strRelativeFilePath + L"애니메이션 로드 실패").c_str();
-        LOG(LOG_TYPE::DBG_ERROR, msg);
+        wstring msg = (_strRelativeFilePath + L"애니메이션 로드 실패");
+        LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
         delete pAnim;
         return;
     }
 
     if (FindAnimation(pAnim->GetName()) != nullptr)
     {
-        wstring str = L"중복된 애니메이션 이름 : " + pAnim->GetName();
-        LOG(LOG_TYPE::DBG_ERROR, str.c_str());
+        wstring msg = L"중복된 애니메이션 이름 : " + pAnim->GetName();
+        LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
         delete pAnim;
         return;
     }

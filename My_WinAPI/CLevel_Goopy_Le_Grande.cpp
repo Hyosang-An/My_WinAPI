@@ -6,6 +6,7 @@
 #include "CPlayer.h"
 #include "CGround.h"
 #include "CWall.h"
+#include "Goopy_Le_Grande.h"
 
 CLevel_Goopy_Le_Grande::CLevel_Goopy_Le_Grande()
 {
@@ -111,12 +112,17 @@ void CLevel_Goopy_Le_Grande::LoadObject()
 {
 	// 스테이지 좌우 범위 -710 ~ 720
 	// 
-	// 오브젝트 추가
+	// 플레이어 추가
 	CObj* pObj = new CPlayer;
 	pObj->SetName(L"Player");
 	pObj->SetPos(0, 0);
 	pObj->SetScale(100, 100);
 	AddObject(LAYER_TYPE::PLAYER, pObj);
+
+	// 보스 구피 르 그란데 추가
+	pObj = new Goopy_Le_Grande;
+	pObj->SetPos(Vec2(200, 0));
+	AddObject(LAYER_TYPE::BOSS, pObj);
 
 
 	// Ground 생성
@@ -136,6 +142,9 @@ void CLevel_Goopy_Le_Grande::LoadObject()
 	wall = wall->Clone();
 	wall->SetPos(Vec2(725, 0));
 	AddObject(LAYER_TYPE::WALL, wall);
+
+
+
 }
 
 void CLevel_Goopy_Le_Grande::SetCollision()

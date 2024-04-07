@@ -39,6 +39,10 @@ private:
     vector<CTexture*>   m_ShadowTextureVec;
 
 private:
+    void UpdateState();
+    void MoveAndAction();
+    void UpdateAnimation();
+
     void LoadAnimation();
 
     // 콜백함수
@@ -53,6 +57,9 @@ public:
     virtual void OnCollisionEnter(CCollider* _pOtherCollider);
     virtual void OnCollisionStay(CCollider* _pOtherCollider);
     virtual void OnCollisionExit(CCollider* _pOtherCollider);
+
+    // 보스 클론 X
+    virtual Goopy_Le_Grande* Clone() { return nullptr; }
 
 public:
     Goopy_Le_Grande();

@@ -15,7 +15,7 @@ struct tAnimationFrame
 class CAnimation :
     public CEntity
 {
-	friend class CAnimator; friend class CPlayer;
+	friend class CAnimator; 
 
 private:
 	CAnimator*					m_Animator;				// Animation을 소유하고 있는 Animator
@@ -33,6 +33,8 @@ public:
 	bool IsFinished() { return m_bFinished; }
 	tAnimationFrame& GetFrame(int _idx) { return m_vecAnimFrame[_idx]; }
 	int GetCurFrameIdx() { return m_CurFrameIdx; }
+	const tAnimationFrame& GetCurFrame() { return m_vecAnimFrame[m_CurFrameIdx]; }
+	HDC GetAtlasDC() { return m_Atlas->GetDC(); }
 
 	void Reset();
 	void ResetReverse();
