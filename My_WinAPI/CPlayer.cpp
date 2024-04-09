@@ -266,24 +266,36 @@ void CPlayer::UpdateState()
 		if (m_PrevBaseState != BASE_STATE::HITTED)
 		{
 			invincibleTime = 0;
+			HittedTime = 0;
 			m_bInvincibleState = true;
+
+			// 하던 액션 중지
+			m_CurActionState = ACTION_STATE::NONE;
 		}
 
 		invincibleTime += DT;
+		HittedTime += DT;
 
-		if (HittedTime < m_HittedDuration)
+		if (m_HittedDuration < HittedTime)
 		{
-			HittedTime += DT;
-			return;
+			// hitted 상태 해제
+			m_CurBaseState = BASE_STATE::IDLE;
 		}
 
-		// hitted 상태 해제
-		m_CurActionState = ACTION_STATE::NONE;
+		return;
 	}
 
-	// 무적 지속시간이 끝나면 무적모드 해제
-	if (m_InvincibleDuratoin < invincibleTime)
-		m_bInvincibleState = false;
+	// 무적 상태 설정
+	// ========================================================================
+	if (m_bInvincibleState)
+	{
+		invincibleTime += DT;
+		// 무적 지속시간이 끝나면 무적모드 해제
+		if (m_InvincibleDuratoin < invincibleTime)
+			m_bInvincibleState = false;
+	}
+
+
 
 	// Dash 상태 설정
 	// ========================================================================
@@ -536,7 +548,7 @@ void CPlayer::MoveAndAction()
 			if (m_JumpingTime < m_LowJumpKeyTime)
 				break;
 			else
-				m_Rigidbody->AddForce(Vec2(0, -3100));
+				m_Rigidbody->AddForce(Vec2(0, -3500));
 			break;
 		}
 		default:
@@ -966,6 +978,7 @@ void CPlayer::EnterGround()
 	LOG(LOG_TYPE::DBG_WARNING, L"Grounded!!");
 
 	m_bAirboneDashed = false;
+	m_Rigidbody->SetVelocity_X(0);
 }
 
 void CPlayer::LeaveGround()
@@ -1029,6 +1042,45 @@ void CPlayer::render()
 
 	// !디버깅
 	StatusRender();
+}
+
+void CPlayer::OnCollisionEnter(CCollider* _pOtherCollider)
+{
+	CObj* otherObj = _pOtherCollider->GetOwner();
+	LAYER_TYPE layer_type = otherObj->GetLayerType();
+
+	if (layer_type == LAYER_TYPE::MONSTER || layer_type == LAYER_TYPE::BOSS || layer_type == LAYER_TYPE::ENEMY_MISSILE)
+	{
+		if (m_bInvincibleState)
+			return;
+
+		m_CurBaseState = BASE_STATE::HITTED;
+
+		if ((m_Pos - otherObj->GetPos()).x > 0)
+			m_Rigidbody->SetVelocity(Vec2(700, -700));
+		else
+			m_Rigidbody->SetVelocity(Vec2(-700, -700));
+		m_iHP--;
+	}
+}
+
+void CPlayer::OnCollisionStay(CCollider* _pOtherCollider)
+{
+	CObj* otherObj = _pOtherCollider->GetOwner();
+	LAYER_TYPE layer_type = otherObj->GetLayerType();
+
+	if (layer_type == LAYER_TYPE::MONSTER || layer_type == LAYER_TYPE::BOSS || layer_type == LAYER_TYPE::ENEMY_MISSILE)
+	{
+		if (m_bInvincibleState)
+			return;
+
+		m_CurBaseState = BASE_STATE::HITTED;
+		m_iHP--;
+	}
+}
+
+void CPlayer::OnCollisionExit(CCollider* _pOtherCollider)
+{
 }
 
 void CPlayer::StatusRender()
