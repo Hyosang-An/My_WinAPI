@@ -66,9 +66,11 @@ public:
 private:
 	float m_RunSpeed = 400;
 	float m_DashSpeed = 800;
-	float m_JumpSpeed = 1040;
+	float m_JumpSpeed = 900; //1040
 
 	bool	m_bFacingRight = true;			// 바라보는 방향
+
+	int		m_iHP = 3;
 
 	float m_DashDuration = 0.3f;		// 대쉬 지속 시간
 	bool m_bAirboneDashed = false;	// 공중에서 대쉬 했는지
@@ -129,6 +131,7 @@ private:
 	void LeaveGround();
 
 public:
+	int			GetHP() { return m_iHP; }
 	BASE_STATE	GetBaseState() { return m_CurBaseState; }
 	
 	void SetOnPlatform(bool _b) { m_bOnPlatform = _b; }
@@ -138,6 +141,10 @@ public:
 	virtual void tick();
 
 	virtual void render();
+
+	virtual void OnCollisionEnter(CCollider* _pOtherCollider) override;
+	virtual void OnCollisionStay(CCollider* _pOtherCollider) override;
+	virtual void OnCollisionExit(CCollider* _pOtherCollider) override;
 
 	void StatusRender();
 

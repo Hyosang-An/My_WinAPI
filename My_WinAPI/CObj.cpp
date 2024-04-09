@@ -69,9 +69,9 @@ void CObj::tick()
 
 void CObj::finaltick()
 {
-	for (auto& e : m_listComponent)
+	for (auto& commponent : m_listComponent)
 	{
-		e->finaltick();
+		commponent->finaltick();
 	}
 }
 

@@ -6,7 +6,7 @@
 
 CMissile::CMissile() :
 	m_fAngle(-3.14f*0.5f),
-	m_fSpeed(100),
+	m_fSpeed(1000),
 	m_pCollider(nullptr)
 {
 	m_pCollider = AddComponent(new CCollider);
