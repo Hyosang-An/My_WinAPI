@@ -21,6 +21,8 @@ public:
     Vec2 GetScale() { return m_vScale; }
     Vec2 GetFinalPos() { return m_vFinalPos; }
 
+    bool IsCollision() { return m_CollisionCount != 0; }
+
     void OnCollisionEnter(CCollider* _pOtherCollider);
     void OnCollisionStay(CCollider* _pOtherCollider);
     void OnCollisionExit(CCollider* _pOtherCollider);

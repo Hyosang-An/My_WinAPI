@@ -178,6 +178,62 @@ void CDbgRenderer::render()
 		}
 	}
 
+
+	// Ãæµ¹Ã¼ ·»´õ¸µ
+	for (UINT i = 0; i < (UINT)LAYER_TYPE::END; i++)
+	{
+		// !µð¹ö±ë
+		if ((LAYER_TYPE)i == LAYER_TYPE::PLAYER)
+		{
+			int a = 0;
+		}
+
+		const auto& ObjvecLayer = CLevelMgr::GetInstance().GetCurrentLevel()->GetObjvecOfLayer((LAYER_TYPE)i);
+
+		for (auto obj : ObjvecLayer)
+		{
+			const auto& vecCollider = obj->GetVecCollider();
+
+			for (auto collider : vecCollider)
+			{
+				if (!collider->IsActive())
+					continue;
+
+				if (collider->IsCollision())
+				{
+					USE_BRUSH(SUBDC, BRUSH_TYPE::HOLLOW);
+					USE_PEN(SUBDC, PEN_TYPE::RED);
+
+					auto colliderPos = collider->GetFinalPos();
+					auto colliderRenderPos = CCamera::GetInstance().GetRenderPos(colliderPos);
+					auto colliderScale = collider->GetScale();
+
+					Rectangle(SUBDC
+						, (int)(colliderRenderPos.x - colliderScale.x / 2.f)
+						, (int)(colliderRenderPos.y - colliderScale.y / 2.f)
+						, (int)(colliderRenderPos.x + colliderScale.x / 2.f)
+						, (int)(colliderRenderPos.y + colliderScale.y / 2.f));
+				}
+				else
+				{
+					USE_BRUSH(SUBDC, BRUSH_TYPE::HOLLOW);
+					USE_PEN(SUBDC, PEN_TYPE::GREEN);
+
+					auto colliderPos = collider->GetFinalPos();
+					auto colliderRenderPos = CCamera::GetInstance().GetRenderPos(colliderPos);
+					auto colliderScale = collider->GetScale();
+
+					Rectangle(SUBDC
+						, (int)(colliderRenderPos.x - colliderScale.x / 2.f)
+						, (int)(colliderRenderPos.y - colliderScale.y / 2.f)
+						, (int)(colliderRenderPos.x + colliderScale.x / 2.f)
+						, (int)(colliderRenderPos.y + colliderScale.y / 2.f));
+				}
+				
+			}			
+		}
+	}
+
 #endif // _DEBUG
 }
 
