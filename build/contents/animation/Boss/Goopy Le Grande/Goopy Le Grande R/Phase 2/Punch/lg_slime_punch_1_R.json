@@ -2,7 +2,7 @@
 
 {
 	"filename": "lg_slime_punch_R_0001.png",
-	"frame": {"x":787,"y":788,"w":442,"h":400},
+	"frame": {"x":416,"y":800,"w":442,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":442,"h":400},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "lg_slime_punch_R_0002.png",
-	"frame": {"x":1229,"y":788,"w":392,"h":400},
+	"frame": {"x":1173,"y":0,"w":392,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":392,"h":400},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "lg_slime_punch_R_0003.png",
-	"frame": {"x":0,"y":788,"w":391,"h":399},
+	"frame": {"x":0,"y":0,"w":391,"h":399},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":391,"h":399},
@@ -26,15 +26,71 @@
 },
 {
 	"filename": "lg_slime_punch_R_0004.png",
-	"frame": {"x":391,"y":788,"w":396,"h":399},
+	"frame": {"x":784,"y":400,"w":396,"h":399},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":399},
 	"sourceSize": {"w":396,"h":399}
 },
 {
+	"filename": "lg_slime_punch_R_0004_1.png",
+	"frame": {"x":1565,"y":0,"w":392,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":392,"h":400},
+	"sourceSize": {"w":392,"h":400}
+},
+{
+	"filename": "lg_slime_punch_R_0004_2.png",
+	"frame": {"x":391,"y":0,"w":391,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":391,"h":399},
+	"sourceSize": {"w":391,"h":399}
+},
+{
+	"filename": "lg_slime_punch_R_0004_3.png",
+	"frame": {"x":1180,"y":400,"w":396,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":399},
+	"sourceSize": {"w":396,"h":399}
+},
+{
+	"filename": "lg_slime_punch_R_0004_4.png",
+	"frame": {"x":0,"y":400,"w":392,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":392,"h":400},
+	"sourceSize": {"w":392,"h":400}
+},
+{
+	"filename": "lg_slime_punch_R_0004_5.png",
+	"frame": {"x":782,"y":0,"w":391,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":391,"h":399},
+	"sourceSize": {"w":391,"h":399}
+},
+{
+	"filename": "lg_slime_punch_R_0004_6.png",
+	"frame": {"x":1576,"y":400,"w":396,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":399},
+	"sourceSize": {"w":396,"h":399}
+},
+{
+	"filename": "lg_slime_punch_R_0004_7.png",
+	"frame": {"x":392,"y":400,"w":392,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":392,"h":400},
+	"sourceSize": {"w":392,"h":400}
+},
+{
 	"filename": "lg_slime_punch_R_0005.png",
-	"frame": {"x":1116,"y":391,"w":416,"h":397},
+	"frame": {"x":0,"y":800,"w":416,"h":397},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":416,"h":397},
@@ -42,7 +98,7 @@
 },
 {
 	"filename": "lg_slime_punch_R_0006.png",
-	"frame": {"x":0,"y":391,"w":605,"h":392},
+	"frame": {"x":1189,"y":1200,"w":605,"h":392},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":605,"h":392},
@@ -50,7 +106,7 @@
 },
 {
 	"filename": "lg_slime_punch_R_0007.png",
-	"frame": {"x":1189,"y":0,"w":479,"h":391},
+	"frame": {"x":858,"y":800,"w":479,"h":391},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":479,"h":391},
@@ -58,7 +114,7 @@
 },
 {
 	"filename": "lg_slime_punch_R_0008.png",
-	"frame": {"x":604,"y":0,"w":585,"h":389},
+	"frame": {"x":0,"y":1200,"w":585,"h":389},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":585,"h":389},
@@ -66,7 +122,7 @@
 },
 {
 	"filename": "lg_slime_punch_R_0009.png",
-	"frame": {"x":0,"y":0,"w":604,"h":387},
+	"frame": {"x":585,"y":1200,"w":604,"h":387},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":604,"h":387},
@@ -74,7 +130,7 @@
 },
 {
 	"filename": "lg_slime_punch_R_0010.png",
-	"frame": {"x":605,"y":391,"w":511,"h":392},
+	"frame": {"x":1337,"y":800,"w":511,"h":392},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":511,"h":392},
@@ -85,8 +141,8 @@
 	"version": "1.0",
 	"image": "lg_slime_punch_1_R.png",
 	"format": "RGBA8888",
-	"size": {"w":1668,"h":1188},
+	"size": {"w":1972,"h":1592},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:50713f1596027476cc5200fa76da2231:bb0c9101f9d78e53dbb43d3e1b8027fa:02b70ff0ad65ac069804304a366a1262$"
+	"smartupdate": "$TexturePacker:SmartUpdate:be78c7d1d4b627d5af35fedead689f60:8efc9d162e0dca7693c5bd3aec5b0741:db4861799af58b3f02c8e8cbdbd5e550$"
 }
 }

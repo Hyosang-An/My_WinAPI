@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "lg_slime_punch_0011.png",
+	"filename": "lg_slime_punch_R_0011.png",
 	"frame": {"x":488,"y":0,"w":505,"h":394},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":505,"h":394}
 },
 {
-	"filename": "lg_slime_punch_0012.png",
+	"filename": "lg_slime_punch_R_0012.png",
 	"frame": {"x":0,"y":0,"w":488,"h":394},
 	"rotated": false,
 	"trimmed": false,
@@ -17,7 +17,7 @@
 	"sourceSize": {"w":488,"h":394}
 },
 {
-	"filename": "lg_slime_punch_0013.png",
+	"filename": "lg_slime_punch_R_0013.png",
 	"frame": {"x":734,"y":396,"w":761,"h":391},
 	"rotated": false,
 	"trimmed": false,
@@ -25,7 +25,7 @@
 	"sourceSize": {"w":761,"h":391}
 },
 {
-	"filename": "lg_slime_punch_0014.png",
+	"filename": "lg_slime_punch_R_0014.png",
 	"frame": {"x":993,"y":0,"w":690,"h":396},
 	"rotated": false,
 	"trimmed": false,
@@ -33,7 +33,7 @@
 	"sourceSize": {"w":690,"h":396}
 },
 {
-	"filename": "lg_slime_punch_0015.png",
+	"filename": "lg_slime_punch_R_0015.png",
 	"frame": {"x":0,"y":817,"w":781,"h":422},
 	"rotated": false,
 	"trimmed": false,
@@ -41,7 +41,7 @@
 	"sourceSize": {"w":781,"h":422}
 },
 {
-	"filename": "lg_slime_punch_0016.png",
+	"filename": "lg_slime_punch_R_0016.png",
 	"frame": {"x":781,"y":817,"w":802,"h":423},
 	"rotated": false,
 	"trimmed": false,
@@ -49,7 +49,7 @@
 	"sourceSize": {"w":802,"h":423}
 },
 {
-	"filename": "lg_slime_punch_0017.png",
+	"filename": "lg_slime_punch_R_0017.png",
 	"frame": {"x":0,"y":1240,"w":814,"h":427},
 	"rotated": false,
 	"trimmed": false,
@@ -57,7 +57,7 @@
 	"sourceSize": {"w":814,"h":427}
 },
 {
-	"filename": "lg_slime_punch_0018.png",
+	"filename": "lg_slime_punch_R_0018.png",
 	"frame": {"x":814,"y":1240,"w":823,"h":427},
 	"rotated": false,
 	"trimmed": false,
@@ -65,7 +65,7 @@
 	"sourceSize": {"w":823,"h":427}
 },
 {
-	"filename": "lg_slime_punch_0019.png",
+	"filename": "lg_slime_punch_R_0019.png",
 	"frame": {"x":0,"y":396,"w":734,"h":421},
 	"rotated": false,
 	"trimmed": false,
@@ -75,10 +75,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "lg_slime_punch_2_L.png",
+	"image": "lg_slime_punch_2_R.png",
 	"format": "RGBA8888",
 	"size": {"w":1683,"h":1667},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:ffb9c5cfe42fdadcdc9aa607c5d58366:9d9557c68f83f0f32d951285045364b4:c73aa7479336133acd10a90f73ced774$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3cce935e84bb37376d941def62869a4b:9d9557c68f83f0f32d951285045364b4:58c53f811c61afe4c7bfe1f71c745667$"
 }
 }

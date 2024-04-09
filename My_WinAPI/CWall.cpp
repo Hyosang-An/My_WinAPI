@@ -187,13 +187,14 @@ void CWall::OnCollisionStay(CCollider* _pOtherCollider)
 	else
 	{
 		// 좌 충돌
-		if (overlapLeftTop.x == (m_WallCollider->GetFinalPos().x - m_WallCollider->GetScale().x * 0.5f))
+		if ((otherCollider->GetFinalPos() - GetPos()).x < 0 )
 			otherObj->SetPos(otherObj->GetPos() - Vec2((overlapRightBottom.x - overlapLeftTop.x), 0));
-
 		// 우 충돌
 		else
 			otherObj->SetPos(otherObj->GetPos() + Vec2((overlapRightBottom.x - overlapLeftTop.x), 0));
 	}
+
+
 }
 
 void CWall::OnCollisionExit(CCollider* _pOtherCollider)

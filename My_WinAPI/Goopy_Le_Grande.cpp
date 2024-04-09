@@ -42,8 +42,8 @@ void Goopy_Le_Grande::begin()
 void Goopy_Le_Grande::tick()
 {
 	UpdateState();
-	MoveAndAction();
 	UpdateAnimation();
+	MoveAndAction();
 }
 
 // ============================================================================================================================================================
@@ -148,7 +148,10 @@ void Goopy_Le_Grande::MoveAndAction()
 				case BASE_STATE::AIR_DOWN:
 					break;
 				case BASE_STATE::PUNCH:
-					m_Rigidbody->SetVelocity(Vec2(0, 0));
+					m_Rigidbody->SetVelocity_X(0);
+					break;
+				case BASE_STATE::DEATH:
+					m_Rigidbody->SetVelocity_X(0);
 					break;
 				default:
 					break;
@@ -206,13 +209,13 @@ void Goopy_Le_Grande::UpdateAnimation()
 						m_Animator->Play(L"slime_jump_L", false);
 						break;
 					case BASE_STATE::AIR_UP:
-						m_Animator->Play(L"slime_air_up_L", false);
+						m_Animator->Play(L"slime_air_up_L", true);
 						break;
 					case BASE_STATE::UP_DOWN_TRANSITION:
 						m_Animator->Play(L"slime_up_down_trans_L", false);
 						break;
 					case BASE_STATE::AIR_DOWN:
-						m_Animator->Play(L"slime_air_down_L", false);
+						m_Animator->Play(L"slime_air_down_L", true);
 						break;
 					case BASE_STATE::PUNCH:
 						m_Animator->Play(L"slime_punch_L", false);
@@ -242,13 +245,13 @@ void Goopy_Le_Grande::UpdateAnimation()
 						m_Animator->Play(L"slime_jump_R", false);
 						break;
 					case BASE_STATE::AIR_UP:
-						m_Animator->Play(L"slime_air_up_R", false);
+						m_Animator->Play(L"slime_air_up_R", true);
 						break;
 					case BASE_STATE::UP_DOWN_TRANSITION:
 						m_Animator->Play(L"slime_up_down_trans_R", false);
 						break;
 					case BASE_STATE::AIR_DOWN:
-						m_Animator->Play(L"slime_air_down_R", false);
+						m_Animator->Play(L"slime_air_down_R", true);
 						break;
 					case BASE_STATE::PUNCH:
 						m_Animator->Play(L"slime_punch_R", false);
@@ -282,13 +285,13 @@ void Goopy_Le_Grande::UpdateAnimation()
 						m_Animator->Play(L"lg_slime_idle_L", true, true);
 						break;
 					case BASE_STATE::JUMP:
-						m_Animator->Play(L"lg_slime_jump_L", true);
+						m_Animator->Play(L"lg_slime_jump_L", false);
 						break;
 					case BASE_STATE::AIR_UP:
 						m_Animator->Play(L"lg_slime_air_up_L", true);
 						break;
 					case BASE_STATE::UP_DOWN_TRANSITION:
-						m_Animator->Play(L"lg_slime_up_down_trans_L", true);
+						m_Animator->Play(L"lg_slime_up_down_trans_L", false);
 						break;
 					case BASE_STATE::AIR_DOWN:
 						m_Animator->Play(L"lg_slime_air_down_L", true);
@@ -298,9 +301,9 @@ void Goopy_Le_Grande::UpdateAnimation()
 						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_2_L")
 							break;
 
-						m_Animator->Play(L"lg_slime_punch_1_L", true);
+						m_Animator->Play(L"lg_slime_punch_1_L", false);
 						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_1_L" && m_Animator->IsCurAnimationFinished())
-							m_Animator->Play(L"lg_slime_punch_2_L", true);
+							m_Animator->Play(L"lg_slime_punch_2_L", false);
 						break;
 					}
 					case BASE_STATE::DEATH:
@@ -319,13 +322,13 @@ void Goopy_Le_Grande::UpdateAnimation()
 						m_Animator->Play(L"lg_slime_idle_R", true, true);
 						break;
 					case BASE_STATE::JUMP:
-						m_Animator->Play(L"lg_slime_jump_R", true);
+						m_Animator->Play(L"lg_slime_jump_R", false);
 						break;
 					case BASE_STATE::AIR_UP:
 						m_Animator->Play(L"lg_slime_air_up_R", true);
 						break;
 					case BASE_STATE::UP_DOWN_TRANSITION:
-						m_Animator->Play(L"lg_slime_up_down_trans_R", true);
+						m_Animator->Play(L"lg_slime_up_down_trans_R", false);
 						break;
 					case BASE_STATE::AIR_DOWN:
 						m_Animator->Play(L"lg_slime_air_down_R", true);
@@ -335,9 +338,9 @@ void Goopy_Le_Grande::UpdateAnimation()
 						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_2_R")
 							break;
 
-						m_Animator->Play(L"lg_slime_punch_1_R", true);
+						m_Animator->Play(L"lg_slime_punch_1_R", false);
 						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_1_R" && m_Animator->IsCurAnimationFinished())
-							m_Animator->Play(L"lg_slime_punch_2_R", true);
+							m_Animator->Play(L"lg_slime_punch_2_R", false);
 						
 						break;
 					}
@@ -492,6 +495,7 @@ void Goopy_Le_Grande::Phase1_Update()
 				m_iJumpCnt = 1;
 			}
 
+			// 펀치할 때 m_PunchCollider 설정
 			else if (m_Animator->GetCurAnimationFrmIdx() >= 9 && m_Animator->GetCurAnimationFrmIdx() <= 10)
 				m_PunchCollider->SetActive(true);
 			else
@@ -506,8 +510,9 @@ void Goopy_Le_Grande::Phase1_Update()
 				m_PhaseState = PHASE_STATE::PHASE2;
 				m_BaseState = BASE_STATE::IDLE;
 				m_iHP = 5;
-				m_BodyCollider->SetScale(Vec2(275, 280));
-				m_BodyCollider->SetOffsetPos(Vec2(0, 30));
+
+				m_BodyCollider->SetScale(Vec2(150 + 122, 200 + 132));
+				m_BodyCollider->SetOffsetPos(Vec2(0, 0));
 			}
 			break;
 		}
@@ -573,16 +578,17 @@ void Goopy_Le_Grande::Phase2_Update()
 				// 펀치 하는 경우
 				else
 				{
+					m_PunchCollider->SetScale(Vec2(400, 182));
 					m_BaseState = BASE_STATE::PUNCH;
 					if ((m_player->GetPos() - GetPos()).x >= 0)
 					{
 						m_bFacingRight = true;
-						m_PunchCollider->SetOffsetPos(Vec2(336, -105));
+						m_PunchCollider->SetOffsetPos(Vec2(378, -15));
 					}
 					else
 					{
 						m_bFacingRight = false;
-						m_PunchCollider->SetOffsetPos(Vec2(-336, -105));
+						m_PunchCollider->SetOffsetPos(Vec2(-378, -15));
 					}
 					m_iJumpCnt = 0;
 				}
@@ -600,7 +606,10 @@ void Goopy_Le_Grande::Phase2_Update()
 				m_iJumpCnt = 1;
 			}
 
-			else if (m_Animator->GetCurAnimationFrmIdx() >= 15 && m_Animator->GetCurAnimationFrmIdx() <= 18)
+			// 펀치할 때 m_PunchCollider 설정
+			else if ((curAnimName == L"lg_slime_punch_2_L" || curAnimName == L"lg_slime_punch_2_R") &&
+				m_Animator->GetCurAnimationFrmIdx() >= 5 && 
+				m_Animator->GetCurAnimationFrmIdx() <= 8)
 				m_PunchCollider->SetActive(true);
 			else
 				m_PunchCollider->SetActive(false);
