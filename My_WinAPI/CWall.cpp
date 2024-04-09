@@ -23,6 +23,9 @@ void CWall::SetColliderScale(Vec2 _scale)
 
 void CWall::OnCollisionEnter(CCollider* _pOtherCollider)
 {
+	if (_pOtherCollider->GetName() == L"Punch Collider")
+		return;
+
 	CObj* otherObj = _pOtherCollider->GetOwner();
 	auto otherRigidbody = otherObj->GetComponent<CRigidbody>();
 
@@ -108,6 +111,9 @@ void CWall::OnCollisionEnter(CCollider* _pOtherCollider)
 
 void CWall::OnCollisionStay(CCollider* _pOtherCollider)
 {
+	if (_pOtherCollider->GetName() == L"Punch Collider")
+		return;
+
 	CObj* otherObj = _pOtherCollider->GetOwner();
 	auto otherRigidbody = otherObj->GetComponent<CRigidbody>();
 
