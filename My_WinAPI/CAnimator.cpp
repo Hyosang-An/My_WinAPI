@@ -222,6 +222,8 @@ void CAnimator::CreateAndSaveAnimationFileByJSON(std::wstring strRelativeJsonFil
     // CAnimation 객체 생성
     CAnimation* pAnim = new CAnimation();
     pAnim->SetAtlasTexture(pAtlas); // 아틀라스 텍스쳐 설정
+    pAnim->SetName(RelativeJsonFilePath.stem().wstring()); // json 및 png 파일 이름을 애니메이션 이름으로 사용
+    pAnim->m_Animator = this;
 
     // JSON에서 스프라이트 정보 로드 및 처리
     float frameDuration = 1.0f / static_cast<float>(_FPS);
@@ -237,13 +239,6 @@ void CAnimator::CreateAndSaveAnimationFileByJSON(std::wstring strRelativeJsonFil
         pAnim->CreateAnimationFrame(startPos, sliceSize, frameDuration);
     }
 
-    // 애니메이션 이름 설정 및 Animator에 애니메이션 추가
-    pAnim->SetName(RelativeJsonFilePath.stem().wstring()); // json 및 png 파일 이름을 애니메이션 이름으로 사용
-    pAnim->m_Animator = this;
-    m_mapAnimation.insert(std::make_pair(pAnim->GetName(), pAnim));
-
-
-
     // 해당 폴더에 .anim 파일이 없다면 저장 (덮어쓰기 방지)
     wstring strRelativeFolderPath = RelativeJsonFilePath.parent_path().wstring();
     wstring strRelativeAnimPath = strRelativeFolderPath + L"\\" + pAnim->GetName() + L".anim";
@@ -253,4 +248,19 @@ void CAnimator::CreateAndSaveAnimationFileByJSON(std::wstring strRelativeJsonFil
     std::wifstream inFile(AnimPath);
     if (!inFile.is_open())
         pAnim->Save(RelativeJsonFilePath.parent_path().wstring());
+
+
+    // 애니메이션 이름 설정 및 Animator에 애니메이션 추가
+    auto it = m_mapAnimation.find(pAnim->GetName());
+    if (it != m_mapAnimation.end()) {
+        // 이미 존재하는 경우, 필요에 따라 it->second를 업데이트 하거나,
+        // 단순히 새 객체를 추가하지 않고 무시합니다.
+        delete pAnim; // 새로 생성된 객체가 필요 없으므로 메모리를 해제합니다.
+    }
+    else {
+        m_mapAnimation.insert(std::make_pair(pAnim->GetName(), pAnim));
+    }
+
+
+
 }

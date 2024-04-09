@@ -30,7 +30,7 @@ public:
     void PlayFromFrame(const wstring& _AnimName, bool _Repeat, int _frameIdx);
 
     CAnimation* GetCurAnimation() { return m_CurAnimation; }
-
+    int GetCurAnimationFrmIdx() { return m_CurAnimation->GetCurFrameIdx(); }
     bool IsCurAnimationFinished() {return m_CurAnimation->m_bFinished;}
 
 public:
