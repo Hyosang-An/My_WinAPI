@@ -24,6 +24,7 @@ public:
 
 	enum class BASE_STATE
 	{
+		INTRO,
 		IDLE,
 		DUCK,
 		FIXED,
@@ -52,7 +53,7 @@ public:
 	{
 		NONE,
 		SHOOTING,
-		EX
+		SPECIAL_ATTACK
 	};
 
 	enum class PLAYER_ATTACK_STATE
@@ -75,7 +76,7 @@ private:
 	float m_DashDuration = 0.3f;		// 대쉬 지속 시간
 	bool m_bAirboneDashed = false;	// 공중에서 대쉬 했는지
 
-	float m_HittedDuration = 0.5f;	// Hitted 상태 지속 시간
+	float m_HittedDuration = 0.45f;	// Hitted 상태 지속 시간
 
 	float m_InvincibleDuratoin = 2.f;		// 무적 지속 시간
 
@@ -93,7 +94,7 @@ private:
 	bool m_bInvincibleState = false;	// 무적 상태
 
 	SHOOTING_DIR    m_CurShootingDir = SHOOTING_DIR::RIGHT;
-	BASE_STATE		m_CurBaseState = BASE_STATE::IDLE;
+	BASE_STATE		m_CurBaseState = BASE_STATE::INTRO;
 	JUMP_STATE		m_CurJumpState = JUMP_STATE::NONE;
 	PARRY_STATE		m_CurParryState = PARRY_STATE::NONE;
 	ACTION_STATE	m_CurActionState = ACTION_STATE::NONE;

@@ -1,11 +1,14 @@
 #pragma once
 #include "CLevel.h"
 
+#include "Goopy_Le_Grande.h"
+
 class CLevel_Goopy_Le_Grande :
 	public CLevel
 {
 private:
-	CPlayer* m_player;
+	CPlayer*			m_player;
+	Goopy_Le_Grande*	m_Boss;
 
 	//!µð¹ö±ë
 	bool m_bStopTick = false;

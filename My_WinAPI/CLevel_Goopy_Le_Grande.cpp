@@ -71,6 +71,10 @@ void CLevel_Goopy_Le_Grande::render()
 	wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
 	TextOut(SUBDC, 0, CEngine::GetInstance().GetResolution().y - 20,
 		playerHP.c_str(), (int)playerHP.length());
+
+	wstring bossHP = L"보스 HP : " + std::to_wstring(m_Boss->GetHP());
+	TextOut(SUBDC, CEngine::GetInstance().GetResolution().x - 80, CEngine::GetInstance().GetResolution().y - 20,
+		bossHP.c_str(), (int)bossHP.length());
 }
 
 void CLevel_Goopy_Le_Grande::LoadBackground()
@@ -141,16 +145,15 @@ void CLevel_Goopy_Le_Grande::LoadObject()
 	// 
 	// 플레이어 추가
 	m_player = new CPlayer;
-	CObj* pObj = m_player;
-	pObj->SetName(L"Player");
-	pObj->SetPos(0, 0);
-	pObj->SetScale(100, 100);
-	AddObject(LAYER_TYPE::PLAYER, pObj);
+	m_player->SetName(L"Player");
+	m_player->SetPos(0, 0);
+	m_player->SetScale(100, 100);
+	AddObject(LAYER_TYPE::PLAYER, m_player);
 
 	// 보스 구피 르 그란데 추가
-	pObj = new Goopy_Le_Grande;
-	pObj->SetPos(Vec2(200, 0));
-	AddObject(LAYER_TYPE::BOSS, pObj);
+	m_Boss = new Goopy_Le_Grande;
+	m_Boss->SetPos(Vec2(200, 0));
+	AddObject(LAYER_TYPE::BOSS, m_Boss);
 
 
 	// Ground 생성

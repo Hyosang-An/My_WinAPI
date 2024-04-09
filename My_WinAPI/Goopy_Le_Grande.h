@@ -17,6 +17,7 @@ public:
     enum class BASE_STATE
     {
         INTRO,
+        IDLE,
         JUMP,
         AIR_UP,
         UP_DOWN_TRANSITION,
@@ -34,9 +35,11 @@ private:
     float               m_HorizontalSpeed = 600;
     vector<float>       m_vecJumpSpeed = { -1500, -1300 };
 
-    int                 m_iHP = 10;
+    int                 m_iHP = 5;
     int                 m_iJumpCnt = 0;
     int                 m_iMaxJumpCnt = 2;
+
+    float               m_IdleTime = 0;  // 2페이즈 시작 직후 idle 타임
 
     PHASE_STATE         m_PhaseState = PHASE_STATE::PHASE1;
     BASE_STATE          m_BaseState = BASE_STATE::INTRO;
@@ -68,6 +71,7 @@ private:
     void LeaveGround();
 
 public:
+    int GetHP() { return m_iHP; }
     void SetPhase3Intro() { m_PhaseState = PHASE_STATE::PHASE3; m_BaseState = BASE_STATE::INTRO; }
     
 public:

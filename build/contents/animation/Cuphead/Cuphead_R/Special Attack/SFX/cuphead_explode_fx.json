@@ -1,0 +1,140 @@
+{"frames": [
+
+{
+	"filename": "cuphead_explode_fx_0001.png",
+	"frame": {"x":0,"y":0,"w":45,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+	"sourceSize": {"w":45,"h":46}
+},
+{
+	"filename": "cuphead_explode_fx_0002.png",
+	"frame": {"x":45,"y":0,"w":64,"h":67},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":67},
+	"sourceSize": {"w":64,"h":67}
+},
+{
+	"filename": "cuphead_explode_fx_0003.png",
+	"frame": {"x":109,"y":0,"w":90,"h":93},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":93},
+	"sourceSize": {"w":90,"h":93}
+},
+{
+	"filename": "cuphead_explode_fx_0004.png",
+	"frame": {"x":199,"y":0,"w":129,"h":131},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":129,"h":131},
+	"sourceSize": {"w":129,"h":131}
+},
+{
+	"filename": "cuphead_explode_fx_0005.png",
+	"frame": {"x":328,"y":0,"w":183,"h":180},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":183,"h":180},
+	"sourceSize": {"w":183,"h":180}
+},
+{
+	"filename": "cuphead_explode_fx_0006.png",
+	"frame": {"x":511,"y":0,"w":227,"h":223},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":223},
+	"sourceSize": {"w":227,"h":223}
+},
+{
+	"filename": "cuphead_explode_fx_0007.png",
+	"frame": {"x":738,"y":0,"w":262,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":262,"h":254},
+	"sourceSize": {"w":262,"h":254}
+},
+{
+	"filename": "cuphead_explode_fx_0008.png",
+	"frame": {"x":0,"y":254,"w":311,"h":302},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":311,"h":302},
+	"sourceSize": {"w":311,"h":302}
+},
+{
+	"filename": "cuphead_explode_fx_0009.png",
+	"frame": {"x":311,"y":254,"w":326,"h":315},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":326,"h":315},
+	"sourceSize": {"w":326,"h":315}
+},
+{
+	"filename": "cuphead_explode_fx_0010.png",
+	"frame": {"x":637,"y":254,"w":330,"h":326},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":326},
+	"sourceSize": {"w":330,"h":326}
+},
+{
+	"filename": "cuphead_explode_fx_0011.png",
+	"frame": {"x":0,"y":580,"w":340,"h":335},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":340,"h":335},
+	"sourceSize": {"w":340,"h":335}
+},
+{
+	"filename": "cuphead_explode_fx_0012.png",
+	"frame": {"x":340,"y":580,"w":354,"h":351},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":354,"h":351},
+	"sourceSize": {"w":354,"h":351}
+},
+{
+	"filename": "cuphead_explode_fx_0013.png",
+	"frame": {"x":0,"y":931,"w":371,"h":377},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":371,"h":377},
+	"sourceSize": {"w":371,"h":377}
+},
+{
+	"filename": "cuphead_explode_fx_0014.png",
+	"frame": {"x":371,"y":931,"w":369,"h":375},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":369,"h":375},
+	"sourceSize": {"w":369,"h":375}
+},
+{
+	"filename": "cuphead_explode_fx_0015.png",
+	"frame": {"x":0,"y":1308,"w":374,"h":381},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":374,"h":381},
+	"sourceSize": {"w":374,"h":381}
+},
+{
+	"filename": "cuphead_explode_fx_0016.png",
+	"frame": {"x":374,"y":1308,"w":383,"h":388},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":383,"h":388},
+	"sourceSize": {"w":383,"h":388}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_explode_fx.png",
+	"format": "RGBA8888",
+	"size": {"w":1000,"h":1696},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cf1b245ea6dc983cf89cf117822b746c:0a24d1d9648871a0c832a15414ab18ef:db992b59860ff445cd553fd3ce991103$"
+}
+}

@@ -36,102 +36,18 @@ CPlayer::CPlayer()
 
 	CCamera::GetInstance().SetPlayerToCamera(this);
 
-
-	
-
-	// .json으로 부터 불러오기
-	//{
-	//	// R
-
-	//	//Idle
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Idle\\cuphead_idle_R.json", 10);
-
-	//	// Run
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Normal\\cuphead_run_R.json", 24);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Shooting\\Diagonal Up\\cuphead_run_shoot_diagonal_up_R.json", 24);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Run\\Shooting\\Straight\\cuphead_run_shoot_R.json", 24);
-
-	//	// Shoot
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Shoot\\Diagonal Down\\cuphead_shoot_diagonal_down_R.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Shoot\\Diagonal Up\\cuphead_shoot_diagonal_up_R.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Shoot\\Down\\cuphead_shoot_down_R.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Shoot\\Straight\\cuphead_shoot_straight_R.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Shoot\\Up\\cuphead_shoot_up_R.json", 6);
-
-	//	// Aim
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Aim\\Diagonal Down\\cuphead_aim_diagonal_down_R.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Aim\\Diagonal Up\\cuphead_aim_diagonal_up_R.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Aim\\Down\\cuphead_aim_down_R.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Aim\\Straight\\cuphead_aim_straight_R.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Aim\\Up\\cuphead_aim_up_R.json", 10);
-
-	//	// Duck
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Duck\\Idle\\cuphead_duck_idle_R.json", 12);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Duck\\Idle\\cuphead_duck_R.json", 14);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Duck\\Shoot\\cuphead_duck_shoot_boil_R.json", 12);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Duck\\Shoot\\cuphead_duck_shoot_R.json", 12);
-
-	//	// Dash
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Dash\\Ground\\cuphead_dash_R.json", 12);
-
-	//	// Jump
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Jump\\Cuphead\\cuphead_jump_R.json", 24);
-
-	//	// Parrying
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Parry\\Hand\\cuphead_parry_R.json", 24);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_R\\Parry\\Hand\\cuphead_parry_pink_R.json", 24);
-
-
-
-
-
-
-	//	// L
-
-	//	//Idle
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Idle\\cuphead_idle_L.json", 10);
-
-	//	// Run
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Normal\\cuphead_run_L.json", 24);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Shooting\\Diagonal Up\\cuphead_run_shoot_diagonal_up_L.json", 24);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Run\\Shooting\\Straight\\cuphead_run_shoot_L.json", 24);
-
-	//	// Shoot
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Shoot\\Diagonal Down\\cuphead_shoot_diagonal_down_L.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Shoot\\Diagonal Up\\cuphead_shoot_diagonal_up_L.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Shoot\\Down\\cuphead_shoot_down_L.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Shoot\\Straight\\cuphead_shoot_straight_L.json", 6);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Shoot\\Up\\cuphead_shoot_up_L.json", 6);
-
-	//	// Aim
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Aim\\Diagonal Down\\cuphead_aim_diagonal_down_L.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Aim\\Diagonal Up\\cuphead_aim_diagonal_up_L.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Aim\\Down\\cuphead_aim_down_L.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Aim\\Straight\\cuphead_aim_straight_L.json", 10);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Aim\\Up\\cuphead_aim_up_L.json", 10);
-
-	//	// Duck
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Duck\\Idle\\cuphead_duck_idle_L.json", 12);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Duck\\Idle\\cuphead_duck_L.json", 14);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Duck\\Shoot\\cuphead_duck_shoot_boil_L.json", 12);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Duck\\Shoot\\cuphead_duck_shoot_L.json", 12);
-
-	//	// Dash
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Dash\\Ground\\cuphead_dash_L.json", 12);
-
-	//	// Jump
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Jump\\Cuphead\\cuphead_jump_L.json", 24);
-
-	//	// Parrying
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Parry\\Hand\\cuphead_parry_L.json", 24);
-	//	m_Animator->CreateAnimationByJSON(L"animation\\Cuphead\\Cuphead_L\\Parry\\Hand\\cuphead_parry_pink_L.json", 24);
-
-
-	//	m_Animator->Play(L"cuphead_idle_R", true, true);
-	//}
-
 	// .anim으로 부터 불러오기
 	{
+		// 공통
+
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Intros\\Regular\\cuphead_intro_a.anim");
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Ghost\\cuphead_ghost.anim");
+
+		// FX
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Jump\\Dust\\cuphead_jump_dust_a.anim");
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Special Attack\\SFX\\cuphead_explode_fx.anim");
+
+
 		// R
 
 		//Idle
@@ -172,8 +88,11 @@ CPlayer::CPlayer()
 		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Parry\\Hand\\cuphead_parry_R.anim");
 		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Parry\\Hand\\cuphead_parry_pink_R.anim");
 
+		// Hit
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Hit\\Air\\cuphead_hit_air_R.anim");
 
-
+		// Sepcial Attack
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Special Attack\\Straight\\Ground\\cuphead_ex_straight_R.anim");
 
 
 		//L
@@ -215,9 +134,17 @@ CPlayer::CPlayer()
 		// Parrying
 		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_L\\Parry\\Hand\\cuphead_parry_L.anim");
 		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_L\\Parry\\Hand\\cuphead_parry_pink_L.anim");
+
+		// Hit
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_L\\Hit\\Air\\cuphead_hit_air_L.anim");
+
+		// Special Attack
+		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_L\\Special Attack\\Straight\\Ground\\cuphead_ex_straight_L.anim");
+
+
 	}
 
-	m_Animator->Play(L"cuphead_idle_R", true, true);
+	m_Animator->Play(L"cuphead_intro_a", false);
 }
 
 CPlayer::CPlayer(const CPlayer& _other)
@@ -259,6 +186,22 @@ void CPlayer::tick()
 
 void CPlayer::UpdateState()
 {
+	// Intro
+	if (m_CurBaseState == BASE_STATE::INTRO)
+	{
+		if (m_Animator->IsCurAnimationFinished())
+			m_CurBaseState = BASE_STATE::IDLE;
+		else
+			return;
+	}
+
+	// HP가 0 이하면 죽음
+	if (m_iHP <= 0)
+	{
+		m_CurBaseState = BASE_STATE::DEATH;
+		return;
+	}
+
 	// Hitted 및 무적 상태 설정
 	// ========================================================================
 	if (m_CurBaseState == BASE_STATE::HITTED)
@@ -292,7 +235,10 @@ void CPlayer::UpdateState()
 		invincibleTime += DT;
 		// 무적 지속시간이 끝나면 무적모드 해제
 		if (m_InvincibleDuratoin < invincibleTime)
+		{
 			m_bInvincibleState = false;
+			invincibleTime = 0;
+		}
 	}
 
 
@@ -594,6 +540,7 @@ void CPlayer::MoveAndAction()
 			break;
 		}
 		case BASE_STATE::DEATH:
+			m_Rigidbody->SetVelocity(Vec2(0, -200));
 			break;
 		default:
 			break;
@@ -637,7 +584,7 @@ void CPlayer::UpdateAnimation()
 			else
 				m_Animator->Play(L"cuphead_parry_L", true);
 		}
-		else
+		else if (m_CurParryState == PARRY_STATE::PARRY_PINK)
 		{
 			if (m_bFacingRight)
 				m_Animator->PlayFromFrame(L"cuphead_parry_pink_R", true, m_Animator->GetCurAnimation()->GetCurFrameIdx());
@@ -646,6 +593,26 @@ void CPlayer::UpdateAnimation()
 		}
 		return;
 	}
+
+	// Hitted 상태
+	if (m_CurBaseState == BASE_STATE::HITTED)
+	{
+		if (m_bFacingRight)
+			m_Animator->Play(L"cuphead_hit_air_R", false);
+		else
+			m_Animator->Play(L"cuphead_hit_air_L", false);
+
+		return;
+	}
+
+	// Death 상태
+	if (m_CurBaseState == BASE_STATE::DEATH)
+	{
+		m_Animator->Play(L"cuphead_ghost", true);
+		return;
+	}
+
+
 
 	// 총쏘지 않는 상태
 	if (m_CurActionState != ACTION_STATE::SHOOTING)
@@ -767,8 +734,7 @@ void CPlayer::UpdateAnimation()
 					m_Animator->Play(L"cuphead_jump_L", true);
 				break;
 			}
-			case BASE_STATE::DEATH:
-				break;
+
 			default:
 				break;
 		}
@@ -913,8 +879,6 @@ void CPlayer::UpdateAnimation()
 					m_Animator->Play(L"cuphead_jump_L", true);
 				break;
 			}
-			case BASE_STATE::DEATH:
-				break;
 			default:
 				break;
 		}
@@ -1057,9 +1021,9 @@ void CPlayer::OnCollisionEnter(CCollider* _pOtherCollider)
 		m_CurBaseState = BASE_STATE::HITTED;
 
 		if ((m_Pos - otherObj->GetPos()).x > 0)
-			m_Rigidbody->SetVelocity(Vec2(700, -700));
+			m_Rigidbody->SetVelocity(Vec2(200, -800));
 		else
-			m_Rigidbody->SetVelocity(Vec2(-700, -700));
+			m_Rigidbody->SetVelocity(Vec2(-200, -800));
 		m_iHP--;
 	}
 }
@@ -1075,6 +1039,11 @@ void CPlayer::OnCollisionStay(CCollider* _pOtherCollider)
 			return;
 
 		m_CurBaseState = BASE_STATE::HITTED;
+
+		if ((m_Pos - otherObj->GetPos()).x > 0)
+			m_Rigidbody->SetVelocity(Vec2(200, -800));
+		else
+			m_Rigidbody->SetVelocity(Vec2(-200, -800));
 		m_iHP--;
 	}
 }

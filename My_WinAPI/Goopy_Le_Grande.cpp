@@ -54,12 +54,14 @@ void Goopy_Le_Grande::UpdateState()
 {
 	switch (m_PhaseState)
 	{
-		case Goopy_Le_Grande::PHASE_STATE::PHASE1:
+		case PHASE_STATE::PHASE1:
 			Phase1_Update();
 			break;
-		case Goopy_Le_Grande::PHASE_STATE::PHASE2:
+		case PHASE_STATE::PHASE2:
+			Phase2_Update();
 			break;
-		case Goopy_Le_Grande::PHASE_STATE::PHASE3:
+		case PHASE_STATE::PHASE3:
+			Phase3_Update();
 			break;
 		default:
 			break;
@@ -74,13 +76,13 @@ void Goopy_Le_Grande::MoveAndAction()
 {
 	switch (m_PhaseState)
 	{
-		case Goopy_Le_Grande::PHASE_STATE::PHASE1:
+		case PHASE_STATE::PHASE1:
 		{
 			switch (m_BaseState)
 			{
-				case Goopy_Le_Grande::BASE_STATE::INTRO:
+				case BASE_STATE::INTRO:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::JUMP:
+				case BASE_STATE::JUMP:
 				{
 					if (m_Animator->IsCurAnimationFinished())
 					{
@@ -98,16 +100,16 @@ void Goopy_Le_Grande::MoveAndAction()
 					}
 					break;
 				}
-				case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+				case BASE_STATE::AIR_UP:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+				case BASE_STATE::UP_DOWN_TRANSITION:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+				case BASE_STATE::AIR_DOWN:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::PUNCH:
+				case BASE_STATE::PUNCH:
 					m_Rigidbody->SetVelocity(Vec2(0, 0));
 					break;
-				case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+				case BASE_STATE::TRANSITION_TO_PH2:
 					m_Rigidbody->SetVelocity(Vec2(0, 0));
 					break;
 				default:
@@ -116,23 +118,37 @@ void Goopy_Le_Grande::MoveAndAction()
 
 			break;
 		}
-		case Goopy_Le_Grande::PHASE_STATE::PHASE2:
+		case PHASE_STATE::PHASE2:
 		{
 			switch (m_BaseState)
 			{
-				case Goopy_Le_Grande::BASE_STATE::INTRO:
+				case BASE_STATE::JUMP:
+				{
+					if (m_Animator->IsCurAnimationFinished())
+					{
+						// 랜덤으로 점프 속도 선택
+						// TODO
+
+						if (!m_bFacingRight)
+							m_Rigidbody->SetVelocity(Vec2(-m_HorizontalSpeed, m_vecJumpSpeed[0]));
+						else
+							m_Rigidbody->SetVelocity(Vec2(m_HorizontalSpeed, m_vecJumpSpeed[0]));
+					}
+					else
+					{
+						m_Rigidbody->SetVelocity(Vec2(0, 0));
+					}
 					break;
-				case Goopy_Le_Grande::BASE_STATE::JUMP:
+				}
+
+				case BASE_STATE::AIR_UP:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+				case BASE_STATE::UP_DOWN_TRANSITION:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+				case BASE_STATE::AIR_DOWN:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
-					break;
-				case Goopy_Le_Grande::BASE_STATE::PUNCH:
-					break;
-				case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+				case BASE_STATE::PUNCH:
+					m_Rigidbody->SetVelocity(Vec2(0, 0));
 					break;
 				default:
 					break;
@@ -140,23 +156,23 @@ void Goopy_Le_Grande::MoveAndAction()
 
 			break;
 		}
-		case Goopy_Le_Grande::PHASE_STATE::PHASE3:
+		case PHASE_STATE::PHASE3:
 		{
 			switch (m_BaseState)
 			{
-				case Goopy_Le_Grande::BASE_STATE::INTRO:
+				case BASE_STATE::INTRO:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::JUMP:
+				case BASE_STATE::JUMP:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+				case BASE_STATE::AIR_UP:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+				case BASE_STATE::UP_DOWN_TRANSITION:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+				case BASE_STATE::AIR_DOWN:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::PUNCH:
+				case BASE_STATE::PUNCH:
 					break;
-				case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+				case BASE_STATE::TRANSITION_TO_PH2:
 					break;
 				default:
 					break;
@@ -177,31 +193,31 @@ void Goopy_Le_Grande::UpdateAnimation()
 {
 	switch (m_PhaseState)
 	{
-		case Goopy_Le_Grande::PHASE_STATE::PHASE1:
+		case PHASE_STATE::PHASE1:
 		{
 			// 왼쪽을 보고 있는 경우
 			if (!m_bFacingRight)
 			{
 				switch (m_BaseState)
 				{
-					case Goopy_Le_Grande::BASE_STATE::INTRO:
+					case BASE_STATE::INTRO:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::JUMP:
+					case BASE_STATE::JUMP:
 						m_Animator->Play(L"slime_jump_L", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+					case BASE_STATE::AIR_UP:
 						m_Animator->Play(L"slime_air_up_L", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+					case BASE_STATE::UP_DOWN_TRANSITION:
 						m_Animator->Play(L"slime_up_down_trans_L", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+					case BASE_STATE::AIR_DOWN:
 						m_Animator->Play(L"slime_air_down_L", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::PUNCH:
+					case BASE_STATE::PUNCH:
 						m_Animator->Play(L"slime_punch_L", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+					case BASE_STATE::TRANSITION_TO_PH2:
 					{
 						if (m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_L")
 							break;
@@ -220,24 +236,24 @@ void Goopy_Le_Grande::UpdateAnimation()
 			{
 				switch (m_BaseState)
 				{
-					case Goopy_Le_Grande::BASE_STATE::INTRO:
+					case BASE_STATE::INTRO:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::JUMP:
+					case BASE_STATE::JUMP:
 						m_Animator->Play(L"slime_jump_R", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+					case BASE_STATE::AIR_UP:
 						m_Animator->Play(L"slime_air_up_R", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+					case BASE_STATE::UP_DOWN_TRANSITION:
 						m_Animator->Play(L"slime_up_down_trans_R", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+					case BASE_STATE::AIR_DOWN:
 						m_Animator->Play(L"slime_air_down_R", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::PUNCH:
+					case BASE_STATE::PUNCH:
 						m_Animator->Play(L"slime_punch_R", false);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+					case BASE_STATE::TRANSITION_TO_PH2:
 					{
 						if (m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_R")
 							break;
@@ -255,47 +271,78 @@ void Goopy_Le_Grande::UpdateAnimation()
 			break;
 		}
 
-		case Goopy_Le_Grande::PHASE_STATE::PHASE2:
+		case PHASE_STATE::PHASE2:
 		{
+			// 왼쪽을 보는 경우
 			if (!m_bFacingRight)
 			{
 				switch (m_BaseState)
 				{
-					case Goopy_Le_Grande::BASE_STATE::INTRO:
+					case BASE_STATE::IDLE:
+						m_Animator->Play(L"lg_slime_idle_L", true, true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::JUMP:
+					case BASE_STATE::JUMP:
+						m_Animator->Play(L"lg_slime_jump_L", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+					case BASE_STATE::AIR_UP:
+						m_Animator->Play(L"lg_slime_air_up_L", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+					case BASE_STATE::UP_DOWN_TRANSITION:
+						m_Animator->Play(L"lg_slime_up_down_trans_L", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+					case BASE_STATE::AIR_DOWN:
+						m_Animator->Play(L"lg_slime_air_down_L", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::PUNCH:
+					case BASE_STATE::PUNCH:
+					{
+						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_2_L")
+							break;
+
+						m_Animator->Play(L"lg_slime_punch_1_L", true);
+						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_1_L" && m_Animator->IsCurAnimationFinished())
+							m_Animator->Play(L"lg_slime_punch_2_L", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+					}
+					case BASE_STATE::DEATH:
+						m_Animator->Play(L"lg_slime_death_L", true);
 						break;
 					default:
 						break;
 				}
 			}
+			// 오른쪽을 보는 경우
 			else
 			{
 				switch (m_BaseState)
 				{
-					case Goopy_Le_Grande::BASE_STATE::INTRO:
+					case BASE_STATE::IDLE:
+						m_Animator->Play(L"lg_slime_idle_R", true, true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::JUMP:
+					case BASE_STATE::JUMP:
+						m_Animator->Play(L"lg_slime_jump_R", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+					case BASE_STATE::AIR_UP:
+						m_Animator->Play(L"lg_slime_air_up_R", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+					case BASE_STATE::UP_DOWN_TRANSITION:
+						m_Animator->Play(L"lg_slime_up_down_trans_R", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+					case BASE_STATE::AIR_DOWN:
+						m_Animator->Play(L"lg_slime_air_down_R", true);
 						break;
-					case Goopy_Le_Grande::BASE_STATE::PUNCH:
+					case BASE_STATE::PUNCH:
+					{
+						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_2_R")
+							break;
+
+						m_Animator->Play(L"lg_slime_punch_1_R", true);
+						if (m_Animator->GetCurAnimation()->GetName() == L"lg_slime_punch_1_R" && m_Animator->IsCurAnimationFinished())
+							m_Animator->Play(L"lg_slime_punch_2_R", true);
+						
 						break;
-					case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+					}
+					case BASE_STATE::DEATH:
+						m_Animator->Play(L"lg_slime_death_R", true);
 						break;
 					default:
 						break;
@@ -305,25 +352,25 @@ void Goopy_Le_Grande::UpdateAnimation()
 			break;
 		}
 
-		case Goopy_Le_Grande::PHASE_STATE::PHASE3:
+		case PHASE_STATE::PHASE3:
 		{
 			if (!m_bFacingRight)
 			{
 				switch (m_BaseState)
 				{
-					case Goopy_Le_Grande::BASE_STATE::INTRO:
+					case BASE_STATE::INTRO:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::JUMP:
+					case BASE_STATE::JUMP:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+					case BASE_STATE::AIR_UP:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+					case BASE_STATE::UP_DOWN_TRANSITION:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+					case BASE_STATE::AIR_DOWN:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::PUNCH:
+					case BASE_STATE::PUNCH:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+					case BASE_STATE::TRANSITION_TO_PH2:
 						break;
 					default:
 						break;
@@ -333,19 +380,19 @@ void Goopy_Le_Grande::UpdateAnimation()
 			{
 				switch (m_BaseState)
 				{
-					case Goopy_Le_Grande::BASE_STATE::INTRO:
+					case BASE_STATE::INTRO:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::JUMP:
+					case BASE_STATE::JUMP:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+					case BASE_STATE::AIR_UP:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+					case BASE_STATE::UP_DOWN_TRANSITION:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+					case BASE_STATE::AIR_DOWN:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::PUNCH:
+					case BASE_STATE::PUNCH:
 						break;
-					case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+					case BASE_STATE::TRANSITION_TO_PH2:
 						break;
 					default:
 						break;
@@ -385,7 +432,7 @@ void Goopy_Le_Grande::Phase1_Update()
 
 	switch (m_BaseState)
 	{
-		case Goopy_Le_Grande::BASE_STATE::INTRO:
+		case BASE_STATE::INTRO:
 		{
 			if (m_Animator->IsCurAnimationFinished())
 			{
@@ -394,19 +441,20 @@ void Goopy_Le_Grande::Phase1_Update()
 			}
 			break;
 		}
-		case Goopy_Le_Grande::BASE_STATE::JUMP:
+		case BASE_STATE::JUMP:
 			if (m_Rigidbody->GetVelocity().y < 0)
 				m_BaseState = BASE_STATE::AIR_UP;
 			break;
-		case Goopy_Le_Grande::BASE_STATE::AIR_UP:
+		case BASE_STATE::AIR_UP:
 			if (m_Rigidbody->GetVelocity().y >= -50)
 				m_BaseState = BASE_STATE::UP_DOWN_TRANSITION;
 			break;
-		case Goopy_Le_Grande::BASE_STATE::UP_DOWN_TRANSITION:
+		case BASE_STATE::UP_DOWN_TRANSITION:
 			if (m_Animator->IsCurAnimationFinished())
 				m_BaseState = BASE_STATE::AIR_DOWN;
 			break;
-		case Goopy_Le_Grande::BASE_STATE::AIR_DOWN:
+		case BASE_STATE::AIR_DOWN:
+		{
 			if (m_Rigidbody->IsOnGround())
 			{
 				// 점프 하는 경우
@@ -433,8 +481,11 @@ void Goopy_Le_Grande::Phase1_Update()
 				}
 			}
 			break;
-		case Goopy_Le_Grande::BASE_STATE::PUNCH:
+		}
+
+		case BASE_STATE::PUNCH:
 		{
+			// 펀치가 끝나면 다시 점프
 			if (m_Animator->IsCurAnimationFinished())
 			{
 				m_BaseState = BASE_STATE::JUMP;
@@ -448,10 +499,16 @@ void Goopy_Le_Grande::Phase1_Update()
 
 			break;
 		}
-		case Goopy_Le_Grande::BASE_STATE::TRANSITION_TO_PH2:
+		case BASE_STATE::TRANSITION_TO_PH2:
 		{
 			if ((m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_L" || m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_R") && m_Animator->IsCurAnimationFinished())
+			{
 				m_PhaseState = PHASE_STATE::PHASE2;
+				m_BaseState = BASE_STATE::IDLE;
+				m_iHP = 5;
+				m_BodyCollider->SetScale(Vec2(275, 280));
+				m_BodyCollider->SetOffsetPos(Vec2(0, 30));
+			}
 			break;
 		}
 		default:
@@ -465,6 +522,99 @@ void Goopy_Le_Grande::Phase1_Update()
 
 void Goopy_Le_Grande::Phase2_Update()
 {
+	if (m_Rigidbody->IsOnGround() && m_BaseState != BASE_STATE::PUNCH)
+	{
+		if (m_iHP <= 0 && m_BaseState != BASE_STATE::DEATH)
+		{
+			m_BaseState = BASE_STATE::DEATH;
+			return;
+		}
+	}
+
+	if (m_BaseState != BASE_STATE::PUNCH)
+		m_PunchCollider->SetActive(false);
+
+	switch (m_BaseState)
+	{
+		case BASE_STATE::IDLE:
+		{
+			if (1.2 < m_IdleTime)
+			{
+				m_IdleTime = 0;
+				m_BaseState = BASE_STATE::JUMP;
+				m_iJumpCnt++;
+				break;
+			}
+			m_IdleTime += DT;
+			break;
+		}
+		case BASE_STATE::JUMP:
+			if (m_Rigidbody->GetVelocity().y < 0)
+				m_BaseState = BASE_STATE::AIR_UP;
+			break;
+		case BASE_STATE::AIR_UP:
+			if (m_Rigidbody->GetVelocity().y >= -50)
+				m_BaseState = BASE_STATE::UP_DOWN_TRANSITION;
+			break;
+		case BASE_STATE::UP_DOWN_TRANSITION:
+			if (m_Animator->IsCurAnimationFinished())
+				m_BaseState = BASE_STATE::AIR_DOWN;
+			break;
+		case BASE_STATE::AIR_DOWN:
+		{
+			if (m_Rigidbody->IsOnGround())
+			{
+				// 점프 하는 경우
+				if (m_iJumpCnt < m_iMaxJumpCnt)
+				{
+					m_BaseState = BASE_STATE::JUMP;
+					m_iJumpCnt++;
+				}
+				// 펀치 하는 경우
+				else
+				{
+					m_BaseState = BASE_STATE::PUNCH;
+					if ((m_player->GetPos() - GetPos()).x >= 0)
+					{
+						m_bFacingRight = true;
+						m_PunchCollider->SetOffsetPos(Vec2(336, -105));
+					}
+					else
+					{
+						m_bFacingRight = false;
+						m_PunchCollider->SetOffsetPos(Vec2(-336, -105));
+					}
+					m_iJumpCnt = 0;
+				}
+			}
+			break;
+		}
+		case BASE_STATE::PUNCH:
+		{
+			// 펀치가 끝나면 다시 점프
+			auto& curAnimName = m_Animator->GetCurAnimation()->GetName();
+			if ((curAnimName == L"lg_slime_punch_2_L" || curAnimName == L"lg_slime_punch_2_R") &&
+				m_Animator->IsCurAnimationFinished())
+			{
+				m_BaseState = BASE_STATE::JUMP;
+				m_iJumpCnt = 1;
+			}
+
+			else if (m_Animator->GetCurAnimationFrmIdx() >= 15 && m_Animator->GetCurAnimationFrmIdx() <= 18)
+				m_PunchCollider->SetActive(true);
+			else
+				m_PunchCollider->SetActive(false);
+
+			break;
+		}
+
+		case BASE_STATE::DEATH:
+		{
+
+		}
+		default:
+			break;
+	}
 }
 
 // ============================================================================================================================================================

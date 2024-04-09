@@ -21,6 +21,8 @@ CLevel_Test::~CLevel_Test()
 
 void CLevel_Test::begin()
 {
+
+
 	CLevel::begin();
 
 	//CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_OUT, 2);
@@ -50,6 +52,7 @@ void CLevel_Test::tick()
 void CLevel_Test::Enter()
 {
 	// 카메라 트래킹 설정
+	CCamera::GetInstance().SetCameraInitialLookAt(Vec2(640, 384));
 	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::RUN_AND_GUN_STAGE);
 
 	LoadBackground();
@@ -65,6 +68,18 @@ void CLevel_Test::Enter()
 void CLevel_Test::CreateAndSaveAnimationByJson()
 {
 	CAnimator* tmp_animator = new CAnimator;
+
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_R\\Ghost\\cuphead_ghost.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_R\\Intros\\Regular\\cuphead_intro_a.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_R\\Jump\\Dust\\cuphead_jump_dust_a.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_R\\Hit\\Air\\cuphead_hit_air_R.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_R\\Special Attack\\Straight\\Ground\\cuphead_ex_straight_R.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_R\\Special Attack\\SFX\\cuphead_explode_fx.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_L\\Hit\\Air\\cuphead_hit_air_L.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\Cuphead_L\\Special Attack\\Straight\\Ground\\cuphead_ex_straight_L.json", 24);
+
+
 
 	// Phase 1 ======================================================================
 	// L
