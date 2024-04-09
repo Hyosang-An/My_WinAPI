@@ -84,10 +84,6 @@ void CLevel_Test::CreateAndSaveAnimationByJson()
 
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Up Down Transition\\slime_up_down_trans_L.json", 18);
 
-	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Dust\\A\\lg_slime_dust_a.json", 18);
-
-
-
 	// R
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Air Down\\slime_air_down_R.json", 18);
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Air Up\\slime_air_up_R.json", 18);
@@ -101,9 +97,71 @@ void CLevel_Test::CreateAndSaveAnimationByJson()
 
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 1\\Up Down Transition\\slime_up_down_trans_R.json", 18);
 
+	// VFX
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Dust\\A\\lg_slime_dust_a.json", 18);
+
 
 	// Phase 2 ======================================================================
 	// L
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Idle\\lg_slime_idle_L.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Jump\\lg_slime_jump_L.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Air Up\\lg_slime_air_up_L.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Air Down\\lg_slime_air_down_L.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Punch\\lg_slime_punch_1_L.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Punch\\lg_slime_punch_2_L.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Up Down Transition\\lg_slime_up_down_trans_L.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Death\\lg_slime_death_L.json", 24);
+
+	// R
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Idle\\lg_slime_idle_R.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Jump\\lg_slime_jump_R.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Air Up\\lg_slime_air_up_R.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Air Down\\lg_slime_air_down_R.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Punch\\lg_slime_punch_1_R.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Punch\\lg_slime_punch_2_R.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Up Down Transition\\lg_slime_up_down_trans_R.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Death\\lg_slime_death_R.json", 24);
+
+	// VFX
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Dust\\B\\lg_slime_dust_b.json", 18);
+
+
+	// Phase 3 ======================================================================
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Intro\\slime_tomb_fall.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Intro\\slime_tomb_slam.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Intro\\Transition\\slime_tomb_trans.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Death\\slime_tomb_death.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Smash\\slime_tomb_smash_1.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Smash\\slime_tomb_smash_2.json", 24);
+
+	// L
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\slime_tomb_lt_move_L.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\Trans\\slime_tomb_trans_left_to_mid.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\Trans\\slime_tomb_trans_mid_to_left.json", 24);
+
+	// R
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\slime_tomb_lt_move_R.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_right_to_mid.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_mid_to_right.json", 24);
+	
+	// VFX
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Dust(Intro)\\slime_tomb_dust.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Smash\\Dust\\slime_tomb_smash_dust.json", 24);
+
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_L.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_R.json", 24);
+
 
 	delete tmp_animator;
 }

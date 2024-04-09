@@ -66,6 +66,9 @@ private:
     // 콜백함수
     void EnterGround();
     void LeaveGround();
+
+public:
+    void SetPhase3Intro() { m_PhaseState = PHASE_STATE::PHASE3; m_BaseState = BASE_STATE::INTRO; }
     
 public:
     virtual void begin();

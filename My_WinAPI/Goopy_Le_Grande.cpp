@@ -84,6 +84,8 @@ void Goopy_Le_Grande::MoveAndAction()
 				{
 					if (m_Animator->IsCurAnimationFinished())
 					{
+						// 랜덤으로 점프 속도 선택
+						// TODO
 
 						if (!m_bFacingRight)
 							m_Rigidbody->SetVelocity(Vec2(-m_HorizontalSpeed, m_vecJumpSpeed[0]));
@@ -457,6 +459,22 @@ void Goopy_Le_Grande::Phase1_Update()
 	}
 }
 
+// ============================================================================================================================================================
+// ========================== Phase2_Update() ===============================================================================================================
+// ============================================================================================================================================================
+
+void Goopy_Le_Grande::Phase2_Update()
+{
+}
+
+// ============================================================================================================================================================
+// ========================== Phase3_Update() ===============================================================================================================
+// ============================================================================================================================================================
+
+void Goopy_Le_Grande::Phase3_Update()
+{
+}
+
 void Goopy_Le_Grande::render()
 {
 	auto curAnim = m_Animator->GetCurAnimation();
@@ -491,7 +509,7 @@ void Goopy_Le_Grande::render()
 
 void Goopy_Le_Grande::LoadAnimation()
 {
-	// 1페이즈 
+	// Phase 1 ======================================================================
 	// L
 	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Intro\\slime_intro_L.anim");
 	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Air Down\\slime_air_down_L.anim");
@@ -513,6 +531,70 @@ void Goopy_Le_Grande::LoadAnimation()
 
 	// VFX
 	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Dust\\A\\lg_slime_dust_a.anim");
+	
+
+
+	// Phase 2 ======================================================================
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Idle\\lg_slime_idle_L.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Jump\\lg_slime_jump_L.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Air Up\\lg_slime_air_up_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Air Down\\lg_slime_air_down_L.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Punch\\lg_slime_punch_1_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Punch\\lg_slime_punch_2_L.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Up Down Transition\\lg_slime_up_down_trans_L.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Death\\lg_slime_death_L.anim");
+
+	// R
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Idle\\lg_slime_idle_R.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Jump\\lg_slime_jump_R.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Air Up\\lg_slime_air_up_R.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Air Down\\lg_slime_air_down_R.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Punch\\lg_slime_punch_1_R.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Punch\\lg_slime_punch_2_R.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Up Down Transition\\lg_slime_up_down_trans_R.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 2\\Death\\lg_slime_death_R.anim");
+
+	// VFX
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Dust\\B\\lg_slime_dust_b.anim");
+
+
+	// Phase 3 ======================================================================
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Intro\\slime_tomb_fall.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Intro\\slime_tomb_slam.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Intro\\Transition\\slime_tomb_trans.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Death\\slime_tomb_death.anim");
+
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Smash\\slime_tomb_smash_1.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Smash\\slime_tomb_smash_2.anim");
+
+	// L
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\slime_tomb_lt_move_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\Trans\\slime_tomb_trans_left_to_mid.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\Trans\\slime_tomb_trans_mid_to_left.anim");
+
+	// R
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\slime_tomb_lt_move_R.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_right_to_mid.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_mid_to_right.anim");
+
+	// VFX
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Dust(Intro)\\slime_tomb_dust.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Smash\\Dust\\slime_tomb_smash_dust.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_R.anim");
+
+
+
 }
 
 void Goopy_Le_Grande::EnterGround()

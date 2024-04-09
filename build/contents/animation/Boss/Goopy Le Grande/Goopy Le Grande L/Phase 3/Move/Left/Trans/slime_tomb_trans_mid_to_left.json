@@ -24,13 +24,16 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":389,"h":561},
 	"sourceSize": {"w":389,"h":561}
 }],
-"meta": {
-	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.0",
-	"image": "slime_tomb_lt_trans_L.png",
-	"format": "RGBA8888",
-	"size": {"w":393,"h":1701},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:eeb7b8e4f4bfea1358261476d3175d0d:c8c89f7ca21d5c092f5d881c910211d0:ca4fd0dbfec91e683a25abe6553c1c5d$"
-}
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "slime_tomb_trans_mid_to_left.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 393,
+			"h": 1701
+		},
+		"scale": "1",
+		"smartupdate": "$TexturePacker:SmartUpdate:eeb7b8e4f4bfea1358261476d3175d0d:c8c89f7ca21d5c092f5d881c910211d0:ca4fd0dbfec91e683a25abe6553c1c5d$"
+	}
 }
