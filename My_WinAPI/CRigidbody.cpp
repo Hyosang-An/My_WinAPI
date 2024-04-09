@@ -7,7 +7,6 @@ CRigidbody::CRigidbody() :
 	m_fMass(1),
 	m_Friction(0),
 	m_MaxWalkSpeed(0),
-	m_MaxGravitySpeed(800),
 	m_UseGravity(true),
 	m_OnGround(false),
 	m_maxDashSpeed(0)

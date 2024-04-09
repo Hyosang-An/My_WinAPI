@@ -11,12 +11,12 @@ public:
     Vec2    m_Velocity;
     Vec2    m_Force;                // 중력 이외의 외력
 
-    float   m_GravityAccel = 4160;
+    float   m_GravityAccel = 4160; // 중력 가속도
+    float   m_MaxGravitySpeed = 1100;      // 중력으로 인한 최대 낙하속도 제한
 
     float   m_Friction; 
 
     float   m_MaxWalkSpeed;         // 최대 제한 건는 속력
-    float   m_MaxGravitySpeed = 2000;      // 중력으로 인한 최대 낙하속도 제한
 
 
     bool m_UseGravity;
