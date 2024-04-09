@@ -8,8 +8,10 @@
 #include "CWall.h"
 #include "Goopy_Le_Grande.h"
 
-CLevel_Goopy_Le_Grande::CLevel_Goopy_Le_Grande()
+CLevel_Goopy_Le_Grande::CLevel_Goopy_Le_Grande() :
+	m_player{}
 {
+	SetName(L"Goopy Le Grande Level");
 }
 
 CLevel_Goopy_Le_Grande::~CLevel_Goopy_Le_Grande()
@@ -38,12 +40,37 @@ void CLevel_Goopy_Le_Grande::Enter()
 
 void CLevel_Goopy_Le_Grande::tick()
 {
+	// !디버깅
+	if (KEY_JUST_PRESSED(KEY::P))
+		m_bStopTick = !m_bStopTick;
+
+	if (m_bStopTick)
+		return;
+
 	CLevel::tick();
 
 	if (KEY_JUST_PRESSED(KEY::M))
 	{
 		ChangeLevel(LEVEL_TYPE::Test);
 	}
+}
+
+void CLevel_Goopy_Le_Grande::finaltick()
+{
+	// !디버깅
+	if (m_bStopTick)
+		return;
+
+	CLevel::finaltick();
+}
+
+void CLevel_Goopy_Le_Grande::render()
+{
+	CLevel::render();
+
+	wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
+	TextOut(SUBDC, 0, CEngine::GetInstance().GetResolution().y - 20,
+		playerHP.c_str(), (int)playerHP.length());
 }
 
 void CLevel_Goopy_Le_Grande::LoadBackground()
@@ -113,7 +140,8 @@ void CLevel_Goopy_Le_Grande::LoadObject()
 	// 스테이지 좌우 범위 -710 ~ 720
 	// 
 	// 플레이어 추가
-	CObj* pObj = new CPlayer;
+	m_player = new CPlayer;
+	CObj* pObj = m_player;
 	pObj->SetName(L"Player");
 	pObj->SetPos(0, 0);
 	pObj->SetScale(100, 100);
