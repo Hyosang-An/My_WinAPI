@@ -33,6 +33,7 @@ public:
     Vec2    GetResolution() { return m_Resolution; }
 
 private:
+    void ChangeWindowSize(Vec2 _Resolution, bool _bMenu);
     void CreateDefaultGDIObj();
 
 private:
