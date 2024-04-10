@@ -110,13 +110,15 @@ private:
 
 
 	// 액션 누적 시간 (static 변수들 멤버변수로 전환)
-	float invincibleTime = 0;
-	float HittedTime = 0;
-	float DashTime = 0;
-	float m_JumpingTime = 0;
-	float parryTime = 0;
-	float timeSinceLastShot = 0;
-	float duckingTime = 0;
+	float m_accInvincibleTime = 0;
+	float m_accHittedTime = 0;
+	float m_accDashTime = 0;
+	float m_accJumpingTime = 0;
+	float m_accParryTime = 0;
+	float m_acctimeSinceLastShot = 0;
+	float m_accDuckingTime = 0;
+
+	// 알파 블렌딩 변수
 	float alpha = 0;
 	float dir = 1;
 

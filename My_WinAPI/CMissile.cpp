@@ -42,7 +42,7 @@ void CMissile::OnCollisionEnter(CCollider* _pOtherCollider)
 	CObj* pOtherObj = _pOtherCollider->GetOwner();
 
 	if (pOtherObj->GetLayerType() == LAYER_TYPE::MONSTER)
-		Destroy();
+		SelfDestruct();
 }
 
 void CMissile::OnCollisionStay(CCollider* _pOtherCollider)

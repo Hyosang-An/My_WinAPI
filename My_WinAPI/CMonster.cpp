@@ -80,7 +80,7 @@ void CMonster::OnCollisionEnter(CCollider* _pOtherCollider)
 		{
 			m_iHP--;
 			if (m_iHP <= 0)
-				Destroy();
+				SelfDestruct();
 			break;
 		}
 	}

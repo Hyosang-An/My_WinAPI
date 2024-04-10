@@ -35,7 +35,7 @@ void CForce::tick()
 
 	if (m_fDuration < m_fElapsedTime)
 	{
-		Destroy();
+		SelfDestruct();
 	}
 }
 

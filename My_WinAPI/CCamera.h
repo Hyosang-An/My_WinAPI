@@ -64,6 +64,7 @@ private:
 public:
 	Vec2 GetRenderPos(Vec2 _realPos) { return _realPos - m_CameraLeftTopPos; }
 	Vec2 GetRealPos(Vec2 _renderPos) { return _renderPos + m_CameraLeftTopPos; }
+	Vec2 GetLeftTopPos() { return m_CameraLeftTopPos; }
 
 	Vec2 GetCameraDeltaPos() { return m_CameraLeftTopPos - m_PrevCameraLeftTopPos; }
 

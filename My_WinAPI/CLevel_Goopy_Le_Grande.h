@@ -13,6 +13,9 @@ private:
 	//!µð¹ö±ë
 	bool m_bStopTick = false;
 
+public:
+	void ChangeBoss(Goopy_Le_Grande* _new_boss) { m_Boss = _new_boss; }
+
 private:
 	virtual void LoadBackground() override;
 	virtual void LoadObject() override;

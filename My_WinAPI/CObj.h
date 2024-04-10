@@ -52,7 +52,7 @@ public:
 	void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
 	void SetScale(float x, float y) { m_Scale = Vec2(x, y); }
 
-	void Destroy();
+	void SelfDestruct();
 
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetRenderPos() { return CCamera::GetInstance().GetRenderPos(m_Pos); }

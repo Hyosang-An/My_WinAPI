@@ -49,7 +49,7 @@ CObj::~CObj()
 	//	delete m_pCollider;
 }
 
-void CObj::Destroy()
+void CObj::SelfDestruct()
 {
 	tTask task{};
 	task.eType = TASK_TYPE::DELETE_OBJECT;

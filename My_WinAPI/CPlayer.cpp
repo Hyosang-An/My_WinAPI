@@ -208,18 +208,18 @@ void CPlayer::UpdateState()
 	{
 		if (m_PrevBaseState != BASE_STATE::HITTED)
 		{
-			invincibleTime = 0;
-			HittedTime = 0;
+			m_accInvincibleTime = 0;
+			m_accHittedTime = 0;
 			m_bInvincibleState = true;
 
 			// 하던 액션 중지
 			m_CurActionState = ACTION_STATE::NONE;
 		}
 
-		invincibleTime += DT;
-		HittedTime += DT;
+		m_accInvincibleTime += DT;
+		m_accHittedTime += DT;
 
-		if (m_HittedDuration < HittedTime)
+		if (m_HittedDuration < m_accHittedTime)
 		{
 			// hitted 상태 해제
 			m_CurBaseState = BASE_STATE::IDLE;
@@ -232,12 +232,12 @@ void CPlayer::UpdateState()
 	// ========================================================================
 	if (m_bInvincibleState)
 	{
-		invincibleTime += DT;
+		m_accInvincibleTime += DT;
 		// 무적 지속시간이 끝나면 무적모드 해제
-		if (m_InvincibleDuratoin < invincibleTime)
+		if (m_InvincibleDuratoin < m_accInvincibleTime)
 		{
 			m_bInvincibleState = false;
-			invincibleTime = 0;
+			m_accInvincibleTime = 0;
 		}
 	}
 
@@ -250,16 +250,16 @@ void CPlayer::UpdateState()
 		auto dt = DT;
 
 		// 대쉬 지속시간 끝남
-		if (m_DashDuration < DashTime)
+		if (m_DashDuration < m_accDashTime)
 		{
-			DashTime = 0;
+			m_accDashTime = 0;
 			m_Rigidbody->SetVelocity_X(0);
 			if (m_Rigidbody->IsOnGround())
 				m_CurBaseState = BASE_STATE::AIRBONE;
 			else
 				m_CurBaseState = BASE_STATE::IDLE;
 		}
-		DashTime += DT;
+		m_accDashTime += DT;
 
 		// 총 쏘는 상태 해제
 		if (m_CurActionState == ACTION_STATE::SHOOTING)
@@ -356,19 +356,19 @@ void CPlayer::UpdateState()
 	if (m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::Z))
 	{
 		// LOG(LOG_TYPE::DBG_WARNING, L"JUMP_START");
-		m_JumpingTime = 0;
+		m_accJumpingTime = 0;
 		m_CurJumpState = JUMP_STATE::JUMP_START;
 	}
 	else if ((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_PRESSED(KEY::Z))
 	{
 		// LOG(LOG_TYPE::DBG_LOG, L"JUMPING");
 		m_CurJumpState = JUMP_STATE::JUMPING;
-		m_JumpingTime += DT;
+		m_accJumpingTime += DT;
 
-		if (m_HighJumpKeyTime < m_JumpingTime)
+		if (m_HighJumpKeyTime < m_accJumpingTime)
 		{
 			// LOG(LOG_TYPE::DBG_ERROR, L"NONE");
-			m_JumpingTime = 0;
+			m_accJumpingTime = 0;
 			m_CurJumpState = JUMP_STATE::NONE;
 		}
 
@@ -382,7 +382,7 @@ void CPlayer::UpdateState()
 	else if (((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_RELEASED(KEY::Z)) || m_Rigidbody->IsOnGround())
 	{
 		// LOG(LOG_TYPE::DBG_LOG, L"NONE");
-		m_JumpingTime = 0;
+		m_accJumpingTime = 0;
 		m_CurJumpState = JUMP_STATE::NONE;
 	}
 
@@ -393,8 +393,8 @@ void CPlayer::UpdateState()
 	// Parry 시작 조건
 	if (!m_Rigidbody->IsOnGround() && KEY_JUST_PRESSED(KEY::Z) && m_ParryCount > 0)
 	{
-		parryTime = 0;
-		parryTime += DT;
+		m_accParryTime = 0;
+		m_accParryTime += DT;
 		m_ParryCount--;
 		m_CurParryState = PARRY_STATE::PARRY;
 	}
@@ -402,11 +402,11 @@ void CPlayer::UpdateState()
 	else if (m_CurParryState == PARRY_STATE::PARRY || m_CurParryState == PARRY_STATE::PARRY_PINK)
 	{
 		// Parry 끝나는 조건
-		if (m_ParryDuration < parryTime)
+		if (m_ParryDuration < m_accParryTime)
 			m_CurParryState = PARRY_STATE::NONE;
 
 		else
-			parryTime += DT;
+			m_accParryTime += DT;
 	}
 
 	// Parry 끝나는 조건
@@ -491,7 +491,7 @@ void CPlayer::MoveAndAction()
 			break;
 		case JUMP_STATE::JUMPING:
 		{
-			if (m_JumpingTime < m_LowJumpKeyTime)
+			if (m_accJumpingTime < m_LowJumpKeyTime)
 				break;
 			else
 				m_Rigidbody->AddForce(Vec2(0, -3500));
@@ -554,10 +554,10 @@ void CPlayer::MoveAndAction()
 		{
 			float shootingFrequency = 5;
 
-			if ((1.f / shootingFrequency) <= timeSinceLastShot)
+			if ((1.f / shootingFrequency) <= m_acctimeSinceLastShot)
 			{
 				Shoot(m_CurShootingDir);
-				timeSinceLastShot = 0;
+				m_acctimeSinceLastShot = 0;
 			}
 			break;
 		}
@@ -565,7 +565,7 @@ void CPlayer::MoveAndAction()
 			break;
 	}
 
-	timeSinceLastShot += DT;
+	m_acctimeSinceLastShot += DT;
 }
 
 // ============================================================================================================================================================
@@ -644,13 +644,13 @@ void CPlayer::UpdateAnimation()
 				float duckingDuration = 0.5;
 
 				if (m_PrevBaseState != BASE_STATE::DUCK)
-					duckingTime = 0;
+					m_accDuckingTime = 0;
 
 				// Ducking 중에 바라보는 방향을 바꾸거나 총을 쏘는 등의 액션을 하면 바로 duck Idle을 유지하도록
 				if (m_PrevShootingDir != m_CurShootingDir || m_PrevActionState != m_CurActionState)
-					duckingTime = duckingDuration;
+					m_accDuckingTime = duckingDuration;
 
-				if (duckingTime < duckingDuration)
+				if (m_accDuckingTime < duckingDuration)
 				{
 					if (m_bFacingRight)
 						m_Animator->Play(L"cuphead_duck_R", false);
@@ -665,7 +665,7 @@ void CPlayer::UpdateAnimation()
 						m_Animator->Play(L"cuphead_duck_idle_L", true, true);
 				}
 
-				duckingTime += DT;
+				m_accDuckingTime += DT;
 				break;
 			}
 			case BASE_STATE::FIXED:
@@ -768,12 +768,12 @@ void CPlayer::UpdateAnimation()
 				float duckingDuration = 0.2f;
 
 				if (m_PrevBaseState != BASE_STATE::DUCK)
-					duckingTime = 0;
+					m_accDuckingTime = 0;
 
 				if (m_PrevShootingDir != m_CurShootingDir || m_PrevActionState != m_CurActionState)
-					duckingTime = duckingDuration;
+					m_accDuckingTime = duckingDuration;
 
-				if (duckingTime < duckingDuration)
+				if (m_accDuckingTime < duckingDuration)
 				{
 					if (m_bFacingRight)
 						m_Animator->Play(L"cuphead_duck_R", false);
@@ -787,7 +787,7 @@ void CPlayer::UpdateAnimation()
 					else
 						m_Animator->Play(L"cuphead_duck_shoot_L", true);
 				}
-				duckingTime += DT;
+				m_accDuckingTime += DT;
 
 				break;
 			}
@@ -1010,6 +1010,10 @@ void CPlayer::render()
 
 void CPlayer::OnCollisionEnter(CCollider* _pOtherCollider)
 {
+	// 예외
+	if (_pOtherCollider->GetName() == L"Tomb Bottom Collider")
+		return;
+
 	CObj* otherObj = _pOtherCollider->GetOwner();
 	LAYER_TYPE layer_type = otherObj->GetLayerType();
 
@@ -1030,6 +1034,10 @@ void CPlayer::OnCollisionEnter(CCollider* _pOtherCollider)
 
 void CPlayer::OnCollisionStay(CCollider* _pOtherCollider)
 {
+	// 예외
+	if (_pOtherCollider->GetName() == L"Tomb Bottom Collider")
+		return;
+
 	CObj* otherObj = _pOtherCollider->GetOwner();
 	LAYER_TYPE layer_type = otherObj->GetLayerType();
 

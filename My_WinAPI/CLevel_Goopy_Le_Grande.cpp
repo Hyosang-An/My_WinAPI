@@ -9,7 +9,8 @@
 #include "Goopy_Le_Grande.h"
 
 CLevel_Goopy_Le_Grande::CLevel_Goopy_Le_Grande() :
-	m_player{}
+	m_player{},
+	m_Boss{}
 {
 	SetName(L"Goopy Le Grande Level");
 }
@@ -202,6 +203,8 @@ void CLevel_Goopy_Le_Grande::SetCollision()
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::BOSS, LAYER_TYPE::PLATFORM);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::BOSS, LAYER_TYPE::GROUND);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::BOSS, LAYER_TYPE::WALL);
+	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::BOSS, LAYER_TYPE::BOSS);
+
 
 
 }
