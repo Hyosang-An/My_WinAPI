@@ -198,10 +198,10 @@ void CAnimation::Save(const std::wstring& _strRelativeFolderPath)
 	}
 }
 
-int CAnimation::Load(const std::wstring& _strRelativeFilePath)
+int CAnimation::Load(const std::wstring& _strRelativeAnimFilePath)
 {
 	fs::path filePath = CPathMgr::GetInstance().GetContentsPath();
-	filePath /= _strRelativeFilePath;
+	filePath /= _strRelativeAnimFilePath;
 
 	std::wifstream inFile(filePath);
 	if (!inFile.is_open())

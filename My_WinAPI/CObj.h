@@ -109,7 +109,7 @@ public:
 	}
 
 public:
-	virtual void begin();
+	virtual void begin();			// 레벨 시작 및 오브젝트 스폰 시 수행
 	virtual void tick();			// 오브젝트의 논리 업데이트 (입력 처리, 상태 변화, 게임 로직 실행 등)
 	virtual void finaltick() final;	// 오브젝트가 소유한 컴포넌트 업데이트. 물리 업데이트 (가속도에 의한 속도 변화, 속도에 의한 위치 변화 등)
 	virtual void render();

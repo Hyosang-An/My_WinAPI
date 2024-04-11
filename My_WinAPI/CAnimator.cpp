@@ -83,17 +83,17 @@ CAnimation* CAnimator::FindAnimation(const wstring& _AnimName)
     return iter->second;
 }
 
-void CAnimator::LoadAnimation(wstring _strRelativeFilePath)
+void CAnimator::LoadAnimation(wstring _strRelativeAnimFilePath)
 {
-    // _strRelativeFilePath의 맨 앞에 "\\"가 있으면, "."을 앞에 추가하여 상대 경로로 만듭니다.
-    if (!_strRelativeFilePath.empty() && _strRelativeFilePath[0] == L'\\') {
-        _strRelativeFilePath = L"." + _strRelativeFilePath;
+    // _strRelativeAnimFilePath의 맨 앞에 "\\"가 있으면, "."을 앞에 추가하여 상대 경로로 만듭니다.
+    if (!_strRelativeAnimFilePath.empty() && _strRelativeAnimFilePath[0] == L'\\') {
+        _strRelativeAnimFilePath = L"." + _strRelativeAnimFilePath;
     }
 
     CAnimation* pAnim = new CAnimation;
-    if FAILED(pAnim->Load(_strRelativeFilePath))
+    if FAILED(pAnim->Load(_strRelativeAnimFilePath))
     {
-        wstring msg = (_strRelativeFilePath + L"애니메이션 로드 실패");
+        wstring msg = (_strRelativeAnimFilePath + L"애니메이션 로드 실패");
         LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
         delete pAnim;
         return;

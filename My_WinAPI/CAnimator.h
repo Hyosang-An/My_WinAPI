@@ -24,7 +24,7 @@ public:
     void CreateAndSaveAnimationFileByJSON(std::wstring relativeFolderPath, int _FPS);
 
     CAnimation* FindAnimation(const wstring& _AnimName);
-    void LoadAnimation(wstring _strRelativeFilePath);
+    void LoadAnimation(wstring _strRelativeAnimFilePath);
 
     void Play(const wstring& _AnimName, bool _Repeat, bool _RepeatReverse = false);
     void PlayFromFrame(const wstring& _AnimName, bool _Repeat, int _frameIdx);

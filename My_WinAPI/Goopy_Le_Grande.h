@@ -1,7 +1,7 @@
 #pragma once
 #include "CObj.h"
 
-
+class CEffect;
 
 class Goopy_Le_Grande :
     public CObj
@@ -54,14 +54,16 @@ private:
 
 
     PHASE_STATE         m_PhaseState = PHASE_STATE::PHASE1;
-    BASE_STATE          m_BaseState = BASE_STATE::INTRO;
+    BASE_STATE          m_CurBaseState = BASE_STATE::INTRO;
+    BASE_STATE          m_PrevBaseState = BASE_STATE::INTRO;
 
     CCollider*          m_BodyCollider;
     CCollider*          m_PunchCollider;
     CCollider*          m_SmashCollider;
     CCollider*          m_TombBottomCollider;
 
-    vector<CTexture*>   m_ShadowTextureVec;
+    map<wstring, CEffect*>  m_mapEffect;
+    vector<CTexture*>       m_vecShadowTexture;
 
     CPlayer*            m_player{};
 
@@ -85,10 +87,9 @@ private:
     void Phase2_Update();
     void Phase3_Update();
 
-    //void ChangePhaseState(PHASE_STATE _phaseState);
-    //void ChangeBaseState(BASE_STATE _baseState);
-
     void LoadAnimation();
+
+    CEffect* SpawnEffect(const wstring& _effectName);
 
     // 콜백함수
     void EnterGround();
@@ -96,7 +97,7 @@ private:
 
 public:
     int GetHP() { return m_iHP; }
-    void SetPhase3Intro() { m_PhaseState = PHASE_STATE::PHASE3; m_BaseState = BASE_STATE::INTRO;}
+    void SetPhase3Intro() { m_PhaseState = PHASE_STATE::PHASE3; m_CurBaseState = BASE_STATE::INTRO;}
     
 public:
     virtual void begin();

@@ -146,6 +146,9 @@
     <Filter Include="03. Game\04. Level\Boss Stage 1\Question Mark">
       <UniqueIdentifier>{ec30b6a7-f761-4784-8cfd-1c67edda7cd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Effect">
+      <UniqueIdentifier>{1ef2c0d3-fce0-48c6-9ff1-dd7d9f930678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -304,7 +307,12 @@
     <ClInclude Include="Goopy_Le_Grande.h">
       <Filter>03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande</Filter>
     </ClInclude>
-    <ClInclude Include="Question_Mark.h" />
+    <ClInclude Include="Question_Mark.h">
+      <Filter>03. Game\04. Level\Boss Stage 1\Question Mark</Filter>
+    </ClInclude>
+    <ClInclude Include="CEffect.h">
+      <Filter>03. Game\05. Object\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -442,7 +450,12 @@
     <ClCompile Include="Goopy_Le_Grande.cpp">
       <Filter>03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande</Filter>
     </ClCompile>
-    <ClCompile Include="Question_Mark.cpp" />
+    <ClCompile Include="Question_Mark.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 1\Question Mark</Filter>
+    </ClCompile>
+    <ClCompile Include="CEffect.cpp">
+      <Filter>03. Game\05. Object\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
