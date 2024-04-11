@@ -67,16 +67,19 @@ private:
 
     CPlayer*            m_player{};
 
+    CEffect*            m_3Ph_move_dust_effect_R = nullptr;
+    CEffect*            m_3Ph_move_dust_effect_L = nullptr;
+
     // 누적 시간 변수
     float               m_accIdleTime = 0;  // 2페이즈 시작 직후 idle 타임
     float               m_accDeathTime = 0; // 2페이즈 사망 직후 death 타임
     float               m_accMovingTime = 0; // 3페이즈 무빙 타임
 
-    // 2페이즈 전환 물음표 생성 플래그
-    bool spawn_question = false;
-
-    // 3페이즈 보스 소환 플래그
-    bool                m_bSpawn3Phase = false;
+    // 플래그
+    bool    m_bSpawn_question = false;     // 2페이즈 전환 물음표 생성 플래그
+    bool    m_bSpawn_smash_effect = false; // 3페이즈 smash effect 생성 플래그   
+    bool    m_bSpawn_3ph_intro_effect = false; // 3페이즈 intro effect 생성 플래그
+    bool    m_bSpawn3Phase = false;     // 3페이즈 보스 소환 플래그
 
 private:
     void UpdateState();
@@ -89,7 +92,8 @@ private:
 
     void LoadAnimation();
 
-    CEffect* SpawnEffect(const wstring& _effectName);
+    void SpawnEffect(const wstring& _effectName, Vec2 _pos);
+    void SpawnEffectAttachedToParent(const wstring& _effectName);
 
     // 콜백함수
     void EnterGround();

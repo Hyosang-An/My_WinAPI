@@ -60,37 +60,33 @@ void Goopy_Le_Grande::begin()
 	CEffect* effect = new CEffect;
 	effect->SetName(L"Ph1_Dust");
 	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 1\\Dust\\A\\lg_slime_dust_a.anim");
-	effect->SetParentAndOffset(this, Vec2(0, 100));
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 
 	effect = new CEffect;
 	effect->SetName(L"Ph2_Dust");
 	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 2\\Dust\\B\\lg_slime_dust_b.anim");
-	effect->SetParentAndOffset(this, Vec2(0, 166));
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 
 	effect = new CEffect;
 	effect->SetName(L"Ph3_Intro_Dust");
 	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Dust(Intro)\\slime_tomb_dust.anim");
-	effect->SetParentAndOffset(this, Vec2(0, 166));
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 
 	effect = new CEffect;
 	effect->SetName(L"Ph3_Smash_Dust");
 	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Smash\\Dust\\slime_tomb_smash_dust.anim");
-	effect->SetParentAndOffset(this, Vec2(0, 166));
 	m_mapEffect.insert(make_pair(effect->GetName(), effect)); 
 
 	effect = new CEffect;
 	effect->SetName(L"Ph3_Move_Dust_L");
-	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_L.anim");
-	effect->SetParentAndOffset(this, Vec2(0, 166));
+	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_L.anim", true);
+	effect->SetParentAndOffset(this, Vec2(0, 246));
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 
 	effect = new CEffect;
 	effect->SetName(L"Ph3_Move_Dust_R");
-	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_R.anim");
-	effect->SetParentAndOffset(this, Vec2(0, 166));
+	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_R.anim", true);
+	effect->SetParentAndOffset(this, Vec2(0, 246));
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 }
 
@@ -175,7 +171,8 @@ void Goopy_Le_Grande::Phase1_Update()
 		{
 			if (m_Rigidbody->IsOnGround())
 			{
-				SpawnEffect(L"Ph1_Dust");
+				SpawnEffect(L"Ph1_Dust", m_Pos + Vec2(0, 80));
+
 				// 점프 하는 경우
 				if (m_iJumpCnt < m_iMaxJumpCnt)
 				{
@@ -222,9 +219,9 @@ void Goopy_Le_Grande::Phase1_Update()
 		case BASE_STATE::TRANSITION_TO_PH2:
 		{
 			// 물음표 생성
-			if ((m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_L" || m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_R") && m_Animator->GetCurAnimationFrmIdx() == 10 && !spawn_question)
+			if ((m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_L" || m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_R") && m_Animator->GetCurAnimationFrmIdx() == 10 && !m_bSpawn_question)
 			{
-				spawn_question = true;
+				m_bSpawn_question = true;
 				CObj* question_mark = new Question_Mark;
 				question_mark->SetPos(m_Pos + Vec2(-110, -100));
 				SpawnObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
@@ -304,6 +301,8 @@ void Goopy_Le_Grande::Phase2_Update()
 		{
 			if (m_Rigidbody->IsOnGround())
 			{
+				SpawnEffect(L"Ph2_Dust", m_Pos + Vec2(0, 220));
+
 				// 점프 하는 경우
 				if (m_iJumpCnt < m_iMaxJumpCnt)
 				{
@@ -408,20 +407,56 @@ void Goopy_Le_Grande::Phase3_Update()
 	if (m_CurBaseState != BASE_STATE::SMASH)
 		m_SmashCollider->SetActive(false);
 
+	if (m_CurBaseState != BASE_STATE::MOVE)
+	{
+		// FX 삭제
+		if (m_3Ph_move_dust_effect_L != nullptr)
+		{
+			m_3Ph_move_dust_effect_L->SelfDestruct(); 
+			m_3Ph_move_dust_effect_L = nullptr;
+		}
+		if (m_3Ph_move_dust_effect_R != nullptr)
+		{
+			m_3Ph_move_dust_effect_R->SelfDestruct(); 
+			m_3Ph_move_dust_effect_R = nullptr;
+		}
+	}
+
 	switch (m_CurBaseState)
 	{
 		case BASE_STATE::INTRO:
 		{
 			m_TombBottomCollider->SetActive(true);
 
+			if (m_Rigidbody->IsOnGround() && !m_bSpawn_3ph_intro_effect)
+			{
+				m_bSpawn_3ph_intro_effect = true;
+				SpawnEffect(L"Ph3_Intro_Dust", m_Pos + Vec2(0, 220));
+			}
+
+			// Intro 종료
 			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_trans" && m_Animator->IsCurAnimationFinished())
 			{
 				m_CurBaseState = BASE_STATE::MOVE;
 
 				if ((m_player->GetPos() - m_Pos).x < 0)
+				{
 					m_bFacingRight = false;
+					// FX
+					auto iter = m_mapEffect.find(L"Ph3_Move_Dust_L");
+					m_3Ph_move_dust_effect_L = iter->second->Clone();
+					m_3Ph_move_dust_effect_L->PlayEffect();
+					SpawnObject(LAYER_TYPE::EFFECT, m_3Ph_move_dust_effect_L);
+				}
 				else
+				{
 					m_bFacingRight = true;
+					// FX
+					auto iter = m_mapEffect.find(L"Ph3_Move_Dust_R");
+					m_3Ph_move_dust_effect_R = iter->second->Clone();
+					m_3Ph_move_dust_effect_R->PlayEffect();
+					SpawnObject(LAYER_TYPE::EFFECT, m_3Ph_move_dust_effect_R);
+				}
 			}
 
 			break;
@@ -445,6 +480,12 @@ void Goopy_Le_Grande::Phase3_Update()
 			if (m_Animator->IsCurAnimationFinished())
 			{
 				m_CurBaseState = BASE_STATE::MOVE;
+
+				// FX
+				auto iter = m_mapEffect.find(L"Ph3_Move_Dust_L");
+				m_3Ph_move_dust_effect_L = iter->second->Clone();
+				m_3Ph_move_dust_effect_L->PlayEffect();
+				SpawnObject(LAYER_TYPE::EFFECT, m_3Ph_move_dust_effect_L);
 			}
 			break;
 		}
@@ -454,6 +495,12 @@ void Goopy_Le_Grande::Phase3_Update()
 			if (m_Animator->IsCurAnimationFinished())
 			{
 				m_CurBaseState = BASE_STATE::MOVE;
+
+				// FX
+				auto iter = m_mapEffect.find(L"Ph3_Move_Dust_R");
+				m_3Ph_move_dust_effect_R = iter->second->Clone();
+				m_3Ph_move_dust_effect_R->PlayEffect();
+				SpawnObject(LAYER_TYPE::EFFECT, m_3Ph_move_dust_effect_R);
 			}
 			break;
 		}
@@ -463,6 +510,12 @@ void Goopy_Le_Grande::Phase3_Update()
 			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_trans_mid_to_right" && m_Animator->IsCurAnimationFinished())
 			{
 				m_CurBaseState = BASE_STATE::MOVE;
+
+				// FX
+				auto iter = m_mapEffect.find(L"Ph3_Move_Dust_R");
+				m_3Ph_move_dust_effect_R = iter->second->Clone();
+				m_3Ph_move_dust_effect_R->PlayEffect();
+				SpawnObject(LAYER_TYPE::EFFECT, m_3Ph_move_dust_effect_R);
 			}
 			break;
 		}
@@ -472,6 +525,12 @@ void Goopy_Le_Grande::Phase3_Update()
 			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_trans_mid_to_left" && m_Animator->IsCurAnimationFinished())
 			{
 				m_CurBaseState = BASE_STATE::MOVE;
+
+				// FX
+				auto iter = m_mapEffect.find(L"Ph3_Move_Dust_L");
+				m_3Ph_move_dust_effect_L = iter->second->Clone();
+				m_3Ph_move_dust_effect_L->PlayEffect();
+				SpawnObject(LAYER_TYPE::EFFECT, m_3Ph_move_dust_effect_L);
 			}
 			break;
 		}
@@ -480,13 +539,22 @@ void Goopy_Le_Grande::Phase3_Update()
 		{
 			// Smash 할 때 충돌체 설정
 			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_smash_2" && m_Animator->GetCurAnimationFrmIdx() <= 1)
+			{
+				if (!m_bSpawn_smash_effect)
+				{
+					m_bSpawn_smash_effect = true;
+					SpawnEffect(L"Ph3_Smash_Dust", m_Pos + Vec2(0, 220));
+				}
 				m_SmashCollider->SetActive(true);
+			}
 			
 			else
 				m_SmashCollider->SetActive(false);
 
 			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_smash_2" && m_Animator->IsCurAnimationFinished())
 			{
+				m_bSpawn_smash_effect = false;
+
 				if ((m_player->GetPos() - m_Pos).x < 0)
 				{
 					m_CurBaseState = BASE_STATE::TURN_MID_TO_LEFT;
@@ -1055,7 +1123,7 @@ void Goopy_Le_Grande::LoadAnimation()
 
 }
 
-CEffect* Goopy_Le_Grande::SpawnEffect(const wstring& _effectName)
+void Goopy_Le_Grande::SpawnEffect(const wstring& _effectName, Vec2 _pos)
 {
 	// Clone 전용 원본 이펙트
 	auto iter = m_mapEffect.find(_effectName);
@@ -1063,13 +1131,34 @@ CEffect* Goopy_Le_Grande::SpawnEffect(const wstring& _effectName)
 	{
 		wstring msg = _effectName + L"해당 이름의 이펙트 없음";
 		LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
-		return nullptr;
+		return;
 	}
 
 	// 원본을 리턴하면 곤란.
 	auto new_effect = iter->second->Clone();
-	new_effect.animator
-	return 
+
+	new_effect->SetPos(_pos);
+	new_effect->PlayEffect();
+
+	SpawnObject(LAYER_TYPE::EFFECT, new_effect);
+}
+
+void Goopy_Le_Grande::SpawnEffectAttachedToParent(const wstring& _effectName)
+{
+	// Clone 전용 원본 이펙트
+	auto iter = m_mapEffect.find(_effectName);
+	if (iter == m_mapEffect.end())
+	{
+		wstring msg = _effectName + L"해당 이름의 이펙트 없음";
+		LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
+		return;
+	}
+
+	// 원본을 리턴하면 곤란.
+	auto new_effect = iter->second->Clone();
+	new_effect->PlayEffect();
+
+	SpawnObject(LAYER_TYPE::EFFECT, new_effect);
 }
 
 void Goopy_Le_Grande::EnterGround()
@@ -1140,6 +1229,7 @@ void Goopy_Le_Grande::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOthe
 
 				this->SelfDestruct();
 			}
+			break;
 		}
 	}
 }

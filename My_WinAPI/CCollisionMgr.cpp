@@ -46,14 +46,9 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 
 	for (size_t i = 0; i < leftObjVec.size(); i++)
 	{
-		/*if (leftObjVec[i]->GetCollider() == nullptr)
-			continue;*/
-
-		for (size_t j = 0; j < rightObjVec.size(); j++)
+		size_t startJ = (_leftLayer == _rightLayer) ? i + 1 : 0;
+		for (size_t j = startJ; j < rightObjVec.size(); j++)
 		{
-			/*if (rightObjVec[j]->GetCollider() == nullptr || leftObjVec == rightObjVec)
-				continue;*/
-
 			if (leftObjVec[i] == rightObjVec[j])
 				continue;
 
@@ -98,6 +93,12 @@ void CCollisionMgr::CollisionCheck(LAYER_TYPE _leftLayer, LAYER_TYPE _rightLayer
 							}
 							else
 							{
+
+								if (_leftLayer == LAYER_TYPE::BOSS && _rightLayer == LAYER_TYPE::BOSS)
+								{
+									int a = 0;
+								}
+
 								// 이전에는 충돌 중이 아니었다. -> 충돌 시작
 								leftCollider->OnCollisionEnter(rightCollider);
 								rightCollider->OnCollisionEnter(leftCollider);

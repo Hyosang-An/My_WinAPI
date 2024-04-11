@@ -7,8 +7,12 @@ private:
     CObj*   m_ParentObj;
     Vec2    m_OffsetPos;
 
+    wstring m_AnimName;
+
+    bool    m_bRepeat = false;
+
 public:
-    void SetAnimation(const wstring& _strRelativeAnimFilePath);
+    void SetAnimation(const wstring& _strRelativeAnimFilePath, bool _repeat = false);
     void SetParentAndOffset(CObj* _parent, Vec2 _offset);
     void PlayEffect();
 

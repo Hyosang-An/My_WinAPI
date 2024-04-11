@@ -24,14 +24,14 @@ public:
     void CreateAndSaveAnimationFileByJSON(std::wstring relativeFolderPath, int _FPS);
 
     CAnimation* FindAnimation(const wstring& _AnimName);
-    void LoadAnimation(wstring _strRelativeAnimFilePath);
+    CAnimation* LoadAnimation(wstring _strRelativeAnimFilePath);
 
     void Play(const wstring& _AnimName, bool _Repeat, bool _RepeatReverse = false);
     void PlayFromFrame(const wstring& _AnimName, bool _Repeat, int _frameIdx);
 
     CAnimation* GetCurAnimation() { return m_CurAnimation; }
     int GetCurAnimationFrmIdx() { return m_CurAnimation->GetCurFrameIdx(); }
-    bool IsCurAnimationFinished() {return m_CurAnimation->m_bFinished;}
+    bool IsCurAnimationFinished();
 
 public:
     CAnimator();

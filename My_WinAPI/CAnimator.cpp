@@ -83,7 +83,7 @@ CAnimation* CAnimator::FindAnimation(const wstring& _AnimName)
     return iter->second;
 }
 
-void CAnimator::LoadAnimation(wstring _strRelativeAnimFilePath)
+CAnimation* CAnimator::LoadAnimation(wstring _strRelativeAnimFilePath)
 {
     // _strRelativeAnimFilePath의 맨 앞에 "\\"가 있으면, "."을 앞에 추가하여 상대 경로로 만듭니다.
     if (!_strRelativeAnimFilePath.empty() && _strRelativeAnimFilePath[0] == L'\\') {
@@ -96,7 +96,7 @@ void CAnimator::LoadAnimation(wstring _strRelativeAnimFilePath)
         wstring msg = (_strRelativeAnimFilePath + L"애니메이션 로드 실패");
         LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
         delete pAnim;
-        return;
+        return nullptr;
     }
 
     if (FindAnimation(pAnim->GetName()) != nullptr)
@@ -104,11 +104,13 @@ void CAnimator::LoadAnimation(wstring _strRelativeAnimFilePath)
         wstring msg = L"중복된 애니메이션 이름 : " + pAnim->GetName();
         LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
         delete pAnim;
-        return;
+        return nullptr;
     }
 
     pAnim->m_Animator = this;
     m_mapAnimation.insert(make_pair(pAnim->GetName(), pAnim));
+
+    return pAnim;
 }
 
 void CAnimator::Play(const wstring& _AnimName, bool _Repeat, bool _RepeatReverse)
@@ -163,7 +165,13 @@ void CAnimator::PlayFromFrame(const wstring& _AnimName, bool _Repeat, int _frame
     m_bRepeat = _Repeat;
 }
 
+bool CAnimator::IsCurAnimationFinished()
+{
+    if (m_CurAnimation)
+        return m_CurAnimation->m_bFinished;
 
+    return false;
+}
 
 // ====================================================================================================================================
 

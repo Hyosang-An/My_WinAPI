@@ -8,7 +8,11 @@ CEffect::CEffect() :
 }
 
 CEffect::CEffect(const CEffect& _other) :
-	m_ParentObj(_other.m_ParentObj)
+	CObj(_other),
+	m_ParentObj(_other.m_ParentObj),
+	m_OffsetPos(_other.m_OffsetPos),
+	m_AnimName(_other.m_AnimName),
+	m_bRepeat(_other.m_bRepeat)
 {
 }
 
@@ -16,10 +20,12 @@ CEffect::~CEffect()
 {
 }
 
-void CEffect::SetAnimation(const wstring& _strRelativeAnimFilePath)
+void CEffect::SetAnimation(const wstring& _strRelativeAnimFilePath, bool _repeat)
 {
-	m_Animator->LoadAnimation(_strRelativeAnimFilePath);
-	
+	// repeat은 기본적으로 false
+
+	m_AnimName = m_Animator->LoadAnimation(_strRelativeAnimFilePath)->GetName();
+	m_bRepeat = _repeat;
 }
 
 void CEffect::SetParentAndOffset(CObj* _parent, Vec2 _offset)
@@ -30,8 +36,7 @@ void CEffect::SetParentAndOffset(CObj* _parent, Vec2 _offset)
 
 void CEffect::PlayEffect()
 {
-	auto anim_name = m_Animator->get
-	m_Animator->Play()
+	m_Animator->Play(m_AnimName, m_bRepeat);
 }
 
 void CEffect::tick()
@@ -39,6 +44,6 @@ void CEffect::tick()
 	if (m_ParentObj)
 		m_Pos = m_ParentObj->GetPos() + m_OffsetPos;
 
-	if (m_Animator->IsCurAnimationFinished())
+	if (m_Animator->IsCurAnimationFinished() && !m_bRepeat)
 		SelfDestruct();
 }
