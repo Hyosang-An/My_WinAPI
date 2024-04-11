@@ -17,7 +17,7 @@ void CPlatform::tick()
 {
 }
 
-void CPlatform::OnCollisionEnter(CCollider* _pOtherCollider)
+void CPlatform::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	if (CPlayer* player = dynamic_cast<CPlayer*>(_pOtherCollider->GetOwner()))
 	{
@@ -58,12 +58,12 @@ void CPlatform::OnCollisionEnter(CCollider* _pOtherCollider)
 	}
 }
 
-void CPlatform::OnCollisionStay(CCollider* _pOtherCollider)
+void CPlatform::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 
 }
 
-void CPlatform::OnCollisionExit(CCollider* _pOtherCollider)
+void CPlatform::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	auto otherObj = _pOtherCollider->GetOwner();
 	if (otherObj->GetLayerType() == LAYER_TYPE::PLAYER)

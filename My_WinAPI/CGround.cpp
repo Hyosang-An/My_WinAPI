@@ -36,7 +36,7 @@ void CGround::tick()
 {
 }
 
-void CGround::OnCollisionEnter(CCollider* _pOtherCollider)
+void CGround::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	CObj* obj = _pOtherCollider->GetOwner();
 	if (!obj->m_bUseGroundCollision)
@@ -65,7 +65,7 @@ void CGround::OnCollisionEnter(CCollider* _pOtherCollider)
 	obj->SetPos(obj->GetPos() + Vec2(0, -depth));
 }
 
-void CGround::OnCollisionStay(CCollider* _pOtherCollider)
+void CGround::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 
 	CObj* obj = _pOtherCollider->GetOwner();
@@ -94,7 +94,7 @@ void CGround::OnCollisionStay(CCollider* _pOtherCollider)
 	obj->SetPos(obj->GetPos() + Vec2(0, -depth));
 }
 
-void CGround::OnCollisionExit(CCollider* _pOtherCollider)
+void CGround::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	CObj* obj = _pOtherCollider->GetOwner();
 	if (!obj->m_bUseGroundCollision)

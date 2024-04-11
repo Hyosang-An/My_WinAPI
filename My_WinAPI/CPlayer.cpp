@@ -147,7 +147,8 @@ CPlayer::CPlayer()
 	m_Animator->Play(L"cuphead_intro_a", false);
 }
 
-CPlayer::CPlayer(const CPlayer& _other)
+CPlayer::CPlayer(const CPlayer& _other) :
+	CObj(_other)
 {
 	m_Rigidbody = AddComponent(new CRigidbody(*_other.m_Rigidbody));
 	m_PlayerCollider = AddComponent(new CCollider(*_other.m_PlayerCollider));
@@ -170,8 +171,8 @@ void CPlayer::begin()
 void CPlayer::tick()
 {
 	UpdateState();
-	MoveAndAction();
 	UpdateAnimation();
+	MoveAndAction();
 
 	m_PrevShootingDir = m_CurShootingDir;
 	m_PrevBaseState = m_CurBaseState;
@@ -934,7 +935,19 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 
 	pMissile->SetName(L"Player Missile");
 
-	SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::PLAYER_MISSILE, pMissile);
+	SpawnObject(LAYER_TYPE::PLAYER_MISSILE, pMissile);
+}
+
+void CPlayer::Parry(CObj* _otherObj)
+{
+	m_CurParryState = PARRY_STATE::PARRY_PINK;
+
+	m_ParryCount++;
+
+	m_Rigidbody->SetVelocity_Y(-1000);
+	_otherObj->SelfDestruct();
+	CLevelMgr::GetInstance().SetFreeze();
+	return;
 }
 
 void CPlayer::EnterGround()
@@ -1008,7 +1021,50 @@ void CPlayer::render()
 	StatusRender();
 }
 
-void CPlayer::OnCollisionEnter(CCollider* _pOtherCollider)
+void CPlayer::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
+{
+	// 예외
+	if (_pOtherCollider->GetName() == L"Tomb Bottom Collider")
+		return;
+
+	CObj* otherObj = _pOtherCollider->GetOwner();
+	LAYER_TYPE layer_type = otherObj->GetLayerType();
+
+	// ENEMY와 충돌
+	if (layer_type == LAYER_TYPE::MONSTER || layer_type == LAYER_TYPE::BOSS || layer_type == LAYER_TYPE::ENEMY_MISSILE)
+	{
+		if (m_bInvincibleState)
+			return;
+
+		// 패링
+		if (m_CurParryState != PARRY_STATE::NONE && otherObj->IsAbleParry())
+		{
+			Parry(otherObj);
+			return;
+		}
+
+		m_CurBaseState = BASE_STATE::HITTED;
+
+		if ((m_Pos - otherObj->GetPos()).x > 0)
+			m_Rigidbody->SetVelocity(Vec2(200, -800));
+		else
+			m_Rigidbody->SetVelocity(Vec2(-200, -800));
+		m_iHP--;
+	}
+
+	// 중립 오브젝트와 충돌
+	else if (layer_type == LAYER_TYPE::NEUTRAL_OBJ)
+	{
+		// 패링
+		if (m_CurParryState != PARRY_STATE::NONE && otherObj->IsAbleParry())
+		{
+			Parry(otherObj);
+			return;
+		}
+	}
+}
+
+void CPlayer::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	// 예외
 	if (_pOtherCollider->GetName() == L"Tomb Bottom Collider")
@@ -1022,29 +1078,12 @@ void CPlayer::OnCollisionEnter(CCollider* _pOtherCollider)
 		if (m_bInvincibleState)
 			return;
 
-		m_CurBaseState = BASE_STATE::HITTED;
-
-		if ((m_Pos - otherObj->GetPos()).x > 0)
-			m_Rigidbody->SetVelocity(Vec2(200, -800));
-		else
-			m_Rigidbody->SetVelocity(Vec2(-200, -800));
-		m_iHP--;
-	}
-}
-
-void CPlayer::OnCollisionStay(CCollider* _pOtherCollider)
-{
-	// 예외
-	if (_pOtherCollider->GetName() == L"Tomb Bottom Collider")
-		return;
-
-	CObj* otherObj = _pOtherCollider->GetOwner();
-	LAYER_TYPE layer_type = otherObj->GetLayerType();
-
-	if (layer_type == LAYER_TYPE::MONSTER || layer_type == LAYER_TYPE::BOSS || layer_type == LAYER_TYPE::ENEMY_MISSILE)
-	{
-		if (m_bInvincibleState)
+		// 패링
+		if (m_CurParryState != PARRY_STATE::NONE && otherObj->IsAbleParry())
+		{
+			Parry(otherObj);
 			return;
+		}
 
 		m_CurBaseState = BASE_STATE::HITTED;
 
@@ -1054,9 +1093,20 @@ void CPlayer::OnCollisionStay(CCollider* _pOtherCollider)
 			m_Rigidbody->SetVelocity(Vec2(-200, -800));
 		m_iHP--;
 	}
+
+	// 중립 오브젝트와 충돌
+	else if (layer_type == LAYER_TYPE::NEUTRAL_OBJ)
+	{
+		// 패링
+		if (m_CurParryState != PARRY_STATE::NONE && otherObj->IsAbleParry())
+		{
+			Parry(otherObj);
+			return;
+		}
+	}
 }
 
-void CPlayer::OnCollisionExit(CCollider* _pOtherCollider)
+void CPlayer::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 }
 

@@ -1,12 +1,15 @@
 #include "pch.h"
 #include "CLevel_Test.h"
+
 #include "CKeyMgr.h"
+
 #include "CForce.h"
 #include "CPlayer.h"
 #include "CPlatform.h"
 #include "CMonster.h"
 #include "CGround.h"
 #include "CBackground.h"
+#include "Question_Mark.h"
 
 
 CLevel_Test::CLevel_Test() 
@@ -42,7 +45,7 @@ void CLevel_Test::tick()
 		CForce* pForce = new CForce;
 		pForce->SetPos(vMousePos);
 		pForce->SetForce(1000, 300, 0.5);
-		SpawnObject(this, LAYER_TYPE::FORCE, pForce);
+		SpawnObject(LAYER_TYPE::FORCE, pForce);
 	}
 	
 	if (KEY_JUST_PRESSED(KEY::N))
@@ -166,7 +169,7 @@ void CLevel_Test::CreateAndSaveAnimationByJson()
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\Trans\\slime_tomb_trans_mid_to_left.json", 24);
 
 	// R
-	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\slime_tomb_lt_move_R.json", 24);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\slime_tomb_rt_move_R.json", 24);
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_right_to_mid.json", 24);
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_mid_to_right.json", 24);
 	
@@ -230,6 +233,36 @@ void CLevel_Test::LoadObject()
 	ground->SetPos(Vec2(640.f + 1910, 600));
 	ground->SetName(L"Ground_test2");
 	AddObject(LAYER_TYPE::GROUND, ground);
+
+
+
+
+
+	// 물음표 테스트
+	CObj* question_mark = new Question_Mark;
+	question_mark->SetPos(Vec2(640.f + 200, 384.f - 80));
+	AddObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
+	question_mark = new Question_Mark;
+	question_mark->SetPos(Vec2(640.f + 200 * 2, 384.f - 80));
+	AddObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
+	question_mark = new Question_Mark;
+	question_mark->SetPos(Vec2(640.f + 200 * 3, 384.f - 80));
+	AddObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
+	question_mark = new Question_Mark;
+	question_mark->SetPos(Vec2(640.f + 200 * 4, 384.f - 80));
+	AddObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
+	question_mark = new Question_Mark;
+	question_mark->SetPos(Vec2(640.f + 200 * 5, 384.f - 80));
+	AddObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
+	question_mark = new Question_Mark;
+	question_mark->SetPos(Vec2(640.f + 200 * 6, 384.f - 80));
+	AddObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
 }
 
 void CLevel_Test::SetCollision()
@@ -239,6 +272,9 @@ void CLevel_Test::SetCollision()
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER_MISSILE, LAYER_TYPE::MONSTER);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::PLATFORM);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::GROUND);
+	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::NEUTRAL_OBJ);
+
+
 }
 
 void CLevel_Test::Exit()

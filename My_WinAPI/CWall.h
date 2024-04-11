@@ -10,9 +10,9 @@ public:
     void SetColliderScale(Vec2 _scale);
     virtual CWall* Clone() override { return new CWall(*this); }
 
-    virtual void OnCollisionEnter(CCollider* _pOtherCollider) override;
-    virtual void OnCollisionStay(CCollider* _pOtherCollider) override;
-    virtual void OnCollisionExit(CCollider* _pOtherCollider) override;
+    virtual void OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider) override;
+    virtual void OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider) override;
+    virtual void OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider) override;
 
 public:
     CWall();

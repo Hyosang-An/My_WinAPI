@@ -41,13 +41,6 @@ void CLevel_Goopy_Le_Grande::Enter()
 
 void CLevel_Goopy_Le_Grande::tick()
 {
-	// !디버깅
-	if (KEY_JUST_PRESSED(KEY::P))
-		m_bStopTick = !m_bStopTick;
-
-	if (m_bStopTick)
-		return;
-
 	CLevel::tick();
 
 	if (KEY_JUST_PRESSED(KEY::M))
@@ -58,10 +51,6 @@ void CLevel_Goopy_Le_Grande::tick()
 
 void CLevel_Goopy_Le_Grande::finaltick()
 {
-	// !디버깅
-	if (m_bStopTick)
-		return;
-
 	CLevel::finaltick();
 }
 
@@ -70,11 +59,11 @@ void CLevel_Goopy_Le_Grande::render()
 	CLevel::render();
 
 	wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
-	TextOut(SUBDC, 0, CEngine::GetInstance().GetResolution().y - 20,
+	TextOut(SUBDC, 0, (int)CEngine::GetInstance().GetResolution().y - 20,
 		playerHP.c_str(), (int)playerHP.length());
 
 	wstring bossHP = L"보스 HP : " + std::to_wstring(m_Boss->GetHP());
-	TextOut(SUBDC, CEngine::GetInstance().GetResolution().x - 80, CEngine::GetInstance().GetResolution().y - 20,
+	TextOut(SUBDC, (int)CEngine::GetInstance().GetResolution().x - 80, (int)CEngine::GetInstance().GetResolution().y - 20,
 		bossHP.c_str(), (int)bossHP.length());
 }
 
@@ -185,9 +174,13 @@ void CLevel_Goopy_Le_Grande::SetCollision()
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::MONSTER);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::BOSS);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::ENEMY_MISSILE);
+	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::NEUTRAL_OBJ);
 
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER_MISSILE, LAYER_TYPE::MONSTER);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER_MISSILE, LAYER_TYPE::BOSS);
+
+
+
 
 
 	// 지형 충돌

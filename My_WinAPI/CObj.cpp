@@ -21,24 +21,17 @@ CObj::CObj(const CObj& _other) :
 	m_Pos(_other.m_Pos),
 	m_Scale(_other.m_Scale),
 	m_bAlive(_other.m_bAlive),
+	m_bUseGroundCollision(_other.m_bUseGroundCollision),
+	m_iGroundCollisionCnt(_other.m_iGroundCollisionCnt),
+	m_bAbleParry(_other.m_bAbleParry),
 	m_eType(_other.m_eType),
-	m_Rigidbody(nullptr),
-	m_Animator(nullptr)
+	m_Rigidbody{},
+	m_Animator{}
 {
-	//m_Rigidbody = new CRigidbody(*_other.m_Rigidbody);
-	//m_Animator = new CAnimator(*_other.m_Animator);
-
-	// 컴포넌트는 실제 하위 클래스에서 추가
-	
-	//for (auto component : _other.m_listComponent)
-	//{
-	//	AddComponent(component->Clone());
-	//}
-
-	//for (auto collider : _other.m_vecCollider)
-	//{
-	//	m_vecCollider.push_back(collider->Clone());
-	//}
+	if (_other.m_Rigidbody)
+		m_Rigidbody = AddComponent(new CRigidbody(*_other.m_Rigidbody));
+	if (_other.m_Animator)
+		m_Animator = AddComponent(new CAnimator(*_other.m_Animator));
 }
 
 CObj::~CObj()

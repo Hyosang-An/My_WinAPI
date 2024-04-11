@@ -143,6 +143,9 @@
     <Filter Include="03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande">
       <UniqueIdentifier>{e1339f70-000d-4b8d-8fa6-8973d9846cfc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\04. Level\Boss Stage 1\Question Mark">
+      <UniqueIdentifier>{ec30b6a7-f761-4784-8cfd-1c67edda7cd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -301,6 +304,7 @@
     <ClInclude Include="Goopy_Le_Grande.h">
       <Filter>03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande</Filter>
     </ClInclude>
+    <ClInclude Include="Question_Mark.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -438,6 +442,7 @@
     <ClCompile Include="Goopy_Le_Grande.cpp">
       <Filter>03. Game\04. Level\Boss Stage 1\Boss_Goopy_Le_Grande</Filter>
     </ClCompile>
+    <ClCompile Include="Question_Mark.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

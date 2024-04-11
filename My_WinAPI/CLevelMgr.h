@@ -12,6 +12,12 @@ private:
     CLevel* m_arrLevel[(UINT)LEVEL_TYPE::END];
     CLevel* m_pCurrentLevel;
 
+    bool m_bFreeze = false;
+    float m_FreezeDuration = 0.5;
+
+    // !µð¹ö±ë
+    bool m_bPauseProgress = false;
+
 private:
     void ChangeLevel(LEVEL_TYPE _nextLevelType);
 
@@ -22,6 +28,8 @@ public:
 
     CLevel* GetCurrentLevel() { return m_pCurrentLevel; }
     CObj* FindObjectByName(const wstring& _strName);
+
+    void SetFreeze() { m_bFreeze = true; }
 
 private:
     CLevelMgr();

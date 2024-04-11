@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "func.h"
+#include "CLevelMgr.h"
 
 bool IsValid(CObj* _pObj)
 {
@@ -14,11 +15,11 @@ bool IsValid(CObj* _pObj)
 	return true;
 }
 
-void SpawnObject(CLevel* _Level, LAYER_TYPE _type, CObj* _pSpawned)
+void SpawnObject(LAYER_TYPE _type, CObj* _pSpawned)
 {
 	tTask task{};
 	task.eType = TASK_TYPE::SPAWN_OBJECT;
-	task.param1 = reinterpret_cast<DWORD_PTR>(_Level);
+	task.param1 = reinterpret_cast<DWORD_PTR>(CLevelMgr::GetInstance().GetCurrentLevel());
 	task.param2 = static_cast<DWORD_PTR>(_type);
 	task.param3 = reinterpret_cast<DWORD_PTR>(_pSpawned);
 

@@ -36,8 +36,11 @@ protected:
 	bool	m_bUseGroundCollision = true;
 	int		m_iGroundCollisionCnt = 0;
 
+	bool	m_bAbleParry = false;
+
 	LAYER_TYPE	m_eType;
 
+	// 실제 객체 생성자에서 초기화
 	CRigidbody* m_Rigidbody;
 	CAnimator* m_Animator;
 
@@ -62,6 +65,8 @@ public:
 	bool IsDead() { return !m_bAlive; }
 	bool IsGroundCollision() { return m_bUseGroundCollision; }
 	LAYER_TYPE GetLayerType() { return m_eType; }
+	bool IsAbleParry() { return m_bAbleParry; }
+
 	const vector<CCollider*>& GetVecCollider() { return m_vecCollider; }
 
 	template<typename T>
@@ -109,9 +114,9 @@ public:
 	virtual void finaltick() final;	// 오브젝트가 소유한 컴포넌트 업데이트. 물리 업데이트 (가속도에 의한 속도 변화, 속도에 의한 위치 변화 등)
 	virtual void render();
 
-	virtual void OnCollisionEnter(CCollider* _pOtherCollider) {}
-	virtual void OnCollisionStay(CCollider* _pOtherCollider) {}
-	virtual void OnCollisionExit(CCollider* _pOtherCollider) {}
+	virtual void OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)	{}
+	virtual void OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)	{}
+	virtual void OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)	{}
 
 	virtual CObj* Clone() = 0;
 

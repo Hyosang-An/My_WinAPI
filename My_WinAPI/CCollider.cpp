@@ -33,16 +33,16 @@ void CCollider::finaltick()
 void CCollider::OnCollisionEnter(CCollider* _pOtherCollider)
 {
 	m_CollisionCount++;
-	m_Owner->OnCollisionEnter(_pOtherCollider);
+	m_Owner->OnCollisionEnter(this, _pOtherCollider);
 }
 
 void CCollider::OnCollisionStay(CCollider* _pOtherCollider)
 {
-	m_Owner->OnCollisionStay(_pOtherCollider);
+	m_Owner->OnCollisionStay(this, _pOtherCollider);
 }
 
 void CCollider::OnCollisionExit(CCollider* _pOtherCollider)
 {
 	m_CollisionCount--;
-	m_Owner->OnCollisionExit(_pOtherCollider);
+	m_Owner->OnCollisionExit(this, _pOtherCollider);
 }

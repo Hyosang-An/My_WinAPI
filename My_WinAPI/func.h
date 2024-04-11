@@ -63,7 +63,7 @@ class CLevel;
 bool IsValid(CObj* _pObj);
 
 // Task 관련 함수
-void SpawnObject(CLevel* _Level, LAYER_TYPE _type, CObj* _pSpawned);
+void SpawnObject(LAYER_TYPE _type, CObj* _pSpawned);
 void ChangeLevel(LEVEL_TYPE _NextLevelType);
 
 // Save, Load 관련 함수

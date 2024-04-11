@@ -4,12 +4,16 @@
 #include "CLevelMgr.h"
 #include "CPlayer.h"
 #include "CLevel_Goopy_Le_Grande.h"
+#include "Question_Mark.h"
 
 Goopy_Le_Grande::Goopy_Le_Grande()
 {
 	SetName(L"Goopy Le Grande");
 
+	// Rigidbody 설정
 	m_Rigidbody = AddComponent(new CRigidbody);
+	m_Rigidbody->SetMaxGravitySpeed(2000);
+
 	// 콜백함수 설정
 	m_Rigidbody->SetGroundCallbackFunc([this]() {this->EnterGround(); });
 	m_Rigidbody->SetAirCallbackFunc([this]() {this->LeaveGround(); });
@@ -17,6 +21,7 @@ Goopy_Le_Grande::Goopy_Le_Grande()
 	// 애니메이터 설정
 	m_Animator = AddComponent(new CAnimator);
 
+	// 충돌체 설정
 	m_BodyCollider = AddComponent(new CCollider);
 	m_BodyCollider->SetName(L"Body Collider");
 	m_BodyCollider->SetScale(Vec2(150, 200));
@@ -28,12 +33,14 @@ Goopy_Le_Grande::Goopy_Le_Grande()
 
 	m_SmashCollider = AddComponent(new CCollider);
 	m_SmashCollider->SetName(L"Smash Collider");
+	m_SmashCollider->SetOffsetPos(Vec2(0, 200));
+	m_SmashCollider->SetScale(Vec2(270 + 46* 2, 150));
 	m_SmashCollider->SetActive(false);
 
 	m_TombBottomCollider = AddComponent(new CCollider);
 	m_TombBottomCollider->SetName(L"Tomb Bottom Collider");
 	m_TombBottomCollider->SetOffsetPos(Vec2(0, 200));
-	m_TombBottomCollider->SetScale(Vec2(300, 150));
+	m_TombBottomCollider->SetScale(Vec2(250, 150));
 	m_TombBottomCollider->SetActive(false);
 }
 
@@ -173,6 +180,25 @@ void Goopy_Le_Grande::Phase1_Update()
 		}
 		case BASE_STATE::TRANSITION_TO_PH2:
 		{
+			// 물음표 생성
+			if ((m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_L" || m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_R") && m_Animator->GetCurAnimationFrmIdx() == 10 && !spawn_question)
+			{
+				spawn_question = true;
+				CObj* question_mark = new Question_Mark;
+				question_mark->SetPos(m_Pos + Vec2(-100, -100));
+				SpawnObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
+				question_mark = new Question_Mark;
+				question_mark->SetPos(m_Pos + Vec2(100, -100));
+				SpawnObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+
+
+				question_mark = new Question_Mark;
+				question_mark->SetPos(m_Pos + Vec2(0, -200));
+				SpawnObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
+			}
+
+			// 페이즈 2로 전환
 			if ((m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_L" || m_Animator->GetCurAnimation()->GetName() == L"slime_morph_2_R") && m_Animator->IsCurAnimationFinished())
 			{
 				m_PhaseState = PHASE_STATE::PHASE2;
@@ -289,7 +315,7 @@ void Goopy_Le_Grande::Phase2_Update()
 		{
 			m_accDeathTime += DT;
 
-			if (m_bSpawn3Phase == false && 2 < m_accDeathTime)
+			if (m_bSpawn3Phase == false && 1.5 < m_accDeathTime)
 			{
 				m_bSpawn3Phase = true;
 				m_accDeathTime = 0;
@@ -297,10 +323,10 @@ void Goopy_Le_Grande::Phase2_Update()
 				auto phase3_boss = new Goopy_Le_Grande;
 				phase3_boss->SetName(L"Goopy Le Grande Phase3");
 				phase3_boss->SetPhase3Intro();
-				phase3_boss->SetPos(Vec2(GetPos().x, -200));
+				phase3_boss->SetPos(Vec2(GetPos().x, -1500));
 				if (CLevel_Goopy_Le_Grande* Level_Goopy_Le_Grande = dynamic_cast<CLevel_Goopy_Le_Grande*>(CLevelMgr::GetInstance().GetCurrentLevel()))
 					Level_Goopy_Le_Grande->ChangeBoss(phase3_boss);
-				SpawnObject(CLevelMgr::GetInstance().GetCurrentLevel(), LAYER_TYPE::BOSS, phase3_boss);
+				SpawnObject(LAYER_TYPE::BOSS, phase3_boss);
 			}
 
 			break;
@@ -317,16 +343,16 @@ void Goopy_Le_Grande::Phase2_Update()
 void Goopy_Le_Grande::Phase3_Update()
 {
 	// 화면 테두리와 충돌한 경우
-	if ((m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) < CCamera::GetInstance().GetLeftTopPos().x)
+	if ((m_TombBottomCollider->GetFinalPos().x - m_TombBottomCollider->GetScale().x * 0.5f) < CCamera::GetInstance().GetLeftTopPos().x)
 	{
-		auto diff = -(m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) + CCamera::GetInstance().GetLeftTopPos().x;
+		auto diff = -(m_TombBottomCollider->GetFinalPos().x - m_TombBottomCollider->GetScale().x * 0.5f) + CCamera::GetInstance().GetLeftTopPos().x;
 		m_Pos += diff;
 		m_BaseState = BASE_STATE::TURN_LEFT_TO_RIGHT;
 		m_bFacingRight = true;
 	}
-	else if ((m_BodyCollider->GetFinalPos().x + m_BodyCollider->GetScale().x * 0.5f) > (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x))
+	else if ((m_TombBottomCollider->GetFinalPos().x + m_TombBottomCollider->GetScale().x * 0.5f) > (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x))
 	{
-		auto diff = (m_BodyCollider->GetFinalPos().x + m_BodyCollider->GetScale().x * 0.5f) - (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x);
+		auto diff = (m_TombBottomCollider->GetFinalPos().x + m_TombBottomCollider->GetScale().x * 0.5f) - (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x);
 		m_Pos -= diff;
 		m_BaseState = BASE_STATE::TURN_RIGHT_TO_LEFT;
 		m_bFacingRight = false;
@@ -393,7 +419,7 @@ void Goopy_Le_Grande::Phase3_Update()
 
 		case BASE_STATE::TURN_LEFT_TO_RIGHT:
 		{
-			if (m_Animator->IsCurAnimationFinished())
+			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_trans_mid_to_right" && m_Animator->IsCurAnimationFinished())
 			{
 				m_BaseState = BASE_STATE::MOVE;
 			}
@@ -402,7 +428,7 @@ void Goopy_Le_Grande::Phase3_Update()
 
 		case BASE_STATE::TURN_RIGHT_TO_LEFT:
 		{
-			if (m_Animator->IsCurAnimationFinished())
+			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_trans_mid_to_left" && m_Animator->IsCurAnimationFinished())
 			{
 				m_BaseState = BASE_STATE::MOVE;
 			}
@@ -411,6 +437,13 @@ void Goopy_Le_Grande::Phase3_Update()
 
 		case BASE_STATE::SMASH:
 		{
+			// Smash 할 때 충돌체 설정
+			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_smash_2" && m_Animator->GetCurAnimationFrmIdx() <= 1)
+				m_SmashCollider->SetActive(true);
+			
+			else
+				m_SmashCollider->SetActive(false);
+
 			if (m_Animator->GetCurAnimation()->GetName() == L"slime_tomb_smash_2" && m_Animator->IsCurAnimationFinished())
 			{
 				if ((m_player->GetPos() - m_Pos).x < 0)
@@ -630,7 +663,7 @@ void Goopy_Le_Grande::UpdateAnimation()
 				case BASE_STATE::MOVE:
 				{
 					if (m_bFacingRight)
-						m_Animator->Play(L"slime_tomb_lt_move_R", true, true);
+						m_Animator->Play(L"slime_tomb_rt_move_R", true, true);
 					else
 						m_Animator->Play(L"slime_tomb_lt_move_L", true, true);
 					break;
@@ -703,14 +736,7 @@ void Goopy_Le_Grande::MoveAndAction()
 	{
 		case PHASE_STATE::PHASE1:
 		{
-			//// 화면 테두리와 충돌한 경우
-			//if ((m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) <= CCamera::GetInstance().GetLeftTopPos().x ||
-			//	(m_BodyCollider->GetFinalPos().x + m_BodyCollider->GetScale().x * 0.5f) >= CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x)
-			//{
-			//	m_Rigidbody->SetVelocity_X(-1 * m_Rigidbody->GetVelocity().x);
-			//	m_bFacingRight = !m_bFacingRight;
-			//}
-
+			// 화면 테두리와 충돌한 경우
 			if ((m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) < CCamera::GetInstance().GetLeftTopPos().x)
 			{
 				auto diff = - (m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) + CCamera::GetInstance().GetLeftTopPos().x;
@@ -830,6 +856,8 @@ void Goopy_Le_Grande::MoveAndAction()
 			switch (m_BaseState)
 			{
 				case BASE_STATE::INTRO:
+					if (!m_Rigidbody->IsOnGround())
+						m_Rigidbody->AddForce(Vec2(0, 500));
 					m_Rigidbody->SetVelocity_X(0);
 					break;
 
@@ -981,7 +1009,7 @@ void Goopy_Le_Grande::LoadAnimation()
 	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande L\\Phase 3\\Move\\Left\\Trans\\slime_tomb_trans_mid_to_left.anim");
 
 	// R
-	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\slime_tomb_lt_move_R.anim");
+	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\slime_tomb_rt_move_R.anim");
 	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_right_to_mid.anim");
 	m_Animator->LoadAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\Right\\Trans\\slime_tomb_trans_mid_to_right.anim");
 
@@ -1003,10 +1031,8 @@ void Goopy_Le_Grande::LeaveGround()
 {
 }
 
-void Goopy_Le_Grande::OnCollisionEnter(CCollider* _pOtherCollider)
+void Goopy_Le_Grande::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
-	// 예외
-
 	CObj* otherObj = _pOtherCollider->GetOwner();
 	LAYER_TYPE layer_type = otherObj->GetLayerType();
 
@@ -1047,6 +1073,10 @@ void Goopy_Le_Grande::OnCollisionEnter(CCollider* _pOtherCollider)
 
 		case LAYER_TYPE::PLAYER_MISSILE:
 		{
+			// 예외
+			if (_myCollider == m_TombBottomCollider)
+				return;
+
 			otherObj->SelfDestruct();
 			m_iHP--;
 			break;
@@ -1065,11 +1095,11 @@ void Goopy_Le_Grande::OnCollisionEnter(CCollider* _pOtherCollider)
 	}
 }
 
-void Goopy_Le_Grande::OnCollisionStay(CCollider* _pOtherCollider)
+void Goopy_Le_Grande::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 }
 
-void Goopy_Le_Grande::OnCollisionExit(CCollider* _pOtherCollider)
+void Goopy_Le_Grande::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 }
 

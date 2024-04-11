@@ -83,7 +83,7 @@ private:
 	float m_LowJumpKeyTime = 0.0f;		// 높은 점프를 하기위한 최소 키 누름 지속 시간
 	float m_HighJumpKeyTime = 0.16f;		// 높은 점프를 하기 위한 최대 키 누름 지속 시간
 
-	float m_ParryDuration = 0.5f;		// 패링 지속 시간
+	float m_ParryDuration = 0.3f;		// 패링 지속 시간
 	int m_ParryCount = 1;				// 패링 가능 횟수
 
 	bool m_bOnPlatform = false;			// 플랫폼 위에 있는지
@@ -128,6 +128,7 @@ private:
 	void UpdateAnimation();
 
 	void Shoot(SHOOTING_DIR _dir);
+	void Parry(CObj* _otherObj);
 
 	// Callback 함수
 	void EnterGround();
@@ -145,9 +146,9 @@ public:
 
 	virtual void render();
 
-	virtual void OnCollisionEnter(CCollider* _pOtherCollider) override;
-	virtual void OnCollisionStay(CCollider* _pOtherCollider) override;
-	virtual void OnCollisionExit(CCollider* _pOtherCollider) override;
+	virtual void OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider) override;
+	virtual void OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider) override;
+	virtual void OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider) override;
 
 	void StatusRender();
 

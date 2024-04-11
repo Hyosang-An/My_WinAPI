@@ -23,9 +23,9 @@ public:
 public:
 	virtual CMissile* Clone() { return new CMissile(*this); }
 
-	virtual void OnCollisionEnter(CCollider* _pOtherCollider) override;
-	virtual void OnCollisionStay(CCollider* _pOtherCollider) override;
-	virtual void OnCollisionExit(CCollider* _pOtherCollider) override;
+	virtual void OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider) override;
+	virtual void OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider) override;
+	virtual void OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider) override;
 
 public:
 	CMissile();

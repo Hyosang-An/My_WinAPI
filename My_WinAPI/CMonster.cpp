@@ -70,7 +70,7 @@ void CMonster::render()
 		, (int)(RenderPos.y + Scale.y * 0.5f));
 }
 
-void CMonster::OnCollisionEnter(CCollider* _pOtherCollider)
+void CMonster::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	CObj* pOtherObj = _pOtherCollider->GetOwner();
 
@@ -87,11 +87,11 @@ void CMonster::OnCollisionEnter(CCollider* _pOtherCollider)
 
 }
 
-void CMonster::OnCollisionStay(CCollider* _pOtherCollider)
+void CMonster::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 }
 
-void CMonster::OnCollisionExit(CCollider* _pOtherCollider)
+void CMonster::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 
 }

@@ -21,7 +21,7 @@ void CWall::SetColliderScale(Vec2 _scale)
 	m_WallCollider->SetScale(_scale);
 }
 
-void CWall::OnCollisionEnter(CCollider* _pOtherCollider)
+void CWall::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	if (_pOtherCollider->GetName() == L"Punch Collider")
 		return;
@@ -109,7 +109,7 @@ void CWall::OnCollisionEnter(CCollider* _pOtherCollider)
 
 }
 
-void CWall::OnCollisionStay(CCollider* _pOtherCollider)
+void CWall::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	if (_pOtherCollider->GetName() == L"Punch Collider")
 		return;
@@ -197,6 +197,6 @@ void CWall::OnCollisionStay(CCollider* _pOtherCollider)
 
 }
 
-void CWall::OnCollisionExit(CCollider* _pOtherCollider)
+void CWall::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 }

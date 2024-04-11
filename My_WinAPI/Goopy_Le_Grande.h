@@ -50,7 +50,7 @@ private:
     int                 m_iJumpCnt = 0;
     int                 m_iMaxJumpCnt = 2;
 
-    float               m_SmashTime = 3; // Move 상태에서 Smash 하기까지 걸리는 시간
+    float               m_SmashTime = 1.5; // Move 상태에서 Smash 하기까지 걸리는 시간
 
 
     PHASE_STATE         m_PhaseState = PHASE_STATE::PHASE1;
@@ -69,6 +69,9 @@ private:
     float               m_accIdleTime = 0;  // 2페이즈 시작 직후 idle 타임
     float               m_accDeathTime = 0; // 2페이즈 사망 직후 death 타임
     float               m_accMovingTime = 0; // 3페이즈 무빙 타임
+
+    // 2페이즈 전환 물음표 생성 플래그
+    bool spawn_question = false;
 
     // 3페이즈 보스 소환 플래그
     bool                m_bSpawn3Phase = false;
@@ -100,9 +103,9 @@ public:
     virtual void tick();			
     virtual void render();
 
-    virtual void OnCollisionEnter(CCollider* _pOtherCollider);
-    virtual void OnCollisionStay(CCollider* _pOtherCollider);
-    virtual void OnCollisionExit(CCollider* _pOtherCollider);
+    virtual void OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider);
+    virtual void OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider);
+    virtual void OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider);
 
     // 보스 클론 X
     virtual Goopy_Le_Grande* Clone() { return nullptr; }

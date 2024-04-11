@@ -1,15 +1,19 @@
 #include "pch.h"
 #include "CLevelMgr.h"
 
+#include "CKeyMgr.h"
+#include "CCollisionMgr.h"
+
 #include "CLevel.h"
 #include "CLevel_Test.h"
 #include "CObj.h"
 #include "CPlayer.h"
 #include "CMonster.h"
-#include "CCollisionMgr.h"
 #include "CPlatform.h"
 #include "CGround.h"
+
 #include "CLevel_Goopy_Le_Grande.h"
+
 
 CLevelMgr::CLevelMgr()
 	: m_arrLevel{}
@@ -69,8 +73,28 @@ void CLevelMgr::progress()
 	if (m_pCurrentLevel == nullptr)
 		return;
 
-	m_pCurrentLevel->tick();
-	m_pCurrentLevel->finaltick();
+	// !µð¹ö±ë
+	if (KEY_JUST_PRESSED(KEY::P))
+		m_bPauseProgress = !m_bPauseProgress;
+
+	if (m_bPauseProgress)
+		return;
+
+	static float freezeTime = 0;
+	if (m_bFreeze && freezeTime < m_FreezeDuration)
+	{
+		freezeTime += DT;
+	}
+	else
+	{
+		freezeTime = 0;
+		m_bFreeze = false;
+
+		m_pCurrentLevel->tick();
+		m_pCurrentLevel->finaltick();
+	}
+
+
 
 }
 

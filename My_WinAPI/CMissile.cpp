@@ -37,7 +37,7 @@ void CMissile::render()
 		, (int)(vRenderPos.y + vScale.y * 0.5f));
 }
 
-void CMissile::OnCollisionEnter(CCollider* _pOtherCollider)
+void CMissile::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 	CObj* pOtherObj = _pOtherCollider->GetOwner();
 
@@ -45,11 +45,11 @@ void CMissile::OnCollisionEnter(CCollider* _pOtherCollider)
 		SelfDestruct();
 }
 
-void CMissile::OnCollisionStay(CCollider* _pOtherCollider)
+void CMissile::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 }
 
-void CMissile::OnCollisionExit(CCollider* _pOtherCollider)
+void CMissile::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
 }
 
