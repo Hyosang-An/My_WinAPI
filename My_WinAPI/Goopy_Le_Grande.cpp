@@ -185,11 +185,11 @@ void Goopy_Le_Grande::Phase1_Update()
 			{
 				spawn_question = true;
 				CObj* question_mark = new Question_Mark;
-				question_mark->SetPos(m_Pos + Vec2(-100, -100));
+				question_mark->SetPos(m_Pos + Vec2(-110, -100));
 				SpawnObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
 
 				question_mark = new Question_Mark;
-				question_mark->SetPos(m_Pos + Vec2(100, -100));
+				question_mark->SetPos(m_Pos + Vec2(110, -100));
 				SpawnObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
 
 
