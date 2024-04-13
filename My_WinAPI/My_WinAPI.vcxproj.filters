@@ -149,6 +149,9 @@
     <Filter Include="03. Game\05. Object\Effect">
       <UniqueIdentifier>{1ef2c0d3-fce0-48c6-9ff1-dd7d9f930678}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\04. Level\World Map">
+      <UniqueIdentifier>{53fa2cc9-5f3f-4df3-9e97-d6f37dbdccca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -313,6 +316,9 @@
     <ClInclude Include="CEffect.h">
       <Filter>03. Game\05. Object\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="World_Map.h">
+      <Filter>03. Game\04. Level\World Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -455,6 +461,9 @@
     </ClCompile>
     <ClCompile Include="CEffect.cpp">
       <Filter>03. Game\05. Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="World_Map.cpp">
+      <Filter>03. Game\04. Level\World Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
