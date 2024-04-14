@@ -5,9 +5,9 @@ import re
 # 폴더 경로는 \를 쓰는 경우 맨 앞에 r을 붙이던가, /로 모두 바꾸든가 \\로 써야함.
 
 # 원본 이미지들이 있는 최상위 폴더
-source_folder = r"C:\Users\gytha\Desktop\mid_"
+source_folder = r"C:\Users\gytha\Documents\Programming\Assort51th\My_WinAPI\build\contents\animation\Cuphead_World_Map\Idle\Right"
 # 결과 이미지들을 저장할 최상위 폴더
-target_folder = r"C:\Users\gytha\Desktop\새 폴더"
+target_folder = r"C:\Users\gytha\Documents\Programming\Assort51th\My_WinAPI\build\contents\animation\Cuphead_World_Map\Idle\Left"
 
 # source_folder의 존재 여부 확인
 if not os.path.exists(source_folder):
@@ -26,10 +26,10 @@ def get_new_file_name(file_name):
     if match:
         # 파일 이름이 패턴과 일치하는 경우
         base_name, number = match.groups()
-        new_file_name = f"{base_name}_R_{number}.png"
+        new_file_name = f"{base_name}_L_{number}.png"
     else:
         # 일치하지 않는 경우, 기존 이름에 _L만 추가
-        new_file_name = os.path.splitext(file_name)[0] + '_R.png'
+        new_file_name = os.path.splitext(file_name)[0] + '_L.png'
     return new_file_name
 
 # 주어진 경로에 대하여 원본 폴더 구조를 유지하며 결과 폴더 구조를 생성

@@ -152,6 +152,9 @@
     <Filter Include="03. Game\04. Level\World Map">
       <UniqueIdentifier>{53fa2cc9-5f3f-4df3-9e97-d6f37dbdccca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Worldmap Player">
+      <UniqueIdentifier>{ac37026d-b67f-4eaa-9ff8-9a78ef0008fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -319,6 +322,7 @@
     <ClInclude Include="World_Map.h">
       <Filter>03. Game\04. Level\World Map</Filter>
     </ClInclude>
+    <ClInclude Include="Worldmap_Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -465,6 +469,7 @@
     <ClCompile Include="World_Map.cpp">
       <Filter>03. Game\04. Level\World Map</Filter>
     </ClCompile>
+    <ClCompile Include="Worldmap_Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

@@ -124,8 +124,8 @@ private:
 
 private:
 	void UpdateState();
-	void MoveAndAction();
 	void UpdateAnimation();
+	void MoveAndAction();
 
 	void Shoot(SHOOTING_DIR _dir);
 	void Parry(CObj* _otherObj);

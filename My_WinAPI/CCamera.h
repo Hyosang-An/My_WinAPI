@@ -2,6 +2,7 @@
 #include "Singleton.h"
 
 class CPlayer;
+class Worldmap_Player;
 
 enum class CAM_EFFECT
 {
@@ -43,6 +44,8 @@ private:
 	Vec2        m_StageRange;
 
 	CPlayer* m_Player;
+	Worldmap_Player* m_Worldmap_Player;
+
 
 	float       m_CamSpeed = 500;
 	list<CAM_EFFECT_INFO>   m_listEffect;
@@ -76,6 +79,7 @@ public:
 	void SetTrackingState(CAM_TRACKING_STATE _state, Vec2 _stageRange = Vec2(0, 0)) { m_bTrackingState = _state; m_StageRange = _stageRange; }
 
 	void SetPlayerToCamera(CPlayer* _player) { m_Player = _player; }
+	void SetWorldmapPlayerToCamera(Worldmap_Player* _player) { m_Worldmap_Player = _player; }
 
 public:
 	void init();

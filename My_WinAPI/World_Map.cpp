@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "World_Map.h"
+
+#include "Worldmap_Player.h"
 #include "CBackground.h"
+
 
 
 World_Map::World_Map()
@@ -50,6 +53,10 @@ void World_Map::LoadBackground()
 
 void World_Map::LoadObject()
 {
+	CObj* worldmap_player = new Worldmap_Player;
+	worldmap_player->SetName(L"Worldmap_Player");
+	worldmap_player->SetPos(Vec2(-963, 68));
+	AddObject(LAYER_TYPE::WORLDMAP_PLAYER, worldmap_player);
 }
 
 void World_Map::SetCollision()
