@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "Up_Right1.png",
+	"frame": {"x":720,"y":686,"w":767,"h":767},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":767,"h":767},
+	"sourceSize": {"w":767,"h":767}
+},
+{
+	"filename": "Up_Right2.png",
+	"frame": {"x":0,"y":0,"w":608,"h":591},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":608,"h":591},
+	"sourceSize": {"w":608,"h":591}
+},
+{
+	"filename": "Up_Right3.png",
+	"frame": {"x":1238,"y":0,"w":686,"h":686},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":686,"h":686},
+	"sourceSize": {"w":686,"h":686}
+},
+{
+	"filename": "Up_Right4.png",
+	"frame": {"x":0,"y":686,"w":720,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":720},
+	"sourceSize": {"w":720,"h":720}
+},
+{
+	"filename": "Up_Right5.png",
+	"frame": {"x":608,"y":0,"w":630,"h":630},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":630,"h":630},
+	"sourceSize": {"w":630,"h":630}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Peashooter_EX_up_right.png",
+	"format": "RGBA8888",
+	"size": {"w":1924,"h":1453},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8213fc00e52c638efe87fb0ff23d4c90:28fd9464bf4ec80b5081897391473f19:26686bc0353cbcaeea6c39e41b85ccf9$"
+}
+}

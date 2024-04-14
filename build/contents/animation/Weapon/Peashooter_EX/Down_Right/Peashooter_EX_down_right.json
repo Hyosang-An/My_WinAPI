@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "Down_Right1.png",
+	"frame": {"x":720,"y":686,"w":767,"h":767},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":767,"h":767},
+	"sourceSize": {"w":767,"h":767}
+},
+{
+	"filename": "Down_Right2.png",
+	"frame": {"x":0,"y":0,"w":608,"h":591},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":608,"h":591},
+	"sourceSize": {"w":608,"h":591}
+},
+{
+	"filename": "Down_Right3.png",
+	"frame": {"x":1238,"y":0,"w":686,"h":686},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":686,"h":686},
+	"sourceSize": {"w":686,"h":686}
+},
+{
+	"filename": "Down_Right4.png",
+	"frame": {"x":0,"y":686,"w":720,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":720},
+	"sourceSize": {"w":720,"h":720}
+},
+{
+	"filename": "Down_Right5.png",
+	"frame": {"x":608,"y":0,"w":630,"h":630},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":630,"h":630},
+	"sourceSize": {"w":630,"h":630}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Peashooter_EX_down_right.png",
+	"format": "RGBA8888",
+	"size": {"w":1924,"h":1453},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d4cc654406115af2c24e7372ca568b27:1bf487fe79a48328fe46219133492868:686a3bec7cf1dfa1faf061baaae4e2f4$"
+}
+}

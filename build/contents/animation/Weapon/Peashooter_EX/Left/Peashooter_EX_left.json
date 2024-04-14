@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "Left1.png",
+	"frame": {"x":720,"y":686,"w":767,"h":767},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":767,"h":767},
+	"sourceSize": {"w":767,"h":767}
+},
+{
+	"filename": "Left2.png",
+	"frame": {"x":0,"y":0,"w":608,"h":591},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":608,"h":591},
+	"sourceSize": {"w":608,"h":591}
+},
+{
+	"filename": "Left3.png",
+	"frame": {"x":1238,"y":0,"w":686,"h":686},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":686,"h":686},
+	"sourceSize": {"w":686,"h":686}
+},
+{
+	"filename": "Left4.png",
+	"frame": {"x":0,"y":686,"w":720,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":720},
+	"sourceSize": {"w":720,"h":720}
+},
+{
+	"filename": "Left5.png",
+	"frame": {"x":608,"y":0,"w":630,"h":630},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":630,"h":630},
+	"sourceSize": {"w":630,"h":630}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Peashooter_EX_left.png",
+	"format": "RGBA8888",
+	"size": {"w":1924,"h":1453},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fea1d17996b8d1b211a6cfeb200b0469:28ef98776620492dbd92ed8fa3b64263:6dbc1e20630a0ab025498e074de84286$"
+}
+}

@@ -1,0 +1,140 @@
+{"frames": [
+
+{
+	"filename": "cuphead_world_map_side_walk_L_0001.png",
+	"frame": {"x":133,"y":0,"w":66,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":85},
+	"sourceSize": {"w":66,"h":85}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0002.png",
+	"frame": {"x":65,"y":0,"w":68,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":84},
+	"sourceSize": {"w":68,"h":84}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0003.png",
+	"frame": {"x":0,"y":0,"w":65,"h":83},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":83},
+	"sourceSize": {"w":65,"h":83}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0004.png",
+	"frame": {"x":0,"y":85,"w":65,"h":87},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":87},
+	"sourceSize": {"w":65,"h":87}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0005.png",
+	"frame": {"x":127,"y":174,"w":65,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":90},
+	"sourceSize": {"w":65,"h":90}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0006.png",
+	"frame": {"x":0,"y":355,"w":63,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":92},
+	"sourceSize": {"w":63,"h":92}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0007.png",
+	"frame": {"x":127,"y":355,"w":63,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":94},
+	"sourceSize": {"w":63,"h":94}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0008.png",
+	"frame": {"x":63,"y":355,"w":64,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":92},
+	"sourceSize": {"w":64,"h":92}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0009.png",
+	"frame": {"x":65,"y":264,"w":67,"h":91},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":67,"h":91},
+	"sourceSize": {"w":67,"h":91}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0010.png",
+	"frame": {"x":132,"y":264,"w":65,"h":91},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":91},
+	"sourceSize": {"w":65,"h":91}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0011.png",
+	"frame": {"x":65,"y":85,"w":63,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":89},
+	"sourceSize": {"w":63,"h":89}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0012.png",
+	"frame": {"x":128,"y":85,"w":63,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":89},
+	"sourceSize": {"w":63,"h":89}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0013.png",
+	"frame": {"x":191,"y":85,"w":64,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":89},
+	"sourceSize": {"w":64,"h":89}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0014.png",
+	"frame": {"x":0,"y":174,"w":63,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":89},
+	"sourceSize": {"w":63,"h":89}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0015.png",
+	"frame": {"x":0,"y":264,"w":65,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":90},
+	"sourceSize": {"w":65,"h":90}
+},
+{
+	"filename": "cuphead_world_map_side_walk_L_0016.png",
+	"frame": {"x":63,"y":174,"w":64,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":89},
+	"sourceSize": {"w":64,"h":89}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_world_map_side_walk_L.png",
+	"format": "RGBA8888",
+	"size": {"w":255,"h":449},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:94acc8e2a57f446186ca1cd1d68c4587:56196edc86e4fb4f1cc501ae9826743a:1efac3d8a431df41a99df4dfc8a37116$"
+}
+}

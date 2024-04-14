@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "cuphead_world_map_diag_up_idle_0001.png",
+	"frame": {"x":0,"y":0,"w":58,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":84},
+	"sourceSize": {"w":58,"h":84}
+},
+{
+	"filename": "cuphead_world_map_diag_up_idle_0002.png",
+	"frame": {"x":0,"y":84,"w":58,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":85},
+	"sourceSize": {"w":58,"h":85}
+},
+{
+	"filename": "cuphead_world_map_diag_up_idle_0003.png",
+	"frame": {"x":0,"y":169,"w":59,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":59,"h":84},
+	"sourceSize": {"w":59,"h":84}
+},
+{
+	"filename": "cuphead_world_map_diag_up_idle_0004.png",
+	"frame": {"x":0,"y":253,"w":59,"h":83},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":59,"h":83},
+	"sourceSize": {"w":59,"h":83}
+},
+{
+	"filename": "cuphead_world_map_diag_up_idle_0005.png",
+	"frame": {"x":0,"y":336,"w":59,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":59,"h":84},
+	"sourceSize": {"w":59,"h":84}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_world_map_diag_up_idle.png",
+	"format": "RGBA8888",
+	"size": {"w":59,"h":420},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:121ab4d58a54b4315af18dc37cdc8c7b:f09e259e2094559984f626d0eb32f087:f515ae746ce0f117a38bb6d38d5d30f5$"
+}
+}
