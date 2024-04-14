@@ -81,14 +81,14 @@ void CLevel_Goopy_Le_Grande::LoadBackground()
 	BG->SetDepth(BACKGROUND_DEPTH::Far);
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
 
-	// 먼 배경
+	// 아주 먼 배경
 	BG = new CBackground;
 	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_bg_evergreens", L"texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_bg_evergreens.png"));
 	BG->SetPos(Vec2(0, -200));
 	BG->SetDepth(BACKGROUND_DEPTH::Far);
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
 
-	// 약간 먼 배경
+	//약간 먼 배경
 	BG = new CBackground;
 	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_bg_forest", L"texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_bg_forest.png"));
 	BG->SetPos(Vec2(0, -190));

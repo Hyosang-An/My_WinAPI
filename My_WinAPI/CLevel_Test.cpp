@@ -49,7 +49,7 @@ void CLevel_Test::tick()
 	}
 	
 	if (KEY_JUST_PRESSED(KEY::N))
-		ChangeLevel(LEVEL_TYPE::BOSS_STAGE_1);
+		ChangeLevel(LEVEL_TYPE::WORLD_MAP);
 }
 
 void CLevel_Test::Enter()

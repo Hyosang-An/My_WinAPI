@@ -2,6 +2,7 @@
 #include "CEntity.h"
 
 #include "CCamera.h"
+#include "CKeyMgr.h"
 #include "CCollisionMgr.h"
 
 class CObj;

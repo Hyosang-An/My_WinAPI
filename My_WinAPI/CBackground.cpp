@@ -12,13 +12,13 @@ CBackground::~CBackground()
 }
 
 
-void CBackground::SetAnimation(const wstring& strRelativeAnimPath)
+void CBackground::SetAnimation(const wstring& strRelativeAnimFilePath)
 {
 	if (m_Animator == nullptr)
 		m_Animator = AddComponent(new CAnimator);
 
-	m_Animator->LoadAnimation(strRelativeAnimPath);
-	m_Animator->Play(ExtractFileName(strRelativeAnimPath), true);
+	m_Animator->LoadAnimation(strRelativeAnimFilePath);
+	m_Animator->Play(ExtractFileName(strRelativeAnimFilePath), true);
 }
 	
 

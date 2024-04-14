@@ -13,6 +13,7 @@
 #include "CGround.h"
 
 #include "CLevel_Goopy_Le_Grande.h"
+#include "World_Map.h"
 
 
 CLevelMgr::CLevelMgr()
@@ -62,7 +63,7 @@ void CLevelMgr::init()
 {
 	// 모든 레벨 생성
 	m_arrLevel[(UINT)LEVEL_TYPE::Test] = new CLevel_Test;
-	m_arrLevel[(UINT)LEVEL_TYPE::WORLD_MAP] = 
+	m_arrLevel[(UINT)LEVEL_TYPE::WORLD_MAP] = new World_Map;
 	m_arrLevel[(UINT)LEVEL_TYPE::BOSS_STAGE_1] = new CLevel_Goopy_Le_Grande;
 
 	// 초기 레벨 지정
