@@ -155,6 +155,12 @@
     <Filter Include="03. Game\05. Object\Worldmap Player">
       <UniqueIdentifier>{ac37026d-b67f-4eaa-9ff8-9a78ef0008fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\Missile\Player Missile">
+      <UniqueIdentifier>{ef1125e9-ea5f-4197-8d47-7121d48c7c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\05. Object\Missile\Player Missile\Peashooter">
+      <UniqueIdentifier>{4776892a-6ce3-48a4-ba0a-7c6aa6291ed1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -322,7 +328,10 @@
     <ClInclude Include="World_Map.h">
       <Filter>03. Game\04. Level\World Map</Filter>
     </ClInclude>
-    <ClInclude Include="Worldmap_Player.h" />
+    <ClInclude Include="Worldmap_Player.h">
+      <Filter>03. Game\05. Object\Worldmap Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Peashooter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -469,7 +478,10 @@
     <ClCompile Include="World_Map.cpp">
       <Filter>03. Game\04. Level\World Map</Filter>
     </ClCompile>
-    <ClCompile Include="Worldmap_Player.cpp" />
+    <ClCompile Include="Worldmap_Player.cpp">
+      <Filter>03. Game\05. Object\Worldmap Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Peashooter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

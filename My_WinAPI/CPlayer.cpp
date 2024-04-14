@@ -3,6 +3,7 @@
 
 #include "CTimeMgr.h"
 #include "CMissile.h"
+#include "Peashooter.h"
 #include "CLevelMgr.h"
 #include "CLevel.h"
 #include "CKeyMgr.h"
@@ -553,9 +554,7 @@ void CPlayer::MoveAndAction()
 			break;
 		case ACTION_STATE::SHOOTING:
 		{
-			float shootingFrequency = 5;
-
-			if ((1.f / shootingFrequency) <= m_acctimeSinceLastShot)
+			if ((1.f / m_ShootingFrequency) <= m_acctimeSinceLastShot)
 			{
 				Shoot(m_CurShootingDir);
 				m_acctimeSinceLastShot = 0;
@@ -888,7 +887,7 @@ void CPlayer::UpdateAnimation()
 
 void CPlayer::Shoot(SHOOTING_DIR _dir)
 {
-	CMissile* pMissile = new CMissile;
+	CMissile* pMissile = new Peashooter;
 
 	pMissile->SetScale(20, 20);
 
@@ -904,7 +903,7 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 			break;
 		case SHOOTING_DIR::UP:
 			pMissile->SetPos(Vec2(GetPos() + Vec2(0, -GetScale().y * 0.5f)));
-			pMissile->SetAngle(-0.5f * PI);
+			pMissile->SetAngle(PI / 4 * 6);
 			break;
 		case SHOOTING_DIR::DOWN:
 			pMissile->SetPos(Vec2(GetPos() + Vec2(0, GetScale().y * 0.5f)));
@@ -912,11 +911,11 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 			break;
 		case SHOOTING_DIR::UP_LEFT:
 			pMissile->SetPos(Vec2(GetPos() + Vec2(-GetScale().x * 0.5f, -GetScale().y * 0.5f)));
-			pMissile->SetAngle(-0.75f * PI);
+			pMissile->SetAngle(PI / 4 * 5);
 			break;
 		case SHOOTING_DIR::UP_RIGHT:
 			pMissile->SetPos(Vec2(GetPos() + Vec2(GetScale().x * 0.5f, -GetScale().y * 0.5f)));
-			pMissile->SetAngle(-0.25f * PI);
+			pMissile->SetAngle(PI / 4 * 7);
 			break;
 		case SHOOTING_DIR::DOWN_LEFT:
 			pMissile->SetPos(Vec2(GetPos() + Vec2(-GetScale().x * 0.5f, GetScale().y * 0.5f)));

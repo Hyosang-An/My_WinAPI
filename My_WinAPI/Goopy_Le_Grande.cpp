@@ -6,6 +6,7 @@
 #include "CLevel_Goopy_Le_Grande.h"
 #include "Question_Mark.h"
 #include "CEffect.h"
+#include "CMissile.h"
 
 Goopy_Le_Grande::Goopy_Le_Grande()
 {
@@ -1215,8 +1216,9 @@ void Goopy_Le_Grande::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOthe
 			if (_myCollider == m_TombBottomCollider)
 				return;
 
-			otherObj->SelfDestruct();
-			m_iHP--;
+			CMissile* player_missile = static_cast<CMissile*>(otherObj);
+			m_iHP -= player_missile->GetOffensePower();
+			player_missile->SelfDestruct();
 			break;
 		}
 

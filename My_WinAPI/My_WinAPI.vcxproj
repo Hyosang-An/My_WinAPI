@@ -197,6 +197,7 @@
     <ClInclude Include="Goopy_Le_Grande.h" />
     <ClInclude Include="libs\json.hpp" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Peashooter.h" />
     <ClInclude Include="Question_Mark.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Singleton.h" />
@@ -257,6 +258,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Peashooter.cpp" />
     <ClCompile Include="Question_Mark.cpp" />
     <ClCompile Include="Worldmap_Player.cpp" />
     <ClCompile Include="World_Map.cpp" />

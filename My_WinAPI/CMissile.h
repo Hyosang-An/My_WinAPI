@@ -9,6 +9,8 @@ protected:
 
 	CCollider* m_pCollider;
 
+	int		m_iOffensePower = 1;
+
 public:
 	void SetSpeed(float _speed) { m_fSpeed = _speed; }
 	void SetAngle(float _angle) { m_fAngle = _angle; }
@@ -16,7 +18,10 @@ public:
 	float GetSpeed() const { return m_fSpeed; }
 	float GetAngle() const { return m_fAngle; }
 
+	int GetOffensePower() const { return m_iOffensePower; }
+
 public:
+	virtual void begin() override {};
 	virtual void tick() override;
 	virtual void render() override;
 
@@ -29,6 +34,7 @@ public:
 
 public:
 	CMissile();
+	CMissile(const CMissile& _other);
 	~CMissile();
 };
 

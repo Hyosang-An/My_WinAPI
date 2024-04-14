@@ -72,6 +72,7 @@ private:
 	bool	m_bFacingRight = true;			// 바라보는 방향
 
 	int		m_iHP = 3;
+	float m_ShootingFrequency = 8;
 
 	float m_DashDuration = 0.3f;		// 대쉬 지속 시간
 	bool m_bAirboneDashed = false;	// 공중에서 대쉬 했는지

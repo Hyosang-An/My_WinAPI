@@ -10,6 +10,7 @@
 #include "CGround.h"
 #include "CBackground.h"
 #include "Question_Mark.h"
+#include "Peashooter.h"
 
 
 CLevel_Test::CLevel_Test() 
@@ -263,6 +264,10 @@ void CLevel_Test::LoadObject()
 	question_mark->SetPos(Vec2(640.f + 200 * 6, 384.f - 80));
 	AddObject(LAYER_TYPE::NEUTRAL_OBJ, question_mark);
 
+
+	// Peashooter Å×½ºÆ®
+	CObj* peashooter = new Peashooter;
+	peashooter->SetPos(Vec2(640, 500));
 }
 
 void CLevel_Test::SetCollision()
