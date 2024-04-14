@@ -18,6 +18,7 @@ World_Map::~World_Map()
 void World_Map::Enter()
 {
 	CCamera::GetInstance().SetCameraLookAt(Vec2(-963, 68));
+	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::WORLD_MAP);
 
 	LoadBackground();
 	LoadObject();
@@ -66,5 +67,6 @@ void World_Map::SetCollision()
 
 void World_Map::Exit()
 {
+	DeleteAllObjects();
 }
 

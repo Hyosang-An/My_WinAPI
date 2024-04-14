@@ -61,6 +61,7 @@ private:
 private:
 	void Move();
 	void CameraEffect();
+	void TrackingPlayer_Worldmap();
 	void TrackingPlayer_RunAndGunStage();
 	void TrackingPlayer_BossStage();
 

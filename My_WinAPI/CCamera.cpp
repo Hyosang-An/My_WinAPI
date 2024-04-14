@@ -10,12 +10,14 @@
 #include "CEngine.h"
 #include "CDbgRenderer.h"
 #include "CPlayer.h"
+#include "Worldmap_Player.h"
 #include "CLevelMgr.h"
 
 CCamera::CCamera() :
 	m_FadeTex{},
 	m_RedTex{},
-	m_Player{}
+	m_Player{},
+	m_Worldmap_Player{}
 {
 }
 
@@ -65,6 +67,9 @@ void CCamera::Move()
 		switch (m_bTrackingState)
 		{
 			case CAM_TRACKING_STATE::NONE:
+				break;
+			case CAM_TRACKING_STATE::WORLD_MAP:
+				TrackingPlayer_Worldmap();
 				break;
 			case CAM_TRACKING_STATE::BOSS_STAGE:
 				TrackingPlayer_BossStage();
@@ -199,14 +204,51 @@ void CCamera::TrackingPlayer_BossStage()
 	// 카메라 좌표 기준은 lefttop
 	float cameraLeftLimit = m_StageRange.x;
 	float cameraRightLimit = m_StageRange.y - m_resolution.x;
-	float playerLeftLimit = m_StageRange.x + 30;
-	float playerRightLimit = m_StageRange.y - 30;
+	float playerLeftLimit = m_StageRange.x + 30;	// 플레이어 충돌체 오프셋
+	float playerRightLimit = m_StageRange.y - 30;	// 플레이어 충돌체 오프셋
 	float player_posX = m_Player->m_Pos.x;
 
 	float playerPosRatio = (player_posX - playerLeftLimit) / (playerRightLimit - playerLeftLimit);
 
 	m_CameraLeftTopPos.x = cameraLeftLimit + playerPosRatio * (cameraRightLimit - cameraLeftLimit);
 
+}
+
+void CCamera::TrackingPlayer_Worldmap()
+{
+	if (m_Worldmap_Player == nullptr)
+		return;
+
+	Vec2 diff = m_Worldmap_Player->GetPos() - m_CameraRealCenterPos;
+
+	// X방향 카메라 속도 업데이트
+	//=================================================================
+	float min_camera_speed = 80.f;
+	static float cameraSpeed{};
+	static bool bCameraCentering = false;
+
+	// 카메라와 플레이어 간의 거리가 매우 가까울 때 카메라 이동을 멈추게 하는 임계값 설정
+	float thresholdDistance = 2.0f; // 이 값을 조정하여 카메라와 플레이어 간의 원하는 최소 거리 설정
+	float playerWalkSpeed = m_Worldmap_Player->m_WalkSpeed;
+	float lerpFactor = 5.2f;
+
+	// 플레이어와 카메라 간의 이론상 최대 거리 (saturated 거리)
+	float max_diff = playerWalkSpeed / lerpFactor;
+
+	// focus모드 일 때, 임계 거리
+	float focus_diff = 50;
+
+
+	// diff의 길이가 임계값보다 작으면 카메라 이동을 멈춥니다.
+	if (diff.Length() < thresholdDistance) {
+		cameraSpeed = 0;
+	}
+	else
+	{
+		cameraSpeed = max(diff.Length() * lerpFactor, min_camera_speed);
+	}
+
+	m_CameraLeftTopPos += diff.Normalize() * cameraSpeed * DT;
 }
 
 void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)

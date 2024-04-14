@@ -90,6 +90,72 @@ void Worldmap_Player::UpdateState()
 
 void Worldmap_Player::UpdateAnimation()
 {
+	if (m_State == STATE::IDLE)
+	{
+		switch (m_Dir)
+		{
+			case Worldmap_Player::DIR::RIGHT:
+				m_Animator->Play(L"cuphead_world_map_side_idle", true);
+				break;
+			case Worldmap_Player::DIR::LEFT:
+				m_Animator->Play(L"cuphead_world_map_side_idle_L", true);
+				break;
+			case Worldmap_Player::DIR::UP:
+				m_Animator->Play(L"cuphead_world_map_up_idle", true);
+				break;
+			case Worldmap_Player::DIR::DOWN:
+				m_Animator->Play(L"cuphead_world_map_down_idle", true);
+				break;
+			case Worldmap_Player::DIR::UP_RIGHT:
+				m_Animator->Play(L"cuphead_world_map_diag_up_idle", true);
+				break;
+			case Worldmap_Player::DIR::UP_LEFT:
+				m_Animator->Play(L"cuphead_world_map_diag_up_idle_L", true);
+				break;
+			case Worldmap_Player::DIR::DOWN_RIGHT:
+				m_Animator->Play(L"cuphead_world_map_diag_down_idle", true);
+				break;
+			case Worldmap_Player::DIR::DOWN_LEFT:
+				m_Animator->Play(L"cuphead_world_map_diag_down_idle_L", true);
+				break;
+		}
+	}
+
+	else if (m_State == STATE::WALK)
+	{
+		switch (m_Dir)
+		{
+			case Worldmap_Player::DIR::RIGHT:
+				m_Animator->Play(L"cuphead_world_map_side_walk", true);
+				break;
+			case Worldmap_Player::DIR::LEFT:
+				m_Animator->Play(L"cuphead_world_map_side_walk_L", true);
+				break;
+			case Worldmap_Player::DIR::UP:
+				m_Animator->Play(L"cuphead_world_map_up_walk", true);
+				break;
+			case Worldmap_Player::DIR::DOWN:
+				m_Animator->Play(L"cuphead_world_map_down_walk", true);
+				break;
+			case Worldmap_Player::DIR::UP_RIGHT:
+				m_Animator->Play(L"cuphead_world_map_diag_up_walk", true);
+				break;
+			case Worldmap_Player::DIR::UP_LEFT:
+				m_Animator->Play(L"cuphead_world_map_diag_up_walk_L", true);
+				break;
+			case Worldmap_Player::DIR::DOWN_RIGHT:
+				m_Animator->Play(L"cuphead_world_map_diag_down_walk", true);
+				break;
+			case Worldmap_Player::DIR::DOWN_LEFT:
+				m_Animator->Play(L"cuphead_world_map_diag_down_walk_L", true);
+				break;
+		}
+	}
+
+	else if (m_State == STATE::WIN)
+	{
+		m_Animator->Play(L"cuphead_world_map_win", true);
+	}
 }
 
 void Worldmap_Player::MoveAndAction()
@@ -133,6 +199,56 @@ void Worldmap_Player::MoveAndAction()
 
 void Worldmap_Player::LoadAnimation()
 {
+	//// Idle
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\down_idle\\cuphead_world_map_down_idle.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\Left\\diag_down_idle_L\\cuphead_world_map_diag_down_idle_L.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\Left\\diag_up_idle_L\\cuphead_world_map_diag_up_idle_L.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\Left\\side_idle_L\\cuphead_world_map_side_idle_L.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\Right\\diag_down_idle_R\\cuphead_world_map_diag_down_idle.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\Right\\diag_up_idle_R\\cuphead_world_map_diag_up_idle.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\Right\\side_idle_R\\cuphead_world_map_side_idle.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Idle\\up_idle\\cuphead_world_map_up_idle.json", 12);
+
+	//// Walk
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\down_walk\\cuphead_world_map_down_walk.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\Left\\diag_down_walk_L\\cuphead_world_map_diag_down_walk_L.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\Left\\diag_up_walk_L\\cuphead_world_map_diag_up_walk_L.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\Left\\side_walk_L\\cuphead_world_map_side_walk_L.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\Right\\diag_down_walk_R\\cuphead_world_map_diag_down_walk.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\Right\\diag_up_walk_R\\cuphead_world_map_diag_up_walk.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\Right\\side_walk_R\\cuphead_world_map_side_walk.json", 12);
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Walk\\up_walk\\cuphead_world_map_up_walk.json", 12);
+
+	//// Win
+	//m_Animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead_World_Map\\Win\\cuphead_world_map_win.json", 12);
+
+
+
+
+
+
+	// Idle
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\down_idle\\cuphead_world_map_down_idle.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\Left\\diag_down_idle_L\\cuphead_world_map_diag_down_idle_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\Left\\diag_up_idle_L\\cuphead_world_map_diag_up_idle_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\Left\\side_idle_L\\cuphead_world_map_side_idle_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\Right\\diag_down_idle_R\\cuphead_world_map_diag_down_idle.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\Right\\diag_up_idle_R\\cuphead_world_map_diag_up_idle.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\Right\\side_idle_R\\cuphead_world_map_side_idle.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Idle\\up_idle\\cuphead_world_map_up_idle.anim");
+
+	// Walk
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\down_walk\\cuphead_world_map_down_walk.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\Left\\diag_down_walk_L\\cuphead_world_map_diag_down_walk_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\Left\\diag_up_walk_L\\cuphead_world_map_diag_up_walk_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\Left\\side_walk_L\\cuphead_world_map_side_walk_L.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\Right\\diag_down_walk_R\\cuphead_world_map_diag_down_walk.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\Right\\diag_up_walk_R\\cuphead_world_map_diag_up_walk.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\Right\\side_walk_R\\cuphead_world_map_side_walk.anim");
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Walk\\up_walk\\cuphead_world_map_up_walk.anim");
+
+	// Win
+	m_Animator->LoadAnimation(L"animation\\Cuphead_World_Map\\Win\\cuphead_world_map_win.anim");
 }
 
 void Worldmap_Player::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)

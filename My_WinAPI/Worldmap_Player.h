@@ -3,6 +3,8 @@
 class Worldmap_Player :
     public CObj
 {
+	friend class CCamera;
+
 public:
 	enum class DIR
 	{
@@ -21,7 +23,7 @@ public:
 	{
 		IDLE,
 		WALK,
-		JUMP
+		WIN
 	};
 
 private:
