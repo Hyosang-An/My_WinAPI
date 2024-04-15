@@ -56,6 +56,7 @@ int CEngine::init(HINSTANCE _hInst, HWND _hWnd, POINT _Resolution)
 	CKeyMgr::GetInstance().init();
 	CAssetMgr::GetInstance().init();
 	CCamera::GetInstance().init();
+	CCollisionMgr::GetInstance().init();
 	
 	CLevelMgr::GetInstance().init();
 

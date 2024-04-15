@@ -23,6 +23,8 @@ void Cloud::begin()
 
 void Cloud::tick()
 {
+	CBackground::tick();
+
 	// 스테이지 리밋 배율
 	float constant = 2.f;
 
