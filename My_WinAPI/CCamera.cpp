@@ -248,7 +248,8 @@ void CCamera::TrackingPlayer_Worldmap()
 		cameraSpeed = max(diff.Length() * lerpFactor, min_camera_speed);
 	}
 
-	m_CameraLeftTopPos += diff.Normalize() * cameraSpeed * DT;
+	if (diff.Length() != 0)
+		m_CameraLeftTopPos += diff.Normalize() * cameraSpeed * DT;
 }
 
 void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)

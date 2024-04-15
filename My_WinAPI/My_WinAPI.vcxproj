@@ -190,6 +190,7 @@
     <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="CTraceState.h" />
     <ClInclude Include="CWall.h" />
+    <ClInclude Include="CWorldmap_Point.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="framework.h" />
@@ -249,6 +250,7 @@
     <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="CTraceState.cpp" />
     <ClCompile Include="CWall.cpp" />
+    <ClCompile Include="CWorldmap_Point.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="Goopy_Le_Grande.cpp" />
     <ClCompile Include="main.cpp" />

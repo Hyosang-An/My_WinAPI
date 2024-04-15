@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "world1_icon_veggie_0001.png",
+	"frame": {"x":0,"y":0,"w":309,"h":258},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":309,"h":258},
+	"sourceSize": {"w":309,"h":258}
+},
+{
+	"filename": "world1_icon_veggie_0002.png",
+	"frame": {"x":309,"y":0,"w":310,"h":259},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":310,"h":259},
+	"sourceSize": {"w":310,"h":259}
+},
+{
+	"filename": "world1_icon_veggie_0003.png",
+	"frame": {"x":619,"y":0,"w":309,"h":259},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":309,"h":259},
+	"sourceSize": {"w":309,"h":259}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_point.png",
+	"format": "RGBA8888",
+	"size": {"w":928,"h":259},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c0efea292b92e91a20e035249ad71210:bc00aeea567e3f2ca57fcf282f970b02:96bae0272360ed74fad9a27fae4f74ba$"
+}
+}

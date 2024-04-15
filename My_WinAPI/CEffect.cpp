@@ -23,8 +23,8 @@ CEffect::~CEffect()
 void CEffect::SetAnimation(const wstring& _strRelativeAnimFilePath, bool _repeat)
 {
 	// repeat은 기본적으로 false
-
-	m_AnimName = m_Animator->LoadAnimation(_strRelativeAnimFilePath)->GetName();
+	auto anim = m_Animator->LoadAnimation(_strRelativeAnimFilePath);
+	m_AnimName = anim->GetName();
 	m_bRepeat = _repeat;
 }
 

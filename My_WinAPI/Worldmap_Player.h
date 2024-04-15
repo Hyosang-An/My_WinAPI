@@ -29,7 +29,7 @@ public:
 private:
 	float		m_WalkSpeed = 500;
 
-	CCollider*	m_Woldmap_Player_Collider;
+	CCollider*	m_Worldmap_Player_Collider;
 
 	DIR			m_Dir = DIR::DOWN;
 	STATE		m_State = STATE::IDLE;

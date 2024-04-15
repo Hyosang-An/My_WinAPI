@@ -3,6 +3,7 @@
 
 #include "Worldmap_Player.h"
 #include "CBackground.h"
+#include "CWorldmap_Point.h"
 
 
 
@@ -43,13 +44,20 @@ void World_Map::LoadBackground()
 	// 먼저 그려야 하는것부터 추가
 	CBackground* Worldmap_BG;
 
-	// 아주 먼 배경
 	Worldmap_BG = new CBackground;
 	Worldmap_BG->SetName(L"World_Map_BG");
 	Worldmap_BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"World_Map_BG", L"texture\\World_Map\\World_Map.png"));
 	Worldmap_BG->SetPos(Vec2(0, 0));
 	Worldmap_BG->SetDepth(BACKGROUND_DEPTH::Fore);
 	AddObject(LAYER_TYPE::BACKGROUND, Worldmap_BG);
+
+	CWorldmap_Point* worldmap_point = new CWorldmap_Point;
+	worldmap_point->SetPos(Vec2(150, -437));
+	worldmap_point->SetColliderOffset(Vec2(0, 100));
+	worldmap_point->SetAnimation(L"animation\\Worldmap_Point\\Goopy_Le_Grande_point\\Goopy_Le_Grande_point.anim");
+	worldmap_point->SetStage(LEVEL_TYPE::BOSS_STAGE_1);
+	AddObject(LAYER_TYPE::WORLDMAP_POINT, worldmap_point);
+
 }
 
 void World_Map::LoadObject()
@@ -62,6 +70,7 @@ void World_Map::LoadObject()
 
 void World_Map::SetCollision()
 {
+	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::WORLDMAP_PLAYER, LAYER_TYPE::WORLDMAP_POINT);
 }
 
 

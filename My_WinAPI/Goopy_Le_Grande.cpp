@@ -1136,12 +1136,12 @@ void Goopy_Le_Grande::SpawnEffect(const wstring& _effectName, Vec2 _pos)
 	}
 
 	// 원본을 리턴하면 곤란.
-	auto new_effect = iter->second->Clone();
+	auto effect_clone = iter->second->Clone();
 
-	new_effect->SetPos(_pos);
-	new_effect->PlayEffect();
+	effect_clone->SetPos(_pos);
+	effect_clone->PlayEffect();
 
-	SpawnObject(LAYER_TYPE::EFFECT, new_effect);
+	SpawnObject(LAYER_TYPE::EFFECT, effect_clone);
 }
 
 void Goopy_Le_Grande::SpawnEffectAttachedToParent(const wstring& _effectName)

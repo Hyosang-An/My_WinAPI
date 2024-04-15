@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "world1_icon_slime_0001.png",
+	"frame": {"x":0,"y":0,"w":250,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":333},
+	"sourceSize": {"w":250,"h":333}
+},
+{
+	"filename": "world1_icon_slime_0002.png",
+	"frame": {"x":0,"y":333,"w":252,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":252,"h":333},
+	"sourceSize": {"w":252,"h":333}
+},
+{
+	"filename": "world1_icon_slime_0003.png",
+	"frame": {"x":0,"y":666,"w":252,"h":334},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":252,"h":334},
+	"sourceSize": {"w":252,"h":334}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Goopy_Le_Grande_point.png",
+	"format": "RGBA8888",
+	"size": {"w":252,"h":1000},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9c76d153f0da73ff971a1a27a0450485:e7f010ae90c579c21f162ed38e5655a3:7a302e2739069862b5c4331b94e614e5$"
+}
+}

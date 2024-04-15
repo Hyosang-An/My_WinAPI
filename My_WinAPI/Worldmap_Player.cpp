@@ -10,8 +10,9 @@ Worldmap_Player::Worldmap_Player()
 
 	m_Animator = AddComponent(new CAnimator);
 
-	m_Woldmap_Player_Collider = AddComponent(new CCollider);
-	m_Woldmap_Player_Collider->SetScale(Vec2(100, 100));
+	m_Worldmap_Player_Collider = AddComponent(new CCollider);
+	m_Worldmap_Player_Collider->SetScale(Vec2(70, 70));
+	m_Worldmap_Player_Collider->SetOffsetPos(Vec2(0, 20));
 
 	CCamera::GetInstance().SetWorldmapPlayerToCamera(this);
 }

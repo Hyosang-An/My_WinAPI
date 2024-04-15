@@ -12,6 +12,7 @@
 #include "CEngine.h"
 #include "CGuidedMissile.h"
 #include "CAnimation.h"
+#include "CEffect.h"
 
 CPlayer::CPlayer()
 {
@@ -167,6 +168,11 @@ CPlayer::~CPlayer()
 
 void CPlayer::begin()
 {
+	// 이펙트 추가
+	CEffect* effect = new CEffect;
+	effect->SetName(L"cuphead_jump_dust_a");
+	effect->SetAnimation(L"animation\\Cuphead\\Cuphead_R\\Jump\\Dust\\cuphead_jump_dust_a.anim");
+	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 }
 
 void CPlayer::tick()
@@ -949,12 +955,34 @@ void CPlayer::Parry(CObj* _otherObj)
 	return;
 }
 
+void CPlayer::SpawnEffect(const wstring& _effectName, Vec2 _pos)
+{
+	// Clone 전용 원본 이펙트
+	auto iter = m_mapEffect.find(_effectName);
+	if (iter == m_mapEffect.end())
+	{
+		wstring msg = _effectName + L"해당 이름의 이펙트 없음";
+		LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
+		return;
+	}
+
+	// 원본을 리턴하면 곤란.
+	auto effect_clone = iter->second->Clone();
+
+	effect_clone->SetPos(_pos);
+	effect_clone->PlayEffect();
+
+	SpawnObject(LAYER_TYPE::EFFECT, effect_clone);
+}
+
 void CPlayer::EnterGround()
 {
 	LOG(LOG_TYPE::DBG_WARNING, L"Grounded!!");
 
 	m_bAirboneDashed = false;
 	m_Rigidbody->SetVelocity_X(0);
+
+	SpawnEffect(L"cuphead_jump_dust_a", m_Pos + Vec2(0, 60));
 }
 
 void CPlayer::LeaveGround()

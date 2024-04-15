@@ -1,6 +1,8 @@
 #pragma once
 #include "CObj.h"
 
+class CEffect;
+
 class CPlayer :
 	public CObj
 {
@@ -109,6 +111,9 @@ private:
 	//CCollider* m_HeadCol;
 	CCollider* m_PlayerCollider;
 
+	// 이펙트 맵
+	map<wstring, CEffect*>  m_mapEffect;
+
 
 	// 액션 누적 시간 (static 변수들 멤버변수로 전환)
 	float m_accInvincibleTime = 0;
@@ -131,6 +136,8 @@ private:
 	void Shoot(SHOOTING_DIR _dir);
 	void Parry(CObj* _otherObj);
 
+	void SpawnEffect(const wstring& _effectName, Vec2 _pos);
+
 	// Callback 함수
 	void EnterGround();
 	void LeaveGround();
@@ -138,7 +145,8 @@ private:
 public:
 	int			GetHP() { return m_iHP; }
 	BASE_STATE	GetBaseState() { return m_CurBaseState; }
-	
+	bool IsOnPlatform() { return m_bOnPlatform; }
+
 	void SetOnPlatform(bool _b) { m_bOnPlatform = _b; }
 
 public:

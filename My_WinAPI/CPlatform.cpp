@@ -53,6 +53,10 @@ void CPlatform::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherColli
 		if (playerVelocityRatio < overlapRatio)
 			return;
 
+
+		// 제대로 위에서 들어와, 플랫폼 위에 올라간경우
+		player->SetPos(Vec2(player->GetPos().x, player->GetPos().y - (overlapRightBottom.y - overlapLeftTop.y)));
+
 		playerRigidbody->SetOnGround(true);
 		player->SetOnPlatform(true);
 	}
@@ -69,10 +73,13 @@ void CPlatform::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollid
 	if (otherObj->GetLayerType() == LAYER_TYPE::PLAYER)
 	{
 		CPlayer* player = static_cast<CPlayer*>(otherObj);
-		auto rigidbody = player->GetComponent<CRigidbody>();
+		if (player->IsOnPlatform())
+		{
+			auto rigidbody = player->GetComponent<CRigidbody>();
 
-		rigidbody->SetOnGround(false);
-		player->SetOnPlatform(false);
+			rigidbody->SetOnGround(false);
+			player->SetOnPlatform(false);
+		}
 	}
 }
 
