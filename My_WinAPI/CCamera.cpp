@@ -35,6 +35,17 @@ void CCamera::init()
 	// 윈도우 해상도랑 동일한 크기의 검은색 텍스쳐를 생성
 	
 	m_FadeTex = CAssetMgr::GetInstance().CreateTexture(L"Fade Textrue", (UINT)m_resolution.x, (UINT)m_resolution.y);
+
+	// ScreenFX
+	for (int i = 0; i < 127; i++)
+	{
+		wstring strpath = L"texture\\Screen FX\\";
+		wstring filename = L"cuphead_screen_fx_";
+		wstring num = std::to_wstring(i);
+		num = std::wstring(4 - num.length(), L'0') + num;
+
+		m_vecScreenFX.push_back(CAssetMgr::GetInstance().LoadTexture(filename + num, strpath + filename + num + L".png"));
+	}
 }
 
 void CCamera::tick()
@@ -42,8 +53,8 @@ void CCamera::tick()
 	// 카메라 이동
 	Move();
 
-	// 카메라 이펙트 적용
-	CameraEffect();
+	// 카메라 이펙트 업데이트
+	UpdateCameraEffect();
 }
 
 void CCamera::Move()
@@ -89,7 +100,7 @@ void CCamera::Move()
 }
 
 
-void CCamera::CameraEffect()
+void CCamera::UpdateCameraEffect()
 {
 	// 완료된 이펙트 제거
 	while (!m_listEffect.empty())
@@ -289,19 +300,41 @@ void CCamera::CameraEffectRender()
 			strDiff.c_str(), (int)strDiff.length());
 	}
 
-
-	if (m_listEffect.empty())
-		return;
-
-	CAM_EFFECT_INFO info = m_listEffect.front();
-
 	BLENDFUNCTION bf{};
 
 	bf.BlendOp = AC_SRC_OVER;
 	bf.BlendFlags = 0;
-	bf.SourceConstantAlpha = (int)info.Alpha;
 	bf.AlphaFormat = 0;
 
-	AlphaBlend(SUBDC, 0, 0, m_FadeTex->GetWidth(), m_FadeTex->GetHeight()
-		, m_FadeTex->GetDC(), 0, 0, m_FadeTex->GetWidth(), m_FadeTex->GetHeight(), bf);
+	if (!m_listEffect.empty())
+	{
+		CAM_EFFECT_INFO info = m_listEffect.front();
+		bf.SourceConstantAlpha = (int)info.Alpha;
+
+		AlphaBlend(SUBDC, 0, 0, m_FadeTex->GetWidth(), m_FadeTex->GetHeight()
+			, m_FadeTex->GetDC(), 0, 0, m_FadeTex->GetWidth(), m_FadeTex->GetHeight(), bf);
+	}
+
+
+	//Screen FX 렌더링
+
+	bf.SourceConstantAlpha = int(255 * 0.2);
+	m_ScreenFXframeElapsedTime += DT;
+
+	if (m_ScreenFXframeDuration < m_ScreenFXframeElapsedTime)
+	{
+		m_ScreenFXframeElapsedTime -= m_ScreenFXframeDuration;
+		
+		// 프레임이 마지막에 도달한 경우
+		if (m_CurScreenFXFrameIdx >= m_vecScreenFX.size() - 1)
+		{
+			m_CurScreenFXFrameIdx = 0;
+		}
+		else
+			m_CurScreenFXFrameIdx++;
+	}
+
+	auto fx = m_vecScreenFX[m_CurScreenFXFrameIdx];
+	AlphaBlend(SUBDC, 0, 0, m_resolution.x, m_resolution.y
+		, fx->GetDC(), 0, 0, fx->GetWidth(), fx->GetHeight(), bf);
 }

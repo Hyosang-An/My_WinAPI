@@ -53,6 +53,13 @@ private:
 	CTexture* m_FadeTex;
 	CTexture* m_RedTex;
 
+	// Screen FX
+	vector<CTexture*>	m_vecScreenFX;
+	float				m_ScreenFXframeElapsedTime = 0;		// Screen FX 텍스쳐 재생 시간
+	float				m_ScreenFXframeDuration = 0.08;
+	int					m_CurScreenFXFrameIdx = 0;			// 현재 프레임 인덱스
+	bool				m_bFinished;			// Screen FX 재생이 종료됨을 알림
+
 	CAM_TRACKING_STATE    m_bTrackingState = CAM_TRACKING_STATE::NONE;
 
 	// !디버깅
@@ -60,7 +67,7 @@ private:
 
 private:
 	void Move();
-	void CameraEffect();
+	void UpdateCameraEffect();
 	void TrackingPlayer_Worldmap();
 	void TrackingPlayer_RunAndGunStage();
 	void TrackingPlayer_BossStage();
