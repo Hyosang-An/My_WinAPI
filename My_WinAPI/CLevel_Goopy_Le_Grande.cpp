@@ -102,6 +102,7 @@ void CLevel_Goopy_Le_Grande::LoadBackground()
 	BG->SetDepth(BACKGROUND_DEPTH::Middle);
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
 
+	// 가까이에 있는 배경
 	BG = new CBackground;
 	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"Goopy_Le_Grande_BG_mg_main_ground", L"texture\\Boss Stage\\Goopy Le Grande\\Background\\slime_bg_mg_main_ground.png"));
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
@@ -170,7 +171,7 @@ void CLevel_Goopy_Le_Grande::LoadObject()
 
 void CLevel_Goopy_Le_Grande::SetCollision()
 {
-	// 플레이어와 적들 충돌
+	// 플레이어와 다른 오브젝트 충돌
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::MONSTER);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::BOSS);
 	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::PLAYER, LAYER_TYPE::ENEMY_MISSILE);

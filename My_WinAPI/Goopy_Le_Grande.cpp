@@ -387,14 +387,14 @@ void Goopy_Le_Grande::Phase3_Update()
 	if ((m_TombBottomCollider->GetFinalPos().x - m_TombBottomCollider->GetScale().x * 0.5f) < CCamera::GetInstance().GetLeftTopPos().x)
 	{
 		auto diff = -(m_TombBottomCollider->GetFinalPos().x - m_TombBottomCollider->GetScale().x * 0.5f) + CCamera::GetInstance().GetLeftTopPos().x;
-		m_Pos += diff;
+		m_Pos.x += diff;
 		m_CurBaseState = BASE_STATE::TURN_LEFT_TO_RIGHT;
 		m_bFacingRight = true;
 	}
 	else if ((m_TombBottomCollider->GetFinalPos().x + m_TombBottomCollider->GetScale().x * 0.5f) > (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x))
 	{
 		auto diff = (m_TombBottomCollider->GetFinalPos().x + m_TombBottomCollider->GetScale().x * 0.5f) - (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x);
-		m_Pos -= diff;
+		m_Pos.x -= diff;
 		m_CurBaseState = BASE_STATE::TURN_RIGHT_TO_LEFT;
 		m_bFacingRight = false;
 	}
@@ -850,14 +850,14 @@ void Goopy_Le_Grande::MoveAndAction()
 			if ((m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) < CCamera::GetInstance().GetLeftTopPos().x)
 			{
 				auto diff = - (m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) + CCamera::GetInstance().GetLeftTopPos().x;
-				m_Pos += diff;
+				m_Pos.x += diff;
 				m_Rigidbody->SetVelocity_X(-1 * m_Rigidbody->GetVelocity().x);
 				m_bFacingRight = !m_bFacingRight;
 			}
 			else if ((m_BodyCollider->GetFinalPos().x + m_BodyCollider->GetScale().x * 0.5f) > (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x))
 			{
 				auto diff = (m_BodyCollider->GetFinalPos().x + m_BodyCollider->GetScale().x * 0.5f) - (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x);
-				m_Pos -= diff;
+				m_Pos.x -= diff;
 				m_Rigidbody->SetVelocity_X(-1 * m_Rigidbody->GetVelocity().x);
 				m_bFacingRight = !m_bFacingRight;
 			}
@@ -908,15 +908,15 @@ void Goopy_Le_Grande::MoveAndAction()
 			// 화면 테두리와 충돌한 경우
 			if ((m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) < CCamera::GetInstance().GetLeftTopPos().x)
 			{
-				auto diff = -(m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) + CCamera::GetInstance().GetLeftTopPos().x;
-				m_Pos += diff;
+				auto diff_X = -(m_BodyCollider->GetFinalPos().x - m_BodyCollider->GetScale().x * 0.5f) + CCamera::GetInstance().GetLeftTopPos().x;
+				m_Pos.x += diff_X;
 				m_Rigidbody->SetVelocity_X(-1 * m_Rigidbody->GetVelocity().x);
 				m_bFacingRight = !m_bFacingRight;
 			}
 			else if ((m_BodyCollider->GetFinalPos().x + m_BodyCollider->GetScale().x * 0.5f) > (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x))
 			{
 				auto diff = (m_BodyCollider->GetFinalPos().x + m_BodyCollider->GetScale().x * 0.5f) - (CCamera::GetInstance().GetLeftTopPos().x + CEngine::GetInstance().GetResolution().x);
-				m_Pos -= diff;
+				m_Pos.x -= diff;
 				m_Rigidbody->SetVelocity_X(-1 * m_Rigidbody->GetVelocity().x);
 				m_bFacingRight = !m_bFacingRight;
 			}

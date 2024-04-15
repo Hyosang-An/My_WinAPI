@@ -11,14 +11,14 @@ enum class BACKGROUND_DEPTH
 class CBackground :
     public CObj
 {
-private:
+protected:
     CTexture* m_Texture;
 
-    BACKGROUND_DEPTH m_Depth;
+    BACKGROUND_DEPTH m_Depth = BACKGROUND_DEPTH::Fore;
 
 public:
     void SetTexture(CTexture* _texture) { m_Texture = _texture; }
-    void SetAnimation(const wstring& strRelativeAnimPath);
+    void SetAnimation(const wstring& strRelativeAnimPath, bool _RepeatReverse = false);
     void SetDepth(BACKGROUND_DEPTH _depth) { m_Depth = _depth; }
 
 public:

@@ -37,6 +37,7 @@ enum class LEVEL_TYPE
 	STAGE_03,
 
 	BOSS_STAGE_1,
+	BOSS_STAGE_2,
 
 	Test,
 

@@ -74,7 +74,7 @@ void CLevel_Test::CreateAndSaveAnimationByJson()
 	CAnimator* tmp_animator = new CAnimator;
 
 
-	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Worldmap_Point\\Goopy_Le_Grande_point\\Goopy_Le_Grande_point.json", 12);
+	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\BG\\veggie_tireswing.json", 12);
 
 
 	delete tmp_animator;

@@ -13,7 +13,7 @@ private:
 private:
 
 public:
-	void ChangeBoss(Goopy_Le_Grande* _new_boss) { m_Boss = _new_boss; }
+	void ChangeBoss(Goopy_Le_Grande* _phase3_boss) { m_Boss = _phase3_boss; }
 
 private:
 	virtual void LoadBackground() override;

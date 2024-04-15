@@ -12,19 +12,20 @@ CBackground::~CBackground()
 }
 
 
-void CBackground::SetAnimation(const wstring& strRelativeAnimFilePath)
+void CBackground::SetAnimation(const wstring& strRelativeAnimFilePath, bool _RepeatReverse)
 {
+	// _RepeatReverse 기본값은 false
+
 	if (m_Animator == nullptr)
 		m_Animator = AddComponent(new CAnimator);
-
-	m_Animator->LoadAnimation(strRelativeAnimFilePath);
-	m_Animator->Play(ExtractFileName(strRelativeAnimFilePath), true);
+	
+	m_Animator->Play(m_Animator->LoadAnimation(strRelativeAnimFilePath)->GetName(), true, _RepeatReverse);
 }
 	
 
 void CBackground::begin()
 {
-
+	
 }
 
 void CBackground::tick()

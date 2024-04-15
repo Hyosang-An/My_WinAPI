@@ -45,22 +45,11 @@ public:
 
 	bool operator ==(Vec2 _Other) { return x == _Other.x && y == _Other.y; }
 
-	void operator +=(float _f)
-	{
-		x += _f;
-		y += _f;
-	}
 
 	void operator +=(Vec2 _Other)
 	{
 		x += _Other.x;
 		y += _Other.y;
-	}
-
-	void operator -=(float _f)
-	{
-		x -= _f;
-		y -= _f;
 	}
 
 	void operator -=(Vec2 _Other)
