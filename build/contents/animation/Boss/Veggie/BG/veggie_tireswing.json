@@ -1,0 +1,116 @@
+{"frames": [
+
+{
+	"filename": "veggie_tireswing_0001.png",
+	"frame": {"x":0,"y":0,"w":73,"h":132},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":132},
+	"sourceSize": {"w":73,"h":132}
+},
+{
+	"filename": "veggie_tireswing_0002.png",
+	"frame": {"x":73,"y":0,"w":74,"h":131},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":74,"h":131},
+	"sourceSize": {"w":74,"h":131}
+},
+{
+	"filename": "veggie_tireswing_0003.png",
+	"frame": {"x":147,"y":0,"w":73,"h":131},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":131},
+	"sourceSize": {"w":73,"h":131}
+},
+{
+	"filename": "veggie_tireswing_0004.png",
+	"frame": {"x":220,"y":0,"w":73,"h":132},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":132},
+	"sourceSize": {"w":73,"h":132}
+},
+{
+	"filename": "veggie_tireswing_0005.png",
+	"frame": {"x":293,"y":0,"w":73,"h":132},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":132},
+	"sourceSize": {"w":73,"h":132}
+},
+{
+	"filename": "veggie_tireswing_0006.png",
+	"frame": {"x":366,"y":0,"w":71,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":71,"h":133},
+	"sourceSize": {"w":71,"h":133}
+},
+{
+	"filename": "veggie_tireswing_0007.png",
+	"frame": {"x":437,"y":0,"w":68,"h":131},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":131},
+	"sourceSize": {"w":68,"h":131}
+},
+{
+	"filename": "veggie_tireswing_0008.png",
+	"frame": {"x":505,"y":0,"w":65,"h":132},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":132},
+	"sourceSize": {"w":65,"h":132}
+},
+{
+	"filename": "veggie_tireswing_0009.png",
+	"frame": {"x":570,"y":0,"w":62,"h":132},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":132},
+	"sourceSize": {"w":62,"h":132}
+},
+{
+	"filename": "veggie_tireswing_0010.png",
+	"frame": {"x":632,"y":0,"w":61,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":133},
+	"sourceSize": {"w":61,"h":133}
+},
+{
+	"filename": "veggie_tireswing_0011.png",
+	"frame": {"x":693,"y":0,"w":59,"h":134},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":59,"h":134},
+	"sourceSize": {"w":59,"h":134}
+},
+{
+	"filename": "veggie_tireswing_0012.png",
+	"frame": {"x":752,"y":0,"w":58,"h":134},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":134},
+	"sourceSize": {"w":58,"h":134}
+},
+{
+	"filename": "veggie_tireswing_0013.png",
+	"frame": {"x":810,"y":0,"w":56,"h":134},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":134},
+	"sourceSize": {"w":56,"h":134}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_tireswing.png",
+	"format": "RGBA8888",
+	"size": {"w":866,"h":134},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7459d892f4fd67ade1b2e328814ebd66:28bc48f6b58960accfdc56562067b54f:bb4af7b2cd2c23ee4dd5bfcc6253fe87$"
+}
+}
