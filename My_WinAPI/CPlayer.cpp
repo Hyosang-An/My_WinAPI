@@ -159,6 +159,7 @@ CPlayer::CPlayer(const CPlayer& _other) :
 
 CPlayer::~CPlayer()
 {
+	Safe_Del_Map(m_mapEffect);
 }
 
 

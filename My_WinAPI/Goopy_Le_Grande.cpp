@@ -48,6 +48,7 @@ Goopy_Le_Grande::Goopy_Le_Grande()
 
 Goopy_Le_Grande::~Goopy_Le_Grande()
 {
+	Safe_Del_Map(m_mapEffect);
 }
 
 void Goopy_Le_Grande::begin()
