@@ -17,6 +17,7 @@ public:
     void PlayEffect();
 
 public:
+    virtual void begin();
     virtual void tick();
 
     virtual CEffect* Clone() override { return new CEffect(*this); }

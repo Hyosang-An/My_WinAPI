@@ -5,12 +5,18 @@
 #include "Cloud.h"
 #include "CGround.h"
 #include "CWall.h"
+#include "CEffect.h"
+#include "Potato.h"
+#include "Onion.h"
 
 CLevel_Veggie::CLevel_Veggie() :
 	m_player{},
-	m_Boss{}
+	m_Boss{},
+	m_BurstEffect{},
+	m_BurstDust{}
 {
 	SetName(L"Veggie_Level");
+
 }
 
 CLevel_Veggie::~CLevel_Veggie()
@@ -22,6 +28,7 @@ void CLevel_Veggie::Enter()
 	// 카메라 설정
 	CCamera::GetInstance().SetCameraInitialLookAt(Vec2(0, 0));
 	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::BOSS_STAGE, Vec2(-670, 670));
+	CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_IN, 3);
 
 	//배경 추가
 	LoadBackground();
@@ -31,6 +38,8 @@ void CLevel_Veggie::Enter()
 
 	// 충돌 설정
 	SetCollision();
+
+	
 }
 
 void CLevel_Veggie::tick()
@@ -41,19 +50,131 @@ void CLevel_Veggie::tick()
 	{
 		ChangeLevel(LEVEL_TYPE::Test);
 	}
+
+	switch (m_PhaseState)
+	{
+		case CLevel_Veggie::PHASE_STATE::PHASE1:
+		{
+			// BurstEffect 재설정
+			if (m_BurstEffect != nullptr && m_BurstEffect->IsDead())
+			{
+				m_BurstEffect = nullptr;				
+			}
+
+			// 보스 생성
+			if (!m_BossSpawnFlag && m_BurstEffect != nullptr && m_BurstEffect->GetComponent<CAnimator>()->GetCurAnimationFrmIdx() == 8)
+			{
+				m_Boss = new Potato();
+				m_Boss->SetName(L"Potato");
+				m_Boss->SetPos(Vec2(400, 110));
+				SpawnObject(LAYER_TYPE::BOSS, m_Boss);
+
+				m_BossSpawnFlag = true;
+			}
+
+			// 남은 m_BurstDust 생성
+			if (m_BurstDust == nullptr && m_BurstEffect && m_BurstEffect->GetComponent<CAnimator>()->GetCurAnimationFrmIdx() == 17)
+			{
+				m_BurstDust = new CBackground;
+				m_BurstDust->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"veggie_potato_ground_burst_front_0018", L"animation\\Boss\\Veggie\\potato\\ground_burst\\veggie_potato_ground_burst_front_0018.png"));
+				m_BurstDust->SetPos(Vec2(400, 270));
+				m_BurstDust->SetName(L"Burst_Dust1");
+				SpawnObject(LAYER_TYPE::FOREGROUND, m_BurstDust);
+			}
+
+			// 다음 페이즈로 전환
+			if (m_Boss && m_Boss->IsDead())
+			{
+				m_Boss = nullptr;
+
+				m_BurstDust->SelfDestruct();
+				m_BurstDust = nullptr;
+
+				m_PhaseState = PHASE_STATE::PHASE2;
+
+				m_BurstEffect = new CEffect;
+				m_BurstEffect->SetName(L"veggie_potato_ground_burst_front");
+				m_BurstEffect->SetAnimation(L"animation\\Boss\\Veggie\\potato\\ground_burst\\veggie_potato_ground_burst_front.anim");
+				m_BurstEffect->SetPos(Vec2(0, 100));
+				SpawnObject(LAYER_TYPE::EFFECT, m_BurstEffect);
+
+				m_BossSpawnFlag = false;
+			}
+
+			break;
+		}
+		case CLevel_Veggie::PHASE_STATE::PHASE2:
+		{
+			// BurstEffect 재설정
+			if (m_BurstEffect != nullptr && m_BurstEffect->IsDead())
+			{
+				m_BurstEffect = nullptr;
+			}
+
+			// 보스 생성
+			if (!m_BossSpawnFlag && m_BurstEffect != nullptr && m_BurstEffect->GetComponent<CAnimator>()->GetCurAnimationFrmIdx() == 8)
+			{
+				
+				m_Boss = new Onion;
+				m_Boss->SetName(L"Onion");
+				m_Boss->SetPos(Vec2(0, 110));
+				SpawnObject(LAYER_TYPE::BOSS, m_Boss);
+
+				m_BossSpawnFlag = true;
+			}
+
+			// 남은 m_BurstDust 생성
+			if (m_BurstEffect && m_BurstEffect->GetComponent<CAnimator>()->IsCurAnimationFinished())
+			{
+
+				m_BurstDust = new CBackground;
+				m_BurstDust->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"veggie_potato_ground_burst_front_0018", L"animation\\Boss\\Veggie\\potato\\ground_burst\\veggie_potato_ground_burst_front_0018.png"));
+				m_BurstDust->SetPos(Vec2(0, 250));
+				SpawnObject(LAYER_TYPE::FOREGROUND, m_BurstDust);
+			}
+
+			// 다음 페이즈로 전환
+			if (m_Boss && static_cast<Onion*>(m_Boss)->GetState() == Onion::STATE::DEATH && m_Boss->GetComponent<CAnimator>()->IsCurAnimationFinished())
+			{
+				m_BurstDust->SelfDestruct();
+
+				m_PhaseState = PHASE_STATE::PHASE3;
+
+				m_BurstEffect = new CEffect;
+				m_BurstEffect->SetName(L"veggie_carrot_ground_burst_front");
+				m_BurstEffect->SetAnimation(L"animation\\Boss\\Veggie\\carrot\\ground_burst\\veggie_carrot_ground_burst_front.anim");
+				SpawnObject(LAYER_TYPE::EFFECT, m_BurstEffect);
+
+				m_BossSpawnFlag = false;
+			}
+
+			break;
+		}
+		case CLevel_Veggie::PHASE_STATE::PHASE3:
+			break;
+	}
+
+	
+
 }
 
 void CLevel_Veggie::render()
 {
 	CLevel::render();
 
-	/*wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
-	TextOut(SUBDC, 0, (int)CEngine::GetInstance().GetResolution().y - 20,
-		playerHP.c_str(), (int)playerHP.length());*/
-
-	/*wstring bossHP = L"보스 HP : " + std::to_wstring(m_Boss->GetHP());
-	TextOut(SUBDC, (int)CEngine::GetInstance().GetResolution().x - 80, (int)CEngine::GetInstance().GetResolution().y - 20,
-		bossHP.c_str(), (int)bossHP.length());*/
+	if (m_player)
+	{
+		wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
+		TextOut(SUBDC, 0, (int)CEngine::GetInstance().GetResolution().y - 20,
+			playerHP.c_str(), (int)playerHP.length());
+	}
+	
+	if (m_Boss)
+	{
+		wstring bossHP = L"보스 HP : " + std::to_wstring(m_Boss->GetHP());
+		TextOut(SUBDC, (int)CEngine::GetInstance().GetResolution().x - 80, (int)CEngine::GetInstance().GetResolution().y - 20,
+			bossHP.c_str(), (int)bossHP.length());
+	}
 }
 
 void CLevel_Veggie::LoadBackground()
@@ -150,15 +271,22 @@ void CLevel_Veggie::LoadBackground()
 
 	// 가까이에 있는 배경
 	BG = new CBackground;
-	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"veggie_bg_fore", L"texture\\Boss Stage\\Veggie_BG\\veggie_bg_fore.png"));
-	BG->SetPos(Vec2(0, 110 + 40));
+	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"veggie_bg_fore2", L"texture\\Boss Stage\\Veggie_BG\\veggie_bg_fore2.png"));
+	BG->SetPos(Vec2(0, 60));
+	BG->SetDepth(BACKGROUND_DEPTH::Fore);
+	AddObject(LAYER_TYPE::BACKGROUND, BG);
+
+	// 가까이에 있는 배경
+	BG = new CBackground;
+	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"veggie_bg_fore1", L"texture\\Boss Stage\\Veggie_BG\\veggie_bg_fore1.png"));
+	BG->SetPos(Vec2(0, 200));
 	BG->SetDepth(BACKGROUND_DEPTH::Fore);
 	AddObject(LAYER_TYPE::BACKGROUND, BG);
 
 	// 플레이어 앞에 위치하는 배경
 	BG = new CBackground;
 	BG->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"veggie_bg_0001", L"texture\\Boss Stage\\Veggie_BG\\veggie_bg_0001.png"));
-	BG->SetPos(Vec2(400, 300));
+	BG->SetPos(Vec2(400, 330));
 	AddObject(LAYER_TYPE::FOREGROUND, BG);
 
 	BG = new CBackground;
@@ -173,17 +301,21 @@ void CLevel_Veggie::LoadObject()
 	m_player = new CPlayer;
 	m_player->SetName(L"Player");
 	m_player->SetPos(0, 0);
-	m_player->SetScale(100, 100);
 	AddObject(LAYER_TYPE::PLAYER, m_player);
 
+	// BurstEffect 생성
+	m_BurstEffect = new CEffect;
+	m_BurstEffect->SetName(L"veggie_potato_ground_burst_front");
+	m_BurstEffect->SetAnimation(L"animation\\Boss\\Veggie\\potato\\ground_burst\\veggie_potato_ground_burst_front.anim");
+	m_BurstEffect->SetPos(400, 120); 
+	AddObject(LAYER_TYPE::EFFECT, m_BurstEffect);
 
-	// 보스 추가
-	// TODO
+
 
 	// Ground 생성
 	auto ground = new CGround;
 	ground->SetName(L"Ground");
-	ground->SetPos(Vec2(0, 270));
+	ground->SetPos(Vec2(0, 260));
 	ground->SetColliderScale(Vec2(1910, 10));
 	AddObject(LAYER_TYPE::GROUND, ground);
 
@@ -207,5 +339,6 @@ void CLevel_Veggie::SetCollision()
 
 void CLevel_Veggie::Exit()
 {
+	DeleteAllObjects();
 }
 

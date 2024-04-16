@@ -128,53 +128,62 @@
     <Filter Include="03. Game\04. Level\Boss Stage 2\Level Veggie">
       <UniqueIdentifier>{04cc1127-3742-4384-9d5e-2556476bcf27}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object">
+    <Filter Include="03. Game\05. Object">
       <UniqueIdentifier>{2273ef25-bf68-4622-bb95-8aef950a0359}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Player">
+    <Filter Include="03. Game\05. Object\Player">
       <UniqueIdentifier>{95396ce1-c9bc-4c02-9947-5737432ddb91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Missile">
+    <Filter Include="03. Game\05. Object\Missile">
       <UniqueIdentifier>{b9804d65-54d5-4c0d-8b4d-4c011c82c248}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Missile\GuidedMissile">
+    <Filter Include="03. Game\05. Object\Missile\GuidedMissile">
       <UniqueIdentifier>{b9948355-bbbe-46ed-9b09-f43af5188de9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Missile\Player Missile">
+    <Filter Include="03. Game\05. Object\Missile\Player Missile">
       <UniqueIdentifier>{ef1125e9-ea5f-4197-8d47-7121d48c7c62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Missile\Player Missile\Peashooter">
+    <Filter Include="03. Game\05. Object\Missile\Player Missile\Peashooter">
       <UniqueIdentifier>{4776892a-6ce3-48a4-ba0a-7c6aa6291ed1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Monster">
+    <Filter Include="03. Game\05. Object\Monster">
       <UniqueIdentifier>{80f86f13-d77a-44bc-b160-0a20bfdc11b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Force">
+    <Filter Include="03. Game\05. Object\Force">
       <UniqueIdentifier>{c225d237-c84e-4b98-9f21-fbae715dc2d2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Platform">
+    <Filter Include="03. Game\05. Object\Platform">
       <UniqueIdentifier>{c51d1b3a-42f8-4f70-b64c-6b0707cb464f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Ground">
+    <Filter Include="03. Game\05. Object\Ground">
       <UniqueIdentifier>{472b0e40-18d1-4acb-b1ad-97c1c5f3768c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Background">
+    <Filter Include="03. Game\05. Object\Background">
       <UniqueIdentifier>{e208ba97-e3ac-48d3-a60d-f7bcbca27302}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Wall">
+    <Filter Include="03. Game\05. Object\Background\Cloud">
+      <UniqueIdentifier>{4c06ef7e-4f17-49f0-a297-92e8c66d4ff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\05. Object\Wall">
       <UniqueIdentifier>{724c17bd-6a5f-4a10-a8aa-d3dd66b258e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Effect">
+    <Filter Include="03. Game\05. Object\Effect">
       <UniqueIdentifier>{1ef2c0d3-fce0-48c6-9ff1-dd7d9f930678}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Worldmap Player">
+    <Filter Include="03. Game\05. Object\Worldmap Player">
       <UniqueIdentifier>{ac37026d-b67f-4eaa-9ff8-9a78ef0008fb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Worldmap Point">
+    <Filter Include="03. Game\05. Object\Worldmap Point">
       <UniqueIdentifier>{ed85b60b-89d7-4ae4-b145-daef8f9cb61a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\05. Object\Background\Cloud">
-      <UniqueIdentifier>{4c06ef7e-4f17-49f0-a297-92e8c66d4ff8}</UniqueIdentifier>
+    <Filter Include="03. Game\04. Level\Boss Stage 2\Boss Missile">
+      <UniqueIdentifier>{46b65b94-2749-4ee2-b4ac-a0402c8dbb9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\04. Level\Boss Stage 2\Boss Veggie\Potato">
+      <UniqueIdentifier>{d20a4c7e-ef06-4d5a-89a9-96740628e6c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\04. Level\Boss Stage 2\Boss Veggie\Onion">
+      <UniqueIdentifier>{2e9ed639-6dac-4b87-b78a-c0b305d2b4ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -209,7 +218,7 @@
       <Filter>03. Game\01. Header</Filter>
     </ClInclude>
     <ClInclude Include="CObj.h">
-      <Filter>03. Game\04. Level\05. Object</Filter>
+      <Filter>03. Game\05. Object</Filter>
     </ClInclude>
     <ClInclude Include="CLevel.h">
       <Filter>03. Game\04. Level</Filter>
@@ -221,10 +230,10 @@
       <Filter>03. Game\03. Manager\TimeMgr</Filter>
     </ClInclude>
     <ClInclude Include="CMissile.h">
-      <Filter>03. Game\04. Level\05. Object\Missile</Filter>
+      <Filter>03. Game\05. Object\Missile</Filter>
     </ClInclude>
     <ClInclude Include="CPlayer.h">
-      <Filter>03. Game\04. Level\05. Object\Player</Filter>
+      <Filter>03. Game\05. Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="CSelectObj.h">
       <Filter>03. Game\Module\SelectObj</Filter>
@@ -239,7 +248,7 @@
       <Filter>03. Game\06. Component</Filter>
     </ClInclude>
     <ClInclude Include="CMonster.h">
-      <Filter>03. Game\04. Level\05. Object\Monster</Filter>
+      <Filter>03. Game\05. Object\Monster</Filter>
     </ClInclude>
     <ClInclude Include="CCollider.h">
       <Filter>03. Game\06. Component\Collider</Filter>
@@ -269,7 +278,7 @@
       <Filter>03. Game\03. Manager\PathMgr</Filter>
     </ClInclude>
     <ClInclude Include="CGuidedMissile.h">
-      <Filter>03. Game\04. Level\05. Object\Missile\GuidedMissile</Filter>
+      <Filter>03. Game\05. Object\Missile\GuidedMissile</Filter>
     </ClInclude>
     <ClInclude Include="CAnimator.h">
       <Filter>03. Game\06. Component\Animator</Filter>
@@ -305,13 +314,13 @@
       <Filter>03. Game\06. Component\Rigidbody</Filter>
     </ClInclude>
     <ClInclude Include="CForce.h">
-      <Filter>03. Game\04. Level\05. Object\Force</Filter>
+      <Filter>03. Game\05. Object\Force</Filter>
     </ClInclude>
     <ClInclude Include="CPlatform.h">
-      <Filter>03. Game\04. Level\05. Object\Platform</Filter>
+      <Filter>03. Game\05. Object\Platform</Filter>
     </ClInclude>
     <ClInclude Include="CGround.h">
-      <Filter>03. Game\04. Level\05. Object\Ground</Filter>
+      <Filter>03. Game\05. Object\Ground</Filter>
     </ClInclude>
     <ClInclude Include="CCamera.h">
       <Filter>03. Game\03. Manager\Camera</Filter>
@@ -323,10 +332,10 @@
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClInclude>
     <ClInclude Include="CBackground.h">
-      <Filter>03. Game\04. Level\05. Object\Background</Filter>
+      <Filter>03. Game\05. Object\Background</Filter>
     </ClInclude>
     <ClInclude Include="CWall.h">
-      <Filter>03. Game\04. Level\05. Object\Wall</Filter>
+      <Filter>03. Game\05. Object\Wall</Filter>
     </ClInclude>
     <ClInclude Include="CLevel_Goopy_Le_Grande.h">
       <Filter>03. Game\04. Level\Boss Stage 1\Level_Goopy_Le_Grande</Filter>
@@ -338,27 +347,38 @@
       <Filter>03. Game\04. Level\Boss Stage 1\Question Mark</Filter>
     </ClInclude>
     <ClInclude Include="CEffect.h">
-      <Filter>03. Game\04. Level\05. Object\Effect</Filter>
+      <Filter>03. Game\05. Object\Effect</Filter>
     </ClInclude>
     <ClInclude Include="World_Map.h">
       <Filter>03. Game\04. Level\World Map</Filter>
     </ClInclude>
     <ClInclude Include="Worldmap_Player.h">
-      <Filter>03. Game\04. Level\05. Object\Worldmap Player</Filter>
+      <Filter>03. Game\05. Object\Worldmap Player</Filter>
     </ClInclude>
     <ClInclude Include="Peashooter.h">
-      <Filter>03. Game\04. Level\05. Object\Missile\Player Missile\Peashooter</Filter>
+      <Filter>03. Game\05. Object\Missile\Player Missile\Peashooter</Filter>
     </ClInclude>
     <ClInclude Include="CWorldmap_Point.h">
-      <Filter>03. Game\04. Level\05. Object\Worldmap Point</Filter>
-    </ClInclude>
-    <ClInclude Include="Veggie.h">
-      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie</Filter>
+      <Filter>03. Game\05. Object\Worldmap Point</Filter>
     </ClInclude>
     <ClInclude Include="CLevel_Veggie.h">
       <Filter>03. Game\04. Level\Boss Stage 2\Level Veggie</Filter>
     </ClInclude>
-    <ClInclude Include="Cloud.h" />
+    <ClInclude Include="Veggie.h">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie</Filter>
+    </ClInclude>
+    <ClInclude Include="Cloud.h">
+      <Filter>03. Game\05. Object\Background\Cloud</Filter>
+    </ClInclude>
+    <ClInclude Include="Potato.h">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie\Potato</Filter>
+    </ClInclude>
+    <ClInclude Include="Onion.h">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie\Onion</Filter>
+    </ClInclude>
+    <ClInclude Include="Potato_Shot.h">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Missile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -374,7 +394,7 @@
       <Filter>03. Game</Filter>
     </ClCompile>
     <ClCompile Include="CObj.cpp">
-      <Filter>03. Game\04. Level\05. Object</Filter>
+      <Filter>03. Game\05. Object</Filter>
     </ClCompile>
     <ClCompile Include="CLevel.cpp">
       <Filter>03. Game\04. Level</Filter>
@@ -386,10 +406,10 @@
       <Filter>03. Game\03. Manager\TimeMgr</Filter>
     </ClCompile>
     <ClCompile Include="CMissile.cpp">
-      <Filter>03. Game\04. Level\05. Object\Missile</Filter>
+      <Filter>03. Game\05. Object\Missile</Filter>
     </ClCompile>
     <ClCompile Include="CPlayer.cpp">
-      <Filter>03. Game\04. Level\05. Object\Player</Filter>
+      <Filter>03. Game\05. Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="CSelectObj.cpp">
       <Filter>03. Game\Module\SelectObj</Filter>
@@ -404,7 +424,7 @@
       <Filter>03. Game\06. Component</Filter>
     </ClCompile>
     <ClCompile Include="CMonster.cpp">
-      <Filter>03. Game\04. Level\05. Object\Monster</Filter>
+      <Filter>03. Game\05. Object\Monster</Filter>
     </ClCompile>
     <ClCompile Include="CCollider.cpp">
       <Filter>03. Game\06. Component\Collider</Filter>
@@ -434,7 +454,7 @@
       <Filter>03. Game\03. Manager\PathMgr</Filter>
     </ClCompile>
     <ClCompile Include="CGuidedMissile.cpp">
-      <Filter>03. Game\04. Level\05. Object\Missile\GuidedMissile</Filter>
+      <Filter>03. Game\05. Object\Missile\GuidedMissile</Filter>
     </ClCompile>
     <ClCompile Include="CAnimator.cpp">
       <Filter>03. Game\06. Component\Animator</Filter>
@@ -467,13 +487,13 @@
       <Filter>03. Game\06. Component\Rigidbody</Filter>
     </ClCompile>
     <ClCompile Include="CForce.cpp">
-      <Filter>03. Game\04. Level\05. Object\Force</Filter>
+      <Filter>03. Game\05. Object\Force</Filter>
     </ClCompile>
     <ClCompile Include="CPlatform.cpp">
-      <Filter>03. Game\04. Level\05. Object\Platform</Filter>
+      <Filter>03. Game\05. Object\Platform</Filter>
     </ClCompile>
     <ClCompile Include="CGround.cpp">
-      <Filter>03. Game\04. Level\05. Object\Ground</Filter>
+      <Filter>03. Game\05. Object\Ground</Filter>
     </ClCompile>
     <ClCompile Include="CCamera.cpp">
       <Filter>03. Game\03. Manager\Camera</Filter>
@@ -485,10 +505,10 @@
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
-      <Filter>03. Game\04. Level\05. Object\Background</Filter>
+      <Filter>03. Game\05. Object\Background</Filter>
     </ClCompile>
     <ClCompile Include="CWall.cpp">
-      <Filter>03. Game\04. Level\05. Object\Wall</Filter>
+      <Filter>03. Game\05. Object\Wall</Filter>
     </ClCompile>
     <ClCompile Include="CLevel_Goopy_Le_Grande.cpp">
       <Filter>03. Game\04. Level\Boss Stage 1\Level_Goopy_Le_Grande</Filter>
@@ -500,27 +520,38 @@
       <Filter>03. Game\04. Level\Boss Stage 1\Question Mark</Filter>
     </ClCompile>
     <ClCompile Include="CEffect.cpp">
-      <Filter>03. Game\04. Level\05. Object\Effect</Filter>
+      <Filter>03. Game\05. Object\Effect</Filter>
     </ClCompile>
     <ClCompile Include="World_Map.cpp">
       <Filter>03. Game\04. Level\World Map</Filter>
     </ClCompile>
     <ClCompile Include="Worldmap_Player.cpp">
-      <Filter>03. Game\04. Level\05. Object\Worldmap Player</Filter>
+      <Filter>03. Game\05. Object\Worldmap Player</Filter>
     </ClCompile>
     <ClCompile Include="Peashooter.cpp">
-      <Filter>03. Game\04. Level\05. Object\Missile\Player Missile\Peashooter</Filter>
+      <Filter>03. Game\05. Object\Missile\Player Missile\Peashooter</Filter>
     </ClCompile>
     <ClCompile Include="CWorldmap_Point.cpp">
-      <Filter>03. Game\04. Level\05. Object\Worldmap Point</Filter>
-    </ClCompile>
-    <ClCompile Include="Veggie.cpp">
-      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie</Filter>
+      <Filter>03. Game\05. Object\Worldmap Point</Filter>
     </ClCompile>
     <ClCompile Include="CLevel_Veggie.cpp">
       <Filter>03. Game\04. Level\Boss Stage 2\Level Veggie</Filter>
     </ClCompile>
-    <ClCompile Include="Cloud.cpp" />
+    <ClCompile Include="Veggie.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie</Filter>
+    </ClCompile>
+    <ClCompile Include="Cloud.cpp">
+      <Filter>03. Game\05. Object\Background\Cloud</Filter>
+    </ClCompile>
+    <ClCompile Include="Potato.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie\Potato</Filter>
+    </ClCompile>
+    <ClCompile Include="Onion.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie\Onion</Filter>
+    </ClCompile>
+    <ClCompile Include="Potato_Shot.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Missile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "veggie_potato_shot_pink_0001.png",
+	"frame": {"x":0,"y":0,"w":135,"h":117},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":117},
+	"sourceSize": {"w":135,"h":117}
+},
+{
+	"filename": "veggie_potato_shot_pink_0002.png",
+	"frame": {"x":0,"y":117,"w":132,"h":132},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":132,"h":132},
+	"sourceSize": {"w":132,"h":132}
+},
+{
+	"filename": "veggie_potato_shot_pink_0003.png",
+	"frame": {"x":0,"y":249,"w":130,"h":141},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":141},
+	"sourceSize": {"w":130,"h":141}
+},
+{
+	"filename": "veggie_potato_shot_pink_0004.png",
+	"frame": {"x":0,"y":390,"w":134,"h":137},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":134,"h":137},
+	"sourceSize": {"w":134,"h":137}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_potato_shot_pink.png",
+	"format": "RGBA8888",
+	"size": {"w":135,"h":527},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ac3ddd0f62cdf77e39a721b83081a594:a1cb45c4dbaef7691311439d43532ca4:cc95831e1e650e47166101242b99db17$"
+}
+}

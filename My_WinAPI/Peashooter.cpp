@@ -3,6 +3,8 @@
 
 Peashooter::Peashooter()
 {
+	m_fSpeed = 2000;
+
 	m_Animator = AddComponent(new CAnimator);
 
 

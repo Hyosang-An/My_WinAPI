@@ -7,7 +7,7 @@ protected:
 	float   m_fSpeed;
 	float	m_fAngle;
 
-	CCollider* m_pCollider;
+	CCollider* m_Collider;
 
 	int		m_iOffensePower = 1;
 

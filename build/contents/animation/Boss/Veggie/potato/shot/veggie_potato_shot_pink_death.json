@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "veggie_potato_shot_pink_death_0001.png",
+	"frame": {"x":0,"y":0,"w":117,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":150},
+	"sourceSize": {"w":117,"h":150}
+},
+{
+	"filename": "veggie_potato_shot_pink_death_0002.png",
+	"frame": {"x":117,"y":0,"w":167,"h":190},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":167,"h":190},
+	"sourceSize": {"w":167,"h":190}
+},
+{
+	"filename": "veggie_potato_shot_pink_death_0003.png",
+	"frame": {"x":284,"y":0,"w":212,"h":219},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":212,"h":219},
+	"sourceSize": {"w":212,"h":219}
+},
+{
+	"filename": "veggie_potato_shot_pink_death_0004.png",
+	"frame": {"x":0,"y":219,"w":227,"h":233},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":233},
+	"sourceSize": {"w":227,"h":233}
+},
+{
+	"filename": "veggie_potato_shot_pink_death_0005.png",
+	"frame": {"x":227,"y":219,"w":254,"h":244},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":244},
+	"sourceSize": {"w":254,"h":244}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_potato_shot_pink_death.png",
+	"format": "RGBA8888",
+	"size": {"w":496,"h":463},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f303163d53891f3c32ce94d4ba4d980a:25ba16c2c2036bc13d4a8db3c96dcf5d:7eadba73eb239df410ea59124c1a7847$"
+}
+}

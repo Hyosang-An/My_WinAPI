@@ -83,8 +83,8 @@ private:
 
 private:
     void UpdateState();
-    void MoveAndAction();
     void UpdateAnimation();
+    void MoveAndAction();
 
     void Phase1_Update();
     void Phase2_Update();

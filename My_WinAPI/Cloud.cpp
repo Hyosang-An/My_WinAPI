@@ -17,8 +17,8 @@ void Cloud::SetStageLimit(float leftLimit, float rightLimit)
 
 void Cloud::begin()
 {
-	m_Scale.x = m_Texture->GetWidth();
-	m_Scale.y = m_Texture->GetHeight();
+	m_Scale.x = (float)m_Texture->GetWidth();
+	m_Scale.y = (float)m_Texture->GetHeight();
 }
 
 void Cloud::tick()

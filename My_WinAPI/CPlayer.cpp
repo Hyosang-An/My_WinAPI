@@ -896,8 +896,6 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 {
 	CMissile* pMissile = new Peashooter;
 
-	pMissile->SetScale(20, 20);
-
 	switch (_dir)
 	{
 		case SHOOTING_DIR::LEFT:
@@ -937,7 +935,6 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 		default:
 			break;
 	}
-
 
 	pMissile->SetName(L"Player Missile");
 

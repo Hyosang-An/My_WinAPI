@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "veggie_carrot_bomb_death_b_0001.png",
+	"frame": {"x":0,"y":0,"w":236,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":160},
+	"sourceSize": {"w":236,"h":160}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0002.png",
+	"frame": {"x":236,"y":0,"w":160,"h":141},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":141},
+	"sourceSize": {"w":160,"h":141}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0003.png",
+	"frame": {"x":396,"y":0,"w":218,"h":207},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":218,"h":207},
+	"sourceSize": {"w":218,"h":207}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0004.png",
+	"frame": {"x":614,"y":0,"w":242,"h":273},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":242,"h":273},
+	"sourceSize": {"w":242,"h":273}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0005.png",
+	"frame": {"x":0,"y":273,"w":291,"h":331},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":291,"h":331},
+	"sourceSize": {"w":291,"h":331}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0006.png",
+	"frame": {"x":291,"y":273,"w":358,"h":349},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":358,"h":349},
+	"sourceSize": {"w":358,"h":349}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0007.png",
+	"frame": {"x":0,"y":622,"w":437,"h":395},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":437,"h":395},
+	"sourceSize": {"w":437,"h":395}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0008.png",
+	"frame": {"x":437,"y":622,"w":370,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":370,"h":392},
+	"sourceSize": {"w":370,"h":392}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0009.png",
+	"frame": {"x":0,"y":1017,"w":367,"h":278},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":367,"h":278},
+	"sourceSize": {"w":367,"h":278}
+},
+{
+	"filename": "veggie_carrot_bomb_death_b_0010.png",
+	"frame": {"x":367,"y":1017,"w":378,"h":284},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":378,"h":284},
+	"sourceSize": {"w":378,"h":284}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_carrot_bomb_death_b.png",
+	"format": "RGBA8888",
+	"size": {"w":856,"h":1301},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b805b5cad0135c1fa7341b24eef02e64:41e17af06ec687de2c0432e2b220989d:1f8b38018ae69aacfaaf6b4bf6b78a78$"
+}
+}

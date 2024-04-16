@@ -6,20 +6,20 @@
 
 CMissile::CMissile() :
 	m_fAngle(-3.14f*0.5f),
-	m_fSpeed(2000),
-	m_pCollider(nullptr)
+	m_fSpeed(200),
+	m_Collider(nullptr)
 {
-	m_pCollider = AddComponent(new CCollider);
-	m_pCollider->SetScale(Vec2(20, 20));
+	m_Collider = AddComponent(new CCollider);
+	m_Collider->SetScale(Vec2(20, 20));
 }
 
 CMissile::CMissile(const CMissile& _other) :
 	CObj(_other),
 	m_fAngle(_other.m_fAngle),
 	m_fSpeed(_other.m_fSpeed),
-	m_pCollider{}
+	m_Collider{}
 {
-	m_pCollider = AddComponent(new CCollider(*_other.m_pCollider));
+	m_Collider = AddComponent(new CCollider(*_other.m_Collider));
 }
 
 CMissile::~CMissile()

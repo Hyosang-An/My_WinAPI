@@ -335,6 +335,6 @@ void CCamera::CameraEffectRender()
 	}
 
 	auto fx = m_vecScreenFX[m_CurScreenFXFrameIdx];
-	AlphaBlend(SUBDC, 0, 0, m_resolution.x, m_resolution.y
+	AlphaBlend(SUBDC, 0, 0, (int)m_resolution.x, (int)m_resolution.y
 		, fx->GetDC(), 0, 0, fx->GetWidth(), fx->GetHeight(), bf);
 }

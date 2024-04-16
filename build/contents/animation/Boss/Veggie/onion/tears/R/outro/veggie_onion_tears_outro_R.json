@@ -1,0 +1,68 @@
+{"frames": [
+
+{
+	"filename": "veggie_onion_tears_outro_0001.png",
+	"frame": {"x":0,"y":0,"w":650,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":650,"h":383},
+	"sourceSize": {"w":650,"h":383}
+},
+{
+	"filename": "veggie_onion_tears_outro_0002.png",
+	"frame": {"x":650,"y":0,"w":610,"h":286},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":610,"h":286},
+	"sourceSize": {"w":610,"h":286}
+},
+{
+	"filename": "veggie_onion_tears_outro_0003.png",
+	"frame": {"x":1260,"y":0,"w":574,"h":248},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":574,"h":248},
+	"sourceSize": {"w":574,"h":248}
+},
+{
+	"filename": "veggie_onion_tears_outro_0004.png",
+	"frame": {"x":0,"y":383,"w":437,"h":172},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":437,"h":172},
+	"sourceSize": {"w":437,"h":172}
+},
+{
+	"filename": "veggie_onion_tears_outro_0005.png",
+	"frame": {"x":437,"y":383,"w":348,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":348,"h":101},
+	"sourceSize": {"w":348,"h":101}
+},
+{
+	"filename": "veggie_onion_tears_outro_0006.png",
+	"frame": {"x":785,"y":383,"w":206,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":206,"h":130},
+	"sourceSize": {"w":206,"h":130}
+},
+{
+	"filename": "veggie_onion_tears_outro_0007.png",
+	"frame": {"x":991,"y":383,"w":194,"h":129},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":194,"h":129},
+	"sourceSize": {"w":194,"h":129}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_onion_tears_outro_R.png",
+	"format": "RGBA8888",
+	"size": {"w":1834,"h":555},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:98c136d97897c56d69cd631ce13ab456:48c0a756e932f5c471c5923a43fecc37:1022d3a67c3bcb48ec973c349d302edb$"
+}
+}

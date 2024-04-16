@@ -1,0 +1,180 @@
+{"frames": [
+
+{
+	"filename": "veggie_carrot_idle_0001.png",
+	"frame": {"x":0,"y":0,"w":335,"h":511},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":511},
+	"sourceSize": {"w":335,"h":511}
+},
+{
+	"filename": "veggie_carrot_idle_0002.png",
+	"frame": {"x":335,"y":0,"w":363,"h":505},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":363,"h":505},
+	"sourceSize": {"w":363,"h":505}
+},
+{
+	"filename": "veggie_carrot_idle_0003.png",
+	"frame": {"x":698,"y":0,"w":394,"h":501},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":394,"h":501},
+	"sourceSize": {"w":394,"h":501}
+},
+{
+	"filename": "veggie_carrot_idle_0004.png",
+	"frame": {"x":1092,"y":0,"w":345,"h":549},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":345,"h":549},
+	"sourceSize": {"w":345,"h":549}
+},
+{
+	"filename": "veggie_carrot_idle_0005.png",
+	"frame": {"x":1437,"y":0,"w":346,"h":491},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":346,"h":491},
+	"sourceSize": {"w":346,"h":491}
+},
+{
+	"filename": "veggie_carrot_idle_0006.png",
+	"frame": {"x":0,"y":549,"w":348,"h":488},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":348,"h":488},
+	"sourceSize": {"w":348,"h":488}
+},
+{
+	"filename": "veggie_carrot_idle_0007.png",
+	"frame": {"x":348,"y":549,"w":346,"h":482},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":346,"h":482},
+	"sourceSize": {"w":346,"h":482}
+},
+{
+	"filename": "veggie_carrot_idle_0008.png",
+	"frame": {"x":694,"y":549,"w":350,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":480},
+	"sourceSize": {"w":350,"h":480}
+},
+{
+	"filename": "veggie_carrot_idle_0009.png",
+	"frame": {"x":1044,"y":549,"w":347,"h":477},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":347,"h":477},
+	"sourceSize": {"w":347,"h":477}
+},
+{
+	"filename": "veggie_carrot_idle_0010.png",
+	"frame": {"x":1391,"y":549,"w":351,"h":477},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":351,"h":477},
+	"sourceSize": {"w":351,"h":477}
+},
+{
+	"filename": "veggie_carrot_idle_0011.png",
+	"frame": {"x":0,"y":1037,"w":352,"h":473},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":352,"h":473},
+	"sourceSize": {"w":352,"h":473}
+},
+{
+	"filename": "veggie_carrot_idle_0012.png",
+	"frame": {"x":352,"y":1037,"w":352,"h":469},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":352,"h":469},
+	"sourceSize": {"w":352,"h":469}
+},
+{
+	"filename": "veggie_carrot_idle_0013.png",
+	"frame": {"x":704,"y":1037,"w":348,"h":473},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":348,"h":473},
+	"sourceSize": {"w":348,"h":473}
+},
+{
+	"filename": "veggie_carrot_idle_0014.png",
+	"frame": {"x":1052,"y":1037,"w":343,"h":472},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":472},
+	"sourceSize": {"w":343,"h":472}
+},
+{
+	"filename": "veggie_carrot_idle_0015.png",
+	"frame": {"x":1395,"y":1037,"w":342,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":342,"h":470},
+	"sourceSize": {"w":342,"h":470}
+},
+{
+	"filename": "veggie_carrot_idle_0016.png",
+	"frame": {"x":0,"y":1510,"w":338,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":338,"h":470},
+	"sourceSize": {"w":338,"h":470}
+},
+{
+	"filename": "veggie_carrot_idle_0017.png",
+	"frame": {"x":338,"y":1510,"w":336,"h":473},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":336,"h":473},
+	"sourceSize": {"w":336,"h":473}
+},
+{
+	"filename": "veggie_carrot_idle_0018.png",
+	"frame": {"x":674,"y":1510,"w":337,"h":483},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":483},
+	"sourceSize": {"w":337,"h":483}
+},
+{
+	"filename": "veggie_carrot_idle_0019.png",
+	"frame": {"x":1011,"y":1510,"w":335,"h":486},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":486},
+	"sourceSize": {"w":335,"h":486}
+},
+{
+	"filename": "veggie_carrot_idle_0020.png",
+	"frame": {"x":1346,"y":1510,"w":335,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":500},
+	"sourceSize": {"w":335,"h":500}
+},
+{
+	"filename": "veggie_carrot_idle_0021.png",
+	"frame": {"x":1681,"y":1510,"w":334,"h":506},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":334,"h":506},
+	"sourceSize": {"w":334,"h":506}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_carrot_idle.png",
+	"format": "RGBA8888",
+	"size": {"w":2015,"h":2016},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2015e8e28840e78e7ba12a32b59141ec:901fffb3dfb96258fcaa358b4efb2838:cab76a9912502ca676d566783035628e$"
+}
+}

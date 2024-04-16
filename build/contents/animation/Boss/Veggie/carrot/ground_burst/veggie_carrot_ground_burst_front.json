@@ -1,0 +1,156 @@
+{"frames": [
+
+{
+	"filename": "veggie_carrot_ground_burst_front_0001.png",
+	"frame": {"x":999,"y":151,"w":263,"h":317},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":263,"h":317},
+	"sourceSize": {"w":263,"h":317}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0002.png",
+	"frame": {"x":326,"y":0,"w":336,"h":116},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":336,"h":116},
+	"sourceSize": {"w":336,"h":116}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0003.png",
+	"frame": {"x":662,"y":0,"w":333,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":333,"h":130},
+	"sourceSize": {"w":333,"h":130}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0004.png",
+	"frame": {"x":995,"y":0,"w":335,"h":139},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":139},
+	"sourceSize": {"w":335,"h":139}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0005.png",
+	"frame": {"x":1330,"y":0,"w":331,"h":151},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":331,"h":151},
+	"sourceSize": {"w":331,"h":151}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0006.png",
+	"frame": {"x":0,"y":151,"w":334,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":334,"h":160},
+	"sourceSize": {"w":334,"h":160}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0007.png",
+	"frame": {"x":334,"y":151,"w":330,"h":180},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":180},
+	"sourceSize": {"w":330,"h":180}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0008.png",
+	"frame": {"x":664,"y":151,"w":335,"h":202},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":202},
+	"sourceSize": {"w":335,"h":202}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0009.png",
+	"frame": {"x":1262,"y":151,"w":338,"h":322},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":338,"h":322},
+	"sourceSize": {"w":338,"h":322}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0010.png",
+	"frame": {"x":0,"y":473,"w":341,"h":354},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":341,"h":354},
+	"sourceSize": {"w":341,"h":354}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0011.png",
+	"frame": {"x":0,"y":836,"w":335,"h":365},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":365},
+	"sourceSize": {"w":335,"h":365}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0012.png",
+	"frame": {"x":1198,"y":836,"w":349,"h":379},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":349,"h":379},
+	"sourceSize": {"w":349,"h":379}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0013.png",
+	"frame": {"x":824,"y":836,"w":374,"h":377},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":374,"h":377},
+	"sourceSize": {"w":374,"h":377}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0014.png",
+	"frame": {"x":335,"y":836,"w":489,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":489,"h":368},
+	"sourceSize": {"w":489,"h":368}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0015.png",
+	"frame": {"x":1329,"y":473,"w":438,"h":363},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":438,"h":363},
+	"sourceSize": {"w":438,"h":363}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0016.png",
+	"frame": {"x":341,"y":473,"w":494,"h":361},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":361},
+	"sourceSize": {"w":494,"h":361}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0017.png",
+	"frame": {"x":835,"y":473,"w":494,"h":361},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":361},
+	"sourceSize": {"w":494,"h":361}
+},
+{
+	"filename": "veggie_carrot_ground_burst_front_0018.png",
+	"frame": {"x":0,"y":0,"w":326,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":326,"h":94},
+	"sourceSize": {"w":326,"h":94}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_carrot_ground_burst_front.png",
+	"format": "RGBA8888",
+	"size": {"w":1767,"h":1215},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e4f0006135a153f1b65ae22241a76246:1028bcf04aa5bf348f0753ea8f61a3b8:2b7e17f4950dcca83bbc05e62dfc51dc$"
+}
+}

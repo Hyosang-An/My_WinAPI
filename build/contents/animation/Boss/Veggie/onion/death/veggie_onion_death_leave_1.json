@@ -1,0 +1,100 @@
+{"frames": [
+
+{
+	"filename": "veggie_onion_death_leave_0001.png",
+	"frame": {"x":456,"y":1071,"w":449,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":449,"h":604},
+	"sourceSize": {"w":449,"h":604}
+},
+{
+	"filename": "veggie_onion_death_leave_0002.png",
+	"frame": {"x":1023,"y":473,"w":452,"h":598},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":452,"h":598},
+	"sourceSize": {"w":452,"h":598}
+},
+{
+	"filename": "veggie_onion_death_leave_0003.png",
+	"frame": {"x":0,"y":1071,"w":456,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":596},
+	"sourceSize": {"w":456,"h":596}
+},
+{
+	"filename": "veggie_onion_death_leave_0004.png",
+	"frame": {"x":905,"y":1071,"w":480,"h":573},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":573},
+	"sourceSize": {"w":480,"h":573}
+},
+{
+	"filename": "veggie_onion_death_leave_0005.png",
+	"frame": {"x":1475,"y":473,"w":502,"h":549},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":502,"h":549},
+	"sourceSize": {"w":502,"h":549}
+},
+{
+	"filename": "veggie_onion_death_leave_0006.png",
+	"frame": {"x":515,"y":473,"w":508,"h":528},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":508,"h":528},
+	"sourceSize": {"w":508,"h":528}
+},
+{
+	"filename": "veggie_onion_death_leave_0007.png",
+	"frame": {"x":0,"y":473,"w":515,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":515,"h":510},
+	"sourceSize": {"w":515,"h":510}
+},
+{
+	"filename": "veggie_onion_death_leave_0008.png",
+	"frame": {"x":1385,"y":1071,"w":568,"h":493},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":568,"h":493},
+	"sourceSize": {"w":568,"h":493}
+},
+{
+	"filename": "veggie_onion_death_leave_0009.png",
+	"frame": {"x":1049,"y":0,"w":537,"h":473},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":473},
+	"sourceSize": {"w":537,"h":473}
+},
+{
+	"filename": "veggie_onion_death_leave_0010.png",
+	"frame": {"x":522,"y":0,"w":527,"h":466},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":527,"h":466},
+	"sourceSize": {"w":527,"h":466}
+},
+{
+	"filename": "veggie_onion_death_leave_0011.png",
+	"frame": {"x":0,"y":0,"w":522,"h":454},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":522,"h":454},
+	"sourceSize": {"w":522,"h":454}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_onion_death_leave_1.png",
+	"format": "RGBA8888",
+	"size": {"w":1977,"h":1675},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6af3fb8f8d45f2bf9b569fcee5466d7e:986ffce4c5a5bb72da0d862421b4bfd9:c44951f2cfcd54b3c1b2ff92f860f74b$"
+}
+}

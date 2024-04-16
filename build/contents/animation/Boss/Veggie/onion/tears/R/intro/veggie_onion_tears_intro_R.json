@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "veggie_onion_tears_intro_0001.png",
+	"frame": {"x":0,"y":0,"w":79,"h":135},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":79,"h":135},
+	"sourceSize": {"w":79,"h":135}
+},
+{
+	"filename": "veggie_onion_tears_intro_0002.png",
+	"frame": {"x":79,"y":0,"w":324,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":324,"h":300},
+	"sourceSize": {"w":324,"h":300}
+},
+{
+	"filename": "veggie_onion_tears_intro_0003.png",
+	"frame": {"x":0,"y":709,"w":494,"h":410},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":410},
+	"sourceSize": {"w":494,"h":410}
+},
+{
+	"filename": "veggie_onion_tears_intro_0004.png",
+	"frame": {"x":0,"y":300,"w":631,"h":409},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":631,"h":409},
+	"sourceSize": {"w":631,"h":409}
+},
+{
+	"filename": "veggie_onion_tears_intro_0005.png",
+	"frame": {"x":0,"y":1119,"w":662,"h":410},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":662,"h":410},
+	"sourceSize": {"w":662,"h":410}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_onion_tears_intro_R.png",
+	"format": "RGBA8888",
+	"size": {"w":662,"h":1529},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ceb88bd2a4bc9c79042b15ad8fdec158:0eafe090fed77d3f1b872a4ef1932477:6c729f576d7f5f9de2a75e6b8b75b6d6$"
+}
+}

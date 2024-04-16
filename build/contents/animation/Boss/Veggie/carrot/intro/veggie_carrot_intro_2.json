@@ -1,0 +1,108 @@
+{"frames": [
+
+{
+	"filename": "veggie_carrot_intro_0014.png",
+	"frame": {"x":0,"y":0,"w":589,"h":409},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":589,"h":409},
+	"sourceSize": {"w":589,"h":409}
+},
+{
+	"filename": "veggie_carrot_intro_0015.png",
+	"frame": {"x":589,"y":0,"w":584,"h":430},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":584,"h":430},
+	"sourceSize": {"w":584,"h":430}
+},
+{
+	"filename": "veggie_carrot_intro_0016.png",
+	"frame": {"x":0,"y":430,"w":576,"h":437},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":576,"h":437},
+	"sourceSize": {"w":576,"h":437}
+},
+{
+	"filename": "veggie_carrot_intro_0017.png",
+	"frame": {"x":576,"y":430,"w":569,"h":453},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":453},
+	"sourceSize": {"w":569,"h":453}
+},
+{
+	"filename": "veggie_carrot_intro_0018.png",
+	"frame": {"x":1145,"y":430,"w":549,"h":456},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":549,"h":456},
+	"sourceSize": {"w":549,"h":456}
+},
+{
+	"filename": "veggie_carrot_intro_0019.png",
+	"frame": {"x":396,"y":1378,"w":533,"h":498},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":533,"h":498},
+	"sourceSize": {"w":533,"h":498}
+},
+{
+	"filename": "veggie_carrot_intro_0020.png",
+	"frame": {"x":0,"y":886,"w":525,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":525,"h":476},
+	"sourceSize": {"w":525,"h":476}
+},
+{
+	"filename": "veggie_carrot_intro_0021.png",
+	"frame": {"x":525,"y":886,"w":496,"h":484},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":496,"h":484},
+	"sourceSize": {"w":496,"h":484}
+},
+{
+	"filename": "veggie_carrot_intro_0022.png",
+	"frame": {"x":1021,"y":886,"w":469,"h":492},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":492},
+	"sourceSize": {"w":469,"h":492}
+},
+{
+	"filename": "veggie_carrot_intro_0023.png",
+	"frame": {"x":0,"y":1378,"w":396,"h":495},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":495},
+	"sourceSize": {"w":396,"h":495}
+},
+{
+	"filename": "veggie_carrot_intro_0024.png",
+	"frame": {"x":929,"y":1378,"w":369,"h":498},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":369,"h":498},
+	"sourceSize": {"w":369,"h":498}
+},
+{
+	"filename": "veggie_carrot_intro_0025.png",
+	"frame": {"x":1298,"y":1378,"w":360,"h":505},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":505},
+	"sourceSize": {"w":360,"h":505}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_carrot_intro_2.png",
+	"format": "RGBA8888",
+	"size": {"w":1694,"h":1883},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:114c112c7118276f5e852c00c97205fd:d27ad1e4a33a17229eb8a017b24483a8:36234d87d8fd12b5559c4820206606db$"
+}
+}

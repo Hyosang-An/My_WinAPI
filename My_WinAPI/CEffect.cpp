@@ -39,6 +39,11 @@ void CEffect::PlayEffect()
 	m_Animator->Play(m_AnimName, m_bRepeat);
 }
 
+void CEffect::begin()
+{
+	PlayEffect();
+}
+
 void CEffect::tick()
 {
 	if (m_ParentObj)

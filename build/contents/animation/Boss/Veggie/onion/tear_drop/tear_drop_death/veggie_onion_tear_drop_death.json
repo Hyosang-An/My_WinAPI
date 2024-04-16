@@ -1,0 +1,68 @@
+{"frames": [
+
+{
+	"filename": "veggie_onion_tear_drop_death_a_0001.png",
+	"frame": {"x":0,"y":0,"w":57,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":77},
+	"sourceSize": {"w":57,"h":77}
+},
+{
+	"filename": "veggie_onion_tear_drop_death_a_0002.png",
+	"frame": {"x":57,"y":0,"w":93,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":70},
+	"sourceSize": {"w":93,"h":70}
+},
+{
+	"filename": "veggie_onion_tear_drop_death_a_0003.png",
+	"frame": {"x":0,"y":77,"w":138,"h":106},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":106},
+	"sourceSize": {"w":138,"h":106}
+},
+{
+	"filename": "veggie_onion_tear_drop_death_a_0004.png",
+	"frame": {"x":0,"y":183,"w":177,"h":127},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":127},
+	"sourceSize": {"w":177,"h":127}
+},
+{
+	"filename": "veggie_onion_tear_drop_death_a_0005.png",
+	"frame": {"x":0,"y":310,"w":200,"h":135},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":135},
+	"sourceSize": {"w":200,"h":135}
+},
+{
+	"filename": "veggie_onion_tear_drop_death_a_0006.png",
+	"frame": {"x":0,"y":445,"w":212,"h":141},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":212,"h":141},
+	"sourceSize": {"w":212,"h":141}
+},
+{
+	"filename": "veggie_onion_tear_drop_death_a_0007.png",
+	"frame": {"x":0,"y":586,"w":229,"h":145},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":229,"h":145},
+	"sourceSize": {"w":229,"h":145}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_onion_tear_drop_death.png",
+	"format": "RGBA8888",
+	"size": {"w":229,"h":731},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d5e216cff67a6b48c49a5e47fa555496:f6f36b4b7cc1960b776d94aa24dcc396:32c0abae53b2d9d37cb9f7d59230f1de$"
+}
+}

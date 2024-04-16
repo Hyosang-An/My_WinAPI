@@ -28,6 +28,7 @@ void CLevel_Goopy_Le_Grande::Enter()
 	// 카메라 설정
 	CCamera::GetInstance().SetCameraInitialLookAt(Vec2(0, 0));
 	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::BOSS_STAGE, Vec2(-710, 720));
+	CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_IN, 2);
 
 	//배경 추가
 	LoadBackground();

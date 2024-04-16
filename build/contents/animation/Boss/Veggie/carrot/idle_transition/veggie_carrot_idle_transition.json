@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "veggie_carrot_idle_transition_0001.png",
+	"frame": {"x":0,"y":0,"w":331,"h":524},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":331,"h":524},
+	"sourceSize": {"w":331,"h":524}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0002.png",
+	"frame": {"x":331,"y":0,"w":343,"h":526},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":343,"h":526},
+	"sourceSize": {"w":343,"h":526}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0003.png",
+	"frame": {"x":1415,"y":0,"w":415,"h":467},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":415,"h":467},
+	"sourceSize": {"w":415,"h":467}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0004.png",
+	"frame": {"x":863,"y":526,"w":458,"h":450},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":450},
+	"sourceSize": {"w":458,"h":450}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0005.png",
+	"frame": {"x":1321,"y":526,"w":462,"h":445},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":462,"h":445},
+	"sourceSize": {"w":462,"h":445}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0006.png",
+	"frame": {"x":419,"y":526,"w":444,"h":445},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":444,"h":445},
+	"sourceSize": {"w":444,"h":445}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0007.png",
+	"frame": {"x":0,"y":526,"w":419,"h":449},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":419,"h":449},
+	"sourceSize": {"w":419,"h":449}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0008.png",
+	"frame": {"x":1027,"y":0,"w":388,"h":450},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":388,"h":450},
+	"sourceSize": {"w":388,"h":450}
+},
+{
+	"filename": "veggie_carrot_idle_transition_0009.png",
+	"frame": {"x":674,"y":0,"w":353,"h":486},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":353,"h":486},
+	"sourceSize": {"w":353,"h":486}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_carrot_idle_transition.png",
+	"format": "RGBA8888",
+	"size": {"w":1830,"h":976},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3bdb80f95bea65735afbee4700ecda19:38a7b72fd4e4dcf507970211b2f4b8cf:9e9643e16bb675a2fd4394b4a0f2507e$"
+}
+}

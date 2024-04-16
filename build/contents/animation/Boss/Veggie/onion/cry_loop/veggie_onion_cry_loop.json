@@ -1,0 +1,76 @@
+{"frames": [
+
+{
+	"filename": "veggie_onion_cry_0015.png",
+	"frame": {"x":0,"y":1364,"w":439,"h":465},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":439,"h":465},
+	"sourceSize": {"w":439,"h":465}
+},
+{
+	"filename": "veggie_onion_cry_0016.png",
+	"frame": {"x":439,"y":1364,"w":440,"h":466},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":466},
+	"sourceSize": {"w":440,"h":466}
+},
+{
+	"filename": "veggie_onion_cry_0017.png",
+	"frame": {"x":436,"y":907,"w":437,"h":457},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":437,"h":457},
+	"sourceSize": {"w":437,"h":457}
+},
+{
+	"filename": "veggie_onion_cry_0018.png",
+	"frame": {"x":0,"y":0,"w":437,"h":453},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":437,"h":453},
+	"sourceSize": {"w":437,"h":453}
+},
+{
+	"filename": "veggie_onion_cry_0019.png",
+	"frame": {"x":0,"y":907,"w":436,"h":455},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":436,"h":455},
+	"sourceSize": {"w":436,"h":455}
+},
+{
+	"filename": "veggie_onion_cry_0020.png",
+	"frame": {"x":437,"y":453,"w":436,"h":454},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":436,"h":454},
+	"sourceSize": {"w":436,"h":454}
+},
+{
+	"filename": "veggie_onion_cry_0021.png",
+	"frame": {"x":437,"y":0,"w":441,"h":453},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":441,"h":453},
+	"sourceSize": {"w":441,"h":453}
+},
+{
+	"filename": "veggie_onion_cry_0022.png",
+	"frame": {"x":0,"y":453,"w":437,"h":453},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":437,"h":453},
+	"sourceSize": {"w":437,"h":453}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_onion_cry_loop.png",
+	"format": "RGBA8888",
+	"size": {"w":879,"h":1830},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6a489a4ae9603599d5174f8a1c9e02d6:27895137ce5e49e1418fd0a6a0bdbe3f:adfbccd15b6741bfab30941667143700$"
+}
+}

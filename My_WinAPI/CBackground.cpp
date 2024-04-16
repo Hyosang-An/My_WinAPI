@@ -59,6 +59,12 @@ void CBackground::render()
 		return;
 	}
 
+	// !디버깅
+	if (GetName() == L"Burst_Dust1")
+	{
+		int a = 0;
+	}
+
 	// 오브젝트 위치
 	Vec2 vRenderPos = GetRenderPos();
 	Vec2 vScale = GetScale();

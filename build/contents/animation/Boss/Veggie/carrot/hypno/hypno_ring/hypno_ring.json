@@ -1,0 +1,108 @@
+{"frames": [
+
+{
+	"filename": "carrot_hypno_ring_0001.png",
+	"frame": {"x":0,"y":0,"w":26,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":39},
+	"sourceSize": {"w":26,"h":39}
+},
+{
+	"filename": "carrot_hypno_ring_0002.png",
+	"frame": {"x":26,"y":0,"w":54,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":60},
+	"sourceSize": {"w":54,"h":60}
+},
+{
+	"filename": "carrot_hypno_ring_0003.png",
+	"frame": {"x":80,"y":0,"w":66,"h":75},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":75},
+	"sourceSize": {"w":66,"h":75}
+},
+{
+	"filename": "carrot_hypno_ring_0004.png",
+	"frame": {"x":146,"y":0,"w":74,"h":83},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":74,"h":83},
+	"sourceSize": {"w":74,"h":83}
+},
+{
+	"filename": "carrot_hypno_ring_0005.png",
+	"frame": {"x":220,"y":0,"w":97,"h":116},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":116},
+	"sourceSize": {"w":97,"h":116}
+},
+{
+	"filename": "carrot_hypno_ring_0006.png",
+	"frame": {"x":317,"y":0,"w":112,"h":129},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":129},
+	"sourceSize": {"w":112,"h":129}
+},
+{
+	"filename": "carrot_hypno_ring_0007.png",
+	"frame": {"x":0,"y":129,"w":153,"h":158},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":158},
+	"sourceSize": {"w":153,"h":158}
+},
+{
+	"filename": "carrot_hypno_ring_0008.png",
+	"frame": {"x":153,"y":129,"w":154,"h":162},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":154,"h":162},
+	"sourceSize": {"w":154,"h":162}
+},
+{
+	"filename": "carrot_hypno_ring_0009.png",
+	"frame": {"x":307,"y":129,"w":173,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":173,"h":168},
+	"sourceSize": {"w":173,"h":168}
+},
+{
+	"filename": "carrot_hypno_ring_0010.png",
+	"frame": {"x":0,"y":297,"w":169,"h":166},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":169,"h":166},
+	"sourceSize": {"w":169,"h":166}
+},
+{
+	"filename": "carrot_hypno_ring_0011.png",
+	"frame": {"x":169,"y":297,"w":169,"h":167},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":169,"h":167},
+	"sourceSize": {"w":169,"h":167}
+},
+{
+	"filename": "carrot_hypno_ring_0012.png",
+	"frame": {"x":338,"y":297,"w":163,"h":166},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":163,"h":166},
+	"sourceSize": {"w":163,"h":166}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "hypno_ring.png",
+	"format": "RGBA8888",
+	"size": {"w":501,"h":464},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5ac03a4c20feda5549b935d67d90d63d:2590e6fbb57fd90fc9ad7ac17c7028bd:bfc4b99322f8ffec35e20ca938aa9f1e$"
+}
+}

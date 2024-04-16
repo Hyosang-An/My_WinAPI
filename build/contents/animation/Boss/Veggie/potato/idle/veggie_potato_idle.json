@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "veggie_potato_idle_0001.png",
+	"frame": {"x":0,"y":0,"w":486,"h":387},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":486,"h":387},
+	"sourceSize": {"w":486,"h":387}
+},
+{
+	"filename": "veggie_potato_idle_0002.png",
+	"frame": {"x":0,"y":387,"w":466,"h":384},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":466,"h":384},
+	"sourceSize": {"w":466,"h":384}
+},
+{
+	"filename": "veggie_potato_idle_0003.png",
+	"frame": {"x":0,"y":771,"w":467,"h":376},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":467,"h":376},
+	"sourceSize": {"w":467,"h":376}
+},
+{
+	"filename": "veggie_potato_idle_0004.png",
+	"frame": {"x":0,"y":1147,"w":469,"h":369},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":369},
+	"sourceSize": {"w":469,"h":369}
+},
+{
+	"filename": "veggie_potato_idle_0005.png",
+	"frame": {"x":0,"y":1516,"w":467,"h":366},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":467,"h":366},
+	"sourceSize": {"w":467,"h":366}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_potato_idle.png",
+	"format": "RGBA8888",
+	"size": {"w":486,"h":1882},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:94f003dfc8224be2586b6776deef82b7:b8a502a2d5b2556523940b033b17809a:b5e42c01354e1911793cbb4aa3822ab2$"
+}
+}

@@ -1,0 +1,292 @@
+{"frames": [
+
+{
+	"filename": "veggie_potato_leave_0000.png",
+	"frame": {"x":0,"y":0,"w":295,"h":414},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":295,"h":414},
+	"sourceSize": {"w":295,"h":414}
+},
+{
+	"filename": "veggie_potato_leave_0001.png",
+	"frame": {"x":295,"y":0,"w":295,"h":414},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":295,"h":414},
+	"sourceSize": {"w":295,"h":414}
+},
+{
+	"filename": "veggie_potato_leave_0002.png",
+	"frame": {"x":590,"y":0,"w":295,"h":403},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":295,"h":403},
+	"sourceSize": {"w":295,"h":403}
+},
+{
+	"filename": "veggie_potato_leave_0003.png",
+	"frame": {"x":885,"y":0,"w":335,"h":398},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":398},
+	"sourceSize": {"w":335,"h":398}
+},
+{
+	"filename": "veggie_potato_leave_0004.png",
+	"frame": {"x":1220,"y":0,"w":432,"h":396},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":432,"h":396},
+	"sourceSize": {"w":432,"h":396}
+},
+{
+	"filename": "veggie_potato_leave_0005.png",
+	"frame": {"x":1652,"y":0,"w":305,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":305,"h":392},
+	"sourceSize": {"w":305,"h":392}
+},
+{
+	"filename": "veggie_potato_leave_0006.png",
+	"frame": {"x":0,"y":414,"w":298,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":298,"h":392},
+	"sourceSize": {"w":298,"h":392}
+},
+{
+	"filename": "veggie_potato_leave_0007.png",
+	"frame": {"x":298,"y":414,"w":302,"h":396},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":302,"h":396},
+	"sourceSize": {"w":302,"h":396}
+},
+{
+	"filename": "veggie_potato_leave_0008.png",
+	"frame": {"x":600,"y":414,"w":304,"h":412},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":304,"h":412},
+	"sourceSize": {"w":304,"h":412}
+},
+{
+	"filename": "veggie_potato_leave_0009.png",
+	"frame": {"x":904,"y":414,"w":304,"h":398},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":304,"h":398},
+	"sourceSize": {"w":304,"h":398}
+},
+{
+	"filename": "veggie_potato_leave_0010.png",
+	"frame": {"x":1208,"y":414,"w":302,"h":354},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":302,"h":354},
+	"sourceSize": {"w":302,"h":354}
+},
+{
+	"filename": "veggie_potato_leave_0011.png",
+	"frame": {"x":1510,"y":414,"w":298,"h":346},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":298,"h":346},
+	"sourceSize": {"w":298,"h":346}
+},
+{
+	"filename": "veggie_potato_leave_0012.png",
+	"frame": {"x":0,"y":826,"w":304,"h":342},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":304,"h":342},
+	"sourceSize": {"w":304,"h":342}
+},
+{
+	"filename": "veggie_potato_leave_0013.png",
+	"frame": {"x":304,"y":826,"w":421,"h":319},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":421,"h":319},
+	"sourceSize": {"w":421,"h":319}
+},
+{
+	"filename": "veggie_potato_leave_0014.png",
+	"frame": {"x":725,"y":826,"w":291,"h":317},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":291,"h":317},
+	"sourceSize": {"w":291,"h":317}
+},
+{
+	"filename": "veggie_potato_leave_0015.png",
+	"frame": {"x":1016,"y":826,"w":290,"h":319},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":290,"h":319},
+	"sourceSize": {"w":290,"h":319}
+},
+{
+	"filename": "veggie_potato_leave_0016.png",
+	"frame": {"x":1306,"y":826,"w":279,"h":302},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":279,"h":302},
+	"sourceSize": {"w":279,"h":302}
+},
+{
+	"filename": "veggie_potato_leave_0017.png",
+	"frame": {"x":1585,"y":826,"w":276,"h":293},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":276,"h":293},
+	"sourceSize": {"w":276,"h":293}
+},
+{
+	"filename": "veggie_potato_leave_0018.png",
+	"frame": {"x":0,"y":1168,"w":404,"h":288},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":404,"h":288},
+	"sourceSize": {"w":404,"h":288}
+},
+{
+	"filename": "veggie_potato_leave_0019.png",
+	"frame": {"x":404,"y":1168,"w":275,"h":280},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":275,"h":280},
+	"sourceSize": {"w":275,"h":280}
+},
+{
+	"filename": "veggie_potato_leave_0020.png",
+	"frame": {"x":679,"y":1168,"w":272,"h":253},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":272,"h":253},
+	"sourceSize": {"w":272,"h":253}
+},
+{
+	"filename": "veggie_potato_leave_0021.png",
+	"frame": {"x":951,"y":1168,"w":274,"h":231},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":274,"h":231},
+	"sourceSize": {"w":274,"h":231}
+},
+{
+	"filename": "veggie_potato_leave_0022.png",
+	"frame": {"x":1225,"y":1168,"w":278,"h":267},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":278,"h":267},
+	"sourceSize": {"w":278,"h":267}
+},
+{
+	"filename": "veggie_potato_leave_0023.png",
+	"frame": {"x":1503,"y":1168,"w":278,"h":273},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":278,"h":273},
+	"sourceSize": {"w":278,"h":273}
+},
+{
+	"filename": "veggie_potato_leave_0024.png",
+	"frame": {"x":0,"y":1456,"w":274,"h":223},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":274,"h":223},
+	"sourceSize": {"w":274,"h":223}
+},
+{
+	"filename": "veggie_potato_leave_0025.png",
+	"frame": {"x":274,"y":1456,"w":244,"h":209},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":244,"h":209},
+	"sourceSize": {"w":244,"h":209}
+},
+{
+	"filename": "veggie_potato_leave_0026.png",
+	"frame": {"x":518,"y":1456,"w":245,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":245,"h":199},
+	"sourceSize": {"w":245,"h":199}
+},
+{
+	"filename": "veggie_potato_leave_0027.png",
+	"frame": {"x":763,"y":1456,"w":373,"h":171},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":373,"h":171},
+	"sourceSize": {"w":373,"h":171}
+},
+{
+	"filename": "veggie_potato_leave_0028.png",
+	"frame": {"x":1136,"y":1456,"w":247,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":140},
+	"sourceSize": {"w":247,"h":140}
+},
+{
+	"filename": "veggie_potato_leave_0029.png",
+	"frame": {"x":1383,"y":1456,"w":250,"h":135},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":135},
+	"sourceSize": {"w":250,"h":135}
+},
+{
+	"filename": "veggie_potato_leave_0030.png",
+	"frame": {"x":1633,"y":1456,"w":250,"h":138},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":138},
+	"sourceSize": {"w":250,"h":138}
+},
+{
+	"filename": "veggie_potato_leave_0031.png",
+	"frame": {"x":0,"y":1679,"w":247,"h":116},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":116},
+	"sourceSize": {"w":247,"h":116}
+},
+{
+	"filename": "veggie_potato_leave_0032.png",
+	"frame": {"x":247,"y":1679,"w":370,"h":97},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":370,"h":97},
+	"sourceSize": {"w":370,"h":97}
+},
+{
+	"filename": "veggie_potato_leave_0033.png",
+	"frame": {"x":617,"y":1679,"w":165,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":77},
+	"sourceSize": {"w":165,"h":77}
+},
+{
+	"filename": "veggie_potato_leave_0034.png",
+	"frame": {"x":782,"y":1679,"w":110,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":38},
+	"sourceSize": {"w":110,"h":38}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_potato_leave.png",
+	"format": "RGBA8888",
+	"size": {"w":1957,"h":1795},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:aefb5df928c5234cc2e4394d4a7fcf66:1667c4e8779af634735d65656eb72cf8:258afe40653f0872ade4f0ffd34d8caf$"
+}
+}

@@ -56,7 +56,7 @@ private:
 	// Screen FX
 	vector<CTexture*>	m_vecScreenFX;
 	float				m_ScreenFXframeElapsedTime = 0;		// Screen FX 텍스쳐 재생 시간
-	float				m_ScreenFXframeDuration = 0.08;
+	float				m_ScreenFXframeDuration = 0.08f;
 	int					m_CurScreenFXFrameIdx = 0;			// 현재 프레임 인덱스
 	bool				m_bFinished;			// Screen FX 재생이 종료됨을 알림
 

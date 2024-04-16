@@ -1,0 +1,156 @@
+{"frames": [
+
+{
+	"filename": "veggie_potato_ground_burst_front_0001.png",
+	"frame": {"x":0,"y":408,"w":314,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":314,"h":380},
+	"sourceSize": {"w":314,"h":380}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0002.png",
+	"frame": {"x":390,"y":0,"w":402,"h":139},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":139},
+	"sourceSize": {"w":402,"h":139}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0003.png",
+	"frame": {"x":792,"y":0,"w":398,"h":154},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":398,"h":154},
+	"sourceSize": {"w":398,"h":154}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0004.png",
+	"frame": {"x":1190,"y":0,"w":401,"h":166},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":401,"h":166},
+	"sourceSize": {"w":401,"h":166}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0005.png",
+	"frame": {"x":0,"y":166,"w":396,"h":180},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":180},
+	"sourceSize": {"w":396,"h":180}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0006.png",
+	"frame": {"x":396,"y":166,"w":400,"h":191},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":191},
+	"sourceSize": {"w":400,"h":191}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0007.png",
+	"frame": {"x":796,"y":166,"w":394,"h":215},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":394,"h":215},
+	"sourceSize": {"w":394,"h":215}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0008.png",
+	"frame": {"x":1190,"y":166,"w":401,"h":242},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":401,"h":242},
+	"sourceSize": {"w":401,"h":242}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0009.png",
+	"frame": {"x":314,"y":408,"w":404,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":404,"h":385},
+	"sourceSize": {"w":404,"h":385}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0010.png",
+	"frame": {"x":718,"y":408,"w":408,"h":423},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":408,"h":423},
+	"sourceSize": {"w":408,"h":423}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0011.png",
+	"frame": {"x":1117,"y":839,"w":400,"h":437},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":437},
+	"sourceSize": {"w":400,"h":437}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0012.png",
+	"frame": {"x":1032,"y":1276,"w":417,"h":454},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":417,"h":454},
+	"sourceSize": {"w":417,"h":454}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0013.png",
+	"frame": {"x":586,"y":1276,"w":446,"h":450},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":446,"h":450},
+	"sourceSize": {"w":446,"h":450}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0014.png",
+	"frame": {"x":0,"y":1276,"w":586,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":586,"h":440},
+	"sourceSize": {"w":586,"h":440}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0015.png",
+	"frame": {"x":592,"y":839,"w":525,"h":434},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":525,"h":434},
+	"sourceSize": {"w":525,"h":434}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0016.png",
+	"frame": {"x":0,"y":839,"w":592,"h":433},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":592,"h":433},
+	"sourceSize": {"w":592,"h":433}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0017.png",
+	"frame": {"x":1126,"y":408,"w":592,"h":431},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":592,"h":431},
+	"sourceSize": {"w":592,"h":431}
+},
+{
+	"filename": "veggie_potato_ground_burst_front_0018.png",
+	"frame": {"x":0,"y":0,"w":390,"h":111},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":390,"h":111},
+	"sourceSize": {"w":390,"h":111}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_potato_ground_burst_front.png",
+	"format": "RGBA8888",
+	"size": {"w":1718,"h":1730},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fa1f07c933de192376c564de3d0b0d2f:7567e5191163eaec5f1f094979bd5687:2fc21ce6f7553dda45ace8daff7dec25$"
+}
+}

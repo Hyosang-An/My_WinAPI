@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "veggie_carrot_bomb_large_0001.png",
+	"frame": {"x":0,"y":0,"w":84,"h":145},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":145},
+	"sourceSize": {"w":84,"h":145}
+},
+{
+	"filename": "veggie_carrot_bomb_large_0002.png",
+	"frame": {"x":84,"y":0,"w":82,"h":145},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":82,"h":145},
+	"sourceSize": {"w":82,"h":145}
+},
+{
+	"filename": "veggie_carrot_bomb_large_0003.png",
+	"frame": {"x":166,"y":0,"w":91,"h":146},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":146},
+	"sourceSize": {"w":91,"h":146}
+},
+{
+	"filename": "veggie_carrot_bomb_large_0004.png",
+	"frame": {"x":257,"y":0,"w":83,"h":145},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":83,"h":145},
+	"sourceSize": {"w":83,"h":145}
+},
+{
+	"filename": "veggie_carrot_bomb_large_0005.png",
+	"frame": {"x":340,"y":0,"w":87,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":87,"h":147},
+	"sourceSize": {"w":87,"h":147}
+},
+{
+	"filename": "veggie_carrot_bomb_large_0006.png",
+	"frame": {"x":427,"y":0,"w":83,"h":142},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":83,"h":142},
+	"sourceSize": {"w":83,"h":142}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_carrot_bomb_large.png",
+	"format": "RGBA8888",
+	"size": {"w":510,"h":147},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:806f3ba89bec8d12193ee6cca1be3032:4a36e911117a2d1515582a64327bb9d7:617f531b11caea9446954a7fd8773e6f$"
+}
+}

@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "veggie_carrot_shoot_body_0001.png",
+	"frame": {"x":0,"y":0,"w":329,"h":522},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":329,"h":522},
+	"sourceSize": {"w":329,"h":522}
+},
+{
+	"filename": "veggie_carrot_shoot_body_0002.png",
+	"frame": {"x":329,"y":0,"w":332,"h":519},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":332,"h":519},
+	"sourceSize": {"w":332,"h":519}
+},
+{
+	"filename": "veggie_carrot_shoot_body_0003.png",
+	"frame": {"x":661,"y":0,"w":375,"h":517},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":375,"h":517},
+	"sourceSize": {"w":375,"h":517}
+},
+{
+	"filename": "veggie_carrot_shoot_body_0004.png",
+	"frame": {"x":1036,"y":0,"w":336,"h":515},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":336,"h":515},
+	"sourceSize": {"w":336,"h":515}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "veggie_carrot_shoot_body.png",
+	"format": "RGBA8888",
+	"size": {"w":1372,"h":522},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4f02297e355c904d5a149a3c225dbacd:1ba44b71f4d5b8fe7c5f0207e63d104c:2552e6ec4418c8e19a3ad165c0960496$"
+}
+}
