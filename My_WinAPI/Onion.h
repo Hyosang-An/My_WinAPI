@@ -25,7 +25,7 @@ private:
 	CCollider* m_BodyCollider;
 	map<wstring, CEffect*> m_mapEffect;
 
-	float m_DropTearFrequency = 0.25;
+	float m_DropTearFrequency = 2;
 	CMissile* m_TearDrop = nullptr;
 
 	Onion_TearLoop* m_Onion_TearLoop = nullptr;

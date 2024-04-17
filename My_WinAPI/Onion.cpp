@@ -4,6 +4,7 @@
 #include "CEffect.h"
 #include "CMissile.h"
 #include "Onion_TearDrop.h"
+#include "CRandomMgr.h"
 
 Onion::Onion()
 {
@@ -257,9 +258,19 @@ void Onion::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 void Onion::DropTear()
 {
 	// TODO : ·£´ýÇÑ Áö¿ª¿¡ ´«¹° ½ºÆù
+	bool spawn_right_side = CRandomMgr::GetInstance().GetRandomBool(0.5);
+	float posX = 0;
+	if (spawn_right_side)
+	{
+		posX = CRandomMgr::GetInstance().GetRandomFloat_from_UniformDist(-650, -200);
+	}
+	else
+	{
+		posX = CRandomMgr::GetInstance().GetRandomFloat_from_UniformDist(200, 650);
+	}
 
 	auto tearDrop_clone = m_TearDrop->Clone();
-	tearDrop_clone->SetPos(Vec2(-300, -300));
+	tearDrop_clone->SetPos(Vec2(posX, -360));
 	SpawnObject(LAYER_TYPE::ENEMY_MISSILE, tearDrop_clone);
 }
 

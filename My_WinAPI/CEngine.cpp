@@ -8,6 +8,7 @@
 #include "CTaskMgr.h"
 #include "CPathMgr.h"
 #include "CAssetMgr.h"
+#include "CRandomMgr.h"
 
 CEngine::CEngine()
 	: m_hInstance{}
@@ -57,6 +58,7 @@ int CEngine::init(HINSTANCE _hInst, HWND _hWnd, POINT _Resolution)
 	CAssetMgr::GetInstance().init();
 	CCamera::GetInstance().init();
 	CCollisionMgr::GetInstance().init();
+	CRandomMgr::GetInstance().init();
 	
 	CLevelMgr::GetInstance().init();
 

@@ -48,6 +48,8 @@ void Onion_TearDrop::tick()
 		m_fSpeed = 0;
 		m_Animator->Play(L"veggie_onion_tear_drop_death", false);
 		m_bFalling = false;
+
+		m_Collider->SetActive(false);
 	}
 }
 
