@@ -11,7 +11,7 @@
 
 CLevel_Veggie::CLevel_Veggie() :
 	m_player{},
-	m_Boss{},
+	m_CurBoss{},
 	m_BurstEffect{},
 	m_BurstDust{}
 {
@@ -30,6 +30,17 @@ void CLevel_Veggie::Enter()
 	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::BOSS_STAGE, Vec2(-670, 670));
 	CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_IN, 3);
 
+	m_PhaseState = PHASE_STATE::PHASE1;
+	m_player = nullptr;
+	m_CurBoss = nullptr;
+	m_BossSpawnFlag = false;
+
+	m_Potato = new Potato;
+	m_Onion = new Onion;
+	m_Carrot = nullptr;
+
+	m_CurBoss = m_Potato;
+
 	//배경 추가
 	LoadBackground();
 
@@ -38,8 +49,6 @@ void CLevel_Veggie::Enter()
 
 	// 충돌 설정
 	SetCollision();
-
-	
 }
 
 void CLevel_Veggie::tick()
@@ -58,16 +67,19 @@ void CLevel_Veggie::tick()
 			// BurstEffect 재설정
 			if (m_BurstEffect != nullptr && m_BurstEffect->IsDead())
 			{
+
+				//!디버깅
+				auto& vec = GetObjvecOfLayer(LAYER_TYPE::EFFECT);
+
 				m_BurstEffect = nullptr;				
 			}
 
 			// 보스 생성
 			if (!m_BossSpawnFlag && m_BurstEffect != nullptr && m_BurstEffect->GetComponent<CAnimator>()->GetCurAnimationFrmIdx() == 8)
 			{
-				m_Boss = new Potato();
-				m_Boss->SetName(L"Potato");
-				m_Boss->SetPos(Vec2(400, 110));
-				SpawnObject(LAYER_TYPE::BOSS, m_Boss);
+				m_CurBoss->SetName(L"Potato");
+				m_CurBoss->SetPos(Vec2(400, 110));
+				SpawnObject(LAYER_TYPE::BOSS, m_CurBoss);
 
 				m_BossSpawnFlag = true;
 			}
@@ -83,14 +95,17 @@ void CLevel_Veggie::tick()
 			}
 
 			// 다음 페이즈로 전환
-			if (m_Boss && m_Boss->IsDead())
+			if (m_CurBoss && m_CurBoss->IsDead())
 			{
-				m_Boss = nullptr;
+				m_CurBoss = nullptr;
 
 				m_BurstDust->SelfDestruct();
 				m_BurstDust = nullptr;
 
 				m_PhaseState = PHASE_STATE::PHASE2;
+
+				//!디버깅
+				auto& vec = GetObjvecOfLayer(LAYER_TYPE::EFFECT);
 
 				m_BurstEffect = new CEffect;
 				m_BurstEffect->SetName(L"veggie_potato_ground_burst_front");
@@ -103,6 +118,7 @@ void CLevel_Veggie::tick()
 
 			break;
 		}
+
 		case CLevel_Veggie::PHASE_STATE::PHASE2:
 		{
 			// BurstEffect 재설정
@@ -112,13 +128,12 @@ void CLevel_Veggie::tick()
 			}
 
 			// 보스 생성
-			if (!m_BossSpawnFlag && m_BurstEffect != nullptr && m_BurstEffect->GetComponent<CAnimator>()->GetCurAnimationFrmIdx() == 8)
+			if (!m_BossSpawnFlag && m_BurstEffect != nullptr && m_BurstEffect->GetComponent<CAnimator>()->GetCurAnimationFrmIdx() == 7)
 			{
-				
-				m_Boss = new Onion;
-				m_Boss->SetName(L"Onion");
-				m_Boss->SetPos(Vec2(0, 110));
-				SpawnObject(LAYER_TYPE::BOSS, m_Boss);
+				m_CurBoss = m_Onion;
+				m_CurBoss->SetName(L"Onion");
+				m_CurBoss->SetPos(Vec2(0, 10));
+				SpawnObject(LAYER_TYPE::BOSS, m_CurBoss);
 
 				m_BossSpawnFlag = true;
 			}
@@ -129,12 +144,12 @@ void CLevel_Veggie::tick()
 
 				m_BurstDust = new CBackground;
 				m_BurstDust->SetTexture(CAssetMgr::GetInstance().LoadTexture(L"veggie_potato_ground_burst_front_0018", L"animation\\Boss\\Veggie\\potato\\ground_burst\\veggie_potato_ground_burst_front_0018.png"));
-				m_BurstDust->SetPos(Vec2(0, 250));
+				m_BurstDust->SetPos(Vec2(0, 280));
 				SpawnObject(LAYER_TYPE::FOREGROUND, m_BurstDust);
 			}
 
 			// 다음 페이즈로 전환
-			if (m_Boss && static_cast<Onion*>(m_Boss)->GetState() == Onion::STATE::DEATH && m_Boss->GetComponent<CAnimator>()->IsCurAnimationFinished())
+			if (m_CurBoss && static_cast<Onion*>(m_CurBoss)->GetState() == Onion::STATE::DEATH && m_CurBoss->GetComponent<CAnimator>()->IsCurAnimationFinished())
 			{
 				m_BurstDust->SelfDestruct();
 
@@ -169,9 +184,9 @@ void CLevel_Veggie::render()
 			playerHP.c_str(), (int)playerHP.length());
 	}
 	
-	if (m_Boss)
+	if (m_CurBoss)
 	{
-		wstring bossHP = L"보스 HP : " + std::to_wstring(m_Boss->GetHP());
+		wstring bossHP = L"보스 HP : " + std::to_wstring(m_CurBoss->GetHP());
 		TextOut(SUBDC, (int)CEngine::GetInstance().GetResolution().x - 80, (int)CEngine::GetInstance().GetResolution().y - 20,
 			bossHP.c_str(), (int)bossHP.length());
 	}

@@ -3,6 +3,7 @@
 
 #include "CEffect.h"
 #include "CMissile.h"
+#include "Onion_TearDrop.h"
 
 Onion::Onion()
 {
@@ -12,12 +13,16 @@ Onion::Onion()
 	m_BodyCollider->SetScale(Vec2(250, 400));
 
 	m_Animator = AddComponent(new CAnimator);
+
+	// TearDrop
+	m_TearDrop = new Onion_TearDrop;
 }
 
 Onion::~Onion()
 {
 	Safe_Del_Map(m_mapEffect);
 	delete m_TearDrop;
+	m_Onion_TearLoop->SelfDestruct();
 }
 
 void Onion::begin()
@@ -25,10 +30,34 @@ void Onion::begin()
 	LoadAnimation();
 	m_Animator->Play(L"veggie_onion_intro_1", false);
 
+	// TearLoop 이펙트 설정
+	m_Onion_TearLoop = new Onion_TearLoop;
+	m_Onion_TearLoop->SetPos(Vec2(0, -322));
+	SpawnObject(LAYER_TYPE::EFFECT, m_Onion_TearLoop);
+
+
+
 	// 이펙트 추가
 	auto effect = new CEffect;
-	effect->SetName(L"veggie_potato_shoot_fx");
-	effect->SetAnimation(L"animation\\Boss\\Veggie\\potato\\shoot_fx\\veggie_potato_shoot_fx.anim");
+	effect->SetName(L"veggie_onion_tears_intro_L");
+	effect->SetAnimation(L"animation\\Boss\\Veggie\\onion\\tears\\L\\intro\\veggie_onion_tears_intro_L.anim");
+	m_mapEffect.insert(make_pair(effect->GetName(), effect));
+
+	effect = new CEffect;
+	effect->SetName(L"veggie_onion_tears_outro_L");
+	effect->SetAnimation(L"animation\\Boss\\Veggie\\onion\\tears\\L\\outro\\veggie_onion_tears_outro_L.anim");
+	m_mapEffect.insert(make_pair(effect->GetName(), effect));
+
+
+
+	effect = new CEffect;
+	effect->SetName(L"veggie_onion_tears_intro_R");
+	effect->SetAnimation(L"animation\\Boss\\Veggie\\onion\\tears\\R\\intro\\veggie_onion_tears_intro_R.anim");
+	m_mapEffect.insert(make_pair(effect->GetName(), effect));
+
+	effect = new CEffect;
+	effect->SetName(L"veggie_onion_tears_outro_R");
+	effect->SetAnimation(L"animation\\Boss\\Veggie\\onion\\tears\\R\\outro\\veggie_onion_tears_outro_R.anim");
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 }
 
@@ -66,16 +95,33 @@ void Onion::UpdateState()
 		case STATE::CRY_INTRO:
 		{
 			if (m_Animator->GetCurAnimation()->GetName() == L"veggie_onion_cry_intro_2" && m_Animator->IsCurAnimationFinished())
+			{
 				m_State = STATE::CRY;
+
+
+				SpawnEffect(L"veggie_onion_tears_intro_L", Vec2(-90, -156));
+				SpawnEffect(L"veggie_onion_tears_intro_R", Vec2(90, -156));
+			}
 			break;
 		}
 		case STATE::CRY:
 		{
 			m_accCryTime += DT;
+
+			if (0.4 < m_accCryTime && !m_Onion_TearLoop->IsActive())
+			{
+				m_Onion_TearLoop->Start();
+			}
+
 			if (3 < m_accCryTime && m_Animator->IsCurAnimationFinished())
 			{
 				m_accCryTime = 0;
 				m_State = STATE::CRY_OUTRO;
+
+				m_Onion_TearLoop->Stop();
+
+				SpawnEffect(L"veggie_onion_tears_outro_L", Vec2(-316, -253));
+				SpawnEffect(L"veggie_onion_tears_outro_R", Vec2(316, -253));
 			}
 			break;
 		}
@@ -168,10 +214,31 @@ void Onion::MoveAndAction()
 		if ((1 / m_DropTearFrequency) < m_acctimeSinceLastTearDrop)
 		{
 			DropTear();
+			m_acctimeSinceLastTearDrop = 0;
+			return;
 		}
 	}
 
 	m_acctimeSinceLastTearDrop += DT;
+}
+
+void Onion::SpawnEffect(const wstring& _effectName, Vec2 _pos)
+{
+	// Clone 전용 원본 이펙트
+	auto iter = m_mapEffect.find(_effectName);
+	if (iter == m_mapEffect.end())
+	{
+		wstring msg = _effectName + L"해당 이름의 이펙트 없음";
+		LOG(LOG_TYPE::DBG_ERROR, msg.c_str());
+		return;
+	}
+
+	// 원본을 리턴하면 곤란.
+	auto effect_clone = iter->second->Clone();
+
+	effect_clone->SetPos(_pos);
+
+	SpawnObject(LAYER_TYPE::EFFECT, effect_clone);
 }
 
 void Onion::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
@@ -190,6 +257,10 @@ void Onion::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 void Onion::DropTear()
 {
 	// TODO : 랜덤한 지역에 눈물 스폰
+
+	auto tearDrop_clone = m_TearDrop->Clone();
+	tearDrop_clone->SetPos(Vec2(-300, -300));
+	SpawnObject(LAYER_TYPE::ENEMY_MISSILE, tearDrop_clone);
 }
 
 void Onion::LoadAnimation()

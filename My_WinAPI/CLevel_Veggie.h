@@ -21,11 +21,15 @@ private:
 	PHASE_STATE m_PhaseState = PHASE_STATE::PHASE1;
 
 	CPlayer* m_player;
-	Veggie* m_Boss;
+	Veggie* m_CurBoss;
 
 	bool m_BossSpawnFlag = false;
 	CEffect* m_BurstEffect;
 	CBackground* m_BurstDust;
+
+	Veggie* m_Potato;
+	Veggie* m_Onion;
+	Veggie* m_Carrot;
 
 public:
 	virtual void tick();

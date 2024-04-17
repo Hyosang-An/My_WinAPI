@@ -200,6 +200,8 @@
     <ClInclude Include="Goopy_Le_Grande.h" />
     <ClInclude Include="libs\json.hpp" />
     <ClInclude Include="Onion.h" />
+    <ClInclude Include="Onion_TearDrop.h" />
+    <ClInclude Include="Onion_TearLoop.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Peashooter.h" />
     <ClInclude Include="Potato.h" />
@@ -263,6 +265,8 @@
     <ClCompile Include="Goopy_Le_Grande.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Onion.cpp" />
+    <ClCompile Include="Onion_TearDrop.cpp" />
+    <ClCompile Include="Onion_TearLoop.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

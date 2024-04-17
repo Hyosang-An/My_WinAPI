@@ -48,6 +48,11 @@ void CObj::SelfDestruct()
 	task.eType = TASK_TYPE::DELETE_OBJECT;
 	task.param1 = reinterpret_cast<DWORD_PTR>(this);
 
+	if (task.param1 == 0)
+	{
+		int a = 0;
+	}
+
 	CTaskMgr::GetInstance().AddTask(task);
 }
 

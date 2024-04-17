@@ -12,7 +12,7 @@ Potato::Potato()
 
 	m_Animator = AddComponent(new CAnimator);
 
-	m_Shot = new Potato_Shot;
+
 }
 
 Potato::~Potato()
@@ -33,6 +33,7 @@ void Potato::begin()
 	effect->SetAnimation(L"animation\\Boss\\Veggie\\potato\\shoot_fx\\veggie_potato_shoot_fx.anim");
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 
+	m_Shot = new Potato_Shot;
 	m_Shot->SetPos(m_Pos + Vec2(-200, 100));
 }
 

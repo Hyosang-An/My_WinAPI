@@ -185,6 +185,9 @@
     <Filter Include="03. Game\04. Level\Boss Stage 2\Boss Veggie\Onion">
       <UniqueIdentifier>{2e9ed639-6dac-4b87-b78a-c0b305d2b4ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\04. Level\Boss Stage 2\Boss Veggie\Onion\Onion_TearLoop">
+      <UniqueIdentifier>{df95ab13-927c-48fd-ae87-b6d7107866d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -379,6 +382,10 @@
     <ClInclude Include="Potato_Shot.h">
       <Filter>03. Game\04. Level\Boss Stage 2\Boss Missile</Filter>
     </ClInclude>
+    <ClInclude Include="Onion_TearLoop.h">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie\Onion\Onion_TearLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="Onion_TearDrop.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -552,6 +559,10 @@
     <ClCompile Include="Potato_Shot.cpp">
       <Filter>03. Game\04. Level\Boss Stage 2\Boss Missile</Filter>
     </ClCompile>
+    <ClCompile Include="Onion_TearLoop.cpp">
+      <Filter>03. Game\04. Level\Boss Stage 2\Boss Veggie\Onion\Onion_TearLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="Onion_TearDrop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

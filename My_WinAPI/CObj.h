@@ -31,6 +31,7 @@ protected:
 	Vec2    m_Pos;
 	Vec2    m_Scale;
 
+	bool	m_bActive = true;
 	bool	m_bAlive;
 
 	bool	m_bUseGroundCollision = true;
@@ -55,13 +56,15 @@ public:
 	void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
 	void SetScale(float x, float y) { m_Scale = Vec2(x, y); }
 
+	void SetActive(bool _b) { m_bActive = _b; }
+
 	void SelfDestruct();
 
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetRenderPos() { return CCamera::GetInstance().GetRenderPos(m_Pos); }
 	Vec2 GetScale() { return m_Scale; }
 
-
+	bool IsActive() { return m_bActive; }
 	bool IsDead() { return !m_bAlive; }
 	bool IsGroundCollision() { return m_bUseGroundCollision; }
 	LAYER_TYPE GetLayerType() { return m_eType; }

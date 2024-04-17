@@ -57,7 +57,7 @@ void CLevel::tick()
 	{
 		for (size_t j = 0; j < m_arrObjvec[i].size(); j++)
 		{
-			if (!m_arrObjvec[i][j]->IsDead())
+			if (m_arrObjvec[i][j]->IsActive() && !m_arrObjvec[i][j]->IsDead())
 				m_arrObjvec[i][j]->tick();
 		}
 	}
@@ -69,7 +69,8 @@ void CLevel::finaltick()
 	{
 		for (size_t j = 0; j < m_arrObjvec[i].size(); j++)
 		{
-			m_arrObjvec[i][j]->finaltick();
+			if (m_arrObjvec[i][j]->IsActive())
+				m_arrObjvec[i][j]->finaltick();
 		}
 	}
 }
@@ -87,7 +88,8 @@ void CLevel::render()
 			}
 			else
 			{
-				(*iter)->render();
+				if ((*iter)->IsActive())
+					(*iter)->render();
 				++iter;
 			}
 		}

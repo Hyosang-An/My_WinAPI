@@ -1,6 +1,8 @@
 #pragma once
 #include "Veggie.h"
 
+#include "Onion_TearLoop.h"
+
 class CMissile;
 class CEffect;
 
@@ -23,8 +25,11 @@ private:
 	CCollider* m_BodyCollider;
 	map<wstring, CEffect*> m_mapEffect;
 
-	float m_DropTearFrequency = 4;
-	CMissile* m_TearDrop;
+	float m_DropTearFrequency = 0.25;
+	CMissile* m_TearDrop = nullptr;
+
+	Onion_TearLoop* m_Onion_TearLoop = nullptr;
+
 
 	// 누적 시간
 	float m_accIdleTime = 0;
@@ -39,6 +44,8 @@ private:
 	virtual void UpdateState() override;
 	virtual void UpdateAnimation() override;
 	virtual void MoveAndAction() override;
+
+	void SpawnEffect(const wstring& _effectName, Vec2 _pos);
 
 public:
 	STATE GetState() { return m_State; }

@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "tear_loop_1.png",
+	"frame": {"x":0,"y":0,"w":1399,"h":407},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1399,"h":407},
+	"sourceSize": {"w":1399,"h":407}
+},
+{
+	"filename": "tear_loop_2.png",
+	"frame": {"x":0,"y":407,"w":1380,"h":410},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1380,"h":410},
+	"sourceSize": {"w":1380,"h":410}
+},
+{
+	"filename": "tear_loop_3.png",
+	"frame": {"x":0,"y":817,"w":1373,"h":406},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1373,"h":406},
+	"sourceSize": {"w":1373,"h":406}
+},
+{
+	"filename": "tear_loop_4.png",
+	"frame": {"x":0,"y":1223,"w":1374,"h":411},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1374,"h":411},
+	"sourceSize": {"w":1374,"h":411}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tear_loop.png",
+	"format": "RGBA8888",
+	"size": {"w":1399,"h":1634},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:353c990070b1227f55f872fbda9978c9:2dd9be1d78fe9faad5c3ef10cdc9f702:cf8fb1cda91aa34e8e39a73d83f07cb3$"
+}
+}

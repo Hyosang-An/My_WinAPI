@@ -73,7 +73,7 @@ void CLevel_Test::CreateAndSaveAnimationByJson()
 {
 	CAnimator* tmp_animator = new CAnimator;
 
-	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\onion\\cry_outro\\veggie_onion_cry_outro.json", 12);
+	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\onion\\tears\\tear_loop.json", 12);
 	
 
 	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\potato\\death\\veggie_potato_death.json", 12);
