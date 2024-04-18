@@ -7,7 +7,8 @@
 
 
 
-World_Map::World_Map()
+World_Map::World_Map() :
+	m_WorldmapPlayer{}
 {
 	SetName(L"World_Map");
 }
@@ -18,12 +19,27 @@ World_Map::~World_Map()
 
 void World_Map::Enter()
 {
-	CCamera::GetInstance().SetCameraLookAt(Vec2(-963, 68));
 	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::WORLD_MAP);
 
 	LoadBackground();
 	LoadObject();
 	SetCollision();
+
+	if (m_bFirstEnter)
+	{
+		CCamera::GetInstance().SetCameraLookAt(Vec2(-963, 68));
+		m_bFirstEnter = false;
+	}
+	else
+	{
+		m_WorldmapPlayer->SetPos(m_LastWorldmapPlayerPos);
+		CCamera::GetInstance().SetCameraLookAt(m_WorldmapPlayer->GetPos());
+	}
+
+	if (m_bWinState)
+	{
+		m_WorldmapPlayer->SetWinState();
+	}
 }
 
 void World_Map::tick()
@@ -75,10 +91,10 @@ void World_Map::LoadBackground()
 
 void World_Map::LoadObject()
 {
-	CObj* worldmap_player = new Worldmap_Player;
-	worldmap_player->SetName(L"Worldmap_Player");
-	worldmap_player->SetPos(Vec2(-963, 68));
-	AddObject(LAYER_TYPE::WORLDMAP_PLAYER, worldmap_player);
+	m_WorldmapPlayer = new Worldmap_Player;
+	m_WorldmapPlayer->SetName(L"Worldmap_Player");
+	m_WorldmapPlayer->SetPos(Vec2(-963, 68));
+	AddObject(LAYER_TYPE::WORLDMAP_PLAYER, m_WorldmapPlayer);
 }
 
 void World_Map::SetCollision()
@@ -89,6 +105,7 @@ void World_Map::SetCollision()
 
 void World_Map::Exit()
 {
+	m_LastWorldmapPlayerPos = m_WorldmapPlayer->GetPos();
 	DeleteAllObjects();
 }
 

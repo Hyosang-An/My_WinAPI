@@ -10,6 +10,8 @@ private:
 	CPlayer*			m_player;
 	Goopy_Le_Grande*	m_Boss;
 
+	
+
 public:
 	void ChangeBoss(Goopy_Le_Grande* _phase3_boss) { m_Boss = _phase3_boss; }
 

@@ -13,6 +13,9 @@ class CLevel :
 {
 private:
     vector<CObj*>   m_arrObjvec[(UINT)LAYER_TYPE::END];
+    
+protected:
+    bool            m_bLevelClear = false;
 
 protected:
     void DeleteAllObjects();

@@ -22,6 +22,9 @@ private:
     void ChangeLevel(LEVEL_TYPE _nextLevelType);
 
 public:
+    void SetWorldmapLevelWin();
+
+public:
     void init();
     void progress();
     void render();

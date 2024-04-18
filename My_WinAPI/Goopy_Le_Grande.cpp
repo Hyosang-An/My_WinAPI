@@ -575,8 +575,7 @@ void Goopy_Le_Grande::Phase3_Update()
 		{
 			if (m_bClear == false)
 			{
-				//CLevelMgr::GetInstance().GetCurrentLevel()->LevelClear();
-				ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+				CLevelMgr::GetInstance().GetCurrentLevel()->LevelClear();
 				m_bClear = true;
 			}
 			break;

@@ -62,6 +62,12 @@ void CLevelMgr::ChangeLevel(LEVEL_TYPE _nextLevelType)
 	m_pCurrentLevel->begin();
 }
 
+void CLevelMgr::SetWorldmapLevelWin()
+{
+	auto worldmap = static_cast<World_Map*>(m_arrLevel[(UINT)LEVEL_TYPE::WORLD_MAP]);
+	worldmap->SetWinState();
+}
+
 void CLevelMgr::init()
 {
 	// 모든 레벨 생성

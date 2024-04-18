@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CLevel_Veggie.h"
 
+#include "CLevelMgr.h"
+
 #include "CBackground.h"
 #include "Cloud.h"
 #include "CGround.h"
@@ -30,6 +32,8 @@ void CLevel_Veggie::Enter()
 	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::BOSS_STAGE, Vec2(-670, 670));
 	CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_IN, 3);
 
+	m_bLevelClear = false;
+
 	m_PhaseState = PHASE_STATE::PHASE1;
 	m_player = nullptr;
 	m_CurBoss = nullptr;
@@ -58,6 +62,22 @@ void CLevel_Veggie::tick()
 	if (KEY_JUST_PRESSED(KEY::ESC))
 	{
 		ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+	}
+
+	if (m_bLevelClear)
+	{
+		static float accClearTime = 0;
+
+		accClearTime += DT;
+
+		if (2 < accClearTime)
+		{
+			accClearTime = 0;
+			ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+			CLevelMgr::GetInstance().SetWorldmapLevelWin();
+		}
+
+		return;
 	}
 
 	switch (m_PhaseState)
@@ -149,9 +169,11 @@ void CLevel_Veggie::tick()
 			}
 
 			// 다음 페이즈로 전환
-			if (m_CurBoss && static_cast<Onion*>(m_CurBoss)->GetState() == Onion::STATE::DEATH && m_CurBoss->GetComponent<CAnimator>()->IsCurAnimationFinished())
+			if (m_CurBoss && m_CurBoss->IsDead())
 			{
-				m_BurstDust->SelfDestruct();
+				m_bLevelClear = true;
+
+				/*m_BurstDust->SelfDestruct();
 
 				m_PhaseState = PHASE_STATE::PHASE3;
 
@@ -160,7 +182,7 @@ void CLevel_Veggie::tick()
 				m_BurstEffect->SetAnimation(L"animation\\Boss\\Veggie\\carrot\\ground_burst\\veggie_carrot_ground_burst_front.anim");
 				SpawnObject(LAYER_TYPE::EFFECT, m_BurstEffect);
 
-				m_BossSpawnFlag = false;
+				m_BossSpawnFlag = false;*/
 			}
 
 			break;

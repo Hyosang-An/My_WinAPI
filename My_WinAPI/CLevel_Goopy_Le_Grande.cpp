@@ -7,6 +7,7 @@
 #include "CGround.h"
 #include "CWall.h"
 #include "Goopy_Le_Grande.h"
+#include "CLevelMgr.h"
 
 CLevel_Goopy_Le_Grande::CLevel_Goopy_Le_Grande() :
 	m_player{},
@@ -38,6 +39,8 @@ void CLevel_Goopy_Le_Grande::Enter()
 
 	// 충돌 설정
 	SetCollision();
+
+	m_bLevelClear = false;
 }
 
 void CLevel_Goopy_Le_Grande::tick()
@@ -47,6 +50,20 @@ void CLevel_Goopy_Le_Grande::tick()
 	if (KEY_JUST_PRESSED(KEY::ESC))
 	{
 		ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+	}
+
+	if (m_bLevelClear)
+	{
+		static float accClearTime = 0;
+
+		accClearTime += DT;
+
+		if (2 < accClearTime)
+		{
+			accClearTime = 0;
+			ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+			CLevelMgr::GetInstance().SetWorldmapLevelWin();
+		}
 	}
 }
 
@@ -211,7 +228,7 @@ void CLevel_Goopy_Le_Grande::Exit()
 
 void CLevel_Goopy_Le_Grande::LevelClear()
 {
-	ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+	m_bLevelClear = true;
 }
 
 
