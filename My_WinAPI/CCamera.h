@@ -78,6 +78,8 @@ public:
 	Vec2 GetRealPos(Vec2 _renderPos) { return _renderPos + m_CameraLeftTopPos; }
 	Vec2 GetLeftTopPos() { return m_CameraLeftTopPos; }
 
+	CTexture* GetFadeTexture() { return m_FadeTex; }
+
 	Vec2 GetCameraDeltaPos() { return m_CameraLeftTopPos - m_PrevCameraLeftTopPos; }
 
 	void SetCameraLeftTopPos(Vec2 _pos) { m_CameraLeftTopPos = _pos; }

@@ -2,6 +2,8 @@
 #include "Worldmap_Player.h"
 
 #include "CKeyMgr.h"
+#include "Z_Button.h"
+#include "CWorldmap_Point.h"
 
 Worldmap_Player::Worldmap_Player()
 {
@@ -15,6 +17,9 @@ Worldmap_Player::Worldmap_Player()
 	m_Worldmap_Player_Collider->SetOffsetPos(Vec2(0, 20));
 
 	CCamera::GetInstance().SetWorldmapPlayerToCamera(this);
+
+	m_Z_Button = new Z_Button;
+	m_Z_Button->SetWorldmapPlayer(this);
 }
 
 Worldmap_Player::~Worldmap_Player()
@@ -24,11 +29,16 @@ Worldmap_Player::~Worldmap_Player()
 
 void Worldmap_Player::begin()
 {
+	SpawnObject(LAYER_TYPE::UI, m_Z_Button);
+
 	LoadAnimation();
 }
 
 void Worldmap_Player::tick()
 {
+	if (m_StageSelect)
+		return;
+
 	UpdateState();
 	UpdateAnimation();
 	MoveAndAction();
@@ -254,14 +264,38 @@ void Worldmap_Player::LoadAnimation()
 
 void Worldmap_Player::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
+	if (_pOtherCollider->GetOwner()->GetLayerType() == LAYER_TYPE::WORLDMAP_POINT)
+		m_Z_Button->SetActive(true);
 }
 
 void Worldmap_Player::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
+	auto otherObj = _pOtherCollider->GetOwner();
+	if (otherObj->GetLayerType() == LAYER_TYPE::WORLDMAP_POINT)
+	{
+		auto worldmapPoint = static_cast<CWorldmap_Point*>(otherObj);
+		if (!m_StageSelect && KEY_JUST_PRESSED(KEY::Z))
+		{
+			m_StageSelect = true;
+			m_Z_Button->SetActive(false);
+
+			worldmapPoint->SelectStage();
+		}
+
+		else if (m_StageSelect && KEY_JUST_PRESSED(KEY::ESC))
+		{
+			m_StageSelect = false;
+			m_Z_Button->SetActive(true);
+
+			worldmapPoint->DeselectStage();
+		}
+	}
 }
 
 void Worldmap_Player::OnCollisionExit(CCollider* _myCollider, CCollider* _pOtherCollider)
 {
+	if (_pOtherCollider->GetOwner()->GetLayerType() == LAYER_TYPE::WORLDMAP_POINT)
+		m_Z_Button->SetActive(false);
 }
 
 

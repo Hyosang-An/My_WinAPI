@@ -58,6 +58,13 @@ void World_Map::LoadBackground()
 	worldmap_point->SetStage(LEVEL_TYPE::BOSS_STAGE_1);
 	AddObject(LAYER_TYPE::WORLDMAP_POINT, worldmap_point);
 
+	worldmap_point = new CWorldmap_Point;
+	worldmap_point->SetPos(Vec2(-150, 355));
+	worldmap_point->SetColliderOffset(Vec2(20, -20));
+	worldmap_point->SetAnimation(L"animation\\Worldmap_Point\\Veggie_point\\veggie_point.anim");
+	worldmap_point->SetStage(LEVEL_TYPE::BOSS_STAGE_2);
+	AddObject(LAYER_TYPE::WORLDMAP_POINT, worldmap_point);
+
 }
 
 void World_Map::LoadObject()

@@ -1,5 +1,8 @@
 #pragma once
 #include "CObj.h"
+
+class Z_Button;
+
 class Worldmap_Player :
     public CObj
 {
@@ -33,6 +36,9 @@ private:
 
 	DIR			m_Dir = DIR::DOWN;
 	STATE		m_State = STATE::IDLE;
+
+	bool		m_StageSelect = false;
+	Z_Button*	m_Z_Button;
 
 private:
 	void UpdateState();

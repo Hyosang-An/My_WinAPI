@@ -191,6 +191,15 @@
     <Filter Include="03. Game\03. Manager\RandomMgr">
       <UniqueIdentifier>{5f600303-b18c-4613-9c22-5b3a5924ee02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\05. Object\UI">
+      <UniqueIdentifier>{e3f24062-0f32-4bc1-9f18-4267d3637f65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\05. Object\UI\Stage Title Card">
+      <UniqueIdentifier>{22ce8c42-6d8e-4e4f-98c0-c3c0d82cb94a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Game\05. Object\Worldmap Player\Z Button">
+      <UniqueIdentifier>{48f21ba5-7f08-46cc-967b-d224b76af603}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -391,7 +400,15 @@
     <ClInclude Include="Onion_TearDrop.h">
       <Filter>03. Game\04. Level\Boss Stage 2\Boss Missile</Filter>
     </ClInclude>
-    <ClInclude Include="CRandomMgr.h" />
+    <ClInclude Include="CRandomMgr.h">
+      <Filter>03. Game\03. Manager\RandomMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CStage_Title_Card.h">
+      <Filter>03. Game\05. Object\UI\Stage Title Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Z_Button.h">
+      <Filter>03. Game\05. Object\Worldmap Player\Z Button</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -571,7 +588,15 @@
     <ClCompile Include="Onion_TearDrop.cpp">
       <Filter>03. Game\04. Level\Boss Stage 2\Boss Missile</Filter>
     </ClCompile>
-    <ClCompile Include="CRandomMgr.cpp" />
+    <ClCompile Include="CRandomMgr.cpp">
+      <Filter>03. Game\03. Manager\RandomMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage_Title_Card.cpp">
+      <Filter>03. Game\05. Object\UI\Stage Title Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Z_Button.cpp">
+      <Filter>03. Game\05. Object\Worldmap Player\Z Button</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">
