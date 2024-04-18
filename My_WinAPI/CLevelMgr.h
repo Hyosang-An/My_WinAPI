@@ -15,6 +15,8 @@ private:
     bool m_bFreeze = false;
     float m_FreezeDuration = 0.5;
 
+    vector<CTexture*> m_vecKnockOutMsg;
+
     // !µð¹ö±ë
     bool m_bPauseProgress = false;
 
@@ -23,6 +25,7 @@ private:
 
 public:
     void SetWorldmapLevelWin();
+    const vector<CTexture*>& GetvecKnockOutMsg() { return m_vecKnockOutMsg; }
 
 public:
     void init();

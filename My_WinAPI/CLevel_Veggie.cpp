@@ -70,7 +70,7 @@ void CLevel_Veggie::tick()
 
 		accClearTime += DT;
 
-		if (2 < accClearTime)
+		if (3 < accClearTime)
 		{
 			accClearTime = 0;
 			ChangeLevel(LEVEL_TYPE::WORLD_MAP);

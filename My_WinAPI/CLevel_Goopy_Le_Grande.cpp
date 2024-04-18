@@ -58,7 +58,7 @@ void CLevel_Goopy_Le_Grande::tick()
 
 		accClearTime += DT;
 
-		if (2 < accClearTime)
+		if (3 < accClearTime)
 		{
 			accClearTime = 0;
 			ChangeLevel(LEVEL_TYPE::WORLD_MAP);
@@ -83,6 +83,41 @@ void CLevel_Goopy_Le_Grande::render()
 	wstring bossHP = L"보스 HP : " + std::to_wstring(m_Boss->GetHP());
 	TextOut(SUBDC, (int)CEngine::GetInstance().GetResolution().x - 80, (int)CEngine::GetInstance().GetResolution().y - 20,
 		bossHP.c_str(), (int)bossHP.length());
+
+	if (m_bLevelClear)
+	{
+		BLENDFUNCTION bf{};
+
+		bf.BlendOp = AC_SRC_OVER;
+		bf.BlendFlags = 0;
+		bf.AlphaFormat = AC_SRC_ALPHA;
+		bf.SourceConstantAlpha = 255;
+
+		// 애니매이션 렌더링
+		auto vecKnockOutMsg = CLevelMgr::GetInstance().GetvecKnockOutMsg();
+
+		// 프레임이 마지막에 도달한 경우
+		if (m_CurKnockOutFrameIdx >= vecKnockOutMsg.size() - 1)
+			return;
+
+		m_KnockOutframeElapsedTime += DT;
+
+		if (m_KnockOutframeDuration < m_KnockOutframeElapsedTime)
+		{
+			m_KnockOutframeElapsedTime -= m_KnockOutframeDuration;
+			m_CurKnockOutFrameIdx++;
+		}
+
+		
+		auto curFrame = vecKnockOutMsg[m_CurKnockOutFrameIdx];
+		auto w = curFrame->GetWidth();
+		auto h = curFrame->GetHeight();
+		auto res = CEngine::GetInstance().GetResolution();
+
+		AlphaBlend(SUBDC, 0, 0, res.x, res.y,
+			curFrame->GetDC(), 0, 0, w, h, bf);
+
+	}
 }
 
 void CLevel_Goopy_Le_Grande::LoadBackground()

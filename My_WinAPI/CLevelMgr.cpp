@@ -70,6 +70,16 @@ void CLevelMgr::SetWorldmapLevelWin()
 
 void CLevelMgr::init()
 {
+	for (int i = 0; i < 27; i++)
+	{
+		wstring strpath = L"texture\\A KNOCKOUT message\\";
+		wstring filename = L"FightText_KO_";
+		wstring num = std::to_wstring(i);
+		num = std::wstring(4 - num.length(), L'0') + num;
+
+		m_vecKnockOutMsg.push_back(CAssetMgr::GetInstance().LoadTexture(filename + num, strpath + filename + num + L".png"));
+	}
+
 	// 모든 레벨 생성
 	m_arrLevel[(UINT)LEVEL_TYPE::TITLE] = new Title_Scene;
 	m_arrLevel[(UINT)LEVEL_TYPE::Test] = new CLevel_Test;
