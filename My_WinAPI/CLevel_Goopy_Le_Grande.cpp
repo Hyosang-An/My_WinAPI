@@ -44,9 +44,9 @@ void CLevel_Goopy_Le_Grande::tick()
 {
 	CLevel::tick();
 
-	if (KEY_JUST_PRESSED(KEY::M))
+	if (KEY_JUST_PRESSED(KEY::ESC))
 	{
-		ChangeLevel(LEVEL_TYPE::Test);
+		ChangeLevel(LEVEL_TYPE::WORLD_MAP);
 	}
 }
 

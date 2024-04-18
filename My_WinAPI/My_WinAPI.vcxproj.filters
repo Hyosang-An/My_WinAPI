@@ -200,6 +200,9 @@
     <Filter Include="03. Game\05. Object\Worldmap Player\Z Button">
       <UniqueIdentifier>{48f21ba5-7f08-46cc-967b-d224b76af603}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\04. Level\Title Scene">
+      <UniqueIdentifier>{c755b82d-b659-46f3-b3a8-402558c8dbf4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -409,6 +412,7 @@
     <ClInclude Include="Z_Button.h">
       <Filter>03. Game\05. Object\Worldmap Player\Z Button</Filter>
     </ClInclude>
+    <ClInclude Include="Title_Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -597,6 +601,7 @@
     <ClCompile Include="Z_Button.cpp">
       <Filter>03. Game\05. Object\Worldmap Player\Z Button</Filter>
     </ClCompile>
+    <ClCompile Include="Title_Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

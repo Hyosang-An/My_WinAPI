@@ -49,7 +49,7 @@ void CLevel_Test::tick()
 		SpawnObject(LAYER_TYPE::FORCE, pForce);
 	}
 	
-	if (KEY_JUST_PRESSED(KEY::N))
+	if (KEY_JUST_PRESSED(KEY::ESC))
 		ChangeLevel(LEVEL_TYPE::WORLD_MAP);
 }
 

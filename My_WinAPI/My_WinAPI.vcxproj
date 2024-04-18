@@ -213,6 +213,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Title_Scene.h" />
     <ClInclude Include="Veggie.h" />
     <ClInclude Include="Worldmap_Player.h" />
     <ClInclude Include="World_Map.h" />
@@ -282,6 +283,7 @@
     <ClCompile Include="Potato.cpp" />
     <ClCompile Include="Potato_Shot.cpp" />
     <ClCompile Include="Question_Mark.cpp" />
+    <ClCompile Include="Title_Scene.cpp" />
     <ClCompile Include="Veggie.cpp" />
     <ClCompile Include="Worldmap_Player.cpp" />
     <ClCompile Include="World_Map.cpp" />

@@ -55,9 +55,9 @@ void CLevel_Veggie::tick()
 {
 	CLevel::tick();
 
-	if (KEY_JUST_PRESSED(KEY::M))
+	if (KEY_JUST_PRESSED(KEY::ESC))
 	{
-		ChangeLevel(LEVEL_TYPE::Test);
+		ChangeLevel(LEVEL_TYPE::WORLD_MAP);
 	}
 
 	switch (m_PhaseState)

@@ -5,13 +5,15 @@
 #include "CCollisionMgr.h"
 
 #include "CLevel.h"
-#include "CLevel_Test.h"
+
 #include "CObj.h"
 #include "CPlayer.h"
 #include "CMonster.h"
 #include "CPlatform.h"
 #include "CGround.h"
 
+#include "Title_Scene.h"
+#include "CLevel_Test.h"
 #include "World_Map.h"
 #include "CLevel_Goopy_Le_Grande.h"
 #include "CLevel_Veggie.h"
@@ -63,13 +65,14 @@ void CLevelMgr::ChangeLevel(LEVEL_TYPE _nextLevelType)
 void CLevelMgr::init()
 {
 	// 모든 레벨 생성
+	m_arrLevel[(UINT)LEVEL_TYPE::TITLE] = new Title_Scene;
 	m_arrLevel[(UINT)LEVEL_TYPE::Test] = new CLevel_Test;
 	m_arrLevel[(UINT)LEVEL_TYPE::WORLD_MAP] = new World_Map;
 	m_arrLevel[(UINT)LEVEL_TYPE::BOSS_STAGE_1] = new CLevel_Goopy_Le_Grande;
 	m_arrLevel[(UINT)LEVEL_TYPE::BOSS_STAGE_2] = new CLevel_Veggie;
 
 	// 초기 레벨 지정
-	::ChangeLevel(LEVEL_TYPE::Test);
+	::ChangeLevel(LEVEL_TYPE::TITLE);
 }
 
 void CLevelMgr::progress()

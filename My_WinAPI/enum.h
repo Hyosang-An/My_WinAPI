@@ -27,7 +27,7 @@ enum class BRUSH_TYPE
 
 enum class LEVEL_TYPE
 {
-	LOGO_START,
+	TITLE,
 	EDITOR,
 
 	WORLD_MAP,

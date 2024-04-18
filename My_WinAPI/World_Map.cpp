@@ -30,8 +30,14 @@ void World_Map::tick()
 {
 	CLevel::tick();
 
-	if (KEY_JUST_PRESSED(KEY::N))
+	if (KEY_JUST_PRESSED(KEY::_1))
+		ChangeLevel(LEVEL_TYPE::BOSS_STAGE_1);
+
+	else if (KEY_JUST_PRESSED(KEY::_2))
 		ChangeLevel(LEVEL_TYPE::BOSS_STAGE_2);
+
+	else if (KEY_JUST_PRESSED(KEY::T))
+		ChangeLevel(LEVEL_TYPE::Test);
 }
 
 void World_Map::render()
