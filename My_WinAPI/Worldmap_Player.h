@@ -37,6 +37,8 @@ private:
 	DIR			m_Dir = DIR::DOWN;
 	STATE		m_State = STATE::IDLE;
 
+	float		m_accWinStateTime = 0;
+
 	bool		m_StageSelect = false;
 	Z_Button*	m_Z_Button;
 
@@ -46,6 +48,9 @@ private:
 	void MoveAndAction();
 
 	void LoadAnimation();
+
+public:
+	void SetWinState() { m_State = STATE::WIN; }
 
 public:
 	virtual void begin();			

@@ -209,4 +209,9 @@ void CLevel_Goopy_Le_Grande::Exit()
 	DeleteAllObjects();
 }
 
+void CLevel_Goopy_Le_Grande::LevelClear()
+{
+	ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+}
+
 

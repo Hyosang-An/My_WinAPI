@@ -10,8 +10,6 @@ private:
 	CPlayer*			m_player;
 	Goopy_Le_Grande*	m_Boss;
 
-private:
-
 public:
 	void ChangeBoss(Goopy_Le_Grande* _phase3_boss) { m_Boss = _phase3_boss; }
 
@@ -22,11 +20,14 @@ private:
 
 public:
 	virtual void Enter() override;
+
 	virtual void tick() override;
 	virtual void finaltick() override;
 	virtual void render() override;
 
 	virtual void Exit() override;
+
+	virtual void LevelClear() override;
 
 public:
 	CLevel_Goopy_Le_Grande();

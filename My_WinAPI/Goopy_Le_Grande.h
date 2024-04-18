@@ -80,6 +80,7 @@ private:
     bool    m_bSpawn_smash_effect = false; // 3페이즈 smash effect 생성 플래그   
     bool    m_bSpawn_3ph_intro_effect = false; // 3페이즈 intro effect 생성 플래그
     bool    m_bSpawn3Phase = false;     // 3페이즈 보스 소환 플래그
+    bool    m_bClear = false;
 
 private:
     void UpdateState();

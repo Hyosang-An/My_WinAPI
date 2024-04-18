@@ -46,6 +46,19 @@ void Worldmap_Player::tick()
 
 void Worldmap_Player::UpdateState()
 {
+	if (m_State == STATE::WIN)
+	{
+		m_accWinStateTime += DT;
+
+		if (3 < m_accWinStateTime)
+		{
+			m_accWinStateTime = 0;
+			m_State = STATE::IDLE;
+		}
+		else
+			return;
+	}
+
 	bool up = KEY_PRESSED(KEY::UP);
 	bool down = KEY_PRESSED(KEY::DOWN);
 	bool right = KEY_PRESSED(KEY::RIGHT);

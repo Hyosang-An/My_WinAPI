@@ -27,9 +27,9 @@ private:
 	CEffect* m_BurstEffect;
 	CBackground* m_BurstDust;
 
-	Veggie* m_Potato;
-	Veggie* m_Onion;
-	Veggie* m_Carrot;
+	Veggie* m_Potato = nullptr;
+	Veggie* m_Onion = nullptr;
+	Veggie* m_Carrot = nullptr;
 
 public:
 	virtual void tick();

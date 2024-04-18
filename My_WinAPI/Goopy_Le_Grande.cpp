@@ -572,9 +572,15 @@ void Goopy_Le_Grande::Phase3_Update()
 		}
 
 		case BASE_STATE::DEATH:
+		{
+			if (m_bClear == false)
+			{
+				//CLevelMgr::GetInstance().GetCurrentLevel()->LevelClear();
+				ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+				m_bClear = true;
+			}
 			break;
-		default:
-			break;
+		}
 	}
 }
 

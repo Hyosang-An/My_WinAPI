@@ -31,6 +31,8 @@ public:
     virtual void Enter() = 0;   // 레벨이 전환되고 처음 초기화 작업
     virtual void Exit() = 0;    // 레벨이 끝날때 할 일
 
+    virtual void LevelClear() {}
+
 public:
     void AddObject(LAYER_TYPE _type, CObj* _pObj);
     const vector<CObj*> &GetObjvecOfLayer(LAYER_TYPE _type);
