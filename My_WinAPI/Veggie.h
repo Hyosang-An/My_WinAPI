@@ -6,6 +6,10 @@ class Veggie :
 protected:
     int m_iHP = 1;
 
+    float               m_accTimeSinceLastExplosionFX = 0;
+    // Æø¹ß È¿°ú frequency
+    float               m_ExplosionFX_Frequency = 2;
+
     virtual void LoadAnimation() = 0;
 
     virtual void UpdateState() = 0;

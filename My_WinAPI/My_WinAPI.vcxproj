@@ -184,7 +184,6 @@
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CRandomMgr.h" />
     <ClInclude Include="CRigidbody.h" />
-    <ClInclude Include="CRunAndGunStage1.h" />
     <ClInclude Include="CSelectObj.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundMgr.h" />
@@ -257,7 +256,6 @@
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CRandomMgr.cpp" />
     <ClCompile Include="CRigidbody.cpp" />
-    <ClCompile Include="CRunAndGunStage1.cpp" />
     <ClCompile Include="CSelectObj.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundMgr.cpp" />

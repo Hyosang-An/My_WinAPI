@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "boss_explosion_0001.png",
+	"frame": {"x":0,"y":0,"w":166,"h":208},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":208},
+	"sourceSize": {"w":166,"h":208}
+},
+{
+	"filename": "boss_explosion_0002.png",
+	"frame": {"x":166,"y":0,"w":332,"h":330},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":332,"h":330},
+	"sourceSize": {"w":332,"h":330}
+},
+{
+	"filename": "boss_explosion_0003.png",
+	"frame": {"x":498,"y":0,"w":454,"h":466},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":466},
+	"sourceSize": {"w":454,"h":466}
+},
+{
+	"filename": "boss_explosion_0004.png",
+	"frame": {"x":0,"y":560,"w":595,"h":592},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":595,"h":592},
+	"sourceSize": {"w":595,"h":592}
+},
+{
+	"filename": "boss_explosion_0005.png",
+	"frame": {"x":595,"y":560,"w":675,"h":666},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":675,"h":666},
+	"sourceSize": {"w":675,"h":666}
+},
+{
+	"filename": "boss_explosion_0006.png",
+	"frame": {"x":1270,"y":560,"w":680,"h":708},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":680,"h":708},
+	"sourceSize": {"w":680,"h":708}
+},
+{
+	"filename": "boss_explosion_0007.png",
+	"frame": {"x":1329,"y":1268,"w":676,"h":728},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":676,"h":728},
+	"sourceSize": {"w":676,"h":728}
+},
+{
+	"filename": "boss_explosion_0008.png",
+	"frame": {"x":0,"y":1268,"w":665,"h":724},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":665,"h":724},
+	"sourceSize": {"w":665,"h":724}
+},
+{
+	"filename": "boss_explosion_0009.png",
+	"frame": {"x":665,"y":1268,"w":664,"h":727},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":664,"h":727},
+	"sourceSize": {"w":664,"h":727}
+},
+{
+	"filename": "boss_explosion_0010.png",
+	"frame": {"x":952,"y":0,"w":656,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":656,"h":560},
+	"sourceSize": {"w":656,"h":560}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "boss_explosion.png",
+	"format": "RGBA8888",
+	"size": {"w":2005,"h":1996},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fb8c407b3051d27542d194cf6b1e1620:4e078fa641507dc900172202564cdc89:42cca1f60ed3b1cd4ac0dd4cb35c4920$"
+}
+}

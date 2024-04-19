@@ -72,7 +72,7 @@ void CLevel_Goopy_Le_Grande::tick()
 
 		accClearTime += DT;
 
-		if (3 < accClearTime)
+		if (4 < accClearTime)
 		{
 			accClearTime = 0;
 			ChangeLevel(LEVEL_TYPE::WORLD_MAP);
@@ -119,8 +119,6 @@ void CLevel_Goopy_Le_Grande::render()
 	// KnockOut 렌더링
 	if (m_bLevelClear)
 	{
-		
-
 		// 애니매이션 렌더링
 		auto vecKnockOutMsg = CLevelMgr::GetInstance().GetvecKnockOutMsg();
 
@@ -136,15 +134,12 @@ void CLevel_Goopy_Le_Grande::render()
 			m_CurKnockOutFrameIdx++;
 		}
 
-		
 		auto curFrame = vecKnockOutMsg[m_CurKnockOutFrameIdx];
 		w = curFrame->GetWidth();
 		h = curFrame->GetHeight();
 		
-
 		AlphaBlend(SUBDC, 0, 0, res.x, res.y,
 			curFrame->GetDC(), 0, 0, w, h, bf);
-
 	}
 }
 

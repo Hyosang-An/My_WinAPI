@@ -3,6 +3,8 @@
 
 #include "Potato_Shot.h"
 
+#include "CRandomMgr.h"
+
 Potato::Potato()
 {
 	m_iHP = 5;
@@ -31,6 +33,11 @@ void Potato::begin()
 	auto effect = new CEffect;
 	effect->SetName(L"veggie_potato_shoot_fx");
 	effect->SetAnimation(L"animation\\Boss\\Veggie\\potato\\shoot_fx\\veggie_potato_shoot_fx.anim");
+	m_mapEffect.insert(make_pair(effect->GetName(), effect));
+
+	effect = new CEffect;
+	effect->SetName(L"boss_explosion");
+	effect->SetAnimation(L"animation\\Boss\\boss_explosion\\boss_explosion.anim");
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 
 	m_Shot = new Potato_Shot;
@@ -80,6 +87,16 @@ void Potato::UpdateState()
 		}
 		case Potato::STATE::DEATH:
 		{
+			m_accTimeSinceLastExplosionFX += DT;
+			if (1 / m_ExplosionFX_Frequency < m_accTimeSinceLastExplosionFX)
+			{
+				m_accTimeSinceLastExplosionFX = 0;
+				auto posX = CRandomMgr::GetInstance().GetRandomFloat_from_UniformDist(m_Pos.x - 150, m_Pos.x + 150);
+				auto posY = CRandomMgr::GetInstance().GetRandomFloat_from_UniformDist(m_Pos.y - 150, m_Pos.y + 150);
+
+				SpawnEffect(L"boss_explosion", Vec2(posX, posY));
+			}
+
 			if (m_Animator->GetCurAnimation()->GetName() == L"veggie_potato_leave" && m_Animator->IsCurAnimationFinished())
 				SelfDestruct();
 			break;

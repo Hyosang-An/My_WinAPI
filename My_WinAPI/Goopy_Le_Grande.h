@@ -74,6 +74,10 @@ private:
     float               m_accIdleTime = 0;  // 2페이즈 시작 직후 idle 타임
     float               m_accDeathTime = 0; // 2페이즈 사망 직후 death 타임
     float               m_accMovingTime = 0; // 3페이즈 무빙 타임
+    float               m_accTimeSinceLastExplosionFX = 0;
+
+    // 폭발 효과 frequency
+    float               m_ExplosionFX_Frequency = 2;
 
     // 플래그
     bool    m_bSpawn_question = false;     // 2페이즈 전환 물음표 생성 플래그

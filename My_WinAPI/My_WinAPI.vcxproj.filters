@@ -101,9 +101,6 @@
     <Filter Include="03. Game\04. Level\Boss Stage 1">
       <UniqueIdentifier>{00ff60bb-3bf3-4efc-ba40-bbec89a128e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Game\04. Level\Run and Gun Stage 1">
-      <UniqueIdentifier>{6ab9300b-0765-4703-a161-c40f29e76924}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03. Game\04. Level\Test Level">
       <UniqueIdentifier>{581d2d6e-aad2-4ea6-b843-edb9eadf3565}</UniqueIdentifier>
     </Filter>
@@ -346,9 +343,6 @@
     <ClInclude Include="CCamera.h">
       <Filter>03. Game\03. Manager\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="CRunAndGunStage1.h">
-      <Filter>03. Game\04. Level\Run and Gun Stage 1</Filter>
-    </ClInclude>
     <ClInclude Include="CLevel_Test.h">
       <Filter>03. Game\04. Level\Test Level</Filter>
     </ClInclude>
@@ -539,9 +533,6 @@
     </ClCompile>
     <ClCompile Include="CCamera.cpp">
       <Filter>03. Game\03. Manager\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="CRunAndGunStage1.cpp">
-      <Filter>03. Game\04. Level\Run and Gun Stage 1</Filter>
     </ClCompile>
     <ClCompile Include="CLevel_Test.cpp">
       <Filter>03. Game\04. Level\Test Level</Filter>

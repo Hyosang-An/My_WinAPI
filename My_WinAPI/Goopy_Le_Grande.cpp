@@ -7,6 +7,7 @@
 #include "Question_Mark.h"
 #include "CEffect.h"
 #include "CMissile.h"
+#include "CRandomMgr.h"
 
 Goopy_Le_Grande::Goopy_Le_Grande()
 {
@@ -89,6 +90,11 @@ void Goopy_Le_Grande::begin()
 	effect->SetName(L"Ph3_Move_Dust_R");
 	effect->SetAnimation(L"animation\\Boss\\Goopy Le Grande\\Goopy Le Grande R\\Phase 3\\Move\\GroundFX\\Dust\\slime_tomb_groundfx_R.anim", true);
 	effect->SetParentAndOffset(this, Vec2(0, 246));
+	m_mapEffect.insert(make_pair(effect->GetName(), effect));
+
+	effect = new CEffect;
+	effect->SetName(L"boss_explosion");
+	effect->SetAnimation(L"animation\\Boss\\boss_explosion\\boss_explosion.anim");
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
 }
 
@@ -573,6 +579,16 @@ void Goopy_Le_Grande::Phase3_Update()
 
 		case BASE_STATE::DEATH:
 		{
+			m_accTimeSinceLastExplosionFX += DT;
+			if (1 / m_ExplosionFX_Frequency < m_accTimeSinceLastExplosionFX)
+			{
+				m_accTimeSinceLastExplosionFX = 0;
+				auto posX = CRandomMgr::GetInstance().GetRandomFloat_from_UniformDist(m_Pos.x - 150, m_Pos.x + 150);
+				auto posY = CRandomMgr::GetInstance().GetRandomFloat_from_UniformDist(m_Pos.y - 150, m_Pos.y + 150);
+				
+				SpawnEffect(L"boss_explosion", Vec2(posX, posY));
+			}
+
 			if (m_bClear == false)
 			{
 				CLevelMgr::GetInstance().GetCurrentLevel()->LevelClear();
