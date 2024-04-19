@@ -15,6 +15,10 @@ Title_Scene::Title_Scene()
 
 		m_vecTitleAnim.push_back(CAssetMgr::GetInstance().LoadTexture(filename + num, strpath + filename + num + L".png"));
 	}
+
+	// BGM 
+	BGM = CAssetMgr::GetInstance().LoadSound(L"BGM_Worldmap", L"sound\\BGM\\BGM_title_screen.wav");
+	BGM->SetVolume(50);
 }
 
 Title_Scene::~Title_Scene()
@@ -23,6 +27,7 @@ Title_Scene::~Title_Scene()
 
 void Title_Scene::Enter()
 {
+	BGM->Play();
 }
 
 void Title_Scene::tick()
@@ -77,6 +82,7 @@ void Title_Scene::render()
 
 void Title_Scene::Exit()
 {
+	BGM->Stop();
 	DeleteAllObjects();
 }
 

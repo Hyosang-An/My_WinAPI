@@ -9,6 +9,7 @@
 #include "CPathMgr.h"
 #include "CAssetMgr.h"
 #include "CRandomMgr.h"
+#include "CSoundMgr.h"
 
 CEngine::CEngine()
 	: m_hInstance{}
@@ -59,6 +60,7 @@ int CEngine::init(HINSTANCE _hInst, HWND _hWnd, POINT _Resolution)
 	CCamera::GetInstance().init();
 	CCollisionMgr::GetInstance().init();
 	CRandomMgr::GetInstance().init();
+	CSoundMgr::GetInstance().init();
 	
 	CLevelMgr::GetInstance().init();
 

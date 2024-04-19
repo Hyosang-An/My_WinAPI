@@ -11,6 +11,10 @@ World_Map::World_Map() :
 	m_WorldmapPlayer{}
 {
 	SetName(L"World_Map");
+
+	// BGM 
+	BGM = CAssetMgr::GetInstance().LoadSound(L"BGM_Worldmap", L"sound\\BGM\\BGM_Inkwell_Isle_One.wav");
+	BGM->SetVolume(50);
 }
 
 World_Map::~World_Map()
@@ -40,6 +44,8 @@ void World_Map::Enter()
 	{
 		m_WorldmapPlayer->SetWinState();
 	}
+
+	BGM->Play();
 }
 
 void World_Map::tick()
@@ -105,6 +111,7 @@ void World_Map::SetCollision()
 
 void World_Map::Exit()
 {
+	BGM->Stop();
 	m_LastWorldmapPlayerPos = m_WorldmapPlayer->GetPos();
 	DeleteAllObjects();
 }

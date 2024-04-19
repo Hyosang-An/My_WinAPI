@@ -20,8 +20,19 @@
 #include <assert.h>
 #include <filesystem>
 
+// 라이브러리 추가는 프로젝트에서 생성한 헤더보다 먼저 include하는게 좋음.
+// 그렇지 않으면 먼저 나온 프로젝트 생성 헤더가 라이브러리에 필요한 정보를 먼저 사용하려고 하다가 에러날 수 있음.
+
 // TransparentBlt가 구현되어있는 라이브러리 링크
 #pragma comment(lib, "msimg32.lib")
+
+// Sound 관련 라이브러리 추가
+#include "mmsystem.h"
+#include <dsound.h>
+#include <dinput.h>
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "dsound.lib")
+
 
 using std::vector;
 using std::list;
@@ -34,10 +45,12 @@ using std::make_pair;
 #include "Singleton.h"
 #include "enum.h"
 #include "struct.h"
+
 #include "func.h"
 
 #include "CSelectObj.h"
 #include "CDbgRenderer.h"
 #include "CEngine.h"
+
 
 #endif //PCH_H

@@ -203,6 +203,9 @@
     <Filter Include="03. Game\04. Level\Title Scene">
       <UniqueIdentifier>{c755b82d-b659-46f3-b3a8-402558c8dbf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Game\03. Manager\SoundMgr">
+      <UniqueIdentifier>{31506665-f3b8-42a3-bdc4-b4fa37f81df7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -412,7 +415,12 @@
     <ClInclude Include="Z_Button.h">
       <Filter>03. Game\05. Object\Worldmap Player\Z Button</Filter>
     </ClInclude>
-    <ClInclude Include="Title_Scene.h" />
+    <ClInclude Include="Title_Scene.h">
+      <Filter>03. Game\04. Level\Title Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundMgr.h">
+      <Filter>03. Game\03. Manager\SoundMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -601,7 +609,12 @@
     <ClCompile Include="Z_Button.cpp">
       <Filter>03. Game\05. Object\Worldmap Player\Z Button</Filter>
     </ClCompile>
-    <ClCompile Include="Title_Scene.cpp" />
+    <ClCompile Include="Title_Scene.cpp">
+      <Filter>03. Game\04. Level\Title Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundMgr.cpp">
+      <Filter>03. Game\03. Manager\SoundMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="My_WinAPI.rc">

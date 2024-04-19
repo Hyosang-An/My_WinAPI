@@ -20,6 +20,9 @@ public:
 	CTexture* FindTexture(const wstring& _strKey);
 	CTexture* CreateTexture(const wstring& _strKey, UINT _width, UINT _height);
 
+	CSound* LoadSound(const wstring& _Key, const wstring& _strRelativePath);
+	CSound* FindSound(const wstring& _Key);
+
 private:
 	CAssetMgr();
 	~CAssetMgr();
