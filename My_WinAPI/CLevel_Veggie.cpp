@@ -19,6 +19,8 @@ CLevel_Veggie::CLevel_Veggie() :
 {
 	SetName(L"Veggie_Level");
 
+	// BGM
+	BGM = CAssetMgr::GetInstance().LoadSound(L"BGM_Botanic_Panic", L"sound\\BGM\\BGM_Botanic_Panic.wav");
 }
 
 CLevel_Veggie::~CLevel_Veggie()
@@ -53,6 +55,9 @@ void CLevel_Veggie::Enter()
 
 	// 충돌 설정
 	SetCollision();
+
+	BGM->Play(true);
+	Announcer_intro->Play();
 }
 
 void CLevel_Veggie::tick()
@@ -80,6 +85,13 @@ void CLevel_Veggie::tick()
 	// 스테이지 클리어
 	if (m_bLevelClear)
 	{
+		static bool bAnnounce_KO = false;
+		if (bAnnounce_KO == false)
+		{
+			Announcer_KO->Play();
+			bAnnounce_KO = true;
+		}
+
 		static float accClearTime = 0;
 
 		accClearTime += DT;
@@ -438,6 +450,7 @@ void CLevel_Veggie::SetCollision()
 
 void CLevel_Veggie::Exit()
 {
+	BGM->Stop();
 	DeleteAllObjects();
 }
 

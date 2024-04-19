@@ -14,6 +14,9 @@ CLevel_Goopy_Le_Grande::CLevel_Goopy_Le_Grande() :
 	m_Boss{}
 {
 	SetName(L"Goopy Le Grande Level");
+
+	// BGM
+	BGM = CAssetMgr::GetInstance().LoadSound(L"BGM_Ruse_Of_An_Ooze", L"sound\\BGM\\BGM_Ruse_Of_An_Ooze.wav");
 }
 
 CLevel_Goopy_Le_Grande::~CLevel_Goopy_Le_Grande()
@@ -41,6 +44,9 @@ void CLevel_Goopy_Le_Grande::Enter()
 	SetCollision();
 
 	m_bLevelClear = false;
+
+	BGM->Play(true);
+	Announcer_intro->Play();
 }
 
 void CLevel_Goopy_Le_Grande::tick()
@@ -68,6 +74,13 @@ void CLevel_Goopy_Le_Grande::tick()
 	// 스테이지 클리어
 	if (m_bLevelClear)
 	{
+		static bool bAnnounce_KO = false;
+		if (bAnnounce_KO == false)
+		{
+			Announcer_KO->Play();
+			bAnnounce_KO = true;
+		}
+
 		static float accClearTime = 0;
 
 		accClearTime += DT;
@@ -281,6 +294,7 @@ void CLevel_Goopy_Le_Grande::SetCollision()
 
 void CLevel_Goopy_Le_Grande::Exit()
 {
+	BGM->Stop();
 	DeleteAllObjects();
 }
 

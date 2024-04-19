@@ -5,6 +5,8 @@
 
 CLevel::CLevel()
 {
+	Announcer_intro = CAssetMgr::GetInstance().LoadSound(L"announcer_0001_a", L"sound\\Announcer\\announcer_0001_a.wav");
+	Announcer_KO = CAssetMgr::GetInstance().LoadSound(L"announcer_knockout_0004", L"sound\\Announcer\\announcer_knockout_0004.wav");
 }
 
 CLevel::~CLevel()

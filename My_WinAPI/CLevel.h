@@ -17,7 +17,12 @@ private:
 protected:
     bool            m_bLevelClear = false;
 
+    // Sound
     CSound* BGM = nullptr;
+    CSound* Announcer_intro = nullptr;
+    CSound* Announcer_KO = nullptr;
+
+
 
     float m_KnockOutframeElapsedTime = 0;
     float m_KnockOutframeDuration = 0.1f;
