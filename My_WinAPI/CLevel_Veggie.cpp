@@ -64,6 +64,20 @@ void CLevel_Veggie::tick()
 		ChangeLevel(LEVEL_TYPE::WORLD_MAP);
 	}
 
+	// 플레이어 죽음
+	if (m_player->GetHP() == 0)
+	{
+		static float accPlayerDeathTime = 0;
+		accPlayerDeathTime += DT;
+
+		if (3 < accPlayerDeathTime)
+		{
+			accPlayerDeathTime = 0;
+			ChangeLevel(LEVEL_TYPE::WORLD_MAP);
+		}
+	}
+
+	// 스테이지 클리어
 	if (m_bLevelClear)
 	{
 		static float accClearTime = 0;
@@ -199,18 +213,66 @@ void CLevel_Veggie::render()
 {
 	CLevel::render();
 
+	auto res = CEngine::GetInstance().GetResolution();
+
+	// !디버깅
 	if (m_player)
 	{
 		wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
-		TextOut(SUBDC, 0, (int)CEngine::GetInstance().GetResolution().y - 20,
+		TextOut(SUBDC, 0, (int)res.y - 20,
 			playerHP.c_str(), (int)playerHP.length());
 	}
 	
 	if (m_CurBoss)
 	{
 		wstring bossHP = L"보스 HP : " + std::to_wstring(m_CurBoss->GetHP());
-		TextOut(SUBDC, (int)CEngine::GetInstance().GetResolution().x - 80, (int)CEngine::GetInstance().GetResolution().y - 20,
+		TextOut(SUBDC, (int)res.x - 80, (int)res.y - 20,
 			bossHP.c_str(), (int)bossHP.length());
+	}
+	// 디버깅
+
+	BLENDFUNCTION bf{};
+
+	bf.BlendOp = AC_SRC_OVER;
+	bf.BlendFlags = 0;
+	bf.AlphaFormat = AC_SRC_ALPHA;
+	bf.SourceConstantAlpha = 255;
+
+	// 플레이어 HP HUD
+	auto curHUD_Tex = CLevelMgr::GetInstance().GetvecPlayerHP_HUD()[m_player->GetHP()];
+	auto w = curHUD_Tex->GetWidth();
+	auto h = curHUD_Tex->GetHeight();
+	AlphaBlend(SUBDC, 0, res.y - 80, w, h,
+		curHUD_Tex->GetDC(), 0, 0, w, h, bf);
+
+
+	// KnockOut 렌더링
+	if (m_bLevelClear)
+	{
+		// 애니매이션 렌더링
+		auto vecKnockOutMsg = CLevelMgr::GetInstance().GetvecKnockOutMsg();
+
+		// 프레임이 마지막에 도달한 경우
+		if (m_CurKnockOutFrameIdx >= vecKnockOutMsg.size() - 1)
+			return;
+
+		m_KnockOutframeElapsedTime += DT;
+
+		if (m_KnockOutframeDuration < m_KnockOutframeElapsedTime)
+		{
+			m_KnockOutframeElapsedTime -= m_KnockOutframeDuration;
+			m_CurKnockOutFrameIdx++;
+		}
+
+
+		auto curFrame = vecKnockOutMsg[m_CurKnockOutFrameIdx];
+		w = curFrame->GetWidth();
+		h = curFrame->GetHeight();
+
+
+		AlphaBlend(SUBDC, 0, 0, res.x, res.y,
+			curFrame->GetDC(), 0, 0, w, h, bf);
+
 	}
 }
 

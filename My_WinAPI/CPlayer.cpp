@@ -204,8 +204,8 @@ void CPlayer::UpdateState()
 			return;
 	}
 
-	// HP가 0 이하면 죽음
-	if (m_iHP <= 0)
+	// HP가 0 이면 죽음
+	if (m_iHP == 0)
 	{
 		m_CurBaseState = BASE_STATE::DEATH;
 		return;
@@ -1074,7 +1074,9 @@ void CPlayer::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollide
 			m_Rigidbody->SetVelocity(Vec2(200, -800));
 		else
 			m_Rigidbody->SetVelocity(Vec2(-200, -800));
-		m_iHP--;
+
+		if (m_iHP > 0)
+			m_iHP--;
 	}
 
 	// 중립 오브젝트와 충돌
@@ -1116,7 +1118,9 @@ void CPlayer::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider
 			m_Rigidbody->SetVelocity(Vec2(200, -800));
 		else
 			m_Rigidbody->SetVelocity(Vec2(-200, -800));
-		m_iHP--;
+
+		if (m_iHP > 0)
+			m_iHP--;
 	}
 
 	// 중립 오브젝트와 충돌

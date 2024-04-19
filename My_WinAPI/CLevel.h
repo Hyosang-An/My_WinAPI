@@ -17,6 +17,10 @@ private:
 protected:
     bool            m_bLevelClear = false;
 
+    float m_KnockOutframeElapsedTime = 0;
+    float m_KnockOutframeDuration = 0.1f;
+    int   m_CurKnockOutFrameIdx = 0;
+
 protected:
     void DeleteAllObjects();
     void DeleteObjectsOfLayer(LAYER_TYPE _LayerType);

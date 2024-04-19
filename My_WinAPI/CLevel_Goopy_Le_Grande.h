@@ -10,10 +10,6 @@ private:
 	CPlayer*			m_player;
 	Goopy_Le_Grande*	m_Boss;
 
-	float m_KnockOutframeElapsedTime = 0;
-	float m_KnockOutframeDuration = 0.15f;
-	int   m_CurKnockOutFrameIdx = 0;
-
 public:
 	void ChangeBoss(Goopy_Le_Grande* _phase3_boss) { m_Boss = _phase3_boss; }
 

@@ -70,6 +70,7 @@ void CLevelMgr::SetWorldmapLevelWin()
 
 void CLevelMgr::init()
 {
+	// KnockOut 메세지 초기화
 	for (int i = 0; i < 27; i++)
 	{
 		wstring strpath = L"texture\\A KNOCKOUT message\\";
@@ -78,6 +79,16 @@ void CLevelMgr::init()
 		num = std::wstring(4 - num.length(), L'0') + num;
 
 		m_vecKnockOutMsg.push_back(CAssetMgr::GetInstance().LoadTexture(filename + num, strpath + filename + num + L".png"));
+	}
+
+	// 플레이어 체력 HUD 초기화
+	for (int i = 0; i <= 3; i++)
+	{
+		wstring strpath = L"texture\\UI\\HP\\";
+		wstring filename = L"HP_";
+		wstring num = std::to_wstring(i);
+
+		m_vecPlayerHP_HUD.push_back(CAssetMgr::GetInstance().LoadTexture(filename + num, strpath + filename + num + L".png"));
 	}
 
 	// 모든 레벨 생성

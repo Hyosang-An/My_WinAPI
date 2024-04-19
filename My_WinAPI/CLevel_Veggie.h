@@ -31,6 +31,8 @@ private:
 	Veggie* m_Onion = nullptr;
 	Veggie* m_Carrot = nullptr;
 
+
+
 public:
 	virtual void tick();
 	virtual void render();

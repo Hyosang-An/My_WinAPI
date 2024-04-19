@@ -17,6 +17,9 @@ private:
 
     vector<CTexture*> m_vecKnockOutMsg;
 
+    // 플레이어 체력 HUD
+    vector<CTexture*> m_vecPlayerHP_HUD;
+
     // !디버깅
     bool m_bPauseProgress = false;
 
@@ -26,6 +29,7 @@ private:
 public:
     void SetWorldmapLevelWin();
     const vector<CTexture*>& GetvecKnockOutMsg() { return m_vecKnockOutMsg; }
+    const vector<CTexture*>& GetvecPlayerHP_HUD() { return m_vecPlayerHP_HUD; }
 
 public:
     void init();
