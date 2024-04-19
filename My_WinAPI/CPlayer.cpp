@@ -46,7 +46,6 @@ CPlayer::CPlayer()
 		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Ghost\\cuphead_ghost.anim");
 
 		// FX
-		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Jump\\Dust\\cuphead_jump_dust_a.anim");
 		m_Animator->LoadAnimation(L"animation\\Cuphead\\Cuphead_R\\Special Attack\\SFX\\cuphead_explode_fx.anim");
 
 
@@ -169,11 +168,24 @@ CPlayer::~CPlayer()
 
 void CPlayer::begin()
 {
-	// 이펙트 추가
+	// VFX 추가
 	CEffect* effect = new CEffect;
 	effect->SetName(L"cuphead_jump_dust_a");
 	effect->SetAnimation(L"animation\\Cuphead\\Cuphead_R\\Jump\\Dust\\cuphead_jump_dust_a.anim");
 	m_mapEffect.insert(make_pair(effect->GetName(), effect));
+
+	effect = new CEffect;
+	effect->SetName(L"cuphead_slap_spark");
+	effect->SetAnimation(L"animation\\Cuphead\\FX\\slap_spark\\cuphead_slap_spark.anim");
+	m_mapEffect.insert(make_pair(effect->GetName(), effect));
+
+	// FX Sound Load
+	m_DashSound = CAssetMgr::GetInstance().LoadSound(L"player_dash_01", L"sound\\Player\\player_dash_01.wav");
+	m_ShootSound = CAssetMgr::GetInstance().LoadSound(L"player_default_fire_loop_01", L"sound\\Player\\player_default_fire_loop_01.wav");
+	m_HitSound = CAssetMgr::GetInstance().LoadSound(L"player_hit_01", L"sound\\Player\\player_hit_01.wav");
+	m_JumpSound = CAssetMgr::GetInstance().LoadSound(L"player_jump_01", L"sound\\Player\\player_jump_01.wav");
+	m_LandGroundSound = CAssetMgr::GetInstance().LoadSound(L"player_land_ground_01", L"sound\\Player\\player_land_ground_01.wav");
+	m_ParrySound = CAssetMgr::GetInstance().LoadSound(L"player_parry_slap_01", L"sound\\Player\\player_parry_slap_01.wav");
 }
 
 void CPlayer::tick()
@@ -333,6 +345,8 @@ void CPlayer::UpdateState()
 				m_CurBaseState = BASE_STATE::DASH;
 				m_bAirboneDashed = true;
 			}
+
+			m_DashSound->Play();
 		}
 
 		if (m_Rigidbody->IsOnGround())
@@ -367,6 +381,7 @@ void CPlayer::UpdateState()
 		// LOG(LOG_TYPE::DBG_WARNING, L"JUMP_START");
 		m_accJumpingTime = 0;
 		m_CurJumpState = JUMP_STATE::JUMP_START;
+		m_JumpSound->Play();
 	}
 	else if ((m_CurJumpState == JUMP_STATE::JUMP_START || m_CurJumpState == JUMP_STATE::JUMPING) && KEY_PRESSED(KEY::Z))
 	{
@@ -433,10 +448,13 @@ void CPlayer::UpdateState()
 	if (KEY_PRESSED(KEY::X))
 	{
 		m_CurActionState = ACTION_STATE::SHOOTING;
+		if (m_PrevActionState != ACTION_STATE::SHOOTING)
+			m_ShootSound->Play(true);
 	}
 	else
 	{
 		m_CurActionState = ACTION_STATE::NONE;
+		m_ShootSound->Stop();
 	}
 
 
@@ -944,8 +962,10 @@ void CPlayer::Shoot(SHOOTING_DIR _dir)
 void CPlayer::Parry(CObj* _otherObj)
 {
 	m_CurParryState = PARRY_STATE::PARRY_PINK;
-
 	m_ParryCount++;
+
+	SpawnEffect(L"cuphead_slap_spark", _otherObj->GetPos());
+	m_ParrySound->Play();
 
 	m_Rigidbody->SetVelocity_Y(-1000);
 	_otherObj->SelfDestruct();
@@ -981,6 +1001,7 @@ void CPlayer::EnterGround()
 	m_Rigidbody->SetVelocity_X(0);
 
 	SpawnEffect(L"cuphead_jump_dust_a", m_Pos + Vec2(0, 60));
+	m_LandGroundSound->Play();
 }
 
 void CPlayer::LeaveGround()
@@ -1068,7 +1089,9 @@ void CPlayer::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollide
 			return;
 		}
 
+		// Hitted
 		m_CurBaseState = BASE_STATE::HITTED;
+		m_HitSound->Play();
 
 		if ((m_Pos - otherObj->GetPos()).x > 0)
 			m_Rigidbody->SetVelocity(Vec2(200, -800));

@@ -17,8 +17,8 @@ Title_Scene::Title_Scene()
 	}
 
 	// BGM 
-	BGM = CAssetMgr::GetInstance().LoadSound(L"BGM_Worldmap", L"sound\\BGM\\BGM_title_screen.wav");
-	BGM->SetVolume(50);
+	BGM = CAssetMgr::GetInstance().LoadSound(L"BGM_title_screen", L"sound\\BGM\\BGM_title_screen.wav");
+	BGM->SetVolume(65);
 }
 
 Title_Scene::~Title_Scene()

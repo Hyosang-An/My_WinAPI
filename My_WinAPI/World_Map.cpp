@@ -14,7 +14,7 @@ World_Map::World_Map() :
 
 	// BGM 
 	BGM = CAssetMgr::GetInstance().LoadSound(L"BGM_Worldmap", L"sound\\BGM\\BGM_Inkwell_Isle_One.wav");
-	BGM->SetVolume(50);
+	BGM->SetVolume(25);
 }
 
 World_Map::~World_Map()

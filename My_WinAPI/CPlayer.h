@@ -2,6 +2,7 @@
 #include "CObj.h"
 
 class CEffect;
+class CSound;
 
 class CPlayer :
 	public CObj
@@ -113,6 +114,14 @@ private:
 
 	// 이펙트 맵
 	map<wstring, CEffect*>  m_mapEffect;
+
+	// FX Sound
+	CSound*		m_ShootSound = nullptr;
+	CSound*		m_DashSound = nullptr;
+	CSound*		m_HitSound = nullptr;
+	CSound*		m_JumpSound = nullptr;
+	CSound*		m_LandGroundSound = nullptr;
+	CSound*		m_ParrySound = nullptr;
 
 
 	// 액션 누적 시간 (static 변수들 멤버변수로 전환)

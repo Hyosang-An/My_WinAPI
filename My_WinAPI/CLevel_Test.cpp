@@ -25,14 +25,14 @@ CLevel_Test::~CLevel_Test()
 
 void CLevel_Test::begin()
 {
-
+	CreateAndSaveAnimationByJson();
 
 	CLevel::begin();
 
 	//CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_OUT, 2);
 	CCamera::GetInstance().SetCameraEffect(CAM_EFFECT::FADE_IN, 2);
 
-	CreateAndSaveAnimationByJson();
+	
 }
 
 void CLevel_Test::tick()
@@ -76,7 +76,8 @@ void CLevel_Test::CreateAndSaveAnimationByJson()
 	tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Worldmap_Point\\Veggie_point\\veggie_point.json", 12);
 	
 
-	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\potato\\death\\veggie_potato_death.json", 12);
+	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Cuphead\\FX\\slap_spark\\cuphead_slap_spark.json", 12);
+	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\boss_explosion\\boss_explosion.json", 12);
 	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\potato\\ground_burst\\veggie_potato_ground_burst_front.json", 12);
 	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\potato\\idle\\veggie_potato_idle.json", 12);
 	//tmp_animator->CreateAndSaveAnimationFileByJSON(L"animation\\Boss\\Veggie\\potato\\intro\\veggie_potato_intro.json", 12);

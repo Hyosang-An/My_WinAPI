@@ -109,6 +109,15 @@ CSound* CAssetMgr::LoadSound(const wstring& _Key, const wstring& _strRelativePat
 
 CSound* CAssetMgr::FindSound(const wstring& _Key)
 {
-	return nullptr;
+	auto iter = m_mapSound.find(_Key);
+	if (iter == m_mapSound.end())
+	{
+		return nullptr;
+	}
+
+	else
+	{
+		return iter->second;
+	}
 }
 

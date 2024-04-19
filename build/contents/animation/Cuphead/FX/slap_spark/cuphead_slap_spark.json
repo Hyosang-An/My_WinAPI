@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "cuphead_slap_spark_0001.png",
+	"frame": {"x":0,"y":0,"w":214,"h":232},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":214,"h":232},
+	"sourceSize": {"w":214,"h":232}
+},
+{
+	"filename": "cuphead_slap_spark_0002.png",
+	"frame": {"x":0,"y":237,"w":214,"h":240},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":214,"h":240},
+	"sourceSize": {"w":214,"h":240}
+},
+{
+	"filename": "cuphead_slap_spark_0003.png",
+	"frame": {"x":214,"y":0,"w":224,"h":237},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":224,"h":237},
+	"sourceSize": {"w":224,"h":237}
+},
+{
+	"filename": "cuphead_slap_spark_0004.png",
+	"frame": {"x":214,"y":237,"w":235,"h":250},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":235,"h":250},
+	"sourceSize": {"w":235,"h":250}
+},
+{
+	"filename": "cuphead_slap_spark_0005.png",
+	"frame": {"x":0,"y":487,"w":234,"h":251},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":234,"h":251},
+	"sourceSize": {"w":234,"h":251}
+},
+{
+	"filename": "cuphead_slap_spark_0006.png",
+	"frame": {"x":234,"y":487,"w":243,"h":253},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":243,"h":253},
+	"sourceSize": {"w":243,"h":253}
+},
+{
+	"filename": "cuphead_slap_spark_0007.png",
+	"frame": {"x":0,"y":740,"w":269,"h":262},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":262},
+	"sourceSize": {"w":269,"h":262}
+},
+{
+	"filename": "cuphead_slap_spark_0008.png",
+	"frame": {"x":0,"y":1002,"w":253,"h":270},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":270},
+	"sourceSize": {"w":253,"h":270}
+},
+{
+	"filename": "cuphead_slap_spark_0009.png",
+	"frame": {"x":253,"y":1002,"w":252,"h":282},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":252,"h":282},
+	"sourceSize": {"w":252,"h":282}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cuphead_slap_spark.png",
+	"format": "RGBA8888",
+	"size": {"w":505,"h":1284},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:499d9bc55ac8d38344cc506e28bf29aa:60671c8349f4c65f070e048ba22c4ebe:10edcb6a84c19d024d0266fcd9e6148d$"
+}
+}
