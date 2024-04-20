@@ -20,6 +20,8 @@ Worldmap_Player::Worldmap_Player()
 
 	m_Z_Button = new Z_Button;
 	m_Z_Button->SetWorldmapPlayer(this);
+
+	m_WinSound = CAssetMgr::GetInstance().LoadSound(L"map_player_win_bounce_cuphead_01", L"sound\\Worldmap_Player\\map_player_win_bounce_cuphead_01.wav");
 }
 
 Worldmap_Player::~Worldmap_Player()
@@ -48,12 +50,20 @@ void Worldmap_Player::UpdateState()
 {
 	if (m_State == STATE::WIN)
 	{
+		static float bPlayWinSound = false;
+		if (bPlayWinSound == false)
+		{
+			bPlayWinSound = true;
+			m_WinSound->Play(true);
+		}
+
 		m_accWinStateTime += DT;
 
 		if (3 < m_accWinStateTime)
 		{
 			m_accWinStateTime = 0;
 			m_State = STATE::IDLE;
+			m_WinSound->Stop();
 		}
 		else
 			return;

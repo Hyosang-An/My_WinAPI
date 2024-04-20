@@ -42,6 +42,8 @@ private:
 	bool		m_StageSelect = false;
 	Z_Button*	m_Z_Button;
 
+	CSound*		m_WinSound = nullptr;
+
 private:
 	void UpdateState();
 	void UpdateAnimation();
