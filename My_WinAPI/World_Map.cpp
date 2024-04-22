@@ -4,6 +4,7 @@
 #include "Worldmap_Player.h"
 #include "CBackground.h"
 #include "CWorldmap_Point.h"
+#include "CWall.h"
 
 
 
@@ -45,7 +46,7 @@ void World_Map::Enter()
 		m_WorldmapPlayer->SetWinState();
 	}
 
-	BGM->Play();
+	BGM->Play(true);
 }
 
 void World_Map::tick()
@@ -99,13 +100,79 @@ void World_Map::LoadObject()
 {
 	m_WorldmapPlayer = new Worldmap_Player;
 	m_WorldmapPlayer->SetName(L"Worldmap_Player");
-	m_WorldmapPlayer->SetPos(Vec2(-963, 68));
+	m_WorldmapPlayer->SetPos(Vec2(-613, -95));
 	AddObject(LAYER_TYPE::WORLDMAP_PLAYER, m_WorldmapPlayer);
+
+	// º® »ý¼º
+	auto wall = new CWall;
+	wall->SetPos(Vec2(-715, 0));
+	wall->SetColliderScale(Vec2(10, 1000));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(-383, -128));
+	wall->SetColliderScale(Vec2(700 , 10));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(-438, -22));
+	wall->SetColliderScale(Vec2(700, 10));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(-405, -22));
+	wall->SetColliderScale(Vec2(631, 10));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(-91, 164));
+	wall->SetColliderScale(Vec2(10, 372));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(-45, 350));
+	wall->SetColliderScale(Vec2(91, 10));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(5, 240));
+	wall->SetColliderScale(Vec2(10, 221));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(110, 129));
+	wall->SetColliderScale(Vec2(219, 10));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(219, -112));
+	wall->SetColliderScale(Vec2(10, 482));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	//wall = new CWall;
+	//wall->SetPos(Vec2(130, -353));
+	//wall->SetColliderScale(Vec2(179, 10));
+	//AddObject(LAYER_TYPE::WALL, wall);
+
+	//wall = new CWall;
+	//wall->SetPos(Vec2(40, -440));
+	//wall->SetColliderScale(Vec2(10, 86));
+	//AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(0, -526));
+	wall->SetColliderScale(Vec2(81, 10));
+	AddObject(LAYER_TYPE::WALL, wall);
+
+	wall = new CWall;
+	wall->SetPos(Vec2(-41, -328));
+	wall->SetColliderScale(Vec2(10, 396));
+	AddObject(LAYER_TYPE::WALL, wall);
 }
 
 void World_Map::SetCollision()
 {
-	CCollisionMgr::GetInstance().EnableLayerCollisionCheck(LAYER_TYPE::WORLDMAP_PLAYER, LAYER_TYPE::WORLDMAP_POINT);
+	
 }
 
 

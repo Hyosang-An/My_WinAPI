@@ -227,21 +227,21 @@ void CLevel_Veggie::render()
 
 	auto res = CEngine::GetInstance().GetResolution();
 
-	// !디버깅
-	if (m_player)
-	{
-		wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
-		TextOut(SUBDC, 0, (int)res.y - 20,
-			playerHP.c_str(), (int)playerHP.length());
-	}
-	
-	if (m_CurBoss)
-	{
-		wstring bossHP = L"보스 HP : " + std::to_wstring(m_CurBoss->GetHP());
-		TextOut(SUBDC, (int)res.x - 80, (int)res.y - 20,
-			bossHP.c_str(), (int)bossHP.length());
-	}
-	// 디버깅
+	//// !디버깅
+	//if (m_player)
+	//{
+	//	wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
+	//	TextOut(SUBDC, 0, (int)res.y - 20,
+	//		playerHP.c_str(), (int)playerHP.length());
+	//}
+	//
+	//if (m_CurBoss)
+	//{
+	//	wstring bossHP = L"보스 HP : " + std::to_wstring(m_CurBoss->GetHP());
+	//	TextOut(SUBDC, (int)res.x - 80, (int)res.y - 20,
+	//		bossHP.c_str(), (int)bossHP.length());
+	//}
+	//// 디버깅
 
 	BLENDFUNCTION bf{};
 

@@ -105,13 +105,13 @@ void CLevel_Goopy_Le_Grande::render()
 
 	auto res = CEngine::GetInstance().GetResolution();
 
-	wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
+	/*wstring playerHP = L"플레이어 HP : " + std::to_wstring(m_player->GetHP());
 	TextOut(SUBDC, 0, (int)res.y - 20,
 		playerHP.c_str(), (int)playerHP.length());
 
 	wstring bossHP = L"보스 HP : " + std::to_wstring(m_Boss->GetHP());
 	TextOut(SUBDC, (int)res.x - 80, (int)res.y - 20,
-		bossHP.c_str(), (int)bossHP.length());
+		bossHP.c_str(), (int)bossHP.length());*/
 
 
 	BLENDFUNCTION bf{};

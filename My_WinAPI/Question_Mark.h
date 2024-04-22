@@ -6,7 +6,7 @@ class Question_Mark :
 private:
 	CCollider* m_Question_Mark_Collider;
 
-	float m_LifeDuration = 200;  // 원래 2초
+	float m_LifeDuration = 2;  // 원래 2초
 	float m_accLifeTime = 0;
 
 public:

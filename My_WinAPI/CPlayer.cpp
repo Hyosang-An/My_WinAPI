@@ -220,6 +220,13 @@ void CPlayer::UpdateState()
 	if (m_iHP == 0)
 	{
 		m_CurBaseState = BASE_STATE::DEATH;
+
+		m_CurActionState = ACTION_STATE::NONE;
+		m_CurJumpState = JUMP_STATE::NONE;
+		m_CurParryState = PARRY_STATE::NONE;
+
+		m_ShootSound->Stop();
+
 		return;
 	}
 
