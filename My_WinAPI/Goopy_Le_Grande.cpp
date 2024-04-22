@@ -1205,7 +1205,7 @@ void Goopy_Le_Grande::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOthe
 			if (m_PhaseState != PHASE_STATE::PHASE3)
 			{
 				// Bodycollider인 경우에만 방향 전환
-				if (_pOtherCollider != m_BodyCollider)
+				if (_myCollider != m_BodyCollider)
 					return;
 
 				m_Rigidbody->SetVelocity_X(-1 * m_Rigidbody->GetVelocity().x);
