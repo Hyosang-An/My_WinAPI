@@ -249,7 +249,7 @@ void Goopy_Le_Grande::Phase1_Update()
 			{
 				m_PhaseState = PHASE_STATE::PHASE2;
 				m_CurBaseState = BASE_STATE::IDLE;
-				m_iHP = 5;
+				m_iHP = 10;
 
 				m_BodyCollider->SetScale(Vec2(150 + 122, 200 + 132));
 				m_BodyCollider->SetOffsetPos(Vec2(0, 0));

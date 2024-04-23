@@ -24,7 +24,7 @@ World_Map::~World_Map()
 
 void World_Map::Enter()
 {
-	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::WORLD_MAP);
+
 
 	LoadBackground();
 	LoadObject();
@@ -32,7 +32,7 @@ void World_Map::Enter()
 
 	if (m_bFirstEnter)
 	{
-		CCamera::GetInstance().SetCameraLookAt(Vec2(-963, 68));
+		CCamera::GetInstance().SetCameraLookAt(m_WorldmapPlayer->GetPos());
 		m_bFirstEnter = false;
 	}
 	else
@@ -47,6 +47,8 @@ void World_Map::Enter()
 	}
 
 	BGM->Play(true);
+
+	CCamera::GetInstance().SetTrackingState(CAM_TRACKING_STATE::WORLD_MAP);
 }
 
 void World_Map::tick()

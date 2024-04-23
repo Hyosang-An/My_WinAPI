@@ -277,12 +277,14 @@ void CCamera::SetCameraEffect(CAM_EFFECT _effect, float _duration)
 
 void CCamera::SetCameraInitialLookAt(Vec2 _pos)
 {
+	m_CameraRealCenterPos = _pos;
 	m_CameraLeftTopPos = _pos - (0.5 * m_resolution);
 	m_PrevCameraLeftTopPos = m_CameraLeftTopPos;
 }
 
 void CCamera::SetCameraLookAt(Vec2 _pos)
 {
+	m_CameraRealCenterPos = _pos;
 	m_CameraLeftTopPos = _pos - (0.5 * m_resolution);
 }
 

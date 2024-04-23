@@ -8,7 +8,7 @@
 #include "CLevelMgr.h"
 
 CDbgRenderer::CDbgRenderer() :
-	m_bDBGMode(true),
+	m_bDBGMode(false),
 	m_LogDuration(2),
 	m_LogSpace(18),
 	m_LogPos(Vec2(10, 10))

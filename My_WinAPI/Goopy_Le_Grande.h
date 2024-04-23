@@ -46,9 +46,9 @@ private:
     vector<float>       m_vecJumpSpeed = { -1500, -1300 };
     float               m_TombHorizontalSpeed = 800;
 
-    int                 m_iHP = 5;
+    int                 m_iHP = 10;
     int                 m_iJumpCnt = 0;
-    int                 m_iMaxJumpCnt = 2;
+    int                 m_iMaxJumpCnt = 5;
 
     float               m_SmashTime = 1.5; // Move 상태에서 Smash 하기까지 걸리는 시간
 
