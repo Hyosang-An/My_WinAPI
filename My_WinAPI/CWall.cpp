@@ -47,25 +47,10 @@ void CWall::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 	// 겹치는 영역 가로 세로 비율 (0 이상)
 	float overlapRatio = (overlapRightBottom.y - overlapLeftTop.y) / (overlapRightBottom.x - overlapLeftTop.x);
 
-	// x 방향 속도 0 일 때
-	if (otherRigidbody->GetVelocity().x == 0)
-	{
-		if (otherRigidbody->GetVelocity().y == 0)
-			return;
-		else if (otherRigidbody->GetVelocity().y > 0)
-		{
-			otherObj->SetPos(otherObj->GetPos() - Vec2(0, (overlapRightBottom.y - overlapLeftTop.y))); // 상충돌
-			return;
-		}
-		else 
-		{
-			otherObj->SetPos(otherObj->GetPos() + Vec2(0, (overlapRightBottom.y - overlapLeftTop.y))); // 하충돌
-			return;
-		}
-	}
-
 	// 플레이어 속도 가로 세로 비율 (0 이상)
-	float otherVelocityRatio = abs(otherRigidbody->GetVelocity().y / otherRigidbody->GetVelocity().x);
+	float otherVelocityRatio = 0;
+	if (otherRigidbody->GetVelocity().y != 0)
+		otherVelocityRatio = abs(otherRigidbody->GetVelocity().y / otherRigidbody->GetVelocity().x);
 
 
 
@@ -85,7 +70,7 @@ void CWall::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 		}
 
 		// 플레이어 속도 비율이 더 가파른 경우 순수하게 상 충돌
-		else
+		else if (overlapRightBottom.x - overlapLeftTop.x != 0)
 		{
 			otherObj->SetPos(otherObj->GetPos() - Vec2(0, (overlapRightBottom.y - overlapLeftTop.y)));
 		}
@@ -107,7 +92,7 @@ void CWall::OnCollisionEnter(CCollider* _myCollider, CCollider* _pOtherCollider)
 		}
 
 		// 플레이어 속도 비율이 더 가파른 경우 순수하게 하 충돌
-		else
+		else if (overlapRightBottom.x - overlapLeftTop.x != 0)
 		{
 			otherObj->SetPos(otherObj->GetPos() + Vec2(0, (overlapRightBottom.y - overlapLeftTop.y)));
 		}
@@ -154,25 +139,17 @@ void CWall::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 	// 겹치는 영역 가로 세로 비율 (0 이상)
 	float overlapRatio = (overlapRightBottom.y - overlapLeftTop.y) / (overlapRightBottom.x - overlapLeftTop.x);
 
-	// x 방향 속도 0 일 때
+	// x 방향 속도 0 일 때 (otherVelocityRatio의 분모가 0이되는 경우)
 	if (otherRigidbody->GetVelocity().x == 0)
 	{
-		if (otherRigidbody->GetVelocity().y == 0)
-			return;
-		else if (otherRigidbody->GetVelocity().y > 0 && otherCollider->GetFinalPos().y < overlapLeftTop.y)
-		{
-			otherObj->SetPos(otherObj->GetPos() - Vec2(0, (overlapRightBottom.y - overlapLeftTop.y))); // 상충돌
-			return;
-		}
-		else if (otherRigidbody->GetVelocity().y < 0 && otherCollider->GetFinalPos().y > overlapRightBottom.y )
-		{
-			otherObj->SetPos(otherObj->GetPos() + Vec2(0, (overlapRightBottom.y - overlapLeftTop.y))); // 하충돌
-			return;
-		}
+
+			
 	}
 
 	// 플레이어 속도 가로 세로 비율 (0 이상)
-	float otherVelocityRatio = abs(otherRigidbody->GetVelocity().y / otherRigidbody->GetVelocity().x);
+	float otherVelocityRatio = 0;
+	if (otherRigidbody->GetVelocity().y != 0)
+		otherVelocityRatio = abs(otherRigidbody->GetVelocity().y / otherRigidbody->GetVelocity().x);
 
 
 	// 겹치는 영역의 위쪽 y좌표가 플랫폼 위쪽 y좌표와 같으면 위쪽 충돌
@@ -191,8 +168,11 @@ void CWall::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 		}
 
 		// 플레이어 속도 비율이 더 가파른 경우 순수하게 상 충돌
-		else
+		else  if (overlapRightBottom.x - overlapLeftTop.x != 0)
 		{
+			// !디버그
+			auto otherObjPos = otherObj->GetPos();
+			auto diff = overlapRightBottom.y - overlapLeftTop.y;
 			otherObj->SetPos(otherObj->GetPos() - Vec2(0, (overlapRightBottom.y - overlapLeftTop.y)));
 		}
 
@@ -213,7 +193,7 @@ void CWall::OnCollisionStay(CCollider* _myCollider, CCollider* _pOtherCollider)
 		}
 
 		// 플레이어 속도 비율이 더 가파른 경우 순수하게 하 충돌
-		else
+		else if (overlapRightBottom.x - overlapLeftTop.x != 0)
 		{
 			otherObj->SetPos(otherObj->GetPos() + Vec2(0, (overlapRightBottom.y - overlapLeftTop.y)));
 		}

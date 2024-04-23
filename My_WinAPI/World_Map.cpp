@@ -111,13 +111,13 @@ void World_Map::LoadObject()
 
 	wall = new CWall;
 	wall->SetPos(Vec2(-383, -128));
-	wall->SetColliderScale(Vec2(700 , 10));
+	wall->SetColliderScale(Vec2(694 , 10));
 	AddObject(LAYER_TYPE::WALL, wall);
 
-	wall = new CWall;
-	wall->SetPos(Vec2(-438, -22));
-	wall->SetColliderScale(Vec2(700, 10));
-	AddObject(LAYER_TYPE::WALL, wall);
+	//wall = new CWall;
+	//wall->SetPos(Vec2(-438, -22));
+	//wall->SetColliderScale(Vec2(700, 10));
+	//AddObject(LAYER_TYPE::WALL, wall);
 
 	wall = new CWall;
 	wall->SetPos(Vec2(-405, -22));

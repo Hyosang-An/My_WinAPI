@@ -74,7 +74,6 @@ void Worldmap_Player::UpdateState()
 	bool right = KEY_PRESSED(KEY::RIGHT);
 	bool left = KEY_PRESSED(KEY::LEFT);
 
-
 	if (!up && !down && !right && !left)
 		m_State = STATE::IDLE;
 
